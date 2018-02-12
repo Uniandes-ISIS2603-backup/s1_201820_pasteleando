@@ -21,7 +21,7 @@ public class PastelDTO
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
 	 *
-	 * @param pasteldoEntity: Es la entidad que se va a convertir a DTO
+	 * @param pastelEntity: Es la entidad que se va a convertir a DTO
 	 */
   public PastelDTO(PastelEntity pastelEntity)
   {
