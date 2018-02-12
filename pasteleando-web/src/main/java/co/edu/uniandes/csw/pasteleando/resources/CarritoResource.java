@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.resources;
 
+import co.edu.uniandes.csw.pasteleando.dtos.PastelDTO;
 import java.awt.List;
 import javax.persistence.Id;
 import javax.ws.rs.Consumes;
@@ -134,7 +135,7 @@ public class CarritoResource
     @GET
     @Produces("application/json")
     @Consumes("application/json")
-    public PastelDTO getArticuloById(@PathParam(id) long pId)
+    public PastelDTO getArticuloById( long pId)
     {
         return null;
     }
@@ -147,7 +148,7 @@ public class CarritoResource
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public void agregarArticuloAlCarrito(@PathParam(id) long id)
+    public void agregarArticuloAlCarrito( long id)
     {
         
     }
@@ -160,7 +161,7 @@ public class CarritoResource
     @DELETE
     @Produces("application/json")
     @Consumes("application/json")
-    public void eliminarArticuloDelCarrito(@PathParam(id) long id)
+    public void eliminarArticuloDelCarrito( long id)
     {
         
     }
