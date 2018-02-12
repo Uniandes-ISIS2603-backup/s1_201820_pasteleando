@@ -35,7 +35,7 @@ import javax.ws.rs.Produces;
  * @author ISIS2603
  * @version 1.0
  */
-@Path( "promocion" )
+@Path( "promociones" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
