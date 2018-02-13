@@ -11,11 +11,13 @@ package co.edu.uniandes.csw.pasteleando.dtos;
  */
 public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     
-    /*
-    constructor por defecto
-    */
-    public TarjetaPuntosDetailDTO(int pNumeroPuntos, boolean pEsRedimible)
+    
+    
+    /**
+     * Constructor por defecto
+     */
+    public TarjetaPuntosDetailDTO()
     {
-        super(pNumeroPuntos, pEsRedimible);
+        super();
     }
 }
