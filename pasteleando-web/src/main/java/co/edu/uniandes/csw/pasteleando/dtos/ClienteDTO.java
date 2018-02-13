@@ -65,7 +65,7 @@ public class ClienteDTO
 
 	private List<String> tiposPagos;
 
-	private List<CalificacionDTO> calificaciones;
+
 
 	/**
 	 * Constructor por defecto
@@ -87,17 +87,6 @@ public class ClienteDTO
 		this.tipoUsuario = clienteEntity.getTipoUsuario();
 		this.formaPagoActual = clienteEntity.getFormaPagoActual();
 		this.tiposPagos = clienteEntity.getTiposPagos();
-
-		List<CalificacionDTO> lista = new ArrayList<CalificacionDTO>();
-
-		for(int i = 0 ; i < clienteEntity.getCalificaciones().size(); i++)
-		{
-			CalificacionEntity t = clienteEntity.getCalificaciones().get(i);
-			CalificacionDTO n = new CalificacionDTO(t);
-			lista.add(n);
-		}
-
-		this.calificaciones = lista;
 
 
 	}
@@ -189,16 +178,6 @@ public class ClienteDTO
 		entity.setIdCarrito(this.idCarrito);
 		entity.setTipoUsuario(this.tipoUsuario);
 		entity.setTiposPagos(this.tiposPagos);
-
-
-		List<CalificacionEntity> lista = new ArrayList<CalificacionEntity>();
-		for(int i = 0 ; i < this.calificaciones.size(); i++)
-		{
-			CalificacionDTO t = this.calificaciones.get(i);
-			lista.add(t.toEntity());
-		}
-
-		entity.setCalificaciones(lista);
 
 		return entity;
 	}
