@@ -8,7 +8,10 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 
 /**
- *
+ * Clase que extiende de {@link PqrsDTO} para manejar la transformacion entre
+ * los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido del pqrs vaya a la documentacion de {@link PqrsDTO}
+ * 
  * @author ni.ramirez10
  */
 public class PqrsDetailDTO extends PqrsDTO

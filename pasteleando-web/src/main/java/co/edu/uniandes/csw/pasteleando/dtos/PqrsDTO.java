@@ -8,7 +8,33 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 
 /**
+ * PqrsDTO Objeto de transferencia de datos de pqrs. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "tipo": number,
+ *      "idSolicitud": number, 
+ *      "idCliente": number, 
+ *      "fecha": string,
+ *      "estado": string
+ *   }
+ * </pre>
+ * Por ejemplo un pqrs se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "tipo": 01,
+ *      "idSolicitud": 408, 
+ *      "idCliente": 11098, 
+ *      "fecha": "20/02/2018",
+ *      "estado": "Esperando respuesta"
+ *   }
  *
+ * </pre>
  * @author ni.ramirez10
  */
 public class PqrsDTO 
