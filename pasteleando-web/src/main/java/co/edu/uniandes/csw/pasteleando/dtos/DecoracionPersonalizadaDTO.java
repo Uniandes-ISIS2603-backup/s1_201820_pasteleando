@@ -8,6 +8,30 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
 
 /**
+ * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * 
+ * <pre>
+ *   {
+ *      "color": String,
+ *      "imagen": String,
+ *      "estado": String
+ *   }
+ * </pre>
+ * 
+ * Por ejemplo una decoracion se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *{
+ *  "color":Azul,
+ *  "imagen": "C:\Users\dc.cepeda\Desktop\cake.jpg",
+ *  "estado": enviadoa
+ * }
+ * 
+ * </pre>
+ * 
+ */
+/**
  *
  * @author dc.cepeda
  */

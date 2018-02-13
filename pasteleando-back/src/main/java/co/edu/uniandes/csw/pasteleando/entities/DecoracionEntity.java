@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.Entity;
 public class DecoracionEntity extends BaseEntity implements Serializable
 {
         
-        private String fechaAgregado;
+        private Date fechaAgregado;
         
         private String foto;
         /**
@@ -37,7 +38,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
         /**
 	 * @return the fechaAgregado
 	 */
-	public String getFechaAgregado( )
+	public Date getFechaAgregado( )
 	{
 		return fechaAgregado;
 	}
@@ -45,7 +46,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
 	/**
 	 * @param fechaAgregado the atribute to set
 	 */
-	public void setFechaAgregado( String fechaAgregado )
+	public void setFechaAgregado( Date fechaAgregado )
 	{
 		this.fechaAgregado = fechaAgregado;
 	}

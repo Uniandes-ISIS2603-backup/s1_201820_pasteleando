@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
 
 /**
  * <pre>Clase que implementa el recurso "Decoración ".
- * URL: /api/Decoración 
+ * URL: /api/Decoraciones 
  */
 @Path( "decoracion" )
 @Produces( "application/json" )
@@ -39,11 +39,11 @@ public class DecoracionResource
 {
 
 	/**
-	 * <h1>POST /api/decoracion : Crear una entidad de Decoración.</h1>
+	 * <h1>POST /api/decoraciones : Crear una entidad de Decoración.</h1>
 	 * <p>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionDTO}.
 	 *
-	 * Crea una nueva entidad de promoción con la informacion que se recibe en el cuerpo
+	 * Crea una nueva entidad de decoracion con la informacion que se recibe en el cuerpo
 	 * de la petición y se regresa un objeto identico con un id auto-generado
 	 * por la base de datos.
 	 *
@@ -61,13 +61,13 @@ public class DecoracionResource
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de decoracion.
 	 */
 	@POST
-	public DecoracionDTO createDecoracion( DecoracionDTO dto ) throws BusinessLogicException
+	public DecoracionDTO createDecoraciones( DecoracionDTO dto ) throws BusinessLogicException
 	{
 		return dto;
 	}
 
 	/**
-	 * <h1>GET /api/decoracion : Obtener todas las entidadese de Decoración</h1>
+	 * <h1>GET /api/decoraciones : Obtener todas las entidadese de Decoración</h1>
 	 * <p>
 	 * <pre>Busca y devuelve todas las entidades de Decoración que existen en la aplicacion.
 	 *

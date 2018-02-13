@@ -6,14 +6,41 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
+import java.util.Date;
+
+
+/**
+ * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * 
+ * <pre>
+ *   {
+ *      "fechaAgregado": Date,
+ *      "foto": String
+ *   }
+ * </pre>
+ * 
+ * Por ejemplo una decoracion se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *{
+ *  "fechaAgregado":12/08/18,
+ *  "foto": "C:\Users\dc.cepeda\Desktop\cake.jpg"
+ * }
+ * 
+ * </pre>
+ * 
+ */
 
 /**
  *
  * @author dc.cepeda
  */
+
+
 public class DecoracionDTO {
     
-     private String fechaAgregado;
+        private Date fechaAgregado;
     
         private String foto;
         
@@ -39,11 +66,11 @@ public class DecoracionDTO {
 	 * @return La fecha de la entidad Pasteleando
 	 */
         
-    public String getFechaAgregado() {
+    public Date getFechaAgregado() {
         return fechaAgregado;
     }
 
-    public void setFechaAgregado(String fecha) {
+    public void setFechaAgregado(Date fecha) {
         this.fechaAgregado = fecha;
     }
     
