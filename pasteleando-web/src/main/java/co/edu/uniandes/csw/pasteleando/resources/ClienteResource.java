@@ -49,7 +49,7 @@ import java.util.List;
  * @author mp.bayonal
  * @version 1.0
  */
-@Path( "cliente" )
+@Path( "clientes" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
