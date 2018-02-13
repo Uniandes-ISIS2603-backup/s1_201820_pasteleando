@@ -28,7 +28,6 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "pqrs".</i>
- * <p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -49,7 +48,6 @@ public class PqrsResource
 {
     /**
 	 * <h1>POST /api/pedido : Crear una entidad de pqrs.</h1>
-	 * <p>
 	 * <pre>Cuerpo de petición: JSON {@link PqrsDTO}.
 	 *
 	 * Crea una nueva entidad de pqrs con la informacion que se recibe en el cuerpo
@@ -77,7 +75,6 @@ public class PqrsResource
 
 	/**
 	 * <h1>GET /api/pqrs : Obtener todas las entidadese de pqrs.</h1>
-	 * <p>
 	 * <pre>Busca y devuelve todas las entidades de pqrs que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -95,7 +92,6 @@ public class PqrsResource
 
 	/**
 	 * <h1>GET /api/pqrs/{id} : Obtener una entidad de pqrs por id.</h1>
-	 * <p>
 	 * <pre>Busca la entidad de pqrs con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -145,7 +141,6 @@ public class PqrsResource
 
 	/**
 	 * <h1>DELETE /api/pqrs/{id} : Borrar una entidad de pqrs por id.</h1>
-	 * <p>
 	 * <pre>Borra la entidad de pqrs con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

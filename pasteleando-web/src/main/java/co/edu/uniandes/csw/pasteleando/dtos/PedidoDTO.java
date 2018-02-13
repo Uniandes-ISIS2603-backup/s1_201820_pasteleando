@@ -8,7 +8,29 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 
 /**
+ * PedidoDTO Objeto de transferencia de datos de pedido. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id": number,
+ *      "seRecogePasteleria": boolean,
+ *      "estado": string
+ *   }
+ * </pre>
+ * Por ejemplo un pedido se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "id": 1508,
+ *      "seRecogePasteleria: true,
+ *      "estado": "Despachado"
+ *   }
  *
+ * </pre>
  * @author ni.ramirez10
  */
 public class PedidoDTO 

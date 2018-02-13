@@ -8,11 +8,14 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 
 /**
- *
+ * Clase que extiende de {@link PedidoDTO} para manejar la transformacion entre
+ * los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido del pedido vaya a la documentacion de {@link PedidoDTO}
+ * 
  * @author ni.ramirez10
  */
 public class PedidoDetailDTO extends PedidoDTO
-{
+{            
     /**
 	 * Constructor por defecto
 	 */
