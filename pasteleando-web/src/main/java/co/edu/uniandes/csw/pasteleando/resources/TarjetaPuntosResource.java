@@ -29,7 +29,7 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "TarjetaPuntos".</i>
- * <p>
+ * 
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -40,7 +40,7 @@ import javax.ws.rs.Produces;
  * @author ISIS2603
  * @version 1.0
  */
-@Path( "TarjetaPuntos" )
+@Path( "tarjetapuntos" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
@@ -48,7 +48,7 @@ public class TarjetaPuntosResource {
     
 	/**
 	 * <h1>POST /api/TarjetaPuntos : Crear una entidad de TarjetaPuntos.</h1>
-	 * <p>
+	 * 
 	 * <pre>Cuerpo de petición: JSON {@link TarjetaPuntosDetailDTO}.
 	 *
 	 * Crea una nueva entidad de TarjetaPuntos con la informacion que se recibe en el cuerpo
@@ -76,7 +76,7 @@ public class TarjetaPuntosResource {
 
 	/**
 	 * <h1>GET /api/TarjetaPuntos : Obtener todas las entidadese de TarjetaPuntos.</h1>
-	 * <p>
+	 * 
 	 * <pre>Busca y devuelve todas las entidades de TarjetaPuntos que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -94,7 +94,7 @@ public class TarjetaPuntosResource {
 
 	/**
 	 * <h1>GET /api/TarjetaPuntos/{id} : Obtener una entidad de TarjetaPuntos por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Busca la entidad de TarjetaPuntos con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -144,7 +144,7 @@ public class TarjetaPuntosResource {
 
 	/**
 	 * <h1>DELETE /api/TarjetaPuntos/{id} : Borrar una entidad de TarjetaPuntos por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Borra la entidad de TarjetaPuntos con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

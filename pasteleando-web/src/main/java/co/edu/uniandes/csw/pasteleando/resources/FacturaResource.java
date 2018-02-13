@@ -32,7 +32,7 @@ public class FacturaResource {
 
     /**
 	 * <h1>POST /api/factura : Crear una entidad de Factura.</h1>
-	 * <p>
+	 * 
 	 * <pre>Cuerpo de petición: JSON {@link FacturaDetailDTO}.
 	 *
 	 * Crea una nueva entidad de factura con la informacion que se recibe en el cuerpo
@@ -60,7 +60,7 @@ public class FacturaResource {
         
         /**
 	 * <h1>GET /api/factura : Obtener todas las entidadese de Factura.</h1>
-	 * <p>
+	 * 
 	 * <pre>Busca y devuelve todas las entidades de Factura que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -78,7 +78,7 @@ public class FacturaResource {
 
 	/**
 	 * <h1>GET /api/factura/{id} : Obtener una entidad de Factura por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Busca la entidad de Factura con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -128,7 +128,7 @@ public class FacturaResource {
 
 	/**
 	 * <h1>DELETE /api/factura/{id} : Borrar una entidad de Factura por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Borra la entidad de Factura con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>
