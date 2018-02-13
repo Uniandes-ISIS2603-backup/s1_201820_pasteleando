@@ -4,6 +4,7 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 
 
 /**
+ * CalificacionDTO Objeto de transferencia de datos de
  *
  * @author mp.bayonal
  */
