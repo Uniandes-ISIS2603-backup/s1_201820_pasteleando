@@ -15,12 +15,19 @@ import javax.persistence.Entity;
 @Entity
 public class DecoracionPersonalizadaEntity extends BaseEntity implements Serializable
 {
-        
+         /**
+     * Atributo que modela el color de la DecoracionPersonalizada
+     */
         private String color;
-        
+         /**
+     * Atributo que modela la imagen de la DecoracionPersonalizada
+     */
         private String imagen;
-        
+         /**
+     * Atributo que modela el estado de la DecoracionPersonalizada
+     */
         private String estado;
+        
         /**
 	 * @return foto
 	 */
@@ -36,6 +43,7 @@ public class DecoracionPersonalizadaEntity extends BaseEntity implements Seriali
 	{
 		this.color = color;
 	}
+        
         /**
 	 * @return the imagen
 	 */

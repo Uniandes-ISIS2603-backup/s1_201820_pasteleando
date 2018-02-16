@@ -4,7 +4,27 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 
 
 /**
- * CalificacionDTO Objeto de transferencia de datos de
+  * CityDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase se implementa con el siguiente modelo: <br>
+ * <pre> 
+ * {
+ *  "id": long,
+ *  "puntaje": Integer,
+ *  "comentario": String 
+ * }
+ * </pre>
+ * Una calificacion se representaria asi:
+ * <pre>
+ * {
+ * "id": 245333,
+ * "puntaje": 5;
+ * "comentario", "La atencion fue excelente"
+ * }
+ * 
+ * </pre>
  *
  * @author mp.bayonal
  */

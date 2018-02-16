@@ -16,10 +16,15 @@ import javax.persistence.Entity;
 @Entity
 public class DecoracionEntity extends BaseEntity implements Serializable
 {
-        
+     /**
+     * Atributo que modela la fecha de la DecoracionEntiry
+     */    
         private Date fechaAgregado;
-        
+     /**
+     * Atributo que modela la foto de la DecoracionEntity
+     */
         private String foto;
+        
         /**
 	 * @return foto
 	 */

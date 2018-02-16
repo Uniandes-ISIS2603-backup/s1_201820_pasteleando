@@ -31,27 +31,27 @@ import javax.persistence.ElementCollection;
 import java.util.*;
 
 /**
- * PasteleandoDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
+ * ClienteDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
  * <p>
- * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * Al serializarse como JSON esta clase se implementa el siguiente modelo <br>
  * <pre>
- *   {
- *      "id": number,
- *      "name: string,
- *      "atributo": string
- *   }
+ * {
+ *  "id": long ,
+ *  "idCarrito":Integer ,
+ *  "formaPagoActual": String,
+ *  "tiposPago": String[]
+ * }
  * </pre>
- * Por ejemplo una entidad de Pasteleando se representa asi:<br>
- * <p>
+ * Un cliente se podria representar asi:
  * <pre>
- *
- *   {
- *      "id": 91852,
- *      "name: "Bogota, DC",
- *      "atributo": "abcd123"
- *   }
- *
+ * {
+ *  "id": 245678905,
+ *  "idCarrito": 233456,
+ *  "formaPagoActual": "Tarjeta Credito",
+ *  "tiposPago": [ "Tarjeta Credito" , "Tarjeta Debito" , "Pago Efectivo" ]
+ * 
+ * }
  * </pre>
  *
  * @author mp.bayonal

@@ -8,6 +8,27 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
 
 /**
+ * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * 
+ * <pre>
+ *   {
+ *      "cantidad": int
+ *   }
+ * </pre>
+ * 
+ * Por ejemplo una decoracion se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *{
+ *  "categoria":25
+ * }
+ * 
+ * </pre>
+ * 
+ */
+
+/**
  *
  * @author jf.garcia
  */

@@ -28,7 +28,6 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "pedido".</i>
- * <p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -47,7 +46,6 @@ public class PedidoResource
 {
     /**
 	 * <h1>POST /api/pedido : Crear una entidad de pedido.</h1>
-	 * <p>
 	 * <pre>Cuerpo de petición: JSON {@link PedidoDTO}.
 	 *
 	 * Crea una nueva entidad de pedido con la informacion que se recibe en el cuerpo
@@ -75,7 +73,6 @@ public class PedidoResource
 
 	/**
 	 * <h1>GET /api/pedido : Obtener todas las entidadese de pedido.</h1>
-	 * <p>
 	 * <pre>Busca y devuelve todas las entidades de pedido que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -93,7 +90,6 @@ public class PedidoResource
 
 	/**
 	 * <h1>GET /api/pedido/{id} : Obtener una entidad de pedido por id.</h1>
-	 * <p>
 	 * <pre>Busca la entidad de pedido con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -143,7 +139,6 @@ public class PedidoResource
 
 	/**
 	 * <h1>DELETE /api/pedido/{id} : Borrar una entidad de pedido por id.</h1>
-	 * <p>
 	 * <pre>Borra la entidad de pedido con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

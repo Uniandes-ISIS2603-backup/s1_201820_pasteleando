@@ -40,7 +40,6 @@ public class DecoracionResource
 
 	/**
 	 * <h1>POST /api/decoraciones : Crear una entidad de Decoración.</h1>
-	 * <p>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionDTO}.
 	 *
 	 * Crea una nueva entidad de decoracion con la informacion que se recibe en el cuerpo
@@ -67,8 +66,7 @@ public class DecoracionResource
 	}
 
 	/**
-	 * <h1>GET /api/decoraciones : Obtener todas las entidadese de Decoración</h1>
-	 * <p>
+	 * <h1>GET /api/decoraciones : Obtener todas las entidades de Decoración</h1>
 	 * <pre>Busca y devuelve todas las entidades de Decoración que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -85,8 +83,7 @@ public class DecoracionResource
 	}
 
 	/**
-	 * <h1>GET /api/decoracion/{id} : Obtener una entidad de Decoración  por id.</h1>
-	 * <p>
+	 * <h1>GET /api/decoraciones/{id} : Obtener una entidad de Decoración  por id.</h1>
 	 * <pre>Busca la entidad de Decoración con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -109,7 +106,7 @@ public class DecoracionResource
 	}
 
 	/**
-	 * <h1>PUT /api/decoracion/{id} : Actualizar una entidad de Decoración con el id dado.</h1>
+	 * <h1>PUT /api/decoraciones/{id} : Actualizar una entidad de Decoración con el id dado.</h1>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionDTO}.
 	 *
 	 * Actualiza la entidad de Decoración con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
@@ -135,8 +132,7 @@ public class DecoracionResource
 	}
 
 	/**
-	 * <h1>DELETE /api/decoracion/{id} : Borrar una entidad de Decoración por id.</h1>
-	 * <p>
+	 * <h1>DELETE /api/decoraciones/{id} : Borrar una entidad de Decoración por id.</h1>
 	 * <pre>Borra la entidad de Decoración con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>
