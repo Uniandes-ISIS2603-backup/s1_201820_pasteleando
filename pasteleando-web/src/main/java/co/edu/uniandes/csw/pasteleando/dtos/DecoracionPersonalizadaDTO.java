@@ -37,10 +37,17 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
  */
 public class DecoracionPersonalizadaDTO {
     
+    /**
+     * Atributo que modela el color de la DecoracionPersonalizada
+     */
     private String color;
-    
+     /**
+     * Atributo que modela la imagen de la DecoracionPersonalizada
+     */
     private String imagen;
-    
+     /**
+     * Atributo que modela el estado de la DecoracionPersonalizada
+     */
     private String estado;
     
     /**
@@ -63,27 +70,39 @@ public class DecoracionPersonalizadaDTO {
 		this.imagen = decoracionPersonalizadaEntity.getImagen();
 
 	}
-
+         /**
+	 * @return La fecha de la entidad DecoracionPersonalizada
+	 */
     public String getColor() {
         return color;
     }
-
+        /**
+	 * @param color El nuevo color de la entidad DecoracionPersonalizada
+	 */
     public void setColor(String color) {
         this.color = color;
     }
-
+        /**
+	 * @return La imagen de la entidad DecoracionPersonalizada
+	 */
     public String getImagen() {
         return imagen;
     }
-
+        /**
+	 * @param imagen La nueva imagen de la entidad DecoracionPersonalizada
+	 */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
+         /**
+	 * @return El estado de la entidad DecoracionPersonalizada
+	 */
     public String getEstado() {
         return estado;
     }
-
+        /**
+	 * @param estado El nuevo estado de la entidad DecoracionPersonalizada
+	 */
     public void setEstado(String estado) {
         this.estado = estado;
     }

@@ -40,8 +40,14 @@ import java.util.Date;
 
 public class DecoracionDTO {
     
+     /**
+     * Atributo que modela la fecha de la Decoracion
+     */
         private Date fechaAgregado;
     
+        /**
+     * Atributo que modela la foto de la Decoracion
+     */
         private String foto;
         
       /**
@@ -63,21 +69,27 @@ public class DecoracionDTO {
 	}
 
         /**
-	 * @return La fecha de la entidad Pasteleando
+	 * @return La fecha de la entidad Decoracion
 	 */
         
     public Date getFechaAgregado() {
         return fechaAgregado;
     }
-
+        /**
+	 * @param fecha La nueva fecha de la entidad Decoracion
+	 */
     public void setFechaAgregado(Date fecha) {
         this.fechaAgregado = fecha;
     }
-    
+         /**
+	 * @return La foto de la entidad Decoracion
+	 */
     public String getFoto() {
         return foto;
     }
-
+        /**
+	 * @param foto La nueva foto de la entidad decoracion
+	 */
     public void setFoto(String foto) {
         this.foto = foto;
     }

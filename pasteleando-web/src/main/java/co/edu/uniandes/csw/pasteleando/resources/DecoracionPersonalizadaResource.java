@@ -39,8 +39,7 @@ public class DecoracionPersonalizadaResource
 {
 
 	/**
-	 * <h1>POST /api/personalizada : Crear una entidad de Decoración Personalizada.</h1>
-	 * <p>
+	 * <h1>POST /api/personalizadas : Crear una entidad de Decoración Personalizada.</h1>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDTO}.
 	 *
 	 * Crea una nueva entidad de promoción con la informacion que se recibe en el cuerpo
@@ -67,8 +66,7 @@ public class DecoracionPersonalizadaResource
 	}
 
 	/**
-	 * <h1>GET /api/personalizada : Obtener todas las entidadese de Decoración Catálogo.</h1>
-	 * <p>
+	 * <h1>GET /api/personalizadas : Obtener todas las entidadese de Decoración Catálogo.</h1>
 	 * <pre>Busca y devuelve todas las entidades de Decoración Personalizada que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -85,8 +83,7 @@ public class DecoracionPersonalizadaResource
 	}
 
 	/**
-	 * <h1>GET /api/personalizada/{id} : Obtener una entidad de Decoración personalizada por id.</h1>
-	 * <p>
+	 * <h1>GET /api/personalizadas/{id} : Obtener una entidad de Decoración personalizada por id.</h1>
 	 * <pre>Busca la entidad de Decoración Personalizada con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -109,7 +106,7 @@ public class DecoracionPersonalizadaResource
 	}
 
 	/**
-	 * <h1>PUT /api/personalizada/{id} : Actualizar una entidad de Decoración Personalizada con el id dado.</h1>
+	 * <h1>PUT /api/personalizadas/{id} : Actualizar una entidad de Decoración Personalizada con el id dado.</h1>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDTO}.
 	 *
 	 * Actualiza la entidad de Decoración Personalizada con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
@@ -135,8 +132,8 @@ public class DecoracionPersonalizadaResource
 	}
 
 	/**
-	 * <h1>DELETE /api/personalizada/{id} : Borrar una entidad de Decoración Personalizada por id.</h1>
-	 * <p>
+	 * <h1>DELETE /api/personalizadas/{id} : Borrar una entidad de Decoración Personalizada por id.</h1>
+	 * 
 	 * <pre>Borra la entidad de Decoración Personalizada con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>
