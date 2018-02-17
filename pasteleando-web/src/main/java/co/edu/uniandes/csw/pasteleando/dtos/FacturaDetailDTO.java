@@ -12,7 +12,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
  */
 public class FacturaDetailDTO extends FacturaDTO {
   
-        
+        TarjetaPuntosDTO tarjeta;
         
 	/**
 	 * Constructor por defecto

@@ -5,13 +5,15 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import java.util.List;
+
 /**
  *
  * @author m.leona
  */
 public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     
-    
+    List<FacturaDTO> facturas; 
     
     /**
      * Constructor por defecto
