@@ -3,71 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.pasteleando.dtos;
+package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.util.Date;
 
-
-
 /**
- *Un ejemplo de este DTO es:
- * <br>
-*<pre>
-*{
- *"id":1907, 
- *"direccion":"Calle 127 #47-48",
- *"fecha":"13/02/18", 
- *"hora":"22:00",
- *"precio":"55,000 COP"
-*}
-*</pre>
+ *
  * @author m.leona
  */
-public class FacturaDTO {
-    
-    //Atributos
-    
-    //id en la base de datos
-    /**
-     * Referencia a la base de datos
-     */
+public class FacturaEntity {
     private Long id;
     
-    //Dirección a la cual se hace el comprobante de pago
-    /**
-     * Dirección de la factura
-     */
+    
     private String direccion;
     
-    //Fecha en que se facturó formato dd/mm/yy
-    /**
-     * Fecha de la factura
-     */
+    
     private Date fecha;
     
-    //Hora del comprobante de pago dado en HH:MM
-    /**
-     * Hora de la factura
-     */
+  
     private String hora;
     
-    //Precio total de la factura dado en COP
-    /**
-     * Precio de la factura
-     */
     private Integer precio;
-    
-    //Constructor
-    
-    /**
-     * constructor
-     */
-    public FacturaDTO()
-    {
-     
-    }
-    
-    //Metodos
     
     /**
     @return id al que está asociado

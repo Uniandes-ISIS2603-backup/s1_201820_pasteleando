@@ -3,45 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.pasteleando.dtos;
+package co.edu.uniandes.csw.pasteleando.entities;
 
 /**
- *Un ejemplo de la clase en JSON es:
- * <pre>
- * { 
- * "numeropuntos":200,
- * "esRedimible": true
- * }
- * </pre>
- * 
+ *
  * @author m.leona
  */
-public class TarjetaPuntosDTO {
-    //Atributos
-    //Id al que se hace referencia
-    /**
-     * Referencia a la base de datos
-     */
+public class TarjetaPuntosEntity {
+    
     private Long id;
     
-    //Numero de puntos que tiene la tarjeta
-    
-    /**
-     * Numero de puntos que tiene la tarjeta
-     */
     private Integer numeroPuntos;
-    
-  
-    
-    /**
-     * Constructor por defecto
-     */
-    public TarjetaPuntosDTO()
-    {
-     
-    }
-    
-    //metodos
     
     /**
     @return el id que esta asoiciado
@@ -73,5 +45,4 @@ public class TarjetaPuntosDTO {
     {
         this.numeroPuntos=pPuntos;
     }
-    
 }

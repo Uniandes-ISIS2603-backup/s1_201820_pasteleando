@@ -12,14 +12,14 @@ package co.edu.uniandes.csw.pasteleando.dtos;
  */
 public class FacturaDetailDTO extends FacturaDTO {
   
-        
+        TarjetaPuntosDTO tarjeta;
         
 	/**
 	 * Constructor por defecto
 	 */
-	public FacturaDetailDTO(String pDireccion, String pFecha, int pHora, int pPrecio )
+	public FacturaDetailDTO( )
 	{
-            super(pDireccion,pFecha, pHora, pPrecio);
+            super();
 	}
 
 }
