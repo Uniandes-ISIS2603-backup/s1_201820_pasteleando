@@ -9,13 +9,35 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 
 
 /**
+ *PastelDTO: obejeto de transferencia de datos para la entidad Pastel.
+ * 
+ * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
+ * <p>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "peso": number,
+ *      "precio": number,
+ *   }
+ * </pre>
+ * Por ejemplo una entidad de Pastel se representa asi:<br>
+ * <p>
+ * <pre>
  *
+ *   {
+ *      "peso": 2,
+ *      "precio": 280,9,
+ *   }
+ *
+ * </pre>
+ *
+ * 
  * @author MIGUELHOYOS
  */
 public class PastelDTO 
 {
-  private int peso;
-  private double precio;
+  private Integer peso;
+  private Double precio;
   
   	/**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en

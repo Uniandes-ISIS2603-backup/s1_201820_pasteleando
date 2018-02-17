@@ -12,14 +12,40 @@ import javax.persistence.Id;
 
 /**
  *
+ * *CarritoDTO: obejeto de transferencia de datos para la entidad Carrito.
+ * 
+ * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
+ * <p>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id": number,
+ *      "cantidad": number,
+ *      "precio" : number,
+ *      "articulos" : list
+ *   }
+ * </pre>
+ * Por ejemplo una entidad de Carrito se representa asi:<br>
+ * <p>
+ * <pre>
+ *
+ *   {
+ *      "id": 26748957,
+ *      "cantidad" : 4,
+ *      "precio": 280,9,
+ *      "articulos : [ {PastelDTO},...]
+ *   }
+ *
+ * </pre>
+ * 
  * @author MIGUELHOYOS
  */
 public class CarritoDTO 
 {
 
-  private long id;
-  private int cantidad;
-  private double precio;
+  private Long id;
+  private Integer cantidad;
+  private Double precio;
   private List articulos;
   
   	/**
