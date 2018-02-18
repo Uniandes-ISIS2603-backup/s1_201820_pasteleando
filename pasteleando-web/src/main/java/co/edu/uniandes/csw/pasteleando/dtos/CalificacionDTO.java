@@ -31,7 +31,6 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 public class CalificacionDTO
 {
 
-
     private Long id;
 
     private Integer puntaje;
