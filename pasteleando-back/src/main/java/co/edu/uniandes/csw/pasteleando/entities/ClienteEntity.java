@@ -23,8 +23,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @ElementCollection
     private List<String> tiposPagos;
 
-    @OneToMany
-    private List<CalificacionEntity> calificaciones;
+
 
     /**
      * @return id
@@ -96,17 +95,5 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.tiposPagos = tiposPagos;
     }
 
-    /**
-     * @return Calificaciones
-     */
-    public List<CalificacionEntity> getCalificaciones() {
-        return calificaciones;
-    }
-
-    /**
-     * @param calificaciones the atribute to set
-     */
-    public void setCalificaciones(List<CalificacionEntity> calificaciones) {
-        this.calificaciones = calificaciones;
-    }
+    
 }
