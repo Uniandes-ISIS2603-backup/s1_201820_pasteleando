@@ -13,7 +13,13 @@ import java.util.List;
  */
 public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
 {
+    /**
+     * Atributo que modela la coleccion de la Decoraciones
+     */
         private List <DecoracionCatalogoDTO> decoracion;
+    /**
+     * Atributo que modela la coleccion de la Promociones
+     */
         private List <PromocionDTO> promocion;
         
 	/**

@@ -33,6 +33,10 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  * @author jf.garcia
  */
 public class PromocionDTO {
+    
+    /**
+     * Atributo que modela el porcentaje de la promocion.
+     */
       private int cantidad;
         
     /**

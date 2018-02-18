@@ -65,7 +65,7 @@ public class DecoracionCatalogoResource
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
 	 */
 	@POST
-	public DecoracionCatalogoDTO createPromocion( DecoracionCatalogoDTO dto ) throws BusinessLogicException
+	public DecoracionCatalogoDTO createDecoracionCatalogo( DecoracionCatalogoDTO dto ) throws BusinessLogicException
 	{
 		return dto;
 	}
@@ -127,8 +127,8 @@ public class DecoracionCatalogoResource
 	 * </pre>
 	 *
 	 * @param id        Identificador de la entidad de Decoración Catálogo que se desea actualizar.Este debe ser una cadena de dígitos.
-	 * @param detailDTO {@link PromocionDTO} La entidad de Decoración Catálogo que se desea guardar.
-	 * @return JSON {@link PromocionDTO} - La entidad de Decoración Catálogo guardada.
+	 * @param detailDTO {@link DecoracionCatalogoDTO} La entidad de Decoración Catálogo que se desea guardar.
+	 * @return JSON {@link DecoracionCatalogoDTO} - La entidad de Decoración Catálogo guardada.
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la entidad de Decoración Catálogo porque ya existe una con ese nombre.
 	 */
 	@PUT

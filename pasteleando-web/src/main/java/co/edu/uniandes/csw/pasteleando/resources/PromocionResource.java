@@ -53,7 +53,7 @@ public class PromocionResource
 	 *
 	 * Codigos de respuesta:
 	 * <code style="color: mediumseagreen; background-color: #eaffe0;">
-	 * 200 OK Creó la nueva entidad de Promocion.
+	 * 200 OK Creó la nueva entidad de promocion.
 	 * </code>
 	 * <code style="color: #c7254e; background-color: #f9f2f4;">
 	 * 412 Precodition Failed: Ya existe la entidad de promoción.

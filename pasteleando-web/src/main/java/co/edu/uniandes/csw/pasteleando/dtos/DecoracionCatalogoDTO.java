@@ -34,6 +34,9 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  */
 public class DecoracionCatalogoDTO {
     
+    /**
+     * Atributo que modela la categoria de la DecoracionCatalogo
+     */
     private String categoria;
         
     /**

@@ -15,7 +15,9 @@ import javax.persistence.Entity;
 @Entity
 public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
 {
-        
+     /**
+     * Atributo que modela la fecha de la DecoracionEntiry
+     */  
         public String categoria;
         
         /**

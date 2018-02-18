@@ -5,13 +5,18 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jf.garcia
  */
-public class PromocionEntity {
-     
-    public int cantidad;
+public class PromocionEntity extends BaseEntity implements Serializable{
+    
+    /**
+     * Atributo que modela el porcentaje de la promocionEntity
+     */
+    public Integer cantidad;
         
         /**
 	 * @return cantidad
