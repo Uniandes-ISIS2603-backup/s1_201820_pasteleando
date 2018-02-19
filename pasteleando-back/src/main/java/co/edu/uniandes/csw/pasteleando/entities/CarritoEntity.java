@@ -14,29 +14,10 @@ import java.io.Serializable;
  */
 public class CarritoEntity extends BaseEntity implements Serializable
 {
-  private long id;
   private int cantidad;
   private double precio;
   private List articulos;
   
-   /**
-   * retorna el id del carrito
-   * @return id
-   */
-  @Override
-  public Long getId()
-  {
-      return this.id;
-  }
-  /**
-   * actualiza el id con el id que llega por parametro
-   * @param pId 
-   */
-
-  public void setId(long pId)
-  {
-      this.id = pId;
-  }
   /**
    * retorna la cantidad de productos en el carrito
    * @return cantidad

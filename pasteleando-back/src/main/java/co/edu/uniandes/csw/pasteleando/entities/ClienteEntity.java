@@ -15,43 +15,11 @@ import javax.persistence.Entity;
 public class ClienteEntity extends BaseEntity implements Serializable
 {
 
-    private Long id;
-    private Integer idCarrito;
     private Boolean tipoUsuario;
     private String formaPagoActual;
 
     @ElementCollection
     private List<String> tiposPagos;
-
-
-
-    /**
-     * @return id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the atribute to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return idCarrito
-     */
-    public Integer getIdCarrito() {
-        return idCarrito;
-    }
-
-    /**
-     * @param idCarrito the atribute to set
-     */
-    public void setIdCarrito(Integer idCarrito) {
-        this.idCarrito = idCarrito;
-    }
 
     /**
      * @return tipoUsuari

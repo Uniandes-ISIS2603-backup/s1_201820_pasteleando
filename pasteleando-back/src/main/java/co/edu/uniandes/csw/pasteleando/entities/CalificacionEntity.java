@@ -14,8 +14,6 @@ public class CalificacionEntity extends BaseEntity implements Serializable
 
     private String comentario;
 
-    private Long id;
-
     /**
      * @return puntaje
      */
@@ -42,19 +40,5 @@ public class CalificacionEntity extends BaseEntity implements Serializable
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
-    }
-
-    /**
-     * @return id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the atribute to set
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 }

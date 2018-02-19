@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
  */
 public class ClientePersistance {
     
-    @PersistenceContext(unitName = "ClientePu")
+    @PersistenceContext(unitName = "PasteleandoPU")
     protected EntityManager em;
     
     public ClienteEntity create( ClienteEntity entity)

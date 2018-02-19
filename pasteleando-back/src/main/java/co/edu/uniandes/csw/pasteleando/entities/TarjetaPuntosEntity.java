@@ -15,25 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
-    private Long id;
-    
     private Integer numeroPuntos;
-    
-    /**
-    @return el id que esta asoiciado
-    */
-    public Long getId()
-    {
-        return id;
-    }
-    
-    /**
-    * @param pId Id nuevo
-    */
-    public void setId(Long pId)
-    {
-        this.id = pId;
-    }
     
     /**
     *@return Numero de puntos de la tarjeta

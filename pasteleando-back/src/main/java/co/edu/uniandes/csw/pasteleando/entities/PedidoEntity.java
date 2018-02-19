@@ -14,27 +14,9 @@ import javax.persistence.Entity;
  */
 public class PedidoEntity extends BaseEntity implements Serializable
 {
-    private Long id;
-    
     private boolean seRecogePasteleria; 
     
     private String estado; 
-        
-       /**
-	 * @return El ID del pedido
-	 */
-	public Long getId( )
-	{
-		return id;
-	}
-        
-        /**
-	 * @param id El nuevo ID
-	 */
-	public void setId( Long id )
-	{
-		this.id = id;
-	}
         
          /**
 	 * @return El valor del atributo seRecogePateleria
