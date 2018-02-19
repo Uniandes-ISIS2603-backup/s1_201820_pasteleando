@@ -83,7 +83,6 @@ public class ClienteDTO
 	public ClienteDTO( ClienteEntity clienteEntity )
 	{
 		this.id = clienteEntity.getId();
-		this.idCarrito = clienteEntity.getIdCarrito();
 		this.tipoUsuario = clienteEntity.getTipoUsuario();
 		this.formaPagoActual = clienteEntity.getFormaPagoActual();
 		this.tiposPagos = clienteEntity.getTiposPagos();
@@ -175,7 +174,6 @@ public class ClienteDTO
 	{
 		ClienteEntity entity = new ClienteEntity( );
 		entity.setId( this.id );
-		entity.setIdCarrito(this.idCarrito);
 		entity.setTipoUsuario(this.tipoUsuario);
 		entity.setTiposPagos(this.tiposPagos);
 
