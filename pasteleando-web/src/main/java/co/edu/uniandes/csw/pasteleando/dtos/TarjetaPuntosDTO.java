@@ -9,8 +9,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
  *Un ejemplo de la clase en JSON es:
  * <pre>
  * { 
- * "numeropuntos":200,
- * "esRedimible": true
+ * "numeropuntos":200
  * }
  * </pre>
  * 
