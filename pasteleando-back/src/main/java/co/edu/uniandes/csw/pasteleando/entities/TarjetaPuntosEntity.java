@@ -5,11 +5,15 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author m.leona
  */
-public class TarjetaPuntosEntity {
+@Entity
+public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
     private Long id;
     

@@ -5,13 +5,15 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import java.io.Serializable;
 import java.util.Date;
-
+import javax.persistence.Entity;
 /**
  *
  * @author m.leona
  */
-public class FacturaEntity {
+@Entity
+public class FacturaEntity extends BaseEntity implements Serializable {
     private Long id;
     
     
