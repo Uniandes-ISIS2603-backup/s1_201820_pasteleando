@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
+import java.io.Serializable;
 
 /**
  * PedidoDTO Objeto de transferencia de datos de pedido. Los DTO contienen las
@@ -33,7 +34,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
  * </pre>
  * @author ni.ramirez10
  */
-public class PedidoDTO 
+public class PedidoDTO implements Serializable
 {
     private Long id;
     
@@ -46,6 +47,7 @@ public class PedidoDTO
 	 */
 	public PedidoDTO( )
 	{
+            
 	}
  /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en

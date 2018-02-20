@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -21,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  * <pre>Clase que implementa el recurso "pqrs".
@@ -39,13 +41,18 @@ import javax.ws.rs.Produces;
  * @version 1.0
  */
 @Path( "pqrs" )
-@Produces( "application/json" )
-@Consumes( "application/json" )
+@Produces( MediaType.APPLICATION_JSON )
+@Consumes( MediaType.APPLICATION_JSON )
 @RequestScoped
 
 
 public class PqrsResource 
 {
+    
+    @Inject
+    //private PqrsLogic pqrsLogic; 
+        
+        
     /**
 	 * <h1>POST /api/pedido : Crear una entidad de pqrs.</h1>
 	 * <pre>Cuerpo de petición: JSON {@link PqrsDTO}.

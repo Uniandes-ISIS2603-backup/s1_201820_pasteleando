@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
+import java.io.Serializable;
 
 /**
  * PqrsDTO Objeto de transferencia de datos de pqrs. Los DTO contienen las
@@ -37,13 +38,13 @@ import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
  * </pre>
  * @author ni.ramirez10
  */
-public class PqrsDTO 
+public class PqrsDTO implements Serializable
 {
-     private int tipo; 
+    private Integer tipo; 
     
-    private int idSolicitud; 
+    private Integer idSolicitud; 
     
-    private int idCliente; 
+    private Integer idCliente; 
     
     private String fecha; 
     
@@ -54,6 +55,7 @@ public class PqrsDTO
 	 */
 	public PqrsDTO( )
 	{
+            
 	}
  /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en

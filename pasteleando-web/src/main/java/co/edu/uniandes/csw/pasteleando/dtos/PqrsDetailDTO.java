@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase que extiende de {@link PqrsDTO} para manejar la transformacion entre
@@ -14,14 +16,37 @@ import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
  * 
  * @author ni.ramirez10
  */
+
 public class PqrsDetailDTO extends PqrsDTO
 {
-    /**
+    
+        private List<PqrsDTO> pqrs; 
+            
+        /**
 	 * Constructor por defecto
 	 */
 	public PqrsDetailDTO( )
 	{
+            super( ); 
 	}
+        
+         /**
+         * Obtiene la lista de pqrs
+         * @return Los pqrs
+         */
+         public List<PqrsDTO> getPqrs() 
+         {
+                return pqrs;
+         }
+
+        /**
+         * Modifica la lista de pqrs
+         * @param pPqrs Los pqrs a establecer
+         */
+         public void setPqrs(List<PqrsDTO> pPqrs) 
+         {
+                this.pqrs = pPqrs;
+         }
 
 	/**
 	 * Constructor para transformar un Entity a un DTO
@@ -31,8 +56,17 @@ public class PqrsDetailDTO extends PqrsDTO
 	public PqrsDetailDTO( PqrsDetailDTO entity )
 	{
 		super( entity );
-	}
 
+                if (entity != null) 
+                {
+                    pqrs = new ArrayList<>();
+                    
+                    for( PqrsDTO entityPqrs : entity.getPqrs() ) 
+                    {
+                        pqrs.add(new PqrsDTO(entityPqrs));
+                    }
+                }
+        }
 
 	/**
 	 * Transformar un DTO a un Entity
@@ -42,8 +76,23 @@ public class PqrsDetailDTO extends PqrsDTO
 	@Override
 	public PqrsEntity toEntity( )
 	{
-		PqrsEntity pedidoEntity = super.toEntity( );
-		return pedidoEntity;
+		PqrsEntity entity = super.toEntity( );
+                
+                if( pqrs != null ) 
+                {
+                      List<PqrsEntity> pqrsEntity = new ArrayList<>();
+                      
+                      for( PqrsDTO dtoPqrs : pqrs ) 
+                      {
+                           pqrsEntity.add( dtoPqrs.toEntity() );
+                      }
+                      
+                      entity.setPqrs(pqrsEntity);
+                }
+                
+		return entity;
 	}
+        
+       
     
 }
