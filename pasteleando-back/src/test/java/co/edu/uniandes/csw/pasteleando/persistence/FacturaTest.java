@@ -5,44 +5,39 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
-import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.junit.runner.RunWith;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
-
-
 
 /**
  *
  * @author m.leona
  */
 @RunWith(Arquillian.class)
-
-public class TarjetaPuntosTest {
-
+public class FacturaTest {
     /**
      * Inyección de la dependencia a la clase EditorialPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
-    private TarjetaPuntosPersistence persistence;
-
+    private FacturaPersistence FacturaPersistence;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
      */
     @PersistenceContext
     private EntityManager em;
-
+    
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -53,25 +48,29 @@ public class TarjetaPuntosTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(TarjetaPuntosEntity.class.getPackage())
-                .addPackage(TarjetaPuntosPersistence.class.getPackage())
+                .addPackage(FacturaEntity.class.getPackage())
+                .addPackage(DecoracionPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    /**
-     * Prueba para crear una tarejeta de puntos.
+/**
+     * Prueba para crear un Editorial.
      *
      *
      */
     @Test
-    public void createTarjetaPuntosEntityTest() {
+    public void createDecoracionTest() {
+        
+        
         PodamFactory factory = new PodamFactoryImpl();
-        TarjetaPuntosEntity newEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);       
-        TarjetaPuntosEntity result = persistence.create(newEntity);
+        FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+        FacturaEntity result = FacturaPersistence.create(newEntity);
+
         Assert.assertNotNull(result);
-        TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, result.getId());
-        Assert.assertNotNull(entity);
+
+        FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
+
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
 

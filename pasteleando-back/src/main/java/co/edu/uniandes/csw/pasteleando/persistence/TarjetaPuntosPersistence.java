@@ -33,9 +33,11 @@ public class TarjetaPuntosPersistence {
      
 	public TarjetaPuntosEntity create(TarjetaPuntosEntity entity )
 	{
-		LOGGER.info( "Creando una nueva entidad de Factura" );
+		LOGGER.info( "Creando una nueva entidad de TarjetaPuntos" );
+                                System.out.println("Holaaaaaaaaa"+entity);
+
 		em.persist( entity );
-		LOGGER.info( "Creando una entidad de Factura" );
+		LOGGER.info( "Creando una entidad de TarjetaPuntos" );
 		return entity;
 	}
 
