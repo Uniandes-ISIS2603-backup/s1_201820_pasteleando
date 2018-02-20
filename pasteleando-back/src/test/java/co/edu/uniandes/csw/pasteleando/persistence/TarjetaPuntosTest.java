@@ -34,7 +34,7 @@ public class TarjetaPuntosTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(TarjetaPuntosEntity.class.getPackage())
-                .addPackage(TarjetaPuntosPersistance.class.getPackage())
+                .addPackage(TarjetaPuntosPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -52,7 +52,7 @@ public class TarjetaPuntosTest {
     }
     
     @Inject
-    private TarjetaPuntosPersistance persistence;
+    private TarjetaPuntosPersistence persistence;
       
     @PersistenceContext
     private EntityManager em;

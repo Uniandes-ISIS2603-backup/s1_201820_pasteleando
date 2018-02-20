@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
-import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,18 +19,19 @@ import javax.persistence.TypedQuery;
  * @author m.leona
  */
 @Stateless
-public class FacturaPersistance {
-     private static final Logger LOGGER = Logger.getLogger(FacturaPersistance.class.getName());
+public class TarjetaPuntosPersistence {
+    
+    private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosPersistence.class.getName());
     
     @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
     
     /**
-	 * @param entity objeto Factura que se creará en la base de datos
+	 * @param entity objeto TarjetaPuntos que se creará en la base de datos
 	 * @return devuelve la entidad creada con un id dado por la base de datos.
 	 */
      
-	public FacturaEntity create(FacturaEntity entity )
+	public TarjetaPuntosEntity create(TarjetaPuntosEntity entity )
 	{
 		LOGGER.info( "Creando una nueva entidad de Factura" );
 		em.persist( entity );
@@ -46,16 +47,16 @@ public class FacturaPersistance {
 	 * existe alguna devuelve la primera.
 	 */
         
-	public FacturaEntity findByName( String name )
+	public TarjetaPuntosEntity findByName( String name )
 	{
 		LOGGER.log( Level.INFO, "Consultando entidades de Factura por nombre ", name );
 
 		// Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-		TypedQuery<FacturaEntity> query = em.createQuery( "Select e From FacturaEntity e where e.name = :name", FacturaEntity.class );
+		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "Select e From TarjetaPuntosEntity e where e.name = :name", TarjetaPuntosEntity.class );
 		// Se remplaza el placeholder ":name" con el valor del argumento
 		query = query.setParameter( "name", name );
 		// Se invoca el query se obtiene la lista resultado
-		List<FacturaEntity> sameName = query.getResultList( );
+		List<TarjetaPuntosEntity> sameName = query.getResultList( );
                 
 		if( sameName.isEmpty( ) )
 		{
@@ -67,24 +68,24 @@ public class FacturaPersistance {
 		}
 	}
 
-	public List<FacturaEntity> findAll( )
+	public List<TarjetaPuntosEntity> findAll( )
 	{
 		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<FacturaEntity> query = em.createQuery( "select u from PasteleandoEntity u", FacturaEntity.class );
+		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from PasteleandoEntity u", TarjetaPuntosEntity.class );
 		return query.getResultList( );
 	}
 
-	public FacturaEntity find( Long id )
+	public TarjetaPuntosEntity find( Long id )
 	{
-		return em.find( FacturaEntity.class, id );
+		return em.find( TarjetaPuntosEntity.class, id );
 	}
 
-	public FacturaEntity update( FacturaEntity entity )
+	public TarjetaPuntosEntity update( TarjetaPuntosEntity entity )
 	{
 		return em.merge( entity );
 	}
 
-	public void delete( FacturaEntity entity )
+	public void delete( TarjetaPuntosEntity entity )
 	{
 		em.remove( entity );
 	}
