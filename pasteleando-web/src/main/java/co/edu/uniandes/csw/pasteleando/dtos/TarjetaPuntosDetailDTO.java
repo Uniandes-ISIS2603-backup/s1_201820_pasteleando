@@ -9,11 +9,20 @@ import java.util.List;
 
 /**
  *
+ *Un ejemplo de la clase en JSON es:
+ * <pre>
+ * { 
+ * "numeropuntos":200
+ * }
+ * </pre>
+ * 
  * @author m.leona
  */
 public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     
     List<FacturaDTO> facturas; 
+    
+    
     
     /**
      * Constructor por defecto
