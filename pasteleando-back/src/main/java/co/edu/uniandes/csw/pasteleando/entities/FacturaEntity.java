@@ -14,8 +14,6 @@ import javax.persistence.Entity;
  */
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
-    private Long id;
-    
     
     private String direccion;
     
@@ -26,14 +24,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     private String hora;
     
     private Integer precio;
-    
-    /**
-    @return id al que está asociado
-    */
-    public Long getId()
-    {
-        return id;
-    }
+
     /**
     @return Dirección de la factura
     */
@@ -58,15 +49,6 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     public Date getFecha()
     {
         return fecha;
-    }
-    
-   
-    /**
-     * @param id Referencia nueva a la base de datos
-    */
-    public void setId(Long id)
-    {
-     this.id = id;   
     }
     
    /**

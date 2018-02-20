@@ -6,11 +6,13 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author jf.garcia
  */
+@Entity
 public class PromocionEntity extends BaseEntity implements Serializable{
     
     /**

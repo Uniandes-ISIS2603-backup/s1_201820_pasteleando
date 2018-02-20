@@ -19,9 +19,9 @@ import javax.persistence.TypedQuery;
  * @author m.leona
  */
 @Stateless
-public class TarjetaPuntosPersistance {
+public class TarjetaPuntosPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosPersistance.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosPersistence.class.getName());
     
     @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
@@ -33,9 +33,11 @@ public class TarjetaPuntosPersistance {
      
 	public TarjetaPuntosEntity create(TarjetaPuntosEntity entity )
 	{
-		LOGGER.info( "Creando una nueva entidad de Factura" );
+		LOGGER.info( "Creando una nueva entidad de TarjetaPuntos" );
+                                System.out.println("Holaaaaaaaaa"+entity);
+
 		em.persist( entity );
-		LOGGER.info( "Creando una entidad de Factura" );
+		LOGGER.info( "Creando una entidad de TarjetaPuntos" );
 		return entity;
 	}
 

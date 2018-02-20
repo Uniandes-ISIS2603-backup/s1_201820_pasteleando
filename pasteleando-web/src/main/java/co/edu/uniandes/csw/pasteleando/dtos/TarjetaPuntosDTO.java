@@ -5,12 +5,13 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
+
 /**
  *Un ejemplo de la clase en JSON es:
  * <pre>
  * { 
- * "numeropuntos":200,
- * "esRedimible": true
+ * "numeropuntos":200
  * }
  * </pre>
  * 
@@ -40,6 +41,18 @@ public class TarjetaPuntosDTO {
     {
      
     }
+    
+     /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param TarjetaPuntosEntity: Es la entidad que se va a convertir a DTO
+	 */
+	public TarjetaPuntosDTO( TarjetaPuntosEntity TarjetaPuntosEntity )
+	{
+		this.numeroPuntos = TarjetaPuntosEntity.getNumeroPuntos();
+		this.id=TarjetaPuntosEntity.getId();
+	}
     
     //metodos
     
@@ -73,5 +86,18 @@ public class TarjetaPuntosDTO {
     {
         this.numeroPuntos=pPuntos;
     }
+    
+    /**
+	 * Convertir DTO a Entity
+	 *
+	 * @return Un Entity con los valores del DTO
+	 */
+	public TarjetaPuntosEntity toEntity( )
+	{
+		TarjetaPuntosEntity entity = new TarjetaPuntosEntity( );
+		entity.setNumeroPuntos(this.numeroPuntos);
+		entity.setId( this.id );
+		return entity;
+	}
     
 }

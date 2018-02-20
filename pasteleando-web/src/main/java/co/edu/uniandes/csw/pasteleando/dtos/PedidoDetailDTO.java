@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase que extiende de {@link PedidoDTO} para manejar la transformacion entre
@@ -14,14 +16,36 @@ import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
  * 
  * @author ni.ramirez10
  */
+
 public class PedidoDetailDTO extends PedidoDTO
-{            
-    /**
+{         
+        private List<PedidoDTO> pedidos; 
+       
+        /**
 	 * Constructor por defecto
 	 */
 	public PedidoDetailDTO( )
 	{
+            super( ); 
 	}
+        
+        /**
+         * Obtiene la lista de pedidos
+         * @return Los pedidos
+         */
+         public List<PedidoDTO> getPedidos() 
+         {
+                return pedidos;
+         }
+
+        /**
+         * Modifica la lista de pedidos
+         * @param pPedidos Los pedidos a establecer
+         */
+         public void setPedidos(List<PedidoDTO> pPedidos) 
+         {
+                this.pedidos = pPedidos;
+         }
 
 	/**
 	 * Constructor para transformar un Entity a un DTO
@@ -31,8 +55,17 @@ public class PedidoDetailDTO extends PedidoDTO
 	public PedidoDetailDTO( PedidoDetailDTO entity )
 	{
 		super( entity );
+                
+                if (entity != null) 
+                {
+                    pedidos = new ArrayList<>();
+                    
+                    for( PedidoDTO entityPedido : entity.getPedidos() ) 
+                    {
+                        pedidos.add(new PedidoDTO(entityPedido));
+                    }
+                }
 	}
-
 
 	/**
 	 * Transformar un DTO a un Entity
@@ -42,8 +75,21 @@ public class PedidoDetailDTO extends PedidoDTO
 	@Override
 	public PedidoEntity toEntity( )
 	{
-		PedidoEntity pedidoEntity = super.toEntity( );
-		return pedidoEntity;
+		PedidoEntity entity = super.toEntity( );
+                
+                if( pedidos != null ) 
+                {
+                      List<PedidoEntity> pedidosEntity = new ArrayList<>();
+                      
+                      for( PedidoDTO dtoPedido : pedidos ) 
+                      {
+                           pedidosEntity.add( dtoPedido.toEntity() );
+                      }
+                      
+                      entity.setPedidos(pedidosEntity); 
+                }
+
+            return entity;
 	}
-    
+       
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import java.util.Date;
 
 
@@ -66,6 +67,21 @@ public class FacturaDTO {
     {
      
     }
+    
+    /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param FacturaEntity: Es la entidad que se va a convertir a DTO
+	 */
+	public FacturaDTO( FacturaEntity FacturaEntity )
+	{
+		this.direccion = FacturaEntity.getDireccion();
+		this.fecha=FacturaEntity.getFecha();
+                this.hora=FacturaEntity.getHora();
+                this.id=FacturaEntity.getId();
+                this.precio=FacturaEntity.getPrecio();
+	}
     
     //Metodos
     
@@ -153,4 +169,20 @@ public class FacturaDTO {
     {
         this.precio = pPrecio;
     }
+    
+    /**
+	 * Convertir DTO a Entity
+	 *
+	 * @return Un Entity con los valores del DTO
+	 */
+	public FacturaEntity toEntity( )
+	{
+		FacturaEntity entity = new FacturaEntity( );
+		entity.setDireccion(this.direccion);
+		entity.setFecha(this.fecha );
+                entity.setHora(this.hora);
+                entity.setId(this.id);
+                entity.setPrecio(this.precio);
+		return entity;
+	}
 }

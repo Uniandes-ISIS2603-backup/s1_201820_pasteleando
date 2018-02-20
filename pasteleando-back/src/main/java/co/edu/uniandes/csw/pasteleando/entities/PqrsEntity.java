@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -23,6 +25,8 @@ public class PqrsEntity extends BaseEntity implements Serializable
     private String fecha; 
     
     private String estado; 
+    
+    private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>();
     
      /**
 	 * @return El tipo de la solicitud
@@ -103,5 +107,25 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	{
 		this.estado = pEstado ;
 	}
+        
+        /**
+         * Obtiene la lista de pqrs.
+         *
+         * @return lista de pqrs.
+         */
+         public List<PqrsEntity> getPqrs() 
+         {
+             return pqrs;
+         }
+
+        /**
+         * Establece el valor de la lista de pqrs.
+         *
+         * @param pPqrs nuevo valor de la lista.
+         */
+         public void setPqrs(List<PqrsEntity> pPqrs) 
+         {
+            this.pqrs = pPqrs;
+         }
     
 }

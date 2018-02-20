@@ -9,6 +9,31 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
  * @author mp.bayonal
  */
 
-public class CalificacionDetailDTO
+public class CalificacionDetailDTO extends CalificacionDTO
 {
+    
+    public CalificacionDetailDTO()
+    {
+    }
+     /**
+	 * Constructor para transformar un Entity a un DTO
+	 *
+	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
+	 */
+    public CalificacionDetailDTO(CalificacionEntity entity)
+    {
+        super(entity);
+    }
+    /**
+	 * Transformar un DTO a un Entity
+	 *
+	 * @return La entidad construida a partir del DTO.
+	 */
+    @Override
+    public CalificacionEntity toEntity()
+    {
+        CalificacionEntity entity = super.toEntity();
+       return entity;
+    }
 }
+

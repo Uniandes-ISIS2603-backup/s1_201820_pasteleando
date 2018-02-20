@@ -19,8 +19,8 @@ import javax.persistence.TypedQuery;
  * @author m.leona
  */
 @Stateless
-public class FacturaPersistance {
-     private static final Logger LOGGER = Logger.getLogger(FacturaPersistance.class.getName());
+public class FacturaPersistence {
+     private static final Logger LOGGER = Logger.getLogger(FacturaPersistence.class.getName());
     
     @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;

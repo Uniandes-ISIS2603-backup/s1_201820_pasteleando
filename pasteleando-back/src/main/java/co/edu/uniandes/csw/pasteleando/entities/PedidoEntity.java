@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -14,27 +16,11 @@ import javax.persistence.Entity;
  */
 public class PedidoEntity extends BaseEntity implements Serializable
 {
-    private Long id;
-    
     private boolean seRecogePasteleria; 
     
     private String estado; 
-        
-       /**
-	 * @return El ID del pedido
-	 */
-	public Long getId( )
-	{
-		return id;
-	}
-        
-        /**
-	 * @param id El nuevo ID
-	 */
-	public void setId( Long id )
-	{
-		this.id = id;
-	}
+    
+    private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
         
          /**
 	 * @return El valor del atributo seRecogePateleria
@@ -67,6 +53,26 @@ public class PedidoEntity extends BaseEntity implements Serializable
 	{
 		this.estado = pEstado;
 	}
+        
+        /**
+         * Obtiene la lista de pedidos.
+         *
+         * @return lista de pedidos.
+         */
+         public List<PedidoEntity> getPedidos() 
+         {
+             return pedidos;
+         }
+
+        /**
+         * Establece el valor de la lista de pedidos.
+         *
+         * @param pPedidos nuevo valor de la lista.
+         */
+         public void setPedidos(List<PedidoEntity> pPedidos) 
+         {
+            this.pedidos = pPedidos;
+         }
     
     
 }
