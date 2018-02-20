@@ -28,11 +28,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 public class TarjetaPuntosTest {
     
-      @Inject
-    private TarjetaPuntosPersistance persistence;
-      
-      @PersistenceContext
-    private EntityManager em;
+    
     
     @Deployment
     public static JavaArchive createDeployment() {
@@ -54,4 +50,10 @@ public class TarjetaPuntosTest {
     Assert.assertNotNull(entity);
     Assert.assertEquals(newEntity.getName(), entity.getName());
     }
+    
+    @Inject
+    private TarjetaPuntosPersistance persistence;
+      
+    @PersistenceContext
+    private EntityManager em;
 }
