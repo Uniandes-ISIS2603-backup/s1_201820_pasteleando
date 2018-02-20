@@ -24,6 +24,7 @@ public class DecoracionPersistence
 	private static final Logger LOGGER = Logger.getLogger( DecoracionPersistence.class.getName( ) );
 
 	@PersistenceContext( unitName = "PasteleandoPU" )
+        
 	protected EntityManager em;
 
 	/**

@@ -46,7 +46,6 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "pasteleando".</i>
- * <p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -66,7 +65,6 @@ public class PasteleandoResource
 
 	/**
 	 * <h1>POST /api/pasteleando : Crear una entidad de Pasteleando.</h1>
-	 * <p>
 	 * <pre>Cuerpo de petición: JSON {@link PasteleandoDetailDTO}.
 	 *
 	 * Crea una nueva entidad de Pasteleando con la informacion que se recibe en el cuerpo
@@ -94,7 +92,6 @@ public class PasteleandoResource
 
 	/**
 	 * <h1>GET /api/pasteleando : Obtener todas las entidadese de Pasteleando.</h1>
-	 * <p>
 	 * <pre>Busca y devuelve todas las entidades de Pasteleando que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -112,7 +109,6 @@ public class PasteleandoResource
 
 	/**
 	 * <h1>GET /api/pasteleando/{id} : Obtener una entidad de Pasteleando por id.</h1>
-	 * <p>
 	 * <pre>Busca la entidad de Pasteleando con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -162,7 +158,6 @@ public class PasteleandoResource
 
 	/**
 	 * <h1>DELETE /api/pasteleando/{id} : Borrar una entidad de Pasteleando por id.</h1>
-	 * <p>
 	 * <pre>Borra la entidad de Pasteleando con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

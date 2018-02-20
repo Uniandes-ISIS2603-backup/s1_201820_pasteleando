@@ -25,7 +25,6 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
  * }
  * 
  * </pre>
- *
  * @author mp.bayonal
  */
 public class CalificacionDTO
@@ -43,7 +42,7 @@ public class CalificacionDTO
     }
 
     /**
-     * @return id
+     * @return id Id de la calificacion
      */
     public Long getId() {
         return id;
@@ -57,7 +56,7 @@ public class CalificacionDTO
     }
 
     /**
-     * @return puntaje
+     * @return puntaje Puntaje
      */
     public Integer getPuntaje() {
         return puntaje;
@@ -71,7 +70,7 @@ public class CalificacionDTO
     }
 
     /**
-     * @return comentario
+     * @return comentario Comentario
      */
     public String getComentario() {
         return comentario;

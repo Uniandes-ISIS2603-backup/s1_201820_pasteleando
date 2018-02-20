@@ -24,7 +24,6 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "promocion".</i>
- * <p></p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -44,7 +43,6 @@ public class PromocionResource
 
 	/**
 	 * <h1>POST /api/promocion : Crear una entidad de promocion.</h1>
-	 * <p></p>
 	 * <pre>Cuerpo de petición: JSON {@link PromocionDTO}.
 	 *
 	 * Crea una nueva entidad de promoción con la informacion que se recibe en el cuerpo
@@ -72,7 +70,6 @@ public class PromocionResource
 
 	/**
 	 * <h1>GET /api/promocion : Obtener todas las entidadese de promocióm.</h1>
-	 * <p></p>
 	 * <pre>Busca y devuelve todas las entidades de promoción que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -90,7 +87,7 @@ public class PromocionResource
 
 	/**
 	 * <h1>GET /api/promocion/{id} : Obtener una entidad de promoción por id.</h1>
-	 * <p></p>
+	
 	 * <pre>Busca la entidad de promoción con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -140,7 +137,7 @@ public class PromocionResource
 
 	/**
 	 * <h1>DELETE /api/promocion/{id} : Borrar una entidad de promoción por id.</h1>
-	 * <p></p>
+	
 	 * <pre>Borra la entidad de promoción con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

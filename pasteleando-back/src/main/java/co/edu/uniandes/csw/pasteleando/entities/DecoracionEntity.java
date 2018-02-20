@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,9 +19,13 @@ import javax.persistence.Entity;
 @Entity
 public class DecoracionEntity extends BaseEntity implements Serializable
 {
+    @PodamExclude
+    @OneToMany
+    private PastelEntity pastel;
      /**
      * Atributo que modela la fecha de la DecoracionEntiry
      */    
+    @Temporal(javax.persistence.TemporalType.DATE)
         private Date fechaAgregado;
      /**
      * Atributo que modela la foto de la DecoracionEntity

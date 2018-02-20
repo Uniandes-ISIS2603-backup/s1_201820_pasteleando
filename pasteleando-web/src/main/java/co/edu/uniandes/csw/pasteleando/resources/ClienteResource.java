@@ -38,7 +38,7 @@ import java.util.List;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "cliente".</i>
- * <p>
+
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -58,7 +58,7 @@ public class ClienteResource
 
 	/**
 	 * <h1>POST /api/pasteleando : Crear una entidad de Calificacion.</h1>
-	 * <p>
+	
 	 * <pre>Cuerpo de petición: JSON {@link ClienteDTO}.
 	 *
 	 * Crea una nueva entidad de Calificacion con la informacion que se recibe en el cuerpo
@@ -73,7 +73,6 @@ public class ClienteResource
 	 * 412 Precodition Failed: Ya existe la entidad de Cliente.
 	 * </code>
 	 * </pre>
-	 *
 	 * @param dto {@link ClienteDTO} - La entidad de Cliente que se desea guardar.
 	 * @return JSON {@link ClienteDTO}  - La entidad de Cliente guardada con el atributo id autogenerado.
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de Cliente.
@@ -86,14 +85,13 @@ public class ClienteResource
 
 	/**
 	 * <h1>GET /api/pasteleando : Obtener todas las entidadese de Cliente.</h1>
-	 * <p>
+
 	 * <pre>Busca y devuelve todas las entidades de Cliente que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
 	 * <code style="color: mediumseagreen; background-color: #eaffe0;">
 	 * 200 OK Devuelve todas las entidades de Cliente de la aplicacion.</code>
 	 * </pre>
-	 *
 	 * @return JSONArray {@link ClienteDTO} - Las entidades de Cliente encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
@@ -104,7 +102,7 @@ public class ClienteResource
 
 	/**
 	 * <h1>GET /api/pasteleando/{id} : Obtener una entidad de Cliente por id.</h1>
-	 * <p>
+	
 	 * <pre>Busca la entidad de Cliente con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -115,7 +113,6 @@ public class ClienteResource
 	 * 404 Not Found No existe una entidad de Cliente con el id dado.
 	 * </code>
 	 * </pre>
-	 *
 	 * @param id Identificador de la entidad de Cliente que se esta buscando. Este debe ser una cadena de dígitos.
 	 * @return JSON {@link ClienteDTO} - La entidad de Cliente buscada
 	 */
@@ -154,7 +151,7 @@ public class ClienteResource
 
 	/**
 	 * <h1>DELETE /api/pasteleando/{id} : Borrar una entidad de Cliente por id.</h1>
-	 * <p>
+	
 	 * <pre>Borra la entidad de Cliente con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>
@@ -164,6 +161,7 @@ public class ClienteResource
 	 * 404 Not Found. No existe una entidad de Cliente con el id dado.
 	 * </code>
 	 * </pre>
+ 
 	 *
 	 * @param id Identificador de la entidad de Cliente que se desea borrar. Este debe ser una cadena de dígitos.
 	 */
