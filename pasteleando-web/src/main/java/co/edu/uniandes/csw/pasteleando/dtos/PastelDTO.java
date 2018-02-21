@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  *PastelDTO: obejeto de transferencia de datos para la entidad Pastel.
  * 
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
@@ -21,7 +20,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  *   }
  * </pre>
  * Por ejemplo una entidad de Pastel se representa asi:<br>
- * <p>
  * <pre>
  *
  *   {
@@ -30,7 +28,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  *   }
  *
  * </pre>
- *
  * 
  * @author MIGUELHOYOS
  */
@@ -53,7 +50,7 @@ public class PastelDTO
   
   /**
    * retorna el peso del pastel
-   * @return peso
+   * @return peso Peso del pastel
    */
 
   public int getPeso()
@@ -62,7 +59,7 @@ public class PastelDTO
   }
   /**
    * actualiza el peso con el peso que llega por parametro
-   * @param pPeso 
+   * @param pPeso Nuevo Peso del Pastel
    */
 
   public void setPeso(int pPeso)
@@ -71,7 +68,7 @@ public class PastelDTO
   }
   /**
    * retorna el precio del pastel
-   * @return precio
+   * @return precio Precio del Pastel
    */
 
   public double getPrecio()
@@ -80,7 +77,7 @@ public class PastelDTO
   }
   /**
    * actualiza el precio con el precio que llega por parametro
-   * @param pPrecio 
+   * @param pPrecio Nuevo precio del pastel
    */
 
   public void setPrecio(double pPrecio)

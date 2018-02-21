@@ -24,7 +24,6 @@ import javax.ws.rs.Produces;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "Decoración catálogo".</i>
- * <p></p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso
@@ -44,7 +43,6 @@ public class DecoracionCatalogoResource
 
 	/**
 	 * <h1>POST /api/catalogo : Crear una entidad de Decoración Catálogo.</h1>
-	 * <p></p>
 	 * <pre>Cuerpo de petición: JSON {@link DecoracionCatalogoDTO}.
 	 *
 	 * Crea una nueva entidad de promoción con la informacion que se recibe en el cuerpo
@@ -72,7 +70,6 @@ public class DecoracionCatalogoResource
 
 	/**
 	 * <h1>GET /api/catalogo : Obtener todas las entidadese de Decoración Catálogo.</h1>
-	 * <p></p>
 	 * <pre>Busca y devuelve todas las entidades de Decoración Catálogo que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
@@ -90,7 +87,6 @@ public class DecoracionCatalogoResource
 
 	/**
 	 * <h1>GET /api/catalogo/{id} : Obtener una entidad de Decoración Catálogo por id.</h1>
-	 * <p></p>
 	 * <pre>Busca la entidad de Decoración Catálogo con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -140,7 +136,6 @@ public class DecoracionCatalogoResource
 
 	/**
 	 * <h1>DELETE /api/catalogo/{id} : Borrar una entidad de Decoración Catálogo por id.</h1>
-	 * <p></p>
 	 * <pre>Borra la entidad de Decoración Catálogo con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

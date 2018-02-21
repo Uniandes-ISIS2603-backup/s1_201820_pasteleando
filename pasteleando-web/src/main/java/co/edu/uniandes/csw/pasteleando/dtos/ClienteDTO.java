@@ -33,7 +33,7 @@ import java.util.*;
 /**
  * ClienteDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
+ 
  * Al serializarse como JSON esta clase se implementa el siguiente modelo <br>
  * <pre>
  * {
@@ -53,7 +53,6 @@ import java.util.*;
  * 
  * }
  * </pre>
- *
  * @author mp.bayonal
  */
 public class ClienteDTO

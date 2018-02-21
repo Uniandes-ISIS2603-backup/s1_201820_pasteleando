@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -18,7 +19,7 @@ import java.util.Date;
  *      "foto": String
  *   }
  * </pre>
- * 
+ * </br>
  * Por ejemplo una decoracion se representa asi:<br>
  * 
  * <pre>
@@ -27,7 +28,7 @@ import java.util.Date;
  *  "fechaAgregado":12/08/18,
  *  "foto": "C:\Users\dc.cepeda\Desktop\cake.jpg"
  * }
- * 
+ * </br>
  * </pre>
  * 
  */
@@ -38,7 +39,7 @@ import java.util.Date;
  */
 
 
-public class DecoracionDTO {
+public class DecoracionDTO implements Serializable {
     
      /**
      * Atributo que modela la fecha de la Decoracion

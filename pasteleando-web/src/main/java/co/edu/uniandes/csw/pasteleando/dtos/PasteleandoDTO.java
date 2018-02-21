@@ -28,7 +28,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
 /**
  * PasteleandoDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
@@ -38,7 +37,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
  *   }
  * </pre>
  * Por ejemplo una entidad de Pasteleando se representa asi:<br>
- * <p>
+
  * <pre>
  *
  *   {
@@ -48,7 +47,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
  *   }
  *
  * </pre>
- *
  * @author ISIS2603
  */
 public class PasteleandoDTO

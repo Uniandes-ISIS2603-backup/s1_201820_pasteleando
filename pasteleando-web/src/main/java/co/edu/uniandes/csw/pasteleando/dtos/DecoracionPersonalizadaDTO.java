@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
+import java.io.Serializable;
 
 /**
  * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -35,7 +36,8 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
  *
  * @author dc.cepeda
  */
-public class DecoracionPersonalizadaDTO {
+public class DecoracionPersonalizadaDTO implements Serializable
+{
     
     /**
      * Atributo que modela el color de la DecoracionPersonalizada

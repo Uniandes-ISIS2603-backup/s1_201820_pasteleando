@@ -25,6 +25,7 @@ import javax.ws.rs.Produces;
 /**
  * <pre>Clase que implementa el recurso "Decoración Personalizada".
  * URL: /api/Decoración Personalizada
+ * </pre>
  */
 @Path( "personalizada" )
 @Produces( "application/json" )

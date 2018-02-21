@@ -57,7 +57,7 @@ public class CalificacionResource
 
 	/**
 	 * <h1>POST /api/calificacion : Crear una entidad de calificacion.</h1>
-	 * <p>
+	
 	 * <pre>Cuerpo de petición: JSON {@link CalificacionDTO}.
 	 *
 	 * Crea una nueva entidad de Pasteleando con la informacion que se recibe en el cuerpo
@@ -72,7 +72,6 @@ public class CalificacionResource
 	 * 412 Precodition Failed: Ya existe la entidad de Pasteleando.
 	 * </code>
 	 * </pre>
-	 *
 	 * @param dto {@link CalificacionDTO} - La entidad de Pasteleando que se desea guardar.
 	 * @return JSON {@link CalificacionDTO}  - La entidad de Pasteleando guardada con el atributo id autogenerado.
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de Pasteleando.
@@ -85,14 +84,14 @@ public class CalificacionResource
 
 	/**
 	 * <h1>GET /api/pasteleando : Obtener todas las entidadese de Pasteleando.</h1>
-	 * <p>
+	
 	 * <pre>Busca y devuelve todas las entidades de Pasteleando que existen en la aplicacion.
 	 *
 	 * Codigos de respuesta:
 	 * <code style="color: mediumseagreen; background-color: #eaffe0;">
 	 * 200 OK Devuelve todas las entidades de Pasteleando de la aplicacion.</code>
 	 * </pre>
-	 *
+
 	 * @return JSONArray {@link CalificacionDTO} - Las entidades de Pasteleando encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
@@ -103,7 +102,7 @@ public class CalificacionResource
 
 	/**
 	 * <h1>GET /api/pasteleando/{id} : Obtener una entidad de Pasteleando por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Busca la entidad de Pasteleando con el id asociado recibido en la URL y la devuelve.
 	 *
 	 * Codigos de respuesta:
@@ -138,7 +137,6 @@ public class CalificacionResource
 	 * 404 Not Found. No existe una entidad de Pasteleando con el id dado.
 	 * </code>
 	 * </pre>
-	 *
 	 * @param id        Identificador de la entidad de Pasteleando que se desea actualizar.Este debe ser una cadena de dígitos.
 	 * @param detailDTO {@link CalificacionDTO} La entidad de Pasteleando que se desea guardar.
 	 * @return JSON {@link CalificacionDTO} - La entidad de Pasteleando guardada.
@@ -153,7 +151,7 @@ public class CalificacionResource
 
 	/**
 	 * <h1>DELETE /api/pasteleando/{id} : Borrar una entidad de Cliente por id.</h1>
-	 * <p>
+	 * 
 	 * <pre>Borra la entidad de Cliente con el id asociado recibido en la URL.
 	 *
 	 * Códigos de respuesta:<br>

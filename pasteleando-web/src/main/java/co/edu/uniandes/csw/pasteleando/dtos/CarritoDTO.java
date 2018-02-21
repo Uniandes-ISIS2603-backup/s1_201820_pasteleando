@@ -15,9 +15,12 @@ import javax.persistence.Id;
  * *CarritoDTO: obejeto de transferencia de datos para la entidad Carrito.
  * 
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
- * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+
+ * Al serializarse como JSON esta clase implementa el siguiente modelo:<br>
+ * 
+ * 
  * <pre>
+ * <br>
  *   {
  *      "id": number,
  *      "cantidad": number,
@@ -25,18 +28,17 @@ import javax.persistence.Id;
  *      "articulos" : list
  *   }
  * </pre>
+ * 
  * Por ejemplo una entidad de Carrito se representa asi:<br>
- * <p>
- * <pre>
- *
+ * 
  *   {
  *      "id": 26748957,
  *      "cantidad" : 4,
  *      "precio": 280,9,
  *      "articulos : [ {PastelDTO},...]
  *   }
- *
- * </pre>
+ 
+ * 
  * 
  * @author MIGUELHOYOS
  */
@@ -64,7 +66,7 @@ public class CarritoDTO
  
   /**
    * retorna el id del carrito
-   * @return id
+   * @return id Identificación del carrito
    */
   public long getId()
   {
@@ -72,7 +74,7 @@ public class CarritoDTO
   }
   /**
    * actualiza el id con el id que llega por parametro
-   * @param pId 
+   * @param pId Nueva identificacion
    */
 
   public void setId(long pId)
@@ -81,7 +83,7 @@ public class CarritoDTO
   }
   /**
    * retorna la cantidad de productos en el carrito
-   * @return cantidad
+   * @return cantidad Cantidad de prod en carrito
    */
 
   public int getCantidad()
@@ -90,7 +92,7 @@ public class CarritoDTO
   }
   /**
   * actualiza la cantidad de prductos en el carrito
-   * @param pCantidad 
+   * @param pCantidad Nuevaantidad de prod en carrito
    */
 
   public void setCantidad(int pCantidad)
@@ -99,7 +101,7 @@ public class CarritoDTO
   }
   /**
    * retorna el precio total del carrito
-   * @return precio
+   * @return precio Precio del Carrito
    */
 
   public double getPrecio()
@@ -108,7 +110,7 @@ public class CarritoDTO
   }
   /**
    * actualiza el precio total del carrito
-   * @param pPrecio 
+   * @param pPrecio Nuevo Precio del carrito
    */
 
   public void setPrecio(double pPrecio)
@@ -117,7 +119,7 @@ public class CarritoDTO
   }
   /**
    * retorna la lista de articulos en el carrito
-   * @return pasteles
+   * @return pasteles Lista de articulos de pasteles
    */
 
   public List getArticulos()
@@ -126,7 +128,7 @@ public class CarritoDTO
   }
   /**
  * actualiza la lista de articulos en el carrito
- * @param lista 
+ * @param lista Lista articulos de pasteles
  */
 
     public void setArticulos(List lista)

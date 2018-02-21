@@ -37,8 +37,6 @@ import javax.ws.rs.Produces;
  * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
  * </pre>
  *
- * @author ISIS2603
- * @version 1.0
  */
 @Path( "tarjetapuntos" )
 @Produces( "application/json" )
@@ -66,7 +64,7 @@ public class TarjetaPuntosResource {
 	 *
 	 * @param dto {@link TarjetaPuntosDetailDTO} - La entidad de TarjetaPuntos que se desea guardar.
 	 * @return JSON {@link TarjetaPuntosDetailDTO}  - La entidad de TarjetaPuntos guardada con el atributo id autogenerado.
-	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de TarjetaPuntos.
+	 * @throws BusinessLogicException  Error de lógica que se genera cuando ya existe la entidad de TarjetaPuntos.
 	 */
 	@POST
 	public TarjetaPuntosDetailDTO createTarjetaPuntos( TarjetaPuntosDetailDTO dto ) throws BusinessLogicException
@@ -133,7 +131,7 @@ public class TarjetaPuntosResource {
 	 * @param id        Identificador de la entidad de TarjetaPuntos que se desea actualizar.Este debe ser una cadena de dígitos.
 	 * @param detailDTO {@link TarjetaPuntosDetailDTO} La entidad de TarjetaPuntos que se desea guardar.
 	 * @return JSON {@link TarjetaPuntosDetailDTO} - La entidad de TarjetaPuntos guardada.
-	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la entidad de TarjetaPuntos porque ya existe una con ese nombre.
+	 * @throws BusinessLogicException Error de lógica que se genera al no poder actualizar la entidad de TarjetaPuntos porque ya existe una con ese nombre.
 	 */
 	@PUT
 	@Path( "{id: \\d+}" )

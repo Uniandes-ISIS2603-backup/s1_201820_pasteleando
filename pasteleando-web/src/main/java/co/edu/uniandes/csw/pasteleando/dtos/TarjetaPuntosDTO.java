@@ -73,7 +73,7 @@ public class TarjetaPuntosDTO {
     }
     
     /**
-    *@return Numero de puntos de la tarjeta
+    *@return numeroPuntos Numero de puntos de la tarjeta
     */
     public Integer getNumeroPuntos()
     {
