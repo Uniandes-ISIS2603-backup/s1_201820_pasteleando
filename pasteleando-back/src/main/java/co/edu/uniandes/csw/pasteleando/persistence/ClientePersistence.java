@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
  *
  * @author monicabayona
  */
-public class ClientePersistance {
+public class ClientePersistence {
     
     @PersistenceContext(unitName = "PasteleandoPU")
     protected EntityManager em;
