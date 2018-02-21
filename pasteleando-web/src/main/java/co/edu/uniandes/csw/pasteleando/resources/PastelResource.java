@@ -45,7 +45,7 @@ public class PastelResource
     /**
      *  <h1>POST /api/pasteles : Crear un pastel.</h1>
      * 
-     * <pre>Cuerpo de petición: JSON {@link PatelDetailDTO}.
+     * <pre>Cuerpo de petición: JSON {@link PastelDetailDTO}.
      * 
      * Crea un nuevo pastel con la informacion que se recibe en el cuerpo 
      * de la petición y se regresa un objeto identico.
@@ -60,15 +60,15 @@ public class PastelResource
      * </pre>
      * @param pastel {@link PastelDetailDTO} - el pastel que se desea guardar
      * @return JSON {@link PastelDetailDTO}  - el pastel guardado con el atributo.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la ciudad.
+     * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando ya existe la ciudad.
      */
     @Path("pasteles")
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public void agregarPastel() throws BusinessLogicException
+    public PastelDetailDTO createPastel(PastelDetailDTO pastel) throws BusinessLogicException
     {
-        
+        return pastel;
     }
   
   /**
@@ -123,17 +123,15 @@ public class PastelResource
      * 404 Not Found. No existe el pastel con el id dado.
      * </code> 
      * </pre>
-     * @param <error>
      * @param id Identificador del pasteld que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param pastel {@link PastelDetaillDTO} el pastel que se desea guardar.
-     * @retur JSON {@link PastelDetaillDTO} - El pastel que se desea actualizar.
-     
+     * @param pastel {@link PastelDetailDTO} el pastel que se desea guardar.
+     * @return JSON {@link PastelDetailDTO} - El pastel que se desea actualizar.
      */
   @PUT
   @Path("{id: \\d+}")
-  public PastelDetailDTO updatePastel(@PathParam("id") Long id, PastelDetailDTO city)
+  public PastelDetailDTO updatePastel(@PathParam("id") Long id, PastelDetailDTO pastel)
   {
-      return null;
+      return pastel;
   }
   
   /**
@@ -152,8 +150,8 @@ public class PastelResource
      */
     @DELETE
     @Path("{id: \\d+}")
-  public PastelDetailDTO deletePastel(@PathParam("id") Long id)
+  public void deletePastel(@PathParam("id") Long id)
   {
-      return null;
+      //Void
   }
 }

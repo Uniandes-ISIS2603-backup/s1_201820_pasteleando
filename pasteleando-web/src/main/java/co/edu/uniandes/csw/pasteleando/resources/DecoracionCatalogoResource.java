@@ -31,8 +31,7 @@ import javax.ws.rs.Produces;
  * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
  * </pre>
  *
- * @author ISIS2603
- * @version 1.0
+ * @author jf.garcia
  */
 @Path( "catalogo" )
 @Produces( "application/json" )

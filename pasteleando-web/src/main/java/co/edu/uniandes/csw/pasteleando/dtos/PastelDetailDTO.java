@@ -29,7 +29,7 @@ public class PastelDetailDTO extends PastelDTO
   /**
 	 * Constructor para transformar un Entity a un DTO
 	 *
-	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
+	 * @param pastelEntity La entidad de Pasteleando a partir de la cual se construye el objeto
 	 */
   public PastelDetailDTO(PastelEntity pastelEntity) {
         super(pastelEntity);

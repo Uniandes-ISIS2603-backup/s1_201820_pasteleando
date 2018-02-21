@@ -124,7 +124,7 @@ public class PastelPersistenceTest {
     public void getPastelTest() {
         PastelEntity entity = data.get(0);
         //name (metodo creado en la entidad
-        PastelEntity newEntity = pastelPersistence.find(entity.getName());
+        PastelEntity newEntity = pastelPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         // id
         Assert.assertEquals(entity.getPeso(), newEntity.getPeso());
