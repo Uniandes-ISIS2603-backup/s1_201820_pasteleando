@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
@@ -22,11 +22,11 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class DecoracionCatalogoPersistence
 {
- private static final Logger LOGGER = Logger.getLogger(DecoracionCatalogoPersistence.class.getName());
-
+    private static final Logger LOGGER = Logger.getLogger(DecoracionCatalogoPersistence.class.getName());
+    
     @PersistenceContext(unitName = "PasteleandoPU")
     protected EntityManager em;
-
+    
     /**
      * Busca si hay alguna Decoración catálogo con el id que se envía de argumento
      *
@@ -37,7 +37,34 @@ public class DecoracionCatalogoPersistence
         LOGGER.log(Level.INFO, "Consultando Decoración Catálogo con id={0}", id);
         return em.find(DecoracionCatalogoEntity.class, id);
     }
-
+    
+    /**
+     * Busca si hay alguna entidad de DecoracionCatalogo con el nombre que se envía de argumento
+     *
+     * @param name: Nombre de la entidad de DecoracionCatalogo que se está buscando
+     * @return null si no existe ninguna entidad DecoracionCatalogo con el nombre del argumento. Si
+     * existe alguna devuelve la primera.
+     */
+    public DecoracionCatalogoEntity findByName( String name )
+    {
+        LOGGER.log( Level.INFO, "Consultando entidades de DecoracionCatalogo por nombre ", name );
+        
+        // Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery<DecoracionCatalogoEntity> query = em.createQuery("Select e From DecoracionCatalogoEntity e where e.name = :name", DecoracionCatalogoEntity.class );
+        // Se remplaza el placeholder ":name" con el valor del argumento
+        query = query.setParameter( "name", name );
+        // Se invoca el query se obtiene la lista resultado
+        List<DecoracionCatalogoEntity> sameName = query.getResultList( );
+        if( sameName.isEmpty( ) )
+        {
+            return null;
+        }
+        else
+        {
+            return sameName.get( 0 );
+        }
+    }
+    
     /**
      * Devuelve todas las Decoraciones Catálogo de la base de datos.
      *
@@ -50,7 +77,7 @@ public class DecoracionCatalogoPersistence
         Query q = em.createQuery("select u from DecoracionCatalogoEntity u");
         return q.getResultList();
     }
-
+    
     /**
      * Método para persisitir la entidad en la base de datos.
      * @param entity objeto Decoración Catálogo que se creará en la base de datos
@@ -62,7 +89,7 @@ public class DecoracionCatalogoPersistence
         LOGGER.info("Decoración Catálogo creada");
         return entity;
     }
-
+    
     /**
      * Actualiza una Decoración Catálogo.
      *
@@ -74,7 +101,7 @@ public class DecoracionCatalogoPersistence
         LOGGER.log(Level.INFO, "Actualizando Decoración Catálogo con id={0}", entity.getId());
         return em.merge(entity);
     }
-
+    
     /**
      *
      * Borra una Decoración Catálogo de la base de datos recibiendo como argumento el id
