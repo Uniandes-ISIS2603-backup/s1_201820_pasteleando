@@ -61,15 +61,15 @@ public class PqrsDTO implements Serializable
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
 	 *
-	 * @param pqrsDTO: Es la entidad que se va a convertir a DTO
+	 * @param pqrsEntity: Es la entidad que se va a convertir a DTO
 	 */
-	public PqrsDTO( PqrsDTO pqrsDTO )
+	public PqrsDTO( PqrsEntity pqrsEntity )
 	{
-		this.tipo = pqrsDTO.getTipo(); 
-                this.idSolicitud = pqrsDTO.getIdSolicitud(); 
-                this.idCliente = pqrsDTO.getIdCliente(); 
-                this.fecha = pqrsDTO.getFecha(); 
-		this.estado = pqrsDTO.getEstado(); 
+		this.tipo = pqrsEntity.getTipo(); 
+                this.idSolicitud = pqrsEntity.getIdSolicitud(); 
+                this.idCliente = pqrsEntity.getIdCliente(); 
+                this.fecha = pqrsEntity.getFecha(); 
+		this.estado = pqrsEntity.getEstado(); 
 	}
     
     

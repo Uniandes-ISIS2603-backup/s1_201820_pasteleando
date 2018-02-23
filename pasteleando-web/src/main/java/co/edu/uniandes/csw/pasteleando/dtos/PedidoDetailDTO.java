@@ -52,7 +52,7 @@ public class PedidoDetailDTO extends PedidoDTO
 	 *
 	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
 	 */
-	public PedidoDetailDTO( PedidoDetailDTO entity )
+	public PedidoDetailDTO( PedidoEntity entity )
 	{
 		super( entity );
                 
@@ -60,7 +60,7 @@ public class PedidoDetailDTO extends PedidoDTO
                 {
                     pedidos = new ArrayList<>();
                     
-                    for( PedidoDTO entityPedido : entity.getPedidos() ) 
+                    for( PedidoEntity entityPedido : entity.getPedidos() ) 
                     {
                         pedidos.add(new PedidoDTO(entityPedido));
                     }
