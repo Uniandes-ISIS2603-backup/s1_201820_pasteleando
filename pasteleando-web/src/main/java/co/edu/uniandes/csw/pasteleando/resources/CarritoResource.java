@@ -50,7 +50,7 @@ public class CarritoResource
      * @return JSON {@link CarritoDetailDTO}  - el carrito guardado con el atributo id autogenerado.
      */
     @POST
-    public CarritoDetailDTO createCity(CarritoDetailDTO carrito)  {
+    public CarritoDetailDTO createCarrito(CarritoDetailDTO carrito)  {
         return carrito;
     }
 
@@ -106,12 +106,12 @@ public class CarritoResource
      * </code> 
      * </pre>
      * @param id Identificador del carrito que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param carrito {@link CityDetailDTO} el carrito que se desea guardar.
+     * @param carrito {@link CarritoDetailDTO} el carrito que se desea guardar.
      * @return JSON {@link CarritoDetailDTO} - el carrito guardado.
      */
     @PUT
     @Path("{id: \\d+}")
-    public CarritoDetailDTO updateCity(@PathParam("id") Long id, CarritoDetailDTO carrito)  {
+    public CarritoDetailDTO updateCarrito(@PathParam("id") Long id, CarritoDetailDTO carrito)  {
         return carrito;
     }
     
@@ -131,7 +131,7 @@ public class CarritoResource
      */
     @DELETE
     @Path("{id: \\d+}")
-     public void deleteCity(@PathParam("id") Long id) {
+     public void deleteCarrito(@PathParam("id") Long id) {
         // Void
     }
 

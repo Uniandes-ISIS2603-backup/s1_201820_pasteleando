@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.OneToMany;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -20,6 +21,52 @@ public class ClienteEntity extends BaseEntity implements Serializable
 
     @ElementCollection
     private List<String> tiposPagos;
+    
+    @OneToMany
+    private List<PqrsEntity> pqrs;
+    
+    @OneToMany
+    private List<CalificacionEntity> calificaciones;
+    
+    @OneToOne
+    private CarritoEntity carrito;
+    
+    @OneToOne
+    private TarjetaPuntosEntity tarjeta;
+
+    public List<PqrsEntity> getPqrs() {
+        return pqrs;
+    }
+
+    public void setPqrs(List<PqrsEntity> pqrs) {
+        this.pqrs = pqrs;
+    }
+
+    public List<CalificacionEntity> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(List<CalificacionEntity> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
+    public CarritoEntity getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(CarritoEntity carrito) {
+        this.carrito = carrito;
+    }
+
+    public TarjetaPuntosEntity getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(TarjetaPuntosEntity tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+    
+    
 
     /**
      * @return tipoUsuari

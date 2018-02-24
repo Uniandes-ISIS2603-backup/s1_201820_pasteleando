@@ -18,9 +18,9 @@ import javax.persistence.TypedQuery;
  * @author mp.bayonal
  */
 @Stateless
-public class CalificacionPersistance {
+public class CalificacionPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(CalificacionPersistance.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CalificacionPersistence.class.getName());
             
  @PersistenceContext(unitName = "PasteleandoPU")   
     protected EntityManager em;

@@ -55,11 +55,11 @@ public class PedidoDTO implements Serializable
 	 *
 	 * @param pedidoDTO: Es la entidad que se va a convertir a DTO
 	 */
-	public PedidoDTO( PedidoDTO pedidoDTO )
+	public PedidoDTO( PedidoEntity pedidoEntity )
 	{
-		this.id = pedidoDTO.getId(); 
-                this.seRecogePasteleria = pedidoDTO.getValueSeRecogePasteleria(); 
-		this.estado = pedidoDTO.getEstado(); 
+		this.id = pedidoEntity.getId(); 
+                this.seRecogePasteleria = pedidoEntity.getValueSeRecogePasteleria(); 
+		this.estado = pedidoEntity.getEstado(); 
 	}
         
        /**

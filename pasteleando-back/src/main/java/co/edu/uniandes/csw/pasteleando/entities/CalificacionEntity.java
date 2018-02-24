@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -13,6 +14,30 @@ public class CalificacionEntity extends BaseEntity implements Serializable
     private Integer puntaje;
 
     private String comentario;
+    
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @ManyToOne
+    private DecoracionEntity decoracion;
+
+    public DecoracionEntity getDecoracion() {
+        return decoracion;
+    }
+
+    public void setDecoracion(DecoracionEntity decoracion) {
+        this.decoracion = decoracion;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+    
 
     /**
      * @return puntaje

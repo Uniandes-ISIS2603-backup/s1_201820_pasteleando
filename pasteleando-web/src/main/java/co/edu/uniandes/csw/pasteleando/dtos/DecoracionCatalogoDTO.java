@@ -21,7 +21,7 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  * <pre>
  * 
  *{
- *  "categoria":"Cumplpeaños"
+ *  "categoria":"Cumpleaños"
  * }
  * 
  * </pre>

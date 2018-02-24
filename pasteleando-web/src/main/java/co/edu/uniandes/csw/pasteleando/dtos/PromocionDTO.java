@@ -16,7 +16,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  *   }
  * </pre>
  * 
- * Por ejemplo una decoracion se representa asi:<br>
+ * Por ejemplo una promoción se representa asi:<br>
  * 
  * <pre>
  * 

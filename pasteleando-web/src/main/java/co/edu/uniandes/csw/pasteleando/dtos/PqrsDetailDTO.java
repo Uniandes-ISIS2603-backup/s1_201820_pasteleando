@@ -53,7 +53,7 @@ public class PqrsDetailDTO extends PqrsDTO
 	 *
 	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
 	 */
-	public PqrsDetailDTO( PqrsDetailDTO entity )
+	public PqrsDetailDTO( PqrsEntity entity )
 	{
 		super( entity );
 
@@ -61,7 +61,7 @@ public class PqrsDetailDTO extends PqrsDTO
                 {
                     pqrs = new ArrayList<>();
                     
-                    for( PqrsDTO entityPqrs : entity.getPqrs() ) 
+                    for( PqrsEntity entityPqrs : entity.getPqrs() ) 
                     {
                         pqrs.add(new PqrsDTO(entityPqrs));
                     }
