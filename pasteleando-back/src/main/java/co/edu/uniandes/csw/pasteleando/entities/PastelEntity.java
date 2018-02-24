@@ -5,11 +5,15 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author MIGUELHOYOS
  */
-public class PastelEntity 
+@Entity
+public class PastelEntity extends BaseEntity implements Serializable
 {
     private int peso;
   private double precio;
@@ -50,6 +54,5 @@ public class PastelEntity
   {
       this.precio = pPrecio;
   }
+
 }
-
-
