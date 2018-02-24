@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import javax.persistence.OneToOne;
 
 /**
  * Clase que extiende de {@link PastelDTO} para manejar la transformacion entre
@@ -17,7 +18,8 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  */
 public class PastelDetailDTO extends PastelDTO
 {
-  private DecoracionDTO decoracion;
+    @OneToOne
+    private DecoracionDTO decoracion;
     
   /**
      * constructor por defecto
