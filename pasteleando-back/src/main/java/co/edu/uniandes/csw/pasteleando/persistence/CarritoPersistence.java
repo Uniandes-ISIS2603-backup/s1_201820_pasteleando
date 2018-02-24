@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
  *
  * @author MIGUELHOYOS
  */
-public class CarritoPersistance 
+public class CarritoPersistence 
 {
   @PersistenceContext( unitName = "PasteleandoPU" )
   protected EntityManager em;

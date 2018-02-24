@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
  *
  * @author MIGUELHOYOS
  */
-public class PastelPersistance {
+public class PastelPersistence {
     @PersistenceContext( unitName = "PasteleandoPU" )
     private EntityManager em;
     

@@ -7,11 +7,13 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.awt.List;
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author MIGUELHOYOS
  */
+@Entity
 public class CarritoEntity extends BaseEntity implements Serializable
 {
   private int cantidad;

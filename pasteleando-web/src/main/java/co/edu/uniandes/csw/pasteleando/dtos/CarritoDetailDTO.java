@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import java.util.List;
+import javax.persistence.OneToMany;
 
 /**
  *Clase que extiende de {@link CarritoDTO} para manejar la transformacion entre
@@ -19,6 +20,7 @@ import java.util.List;
 public class CarritoDetailDTO extends CarritoDTO
 {
  
+    @OneToMany
     private List articulos;
     
     /**

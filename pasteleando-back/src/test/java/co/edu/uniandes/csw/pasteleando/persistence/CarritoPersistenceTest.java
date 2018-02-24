@@ -57,7 +57,7 @@ public class CarritoPersistenceTest {
             utx.begin();
             em.joinTransaction();
             clearData();
-            //insertData();
+            insertData();
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,7 +111,6 @@ public class CarritoPersistenceTest {
         for (CarritoEntity ent : list) {
             boolean found = false;
             for (CarritoEntity entity : data) {
-                // revisar id
                 if (ent.getId() == entity.getId()) {
                     found = true;
                 }
@@ -138,7 +137,7 @@ public class CarritoPersistenceTest {
     }
 
     @Test
-    public void updateEditorialTest() {
+    public void updateCarritoTest() {
         CarritoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         CarritoEntity newEntity = factory.manufacturePojo(CarritoEntity.class);
