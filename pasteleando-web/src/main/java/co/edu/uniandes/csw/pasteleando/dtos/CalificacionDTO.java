@@ -20,7 +20,7 @@ import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
  * <pre>
  * {
  * "id": 245333,
- * "puntaje": 5;
+ * "puntaje": 5,
  * "comentario", "La atencion fue excelente"
  * }
  * 
