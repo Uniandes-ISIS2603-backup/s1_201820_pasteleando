@@ -98,10 +98,9 @@ public class PastelPersistenceTest {
         PastelEntity result = pastelPersistence.create(newEntity);
         
         Assert.assertNotNull(result);
-        
-        // revisar id
-        PastelEntity entity = em.find(PastelEntity.class,result.getPeso());
-        Assert.assertEquals(newEntity.getPeso(), entity.getPeso());
+
+        PastelEntity entity = em.find(PastelEntity.class,result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
     @Test
@@ -112,7 +111,7 @@ public class PastelPersistenceTest {
             boolean found = false;
             for (PastelEntity entity : data) {
                 // revisar id
-                if (ent.getPeso() == entity.getPeso()) {
+                if (ent.getId() == entity.getId()) {
                     found = true;
                 }
             }
@@ -124,10 +123,10 @@ public class PastelPersistenceTest {
     public void getPastelTest() {
         PastelEntity entity = data.get(0);
         //name (metodo creado en la entidad
-        PastelEntity newEntity = pastelPersistence.find(entity.getName());
+        PastelEntity newEntity = pastelPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         // id
-        Assert.assertEquals(entity.getPeso(), newEntity.getPeso());
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
     
      @Test
@@ -136,7 +135,7 @@ public class PastelPersistenceTest {
         //id
         pastelPersistence.delete(entity.getId());
         //id
-        PastelEntity deleted = em.find(PastelEntity.class, entity.getPeso());
+        PastelEntity deleted = em.find(PastelEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
@@ -152,7 +151,7 @@ public class PastelPersistenceTest {
 
         PastelEntity resp = em.find(PastelEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
 }
