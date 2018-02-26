@@ -28,46 +28,34 @@ public class PromocionPersistence
     
     
     /**
-     * Busca si hay alguna Promocion con el id que se envía de argumento
-     *
-     * @param id: id correspondiente a la Promocion buscada.
-     * @return una Promocion.
+     * Buscar una promoción
+     * 
+     * Busca si hay alguna promoción asociada a una decoración del catálogo y con un ID específico
+     * @param decoracionCatalogoId El ID de la decoración del catálogo con respecto al cual se busca
+     * @param promocionId El ID de la promoción buscada
+     * @return La promoción encontrada o null. Nota: Si existe una o más promociones
+     * devuelve siempre la primera que encuentra
      */
-    public PromocionEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando Promocion con id={0}", id);
-        return em.find(PromocionEntity.class, id);
-    }
-    
-    /**
-     * Busca si hay alguna entidad de Promocion con el nombre que se envía de argumento
-     *
-     * @param name: Nombre de la entidad de Promocion que se está buscando
-     * @return null si no existe ninguna entidad Promocion con el nombre del argumento. Si
-     * existe alguna devuelve la primera.
-     */
-    public PromocionEntity findByName( String name )
-    {
-        LOGGER.log( Level.INFO, "Consultando entidades de Promocion por nombre ", name );
-        
-        // Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery<PromocionEntity> query = em.createQuery("Select e From PromocionEntity e where e.name = :name", PromocionEntity.class );
-        // Se remplaza el placeholder ":name" con el valor del argumento
-        query = query.setParameter( "name", name );
-        // Se invoca el query se obtiene la lista resultado
-        List<PromocionEntity> sameName = query.getResultList( );
-        if( sameName.isEmpty( ) )
-        {
-            return null;
+    public PromocionEntity find(Long decoracionCatalogoId, Long promocionId) {
+        TypedQuery<PromocionEntity> q = em.createQuery("select p from PromocionEntity p where (p.decoracionCatalogo.id = :decoracionCatalogoId) and (p.id = :promocionId)", PromocionEntity.class);
+        q.setParameter("decoracionCatalogoId", decoracionCatalogoId);
+        q.setParameter("promocionId", promocionId);
+        List<PromocionEntity> results = q.getResultList();
+        PromocionEntity promocion = null;
+        if (results == null) {
+            promocion= null;
+        } else if (results.isEmpty()) {
+            promocion = null;
+        } else if (results.size() >= 1) {
+            promocion = results.get(0);
         }
-        else
-        {
-            return sameName.get( 0 );
-        }
+
+        return promocion;
     }
     
     public List<PromocionEntity> findAll( )
     {
-        LOGGER.info( "Consultando todas las entidades de Pasteleando" );
+        LOGGER.info( "Consultando todas las entidades de promoción" );
         TypedQuery<PromocionEntity> query = em.createQuery( "select u from PasteleandoEntity u", PromocionEntity.class );
         return query.getResultList( );
     }

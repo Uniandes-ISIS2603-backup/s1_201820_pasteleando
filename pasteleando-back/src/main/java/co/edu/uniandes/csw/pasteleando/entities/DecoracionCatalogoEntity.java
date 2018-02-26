@@ -6,8 +6,11 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,10 +25,11 @@ public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
     public String categoria;
     
     /**
-     * Atributo que modela la promoción de la DecoracionCatalogoEntity
+     * Atributo que modela las promociones asociadas de la DecoracionCatalogoEntity
      */
-    @OneToMany
-    public PromocionEntity promocion;
+    @PodamExclude
+    @OneToMany(mappedBy = "DecoracionCatalogo")
+    public List<PromocionEntity> promociones = new ArrayList<>();
     
     /**
      * @return categoria
@@ -44,19 +48,19 @@ public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
     }
     
     /**
-     * Devuelve la promocion a la que pertenece la decoración catálogo.
-     * @return Una entidad de promocion.
+     * Devuelve las promociones de la decoración del catálogo.
+     * @return Lista de entidades de tipo Promocion.
      */
-    public PromocionEntity getPromocion() {
-        return promocion;
+    public List<PromocionEntity> getPromociones() {
+        return promociones;
     }
-    
+
     /**
-     * Modifica la promocion a la que pertenece la decoración catálogo.
-     * @param promocion La nueva promocion.
+     * Modifica las promociones de la decoración del catálogo.
+     * @param reviews Las nuevas promociones.
      */
-    public void setPromocion(PromocionEntity promocion) {
-        this.promocion = promocion;
+    public void setPromociones(List<PromocionEntity> promociones) {
+        this.promociones = promociones;
     }
     
 }

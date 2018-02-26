@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -19,7 +21,14 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * Atributo que modela el porcentaje de la promocionEntity
      */
-    public Integer cantidad;
+    private Integer cantidad;
+    
+    /**
+     * Atributo que modela la decoración del catálogo asociada.
+     */
+    @PodamExclude
+    @ManyToOne
+    private DecoracionCatalogoEntity decoracionCatalogo;
     
     /**
      * Atributo que modela la decoración de la PromocionEntity
@@ -41,6 +50,22 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     public void setCantidad( int cantidad )
     {
         this.cantidad = cantidad;
+    }
+    
+    /**
+     * Devuelve la decoración del catálogo asociada a esta promoción.
+     * @return Entidad de tipo decoracionCatalogo
+     */
+    public DecoracionCatalogoEntity getDecoracionCatalogo() {
+        return decoracionCatalogo;
+    }
+    
+    /**
+     * Modifica la decoración del catálogo asociada a esta promoción.
+     * @param decoracionCatalogo El nuevo decoracionCatalogo
+     */
+    public void setDecoracionCatalogo(DecoracionCatalogoEntity decoracionCatalogo) {
+        this.decoracionCatalogo = decoracionCatalogo;
     }
     
 }

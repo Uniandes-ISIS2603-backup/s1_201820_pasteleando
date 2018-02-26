@@ -5,6 +5,9 @@
 */
 package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
+import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase que extiende de {@link DecoracionCatalogoDTO} para manejar las relaciones entre
@@ -15,9 +18,15 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  * <pre>
  *   {
  *      "categoria": string,
- *      "promocion": {
- *      "cantidad": int,
+ *      "promociones": 
+ *      [
+ *      {
+ *      "cantidad": int
+ *      },
+ *      {
+ *      "cantidad": int
  *      }
+ *      ]
  *   }
  * </pre>
  * Por ejemplo una decoración catálogo se representa asi:<br>
@@ -25,9 +34,15 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  * <pre>
  *   {
  *      "categoria": "Bodas",
- *      "promocion": {
- *      "cantidad": 20,
+ *      "promociones": 
+ *      [
+ *      {
+ *      "cantidad": 30
+ *      },
+ *      {
+ *      "cantidad": 10
  *      }
+ *      ]
  *   }
  * </pre>
  * @author jf.garcia
@@ -35,12 +50,12 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
 {
     /**
-     * Relación a una promoción
+     * Relación a una o varias promociones.
      */
-    private PromocionDTO promocion;
+    private List<PromocionDTO> promociones;
     
     /**
-     * Constructor por defecto
+     * Constructor por defecto.
      */
     public DecoracionCatalogoDetailDTO( )
     {
@@ -54,10 +69,11 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
     public DecoracionCatalogoDetailDTO( DecoracionCatalogoEntity entity )
     {
         super( entity );
-        if (entity.getPromocion() != null) {
-            this.promocion = new PromocionDTO(entity.getPromocion());
-        } else {
-            entity.setPromocion(null);
+        if (entity.getPromociones() != null) {
+            promociones = new ArrayList<>();
+            entity.getPromociones().forEach((entityPromocion) -> {
+                promociones.add(new PromocionDTO(entityPromocion));
+            });
         }
     }
     
@@ -70,26 +86,30 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
     public DecoracionCatalogoEntity toEntity( )
     {
         DecoracionCatalogoEntity decoracionCatalogoEntity = super.toEntity( );
-        if (this.getPromocion() != null) {
-            decoracionCatalogoEntity.setPromocion(this.getPromocion().toEntity());
+        if (getPromociones() != null) {
+            List<PromocionEntity> promocionEntity = new ArrayList<>();
+            getPromociones().forEach((dtoPromocion) -> {
+                promocionEntity.add(dtoPromocion.toEntity());
+            });
+            decoracionCatalogoEntity.setPromociones(promocionEntity);
         }
         return decoracionCatalogoEntity;
     }
     
     /**
-     * Modifica la promocion asociada a esta decoración catálogo.
-     * @param promocion the promocion to set
+     * Devuelve las promociones asociadas a esta decoración del catálogo.
+     * @return Lista de DTOs de Promocion
      */
-    public void setPromocion(PromocionDTO promocion) {
-        this.promocion = promocion;
+    public List<PromocionDTO> getPromociones() {
+        return promociones;
     }
     
     /**
-     * Devuelve la promocion asociada a esta decoracion catálogo.
-     * @return DTO de promocion
+     * Modifica las promociones asociadas a esta decoración del catálogo.
+     * @param promociones Las nuevas promociones.
      */
-    public PromocionDTO getPromocion() {
-        return promocion;
+    public void setReviews(List<PromocionDTO> promociones) {
+        this.promociones = promociones;
     }
     
 }

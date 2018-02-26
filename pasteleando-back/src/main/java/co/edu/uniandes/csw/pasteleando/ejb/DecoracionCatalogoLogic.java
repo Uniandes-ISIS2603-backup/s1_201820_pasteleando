@@ -92,25 +92,36 @@ public class DecoracionCatalogoLogic {
     }
 
     private boolean validateCategoria(String categoria) {
-        if (categoria == null || categoria.isEmpty()) {
-            return false;
-        }
-        return true;
+        return !categoria.isEmpty();
+    }
+    
+    /**
+     * Obtiene una colección de instancias de PromocionEntity asociadas a una
+     * instancia de DecoracionCatalogo
+     *
+     * @param decoracionCatalogoId Identificador de la instancia de DecoracionCatalogo
+     * @return Colección de instancias de PromocionEntity asociadas a la instancia
+     * de DecoracionCatalogo
+     * 
+     */
+    public List<PromocionEntity> listPromociones(Long decoracionCatalogoId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las promociones asociadas a la decoración del catálogo con id = {0}", decoracionCatalogoId);
+        return getDecoracionCatalogo(decoracionCatalogoId).getPromociones();
     }
 
     /**
      * Obtiene una instancia de PromocionEntity asociada a una instancia de DecoracionCatalogo
      *
      * @param DecoracionCatalogoId Identificador de la instancia de DecoracionCatalogo
-     * @param PromocionsId Identificador de la instancia de Promocion
+     * @param PromocionId Identificador de la instancia de Promocion
      * @return La entidad de la promoción asociada al libro
      */
-    public PromocionEntity getPromocion(Long DecoracionCatalogoId, Long PromocionsId) {
+    public PromocionEntity getPromocion(Long DecoracionCatalogoId, Long PromocionId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una promoción de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
-        List<PromocionEntity> list = getDecoracionCatalogo(DecoracionCatalogoId).getPromocions();
-        PromocionEntity PromocionsEntity = new PromocionEntity();
-        PromocionsEntity.setId(PromocionsId);
-        int index = list.indexOf(PromocionsEntity);
+        List<PromocionEntity> list = getDecoracionCatalogo(DecoracionCatalogoId).getPromociones();
+        PromocionEntity PromocionEntity = new PromocionEntity();
+        PromocionEntity.setId(PromocionId);
+        int index = list.indexOf(PromocionEntity);
         if (index >= 0) {
             return list.get(index);
         }
@@ -121,17 +132,17 @@ public class DecoracionCatalogoLogic {
      * Asocia un Promocion existente a un DecoracionCatalogo
      *
      * @param DecoracionCatalogoId Identificador de la instancia de DecoracionCatalogo
-     * @param PromocionsId Identificador de la instancia de Promocion
+     * @param PromocionId Identificador de la instancia de Promocion
      * @return Instancia de PromocionEntity que fue asociada a DecoracionCatalogo
      * 
      */
-    public PromocionEntity addPromocion(Long DecoracionCatalogoId, Long PromocionsId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al libro con id = {0}", DecoracionCatalogoId);
+    public PromocionEntity addPromocion(Long DecoracionCatalogoId, Long PromocionId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar una promoción a la decoración del catálogo con id = {0}", DecoracionCatalogoId);
         DecoracionCatalogoEntity DecoracionCatalogoEntity = getDecoracionCatalogo(DecoracionCatalogoId);
-        PromocionEntity PromocionsEntity = new PromocionEntity();
-        PromocionsEntity.setId(PromocionsId);
-        DecoracionCatalogoEntity.getPromocions().add(PromocionsEntity);
-        return getPromocion(DecoracionCatalogoId, PromocionsId);
+        PromocionEntity PromocionEntity = new PromocionEntity();
+        PromocionEntity.setId(PromocionId);
+        DecoracionCatalogoEntity.getPromociones().add(PromocionEntity);
+        return getPromocion(DecoracionCatalogoId, PromocionId);
     }
 
     /**
@@ -144,24 +155,24 @@ public class DecoracionCatalogoLogic {
      * 
      */
     public List<PromocionEntity> replacePromocions(Long DecoracionCatalogoId, List<PromocionEntity> list) {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del libro con id = {0}", DecoracionCatalogoId);
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una promocion de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
         DecoracionCatalogoEntity DecoracionCatalogoEntity = getDecoracionCatalogo(DecoracionCatalogoId);
-        DecoracionCatalogoEntity.setPromocions(list);
-        return DecoracionCatalogoEntity.getPromocions();
+        DecoracionCatalogoEntity.setPromociones(list);
+        return DecoracionCatalogoEntity.getPromociones();
     }
 
     /**
      * Desasocia un Promocion existente de un DecoracionCatalogo existente
      *
      * @param DecoracionCatalogoId Identificador de la instancia de DecoracionCatalogo
-     * @param PromocionsId Identificador de la instancia de Promocion
+     * @param PromocionId Identificador de la instancia de Promocion
      * 
      */
-    public void removePromocion(Long DecoracionCatalogoId, Long PromocionsId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del libro con id = {0}", DecoracionCatalogoId);
+    public void removePromocion(Long DecoracionCatalogoId, Long PromocionId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una promoción de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
         DecoracionCatalogoEntity entity = getDecoracionCatalogo(DecoracionCatalogoId);
-        PromocionEntity PromocionsEntity = new PromocionEntity();
-        PromocionsEntity.setId(PromocionsId);
-        entity.getPromocions().remove(PromocionsEntity);
+        PromocionEntity PromocionEntity = new PromocionEntity();
+        PromocionEntity.setId(PromocionId);
+        entity.getPromociones().remove(PromocionEntity);
     }
 }
