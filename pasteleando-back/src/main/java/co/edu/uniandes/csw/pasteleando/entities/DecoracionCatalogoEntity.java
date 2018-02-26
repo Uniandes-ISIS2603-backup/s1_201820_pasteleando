@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,7 +24,7 @@ public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
     /**
      * Atributo que modela la promoción de la DecoracionCatalogoEntity
      */
-    @OneToOne
+    @OneToMany
     public PromocionEntity promocion;
     
     /**

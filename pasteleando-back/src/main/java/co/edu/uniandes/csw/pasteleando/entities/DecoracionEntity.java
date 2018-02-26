@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -19,11 +21,14 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class DecoracionEntity extends BaseEntity implements Serializable
 {
+    /**
+     * Atributo que modela los pasteles de la DecoracionEntity
+     */    
     @PodamExclude
-    @OneToMany
-    private PastelEntity pastel;
+    @OneToMany(mappedBy = "decoracion")
+    private List<PastelEntity> pasteles = new ArrayList<>();
      /**
-     * Atributo que modela la fecha de la DecoracionEntiry
+     * Atributo que modela la fecha de la DecoracionEntity
      */    
     @Temporal(javax.persistence.TemporalType.DATE)
         private Date fechaAgregado;

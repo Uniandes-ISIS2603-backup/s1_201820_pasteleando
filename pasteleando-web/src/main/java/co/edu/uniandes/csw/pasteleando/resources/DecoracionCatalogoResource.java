@@ -79,7 +79,7 @@ public class DecoracionCatalogoResource
 	 * @return JSONArray {@link DecoracionCatalogoDTO} - Las entidades de Decoración Catálogo encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<DecoracionCatalogoDTO> getDecoracionCatalogo( )
+	public List<DecoracionCatalogoDTO> getDecoracionesCatalogo( )
 	{
 		return new ArrayList<>( );
 	}

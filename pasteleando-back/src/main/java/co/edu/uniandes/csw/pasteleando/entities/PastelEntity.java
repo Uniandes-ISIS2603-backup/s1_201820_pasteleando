@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,9 +17,12 @@ import javax.persistence.Entity;
 @Entity
 public class PastelEntity extends BaseEntity implements Serializable
 {
-    private int peso;
+  private int peso;
   private double precio;
   
+  @PodamExclude
+  @ManyToOne
+  private DecoracionEntity decoracion;
   /**
    * retorna el peso del pastel
    * @return peso
@@ -54,5 +59,21 @@ public class PastelEntity extends BaseEntity implements Serializable
   {
       this.precio = pPrecio;
   }
+  
+      /**
+     * Devuelve la decoración asociada a este pastel
+     * @return Entidad de tipo Decoracion
+     */
+    public DecoracionEntity getDecoracion() {
+        return decoracion;
+    }
+
+    /**
+     * Modifica la decoración asociada a este pastel
+     * @param decoracion La nueva decoracion
+     */
+    public void setDecoracion(DecoracionEntity decoracion) {
+        this.decoracion = decoracion;
+    }
 
 }
