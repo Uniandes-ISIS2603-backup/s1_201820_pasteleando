@@ -20,22 +20,25 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PedidoEntity extends BaseEntity implements Serializable
 {
-    @PodamExclude
     private boolean seRecogePasteleria; 
     
     private String estado; 
     
+    @PodamExclude
     @ManyToOne
     private List<PqrsEntity> pqrs = new ArrayList<>( );
     
+    @PodamExclude
     @OneToOne
-    private CarritoEntity carrito = new CarritoEntity( ); 
+    private CarritoEntity carrito; 
     
+    @PodamExclude
     @ManyToOne
     private List<CalificacionEntity> calificaciones = new ArrayList<>( ); 
     
+    @PodamExclude
     @OneToOne
-    private FacturaEntity factura = new FacturaEntity( ); 
+    private FacturaEntity factura; 
         
          /**
 	 * @return El valor del atributo seRecogePateleria

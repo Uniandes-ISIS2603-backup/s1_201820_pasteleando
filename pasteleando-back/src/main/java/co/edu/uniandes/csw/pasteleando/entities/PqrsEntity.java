@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -19,7 +21,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PqrsEntity extends BaseEntity implements Serializable
 {
-    @PodamExclude
     private int tipo; 
     
     private int idSolicitud; 
@@ -30,15 +31,18 @@ public class PqrsEntity extends BaseEntity implements Serializable
     
     private String estado; 
        
-    @OneToOne
-    private PedidoEntity pedido = new PedidoEntity(); 
+    @PodamExclude
+    @ManyToOne
+    private PedidoEntity pedido; 
     
-    @OneToOne
-    private ClienteEntity cliente = new ClienteEntity(); 
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente; 
     
-     /**
+        /**
 	 * @return El tipo de la solicitud
 	 */
+    
 	public int getTipo( )
 	{
 		return tipo;
@@ -47,14 +51,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pTipo El nuevo tipo de solicitud
 	 */
+        
 	public void setTipo( int pTipo )
 	{
 		this.tipo = pTipo;
 	}
         
-         /**
+        /**
 	 * @return El id de la solicitud
 	 */
+        
 	public int getIdSolicitud( )
 	{
 		return idSolicitud;
@@ -63,14 +69,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pIdSolicitud El nuevo id de la solicitud
 	 */
+        
 	public void setIdSolicitud( int pIdSolicitud )
 	{
 		this.idSolicitud = pIdSolicitud;
 	}
         
-         /**
+        /**
 	 * @return El id del cliente
 	 */
+        
 	public int getIdCliente( )
 	{
 		return idCliente;
@@ -79,14 +87,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pIdCliente El nuevo id del cliente
 	 */
+        
 	public void setIdCliente( int pIdCliente )
 	{
 		this.idCliente = pIdCliente;
 	}
         
-         /**
+        /**
 	 * @return La fecha de la solicitud
 	 */
+        
 	public String getFecha() 
 	{
 		return fecha;
@@ -95,6 +105,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pFecha La nueva fecha se la solicitud
 	 */
+        
 	public void setFecha( String pFecha )
 	{
 		this.fecha = pFecha ;
@@ -103,6 +114,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @return El estado de la solicitud
 	 */
+        
 	public String getEstado() 
 	{
 		return estado;
@@ -111,6 +123,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pEstado El nuevo estado de la solicitud
 	 */
+        
 	public void setEstado( String pEstado )
 	{
 		this.estado = pEstado ;
@@ -136,7 +149,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
             this.pedido = pPedido;
          }
          
-         /**
+        /**
          * Obtiene el cliente
          * @return elemento de tipo cliente.
          */
