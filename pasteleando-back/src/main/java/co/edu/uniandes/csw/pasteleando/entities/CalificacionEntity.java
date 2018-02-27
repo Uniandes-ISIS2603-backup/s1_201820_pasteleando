@@ -20,8 +20,13 @@ public class CalificacionEntity extends BaseEntity implements Serializable
     @ManyToOne
     private ClienteEntity cliente;
     
+    @PodamExclude
     @ManyToOne
     private DecoracionEntity decoracion;
+    
+    @PodamExclude
+    @ManyToOne
+    private PedidoEntity pedido;
 
     public DecoracionEntity getDecoracion() {
         return decoracion;
