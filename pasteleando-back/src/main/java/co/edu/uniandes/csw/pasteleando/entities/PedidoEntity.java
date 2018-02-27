@@ -26,13 +26,13 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private String estado; 
     
     @ManyToOne
-    private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>( );
+    private List<PqrsEntity> pqrs = new ArrayList<>( );
     
     @OneToOne
     private CarritoEntity carrito = new CarritoEntity( ); 
     
     @ManyToOne
-    private List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>( ); 
+    private List<CalificacionEntity> calificaciones = new ArrayList<>( ); 
     
     @OneToOne
     private FacturaEntity factura = new FacturaEntity( ); 

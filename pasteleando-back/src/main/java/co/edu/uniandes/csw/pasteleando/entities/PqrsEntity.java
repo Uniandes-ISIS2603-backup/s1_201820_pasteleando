@@ -116,5 +116,45 @@ public class PqrsEntity extends BaseEntity implements Serializable
 		this.estado = pEstado ;
 	}
         
+        /**
+         * Obtiene el pedido
+         * @return elemento de tipo pedido.
+         */
+        
+         public PedidoEntity getPedido() 
+         {
+             return pedido;
+         }
+
+        /**
+         * Establece un valor al pedido
+         * @param pPedido nuevo valor del elemento
+         */
+         
+         public void setPedido( PedidoEntity pPedido) 
+         {
+            this.pedido = pPedido;
+         }
+         
+         /**
+         * Obtiene el cliente
+         * @return elemento de tipo cliente.
+         */
+        
+         public ClienteEntity getCliente() 
+         {
+             return cliente;
+         }
+
+        /**
+         * Establece un valor al cliente
+         * @param pCliente nuevo valor del elemento
+         */
+         
+         public void setCliente( ClienteEntity pCliente) 
+         {
+            this.cliente = pCliente;
+         }
+        
     
 }
