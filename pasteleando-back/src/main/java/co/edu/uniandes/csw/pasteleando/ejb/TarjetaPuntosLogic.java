@@ -7,11 +7,12 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
+
 
 /**
  *
@@ -32,7 +33,6 @@ public class TarjetaPuntosLogic {
      * @return Colección de objetos de TarjetaPuntosEntity.
      */
     public List<TarjetaPuntosEntity> getTarjetaPuntoss() {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los autores");
         return persistence.findAll();
     }
     
@@ -43,7 +43,6 @@ public class TarjetaPuntosLogic {
      * @return Instancia de TarjetaPuntosEntity con los datos del TarjetaPuntos consultado.
      */
     public TarjetaPuntosEntity getTarjetaPuntos(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor con id = {0}", id);
         return persistence.find(id);
     }
     
@@ -54,7 +53,6 @@ public class TarjetaPuntosLogic {
      * @return Objeto de TarjetaPuntosEntity con los datos nuevos y su ID.
      */
     public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity entity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de crear un autor ");
         
         return persistence.create(entity);
     }
@@ -66,7 +64,6 @@ public class TarjetaPuntosLogic {
      * @return Instancia de TarjetaPuntosEntity con los datos actualizados.
      */
     public TarjetaPuntosEntity updateTarjetaPuntos(TarjetaPuntosEntity entity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un autor ");
         return persistence.update(entity);
     }
     
@@ -76,7 +73,6 @@ public class TarjetaPuntosLogic {
      * @param id Identificador de la instancia a eliminar.
      */
     public void deleteTarjetaPuntos(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor ");
         persistence.delete(id);
     }
 }
