@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -18,7 +19,7 @@ import javax.persistence.OneToOne;
  */
 public class PastelDetailDTO extends PastelDTO
 {
-    @OneToOne
+    @OneToMany
     private DecoracionDTO decoracion;
     
   /**
