@@ -23,8 +23,8 @@ public class FacturaLogic {
     @Inject
     private FacturaPersistence persistence;
     
-    @Inject
-    private ClienteLogic clienteLogic;
+    //@Inject
+   // private ClienteLogic clienteLogic;
     
     @Inject
     private TarjetaPuntosLogic tarjetaPuntos;

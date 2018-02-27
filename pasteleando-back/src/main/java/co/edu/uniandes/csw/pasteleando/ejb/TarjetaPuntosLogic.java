@@ -20,8 +20,8 @@ import javax.inject.Inject;
 @Stateless
 public class TarjetaPuntosLogic {
     
-    @Inject
-    private ClienteLogic cliente;
+  //  @Inject
+//    private ClienteLogic cliente;
     
     @Inject
     private TarjetaPuntosPersistence persistence;
