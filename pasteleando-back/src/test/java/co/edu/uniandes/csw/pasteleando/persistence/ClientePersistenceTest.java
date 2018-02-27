@@ -46,6 +46,7 @@ public class ClientePersistenceTest {
                 addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+    @Test
     public void createClienteEntityTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
@@ -57,8 +58,7 @@ public class ClientePersistenceTest {
         Assert.assertEquals(entity.getName(), entidad.getName());
     }
     
-    public ClientePersistenceTest() {
-    }
+   
     
  
     

@@ -46,6 +46,7 @@ public class CalificacionPersistenceTest {
                 addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+    @Test
     public void createCalificacionEntityTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
@@ -57,8 +58,7 @@ public class CalificacionPersistenceTest {
         Assert.assertEquals(entidad.getName(), entity.getName());
     
     }
-    public CalificacionPersistenceTest() {
-    }
+    
     
     
     
