@@ -36,6 +36,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     @ManyToOne
     private List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>( ); 
     
+    @OneToOne
     private FacturaEntity factura = new FacturaEntity( ); 
         
          /**
