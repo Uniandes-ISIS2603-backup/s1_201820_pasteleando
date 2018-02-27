@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -19,7 +20,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PqrsEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
-    
     private int tipo; 
     
     private int idSolicitud; 
@@ -29,8 +29,12 @@ public class PqrsEntity extends BaseEntity implements Serializable
     private String fecha; 
     
     private String estado; 
+       
+    @OneToOne
+    private PedidoEntity pedido = new PedidoEntity(); 
     
-    private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>();
+    @OneToOne
+    private ClienteEntity cliente = new ClienteEntity(); 
     
      /**
 	 * @return El tipo de la solicitud
@@ -112,24 +116,5 @@ public class PqrsEntity extends BaseEntity implements Serializable
 		this.estado = pEstado ;
 	}
         
-        /**
-         * Obtiene la lista de pqrs.
-         *
-         * @return lista de pqrs.
-         */
-         public List<PqrsEntity> getPqrs() 
-         {
-             return pqrs;
-         }
-
-        /**
-         * Establece el valor de la lista de pqrs.
-         *
-         * @param pPqrs nuevo valor de la lista.
-         */
-         public void setPqrs(List<PqrsEntity> pPqrs) 
-         {
-            this.pqrs = pPqrs;
-         }
     
 }

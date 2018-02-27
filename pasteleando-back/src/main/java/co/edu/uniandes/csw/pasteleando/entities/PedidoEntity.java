@@ -25,8 +25,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
     
     private String estado; 
     
-    private List<PedidoEntity> pedido = new ArrayList<PedidoEntity>( );
-    
     @ManyToOne
     private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>( );
     
@@ -76,6 +74,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
          *
          * @return lista de pqrs.
          */
+        
          public List<PqrsEntity> getPqrs() 
          {
              return pqrs;
@@ -86,21 +85,72 @@ public class PedidoEntity extends BaseEntity implements Serializable
          *
          * @param pPqrs nuevo valor de la lista.
          */
+         
          public void setPqrs(List<PqrsEntity> pPqrs) 
          {
             this.pqrs = pPqrs;
          }
          
-         
-         public List<PedidoEntity> getPedidos( )
+        /**
+         * Obtiene el carrito
+         * @return elemento de tipo carrito.
+         */
+        
+         public CarritoEntity getCarrito() 
          {
-             return pedido; 
+             return carrito;
+         }
+
+        /**
+         * Establece un valor al carrito
+         * @param pCarrito nuevo valor del elemento
+         */
+         
+         public void setCarrito( CarritoEntity pCarrito) 
+         {
+            this.carrito = pCarrito;
          }
          
-         public void setPedidos( List<PedidoEntity> pPedido)
+         /**
+         * Obtiene la lista de calificaciones
+         * @return lista de calificaciones.
+         */
+        
+         public List<CalificacionEntity> getCalificaciones() 
          {
-             this.pedido = pPedido; 
+             return calificaciones;
          }
-    
+
+        /**
+         * Establece el valor de la lista de calificaciones.
+         * @param pCalificacion nuevo valor de la lista.
+         */
+         
+         public void setCalificacion(List<CalificacionEntity> pCalificacion) 
+         {
+            this.calificaciones = pCalificacion;
+         }
+         
+         /**
+         * Obtiene la factura
+         * @return elemento de tipo factura.
+         */
+        
+         public FacturaEntity getFactura() 
+         {
+             return factura;
+         }
+
+        /**
+         * Establece un valor al a factura
+         * @param pFactura nuevo valor del elemento
+         */
+         
+         public void setFactura( FacturaEntity pFactura) 
+         {
+            this.factura = pFactura;
+         }
+         
+         
     
 }
