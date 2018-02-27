@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,6 +21,30 @@ import javax.persistence.Entity;
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
     private Integer numeroPuntos;
+    
+    @OneToOne
+    @PodamExclude
+    private ClienteEntity cliente;
+    
+    @OneToMany (mappedBy = "tarjetaPuntos")
+    @PodamExclude
+    private List<FacturaEntity> facturas = new ArrayList<FacturaEntity>();
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
+    }
+
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
     
     /**
     *@return Numero de puntos de la tarjeta

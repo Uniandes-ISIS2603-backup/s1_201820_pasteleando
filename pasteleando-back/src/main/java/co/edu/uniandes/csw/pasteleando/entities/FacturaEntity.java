@@ -8,12 +8,39 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author m.leona
  */
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
+    
+    @OneToOne
+    @PodamExclude
+    private ClienteEntity cliente;
+    
+    @ManyToOne
+    @PodamExclude
+    private TarjetaPuntosEntity tarjetaPuntos;
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
+        this.tarjetaPuntos = tarjetaPuntos;
+    }
+
+    public TarjetaPuntosEntity getTarjetaPuntos() {
+        return tarjetaPuntos;
+    }
     
     private String direccion;
     
