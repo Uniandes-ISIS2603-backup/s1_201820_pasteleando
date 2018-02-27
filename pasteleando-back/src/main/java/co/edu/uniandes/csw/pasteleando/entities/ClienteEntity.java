@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.OneToMany;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,16 +23,20 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @ElementCollection
     private List<String> tiposPagos;
     
+    @PodamExclude
     @OneToMany
     private List<PqrsEntity> pqrs;
     
-    @OneToMany
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
     private List<CalificacionEntity> calificaciones;
     
+    @PodamExclude
     @OneToOne
     private CarritoEntity carrito;
     
-    @OneToOne
+    @PodamExclude
+    @OneToOne(mappedBy = "cliente")
     private TarjetaPuntosEntity tarjeta;
 
     public List<PqrsEntity> getPqrs() {
