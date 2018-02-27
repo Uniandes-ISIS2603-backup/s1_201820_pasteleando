@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -25,11 +26,11 @@ public class ClienteEntity extends BaseEntity implements Serializable
     
     @PodamExclude
     @OneToMany
-    private List<PqrsEntity> pqrs;
+    private List<PqrsEntity> pqrs = new ArrayList<>( );;
     
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
-    private List<CalificacionEntity> calificaciones;
+    private List<CalificacionEntity> calificaciones = new ArrayList<>( );;
     
     @PodamExclude
     @OneToOne
