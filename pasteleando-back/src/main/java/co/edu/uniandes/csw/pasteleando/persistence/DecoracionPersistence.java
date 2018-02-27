@@ -87,4 +87,23 @@ public class DecoracionPersistence
 	{
 		em.remove( entity );
 	}
+        /**
+     *
+     * Borra una editorial de la base de datos recibiendo como argumento el id
+     * de la editorial
+     *
+     * @param id: id correspondiente a la editorial a borrar.
+     */
+    public void deleteById(Long id) {
+
+        LOGGER.log(Level.INFO, "Borrando editorial con id={0}", id);
+        // Se hace uso de mismo método que esta explicado en public DecoracionEntity find(Long id) para obtener la editorial a borrar.
+        DecoracionEntity entity = em.find(DecoracionEntity.class, id);
+        /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
+        EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
+        Es similar a "delete from DecoracionEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
+        em.remove(entity);
+
+    }
+
 }

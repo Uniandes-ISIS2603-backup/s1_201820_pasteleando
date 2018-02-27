@@ -25,8 +25,9 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      * Atributo que modela los pasteles de la DecoracionEntity
      */    
     @PodamExclude
-    @OneToMany(mappedBy = "decoracion")
+    @OneToMany(mappedBy = "Decoracion")
     private List<PastelEntity> pasteles = new ArrayList<>();
+
      /**
      * Atributo que modela la fecha de la DecoracionEntity
      */    
@@ -67,5 +68,14 @@ public class DecoracionEntity extends BaseEntity implements Serializable
 	{
 		this.fechaAgregado = fechaAgregado;
 	}
+        
+    public List<PastelEntity> getPasteles() {
+        return pasteles;
+    }
+
+    public void setPasteles(List<PastelEntity> pasteles) {
+        this.pasteles = pasteles;
+    }
+       
 }
 

@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -28,6 +30,14 @@ public class DecoracionPersonalizadaEntity extends BaseEntity implements Seriali
      */
         private String estado;
         
+        /**
+     * Atributo que modela los asociada.
+     */
+    @PodamExclude
+    @ManyToOne
+    private PastelEntity pasteles;
+
+     
         /**
 	 * @return foto
 	 */
@@ -75,4 +85,12 @@ public class DecoracionPersonalizadaEntity extends BaseEntity implements Seriali
 		this.estado = estado;
 	}
     
+        public PastelEntity getPasteles() {
+        return pasteles;
+    }
+
+    public void setPasteles(PastelEntity pasteles) {
+        this.pasteles = pasteles;
+    }
+       
 }
