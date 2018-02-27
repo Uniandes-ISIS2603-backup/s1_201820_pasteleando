@@ -20,18 +20,18 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     
     @OneToOne
     @PodamExclude
-    private ClienteEntity cliente;
+    private PedidoEntity pedido;
     
     @ManyToOne
     @PodamExclude
     private TarjetaPuntosEntity tarjetaPuntos;
 
-    public ClienteEntity getCliente() {
-        return cliente;
+    public PedidoEntity getPedido() {
+        return pedido;
     }
 
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
 
     public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
