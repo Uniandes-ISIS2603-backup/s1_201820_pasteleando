@@ -9,13 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author ni.ramirez10
  */
+@Entity
 public class PqrsEntity extends BaseEntity implements Serializable
 {
+    @PodamExclude
+    
     private int tipo; 
     
     private int idSolicitud; 

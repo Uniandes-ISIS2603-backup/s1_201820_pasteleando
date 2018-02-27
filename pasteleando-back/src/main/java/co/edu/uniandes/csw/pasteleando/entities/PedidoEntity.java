@@ -9,18 +9,34 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author ni.ramirez10
  */
+@Entity
 public class PedidoEntity extends BaseEntity implements Serializable
 {
+    @PodamExclude
     private boolean seRecogePasteleria; 
     
     private String estado; 
     
-    private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
+    private List<PedidoEntity> pedido = new ArrayList<PedidoEntity>( );
+    
+    @ManyToOne
+    private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>( );
+    
+    @OneToOne
+    private CarritoEntity carrito = new CarritoEntity( ); 
+    
+    @ManyToOne
+    private List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>( ); 
+    
+    private FacturaEntity factura = new FacturaEntity( ); 
         
          /**
 	 * @return El valor del atributo seRecogePateleria
@@ -55,23 +71,34 @@ public class PedidoEntity extends BaseEntity implements Serializable
 	}
         
         /**
-         * Obtiene la lista de pedidos.
+         * Obtiene la lista de pqrs.
          *
-         * @return lista de pedidos.
+         * @return lista de pqrs.
          */
-         public List<PedidoEntity> getPedidos() 
+         public List<PqrsEntity> getPqrs() 
          {
-             return pedidos;
+             return pqrs;
          }
 
         /**
-         * Establece el valor de la lista de pedidos.
+         * Establece el valor de la lista de pqrs.
          *
-         * @param pPedidos nuevo valor de la lista.
+         * @param pPqrs nuevo valor de la lista.
          */
-         public void setPedidos(List<PedidoEntity> pPedidos) 
+         public void setPqrs(List<PqrsEntity> pPqrs) 
          {
-            this.pedidos = pPedidos;
+            this.pqrs = pPqrs;
+         }
+         
+         
+         public List<PedidoEntity> getPedidos( )
+         {
+             return pedido; 
+         }
+         
+         public void setPedidos( List<PedidoEntity> pPedido)
+         {
+             this.pedido = pPedido; 
          }
     
     
