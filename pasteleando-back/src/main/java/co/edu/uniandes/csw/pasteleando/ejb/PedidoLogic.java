@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PedidoPersistence;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -121,6 +122,44 @@ public class PedidoLogic
     {
         return getPedido(pedidoId).getPqrs(); 
     }
+    
+    /**
+     * Obtiene una pqrs asociada a una pedido
+     * @param pedidoId Identificador del pedido
+     * @param pqrsId Identificador de la pqrs
+     * @return La entidad de pqrs asociada al pedido
+     */
+    
+    public PqrsEntity getPqrs(Long pedidoId, Long pqrsId) 
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar una pqrs del pedido con id = {0}", pedidoId);
+        List<PqrsEntity> pqrs = getPedido(pedidoId).getPqrs(); 
+        PqrsEntity pqrsEntity = new PqrsEntity();
+        pqrsEntity.setId(pqrsId);
+        
+        int index = pqrs.indexOf(pqrsEntity);
+        
+        if (index >= 0) 
+        {
+            return pqrs.get(index);
+        }
+        return null;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /**
      * Obtiene una lista de calificaciones asociadas a un pedido
