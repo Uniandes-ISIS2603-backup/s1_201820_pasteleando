@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,6 +16,7 @@ public class CalificacionEntity extends BaseEntity implements Serializable
 
     private String comentario;
     
+    @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
     
