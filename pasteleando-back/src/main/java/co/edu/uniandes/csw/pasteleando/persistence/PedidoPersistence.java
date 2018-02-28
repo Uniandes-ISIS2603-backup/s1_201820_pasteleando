@@ -22,9 +22,7 @@ import javax.persistence.TypedQuery;
 public class PedidoPersistence 
 {
      private static final Logger LOGGER = Logger.getLogger(PedidoPersistence.class.getName());
-     
-     private PedidoPersistence pedidoPersistence; 
-            
+                
      @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
      

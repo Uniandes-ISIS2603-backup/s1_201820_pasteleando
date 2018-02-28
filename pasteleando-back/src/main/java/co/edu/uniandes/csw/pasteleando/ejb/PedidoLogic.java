@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PedidoPersistence;
-import static java.util.Collections.list;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

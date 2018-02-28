@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -25,7 +26,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private String estado; 
     
     @PodamExclude
-    @ManyToOne
+    @OneToMany(mappedBy = "pedido")
     private List<PqrsEntity> pqrs = new ArrayList<>( );
     
     @PodamExclude
@@ -33,7 +34,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private CarritoEntity carrito; 
     
     @PodamExclude
-    @ManyToOne
+    @OneToMany(mappedBy = "pedido")
     private List<CalificacionEntity> calificaciones = new ArrayList<>( ); 
     
     @PodamExclude
