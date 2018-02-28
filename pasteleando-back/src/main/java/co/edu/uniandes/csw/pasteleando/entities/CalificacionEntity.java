@@ -23,6 +23,14 @@ public class CalificacionEntity extends BaseEntity implements Serializable
     @PodamExclude
     @ManyToOne
     private DecoracionEntity decoracion;
+
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
+    }
     
     @PodamExclude
     @ManyToOne
