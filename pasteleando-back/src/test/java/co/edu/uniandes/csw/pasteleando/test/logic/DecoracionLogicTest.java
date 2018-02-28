@@ -126,12 +126,12 @@ public class DecoracionLogicTest {
     }
 
     /**
-     * Prueba para consultar la lista de Decoracions
+     * Prueba para consultar la lista de Decoraciones
      *
      * 
      */
     @Test
-    public void getDecoracionsTest() {
+    public void getDecoracionesTest() {
         List<DecoracionEntity> list = decoracionLogic.getDecoraciones();
         Assert.assertEquals(data.size(), list.size());
         for (DecoracionEntity entity : list) {
@@ -223,7 +223,7 @@ public class DecoracionLogicTest {
      */
     @Test
     public void listPastelsTest() {
-        List<PastelEntity> list = decoracionLogic.listPastels(data.get(0).getId());
+        List<PastelEntity> list = decoracionLogic.listPasteles(data.get(0).getId());
         Assert.assertEquals(1, list.size());
     }
 
