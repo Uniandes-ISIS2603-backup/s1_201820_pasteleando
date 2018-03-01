@@ -28,7 +28,7 @@ public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
     @OneToMany (mappedBy = "tarjetaPuntos")
     @PodamExclude
-    private List<FacturaEntity> facturas = new ArrayList<FacturaEntity>();
+    private List<FacturaEntity> facturas = new ArrayList<>();
 
     public ClienteEntity getCliente() {
         return cliente;

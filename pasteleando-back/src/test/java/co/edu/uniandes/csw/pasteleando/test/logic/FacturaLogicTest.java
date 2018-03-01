@@ -5,10 +5,11 @@
  */
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
-import co.edu.uniandes.csw.pasteleando.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.pasteleando.ejb.FacturaLogic;
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
+import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,11 +32,12 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author m.leona
  */
 @RunWith(Arquillian.class)
-public class TarjetaPuntosTest {
+public class FacturaLogicTest {
+    
     private PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private TarjetaPuntosLogic tarjeta;
+    private FacturaLogic factura;
 
     @PersistenceContext
     private EntityManager em;
@@ -43,16 +45,16 @@ public class TarjetaPuntosTest {
     @Inject
     private UserTransaction utx;
     
-    private List<TarjetaPuntosEntity> data = new ArrayList<>();
+    private List<FacturaEntity> data = new ArrayList<>();
     
     private List<TarjetaPuntosEntity> dataBook = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(TarjetaPuntosEntity.class.getPackage())
-                .addPackage(TarjetaPuntosLogic.class.getPackage())
-                .addPackage(TarjetaPuntosPersistence.class.getPackage())
+                .addPackage(FacturaEntity.class.getPackage())
+                .addPackage(FacturaLogic.class.getPackage())
+                .addPackage(FacturaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -85,7 +87,7 @@ public class TarjetaPuntosTest {
      * 
      */
     private void clearData() {
-        em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();
+        em.createQuery("delete from FacturaEntity").executeUpdate();
     }
 
     /**
@@ -96,7 +98,7 @@ public class TarjetaPuntosTest {
      */
     private void insertData() {        
         for (int i = 0; i < 3; i++) {
-            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
+            FacturaEntity entity = factory.manufacturePojo(FacturaEntity.class);
                         
             em.persist(entity);
             data.add(entity);
@@ -104,34 +106,38 @@ public class TarjetaPuntosTest {
     }
 
     /**
-     * Prueba para crear un TarjetaPuntos
+     * Prueba para crear un Factura
      *
      * 
      */
     @Test
-    public void createTarjetaPuntosTest() {
-        TarjetaPuntosEntity newEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-        TarjetaPuntosEntity result = tarjeta.createTarjetaPuntos(newEntity);
+    public void createFacturaTest() {
+        FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+        FacturaEntity result = factura.createFactura(newEntity);
         Assert.assertNotNull(result);
-        TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, result.getId());
+        FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
+        Assert.assertEquals(newEntity.getHora(), entity.getHora());
         Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getNumeroPuntos(), entity.getNumeroPuntos());
     }
 
     /**
-     * Prueba para consultar la lista de TarjetaPuntoss
+     * Prueba para consultar la lista de Facturas
      *
      * 
      */
     
     @Test
-    public void getTarjetaPuntossTest() throws BusinessLogicException {
-        List<TarjetaPuntosEntity> list =tarjeta.getTarjetaPuntoss();
+    public void getFacturasTest() throws BusinessLogicException {
+        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        List<FacturaEntity> list =factura.getFacturas();
+        System.out.println(list.get(0).getId() + " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         Assert.assertEquals(data.size(), list.size());
-        for (TarjetaPuntosEntity entity : list) {
+        for (FacturaEntity entity : list) {
             boolean found = false;
-            for (TarjetaPuntosEntity storedEntity : data) {
+            for (FacturaEntity storedEntity : data) {
                 if (entity.getId().equals(storedEntity.getId())) {
                     found = true;
                 }
@@ -141,54 +147,58 @@ public class TarjetaPuntosTest {
     }
      
     /**
-     * Prueba para consultar un TarjetaPuntos
+     * Prueba para consultar un Factura
      *
      * 
      */
     
     @Test
-    public void getTarjetaPuntosTest() {
-        TarjetaPuntosEntity entity = data.get(0);
-        TarjetaPuntosEntity resultEntity = tarjeta.getTarjetaPuntos(entity.getId());
+    public void getFacturaTest() {
+        FacturaEntity entity = data.get(0);
+        FacturaEntity resultEntity = factura.getFactura(entity.getId());
         Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getNumeroPuntos(), resultEntity.getNumeroPuntos());
+        Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
+        Assert.assertEquals(entity.getFecha(), resultEntity.getFecha());
+        Assert.assertEquals(entity.getHora(), resultEntity.getHora());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
     }
 
     /**
-     * Prueba para eliminar un TarjetaPuntos
+     * Prueba para eliminar un Factura
      *
      * 
      */
  
     @Test
-    public void deleteTarjetaPuntosTest() {
-        TarjetaPuntosEntity entity = data.get(0);
-        System.out.println(entity.getId()+"AAA");
-        tarjeta.deleteTarjetaPuntos(entity.getId());
-        TarjetaPuntosEntity deleted = em.find(TarjetaPuntosEntity.class, entity.getId());
+    public void deleteFacturaTest() {
+        FacturaEntity entity = data.get(0);
+        factura.deleteFactura(entity.getId());
+        FacturaEntity deleted = em.find(FacturaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Prueba para actualizar un TarjetaPuntos
+     * Prueba para actualizar un Factura
      *
      * 
      */
  @Test
-    public void updateTarjetaPuntosTest() {
-        TarjetaPuntosEntity entity = data.get(0);
-        TarjetaPuntosEntity pojoEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
+    public void updateFacturaTest() {
+         FacturaEntity entity = data.get(0);
+        FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 
         pojoEntity.setId(entity.getId());
 
-        tarjeta.updateTarjetaPuntos(pojoEntity);
+        factura.updateFactura(pojoEntity);
 
-        TarjetaPuntosEntity resp = em.find(TarjetaPuntosEntity.class, entity.getId());
+        FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
-       Assert.assertEquals(pojoEntity.getNumeroPuntos(), resp.getNumeroPuntos());
+        Assert.assertEquals(pojoEntity.getDireccion(),resp.getDireccion());
+        Assert.assertEquals(pojoEntity.getFecha(),resp.getFecha());
+        Assert.assertEquals(pojoEntity.getHora(),resp.getHora());
     }
+    
 }

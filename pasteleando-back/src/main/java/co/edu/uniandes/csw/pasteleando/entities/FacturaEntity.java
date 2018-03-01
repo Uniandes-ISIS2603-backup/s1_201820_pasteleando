@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
@@ -18,12 +19,12 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
     
-    @OneToOne
     @PodamExclude
+    @OneToOne
     private PedidoEntity pedido;
     
-    @ManyToOne
     @PodamExclude
+    @ManyToOne
     private TarjetaPuntosEntity tarjetaPuntos;
 
     public PedidoEntity getPedido() {
@@ -45,6 +46,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     private String direccion;
     
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     
   
