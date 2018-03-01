@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,21 @@ import java.util.List;
  * <pre>
  * { 
  * "numeropuntos":200
+ * "Facturas":[
+ * {
+ * "id":1907, 
+ * "direccion":"Calle 127 #47-48",
+ * "fecha":"13/02/18", 
+ * "hora":"22:00",
+ * "precio":"55,000 COP"
+ * },
+ * {
+ * "id":2020, 
+ *"direccion":"Calle 100 #19A-08",
+ *"fecha":"23/06/18", 
+ *"hora":"10:00",
+ *"precio":"47,000 COP"
+ * }]
  * }
  * </pre>
  * 
@@ -25,6 +41,22 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     private ClienteDTO cliente;
    
    private List<FacturaDTO> facturas; 
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public List<FacturaDTO> getFacturas() {
+        return facturas;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setFacturas(List<FacturaDTO> facturas) {
+        this.facturas = facturas;
+    }
     
     
     
@@ -49,10 +81,12 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
             entity.setCliente(null);
         }
         
-       // if(entity.getFacturas() != null)
-        //{
-          //  facturas = new ArrayList<>();
-           // for()
-        //}
+        if(entity.getFacturas() != null)
+        {
+           facturas = new ArrayList<>();
+            for (FacturaEntity entityFactura : entity.getFacturas()) {
+                    facturas.add(new FacturaDTO(entityFactura));
+                }
+       }
     }
 }

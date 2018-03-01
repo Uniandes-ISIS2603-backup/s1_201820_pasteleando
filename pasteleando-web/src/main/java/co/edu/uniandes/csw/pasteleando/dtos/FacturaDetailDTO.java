@@ -15,7 +15,10 @@ package co.edu.uniandes.csw.pasteleando.dtos;
  *"direccion":"Calle 127 #47-48",
  *"fecha":"13/02/18", 
  *"hora":"22:00",
- *"precio":"55,000 COP"
+ *"precio":"55,000 COP",
+ *"TarjetaPuntos":[{
+ * "NumeroPuntos: 0"
+ * }]
 *}
 *</pre>
 * 
