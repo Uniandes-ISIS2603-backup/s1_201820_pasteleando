@@ -96,10 +96,10 @@ public class FacturaLogicTest {
      *
      * 
      */
-    private void insertData() {        
+    private void insertData() {   
+        
         for (int i = 0; i < 3; i++) {
             FacturaEntity entity = factory.manufacturePojo(FacturaEntity.class);
-                        
             em.persist(entity);
             data.add(entity);
         }
@@ -131,9 +131,7 @@ public class FacturaLogicTest {
     
     @Test
     public void getFacturasTest() throws BusinessLogicException {
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
         List<FacturaEntity> list =factura.getFacturas();
-        System.out.println(list.get(0).getId() + " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         Assert.assertEquals(data.size(), list.size());
         for (FacturaEntity entity : list) {
             boolean found = false;

@@ -31,7 +31,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author m.leona
  */
 @RunWith(Arquillian.class)
-public class TarjetaPuntosTest {
+public class TarjetaPuntosLogicTest {
     private PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
@@ -94,10 +94,10 @@ public class TarjetaPuntosTest {
      *
      * 
      */
-    private void insertData() {        
+    private void insertData() {      
+        
         for (int i = 0; i < 3; i++) {
-            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-                        
+            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);           
             em.persist(entity);
             data.add(entity);
         }

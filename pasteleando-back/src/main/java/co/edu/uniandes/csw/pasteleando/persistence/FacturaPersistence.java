@@ -69,8 +69,8 @@ public class FacturaPersistence {
 
 	public List<FacturaEntity> findAll( )
 	{
-		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<FacturaEntity> query = em.createQuery( "select u from PasteleandoEntity u", FacturaEntity.class );
+		LOGGER.info( "Consultando todas las entidades de Factura" );
+		TypedQuery<FacturaEntity> query = em.createQuery( "select u from FacturaEntity u", FacturaEntity.class );
 		return query.getResultList( );
 	}
 

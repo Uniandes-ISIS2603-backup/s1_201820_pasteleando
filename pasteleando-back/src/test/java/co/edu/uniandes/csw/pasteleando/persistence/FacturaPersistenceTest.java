@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
+import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -72,6 +74,20 @@ public class FacturaPersistenceTest {
         FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
+     /**
+     * Devuelve todas las authores de la base de datos.
+     *
+     * @return una lista con todas las authores que encuentre en la base de
+     * datos, "select u from AuthorEntity u" es como un "select * from
+     * AuthorEntity;" - "SELECT * FROM table_name" en SQL.
+     */
+    public List<FacturaEntity> findAll() {
+        // Se crea un query para buscar todas las authores en la base de datos.
+        TypedQuery query = em.createQuery("select u from AuthorEntity u", FacturaEntity.class);
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de authores.
+        return query.getResultList();
     }
 
 }

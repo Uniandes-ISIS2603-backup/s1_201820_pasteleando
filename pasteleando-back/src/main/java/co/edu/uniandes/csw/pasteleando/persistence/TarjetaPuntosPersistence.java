@@ -73,7 +73,7 @@ public class TarjetaPuntosPersistence {
 	public List<TarjetaPuntosEntity> findAll( )
 	{
 		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from PasteleandoEntity u", TarjetaPuntosEntity.class );
+		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class );
 		return query.getResultList( );
 	}
 
