@@ -71,7 +71,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
         super( entity );
         if (entity.getPromociones() != null) {
             promociones = new ArrayList<>();
-            entity.getPromociones().forEach((entityPromocion) -> {
+            entity.getPromociones().forEach((PromocionEntity entityPromocion) -> {
                 promociones.add(new PromocionDTO(entityPromocion));
             });
         }
