@@ -33,6 +33,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * Atributo que modela la decoración de la PromocionEntity
      */
+    @PodamExclude
     @OneToOne
     public DecoracionCatalogoEntity decoracion;
     
