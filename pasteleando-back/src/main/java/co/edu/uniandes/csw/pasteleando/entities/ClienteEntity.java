@@ -25,19 +25,19 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private List<String> tiposPagos;
     
     @PodamExclude
-    @OneToMany
-    private List<PqrsEntity> pqrs = new ArrayList<>( );;
+    @OneToMany(mappedBy = "cliente")
+    private List<PqrsEntity> pqrs = new ArrayList<>( );
     
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
-    private List<CalificacionEntity> calificaciones = new ArrayList<>( );;
+    private List<CalificacionEntity> calificaciones = new ArrayList<>( );
     
     @PodamExclude
     @OneToOne
     private CarritoEntity carrito;
     
     @PodamExclude
-    @OneToOne(mappedBy = "cliente")
+    @OneToOne
     private TarjetaPuntosEntity tarjeta;
 
     public List<PqrsEntity> getPqrs() {
