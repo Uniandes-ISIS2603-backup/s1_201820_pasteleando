@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +22,9 @@ import java.util.List;
  */
 public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     
-    List<FacturaDTO> facturas; 
+    private ClienteDTO cliente;
+   
+   private List<FacturaDTO> facturas; 
     
     
     
@@ -30,5 +34,25 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
     public TarjetaPuntosDetailDTO()
     {
         super();
+    }
+    
+    
+    public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity)
+    {
+        super(entity);
+        if(entity.getCliente() != null)
+        {
+            this.cliente = new ClienteDTO(entity.getCliente());
+        }
+        else
+        {
+            entity.setCliente(null);
+        }
+        
+       // if(entity.getFacturas() != null)
+        //{
+          //  facturas = new ArrayList<>();
+           // for()
+        //}
     }
 }

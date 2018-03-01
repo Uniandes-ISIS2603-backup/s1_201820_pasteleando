@@ -87,12 +87,9 @@ public class TarjetaPuntosPersistence {
 		return em.merge( entity );
 	}
 
-	public void delete( TarjetaPuntosEntity entity )
+	public void delete( Long id )
 	{
-		em.remove( entity );
+		TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, id);
+                em.remove(entity);
 	}
-
-    public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import co.edu.uniandes.csw.pasteleando.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author m.leona
@@ -47,6 +49,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     
     
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
   

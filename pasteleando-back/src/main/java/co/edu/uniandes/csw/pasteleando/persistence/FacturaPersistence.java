@@ -84,12 +84,10 @@ public class FacturaPersistence {
 		return em.merge( entity );
 	}
 
-	public void delete( FacturaEntity entity )
+	public void delete( Long id )
 	{
+            FacturaEntity entity = em.find(FacturaEntity.class, id);
 		em.remove( entity );
 	}
 
-    public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
