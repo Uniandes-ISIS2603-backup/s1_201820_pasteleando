@@ -108,7 +108,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
      * Modifica las promociones asociadas a esta decoración del catálogo.
      * @param promociones Las nuevas promociones.
      */
-    public void setReviews(List<PromocionDTO> promociones) {
+    public void setPromociones(List<PromocionDTO> promociones) {
         this.promociones = promociones;
     }
     

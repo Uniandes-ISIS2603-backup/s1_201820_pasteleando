@@ -172,17 +172,17 @@ public class PromocionLogicTest {
      *
      *
      */
- @Test
+    @Test
     public void updatePromocionTest() {
         PromocionEntity entity = data.get(0);
         PromocionEntity pojoEntity = factory.manufacturePojo(PromocionEntity.class);
-
+        
         pojoEntity.setId(entity.getId());
-
+        
         PromocionLogic.updatePromocion(dataCatalogo.get(1).getId(), pojoEntity);
-
+        
         PromocionEntity resp = em.find(PromocionEntity.class, entity.getId());
-
+        
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getCantidad(), resp.getCantidad());
     }
