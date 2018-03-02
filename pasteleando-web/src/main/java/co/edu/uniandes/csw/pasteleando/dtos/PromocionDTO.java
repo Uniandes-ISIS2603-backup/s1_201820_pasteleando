@@ -12,7 +12,8 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  *
  * <pre>
  *      {
- *      "cantidad": int
+ *      "id": number,
+ *      "cantidad": number
  *      }
  * </pre>
  *
@@ -20,7 +21,8 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  *
  * <pre>
  *      {
- *      "cantidad":25
+ *      "id": number,
+ *      "cantidad": number
  *      }
  *
  * </pre>
@@ -32,6 +34,11 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  * @author jf.garcia
  */
 public class PromocionDTO {
+    
+    /**
+     * Atributo que modela el porcentaje de la promocion.
+     */
+    private Long id;
     
     /**
      * Atributo que modela el porcentaje de la promocion.
@@ -49,18 +56,45 @@ public class PromocionDTO {
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
-     * @param PromocionEntity: Es la entidad que se va a convertir a DTO
+     * @param entity: Es la entidad que se va a convertir a DTO
      */
-    public PromocionDTO( PromocionEntity PromocionEntity )
+    public PromocionDTO( PromocionEntity entity )
     {
-        this.cantidad = PromocionEntity.getCantidad();
+        if (entity != null) {
+            this.cantidad = entity.getCantidad();
+            this.id = entity.getId();
+        }
         
     }
     
+    /**
+     * Devuelve el ID de la promoción.
+     * @return el id
+     */
+    public Long getId() {
+        return id;
+    }
+    
+    /**
+     * Modifica el ID de la promoción.
+     * @param id El id nuevo.
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    /**
+     * Devuelve la cantidad de la promoción.
+     * @return la cantidad.
+     */
     public int getCantidad() {
         return cantidad;
     }
     
+    /**
+     * Modifica la cantidad de la promoción.
+     * @param cantidad La cantidad nueva.
+     */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -74,6 +108,7 @@ public class PromocionDTO {
     {
         PromocionEntity entity = new PromocionEntity( );
         entity.setCantidad( this.cantidad );
+        entity.setId( this.id );
         return entity;
     }
 }

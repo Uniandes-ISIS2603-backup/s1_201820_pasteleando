@@ -12,15 +12,17 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  *
  * <pre>
  *   {
+ *      "id":number,
  *      "categoria": String
  *   }
  * </pre>
  *
- * Por ejemplo una decoracion se representa asi:<br>
+ * Por ejemplo una decoracion del catálogo se representa asi:<br>
  *
  * <pre>
  *
  *{
+ *  "id":"45",
  *  "categoria":"Cumpleaños"
  * }
  *
@@ -40,6 +42,11 @@ public class DecoracionCatalogoDTO {
     private String categoria;
     
     /**
+     * Atributo que modela el id de la DecoracionCatalogo
+     */
+    private Long id;
+    
+    /**
      * Constructor por defecto
      */
     public DecoracionCatalogoDTO( )
@@ -54,16 +61,43 @@ public class DecoracionCatalogoDTO {
      */
     public DecoracionCatalogoDTO( DecoracionCatalogoEntity decoracionCatalogoEntity )
     {
-        this.categoria = decoracionCatalogoEntity.getCategoria();
+        if (decoracionCatalogoEntity != null) {
+            this.categoria = decoracionCatalogoEntity.getCategoria();
+            this.id = decoracionCatalogoEntity.getId();
+        }
         
     }
     
+    /**
+     * Devuelve la cateogria.
+     * @return categoria
+     */
     public String getCategoria() {
         return categoria;
     }
     
+    /**
+     * Modifica la categoria.
+     * @param categoria La nueva categoria
+     */
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+    
+    /**
+     * Devuelve el ID de la decoración del catálogo
+     * @return el id
+     */
+    public Long getId() {
+        return id;
+    }
+    
+    /**
+     * Modifica el ID de la decoración del catálogo
+     * @param id El id nuevo.
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
     
     /**
@@ -75,6 +109,7 @@ public class DecoracionCatalogoDTO {
     {
         DecoracionCatalogoEntity entity = new DecoracionCatalogoEntity( );
         entity.setCategoria( this.categoria );
+        entity.setId( this.id );
         return entity;
     }
 }

@@ -17,8 +17,9 @@ import java.util.List;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "categoria": string,
- *      "promociones": 
+ *      "id":number,
+ *      "categoria": String,
+ *      "promociones":
  *      [
  *      {
  *      "cantidad": int
@@ -33,8 +34,9 @@ import java.util.List;
  *
  * <pre>
  *   {
+ *      "id":number,
  *      "categoria": "Bodas",
- *      "promociones": 
+ *      "promociones":
  *      [
  *      {
  *      "cantidad": 30

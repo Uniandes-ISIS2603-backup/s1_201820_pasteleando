@@ -49,36 +49,36 @@ public class DecoracionCatalogoResource
             DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     /**
-     * <h1>GET /api/catalogo : Obtener todas las entidadese de Decoración Catálogo.</h1>
-     * <pre>Busca y devuelve todas las entidades de Decoración Catálogo que existen en la aplicacion.
+     * <h1>GET /api/catalogo : Obtener todas las entidades de decoración del catálogo.</h1>
+     * <pre>Busca y devuelve todas las entidades de decoración del catálogo que existen en la aplicación.
      *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todas las entidades de Decoración Catálogo de la aplicacion.</code>
+     * 200 OK Devuelve todas las entidades de decoración del catálogo de la aplicación.</code>
      * </pre>
      *
-     * @return JSONArray {@link DecoracionCatalogoDTO} - Las entidades de Decoración Catálogo encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
+     * @return JSONArray {@link DecoracionCatalogoDTO} - Las entidades de decoración del catálogo encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
     public List<DecoracionCatalogoDetailDTO> getDecoracionesCatalogo() {
-        return listBookEntity2DetailDTO(decoracionCatalogoLogic.getDecoracionesCatalogo());
+        return listDecoracionCatalogoEntity2DetailDTO(decoracionCatalogoLogic.getDecoracionesCatalogo());
     }
     
     /**
      * <h1>GET /api/catalogo/{id} : Obtener una entidad de Decoración Catálogo por id.</h1>
-     * <pre>Busca la entidad de Decoración Catálogo con el id asociado recibido en la URL y la devuelve.
+     * <pre>Busca la entidad de decoración del catálogo con el id asociado recibido en la URL y la devuelve.
      *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve la entidad de Decoración Catálogo correspondiente al id.
+     * 200 OK Devuelve la entidad de decoración del catálogo correspondiente al id.
      * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe una entidad de Decoración Catálogo con el id dado.
+     * 404 Not Found No existe una entidad de decoración del catálogo con el id dado.
      * </code>
      * </pre>
      *
-     * @param id Identificador de la entidad de promoción que se esta buscando. Este debe ser una cadena de dígitos.
-     * @return JSON {@link DecoracionCatalogoDTO} - La entidad de promoción buscada
+     * @param id Identificador de la entidad de decoración del catálogo que se esta buscando. Este debe ser una cadena de dígitos.
+     * @return JSON {@link DecoracionCatalogoDTO} - La entidad de decoración del catálogo buscada.
      */
     @GET
     @Path("{id: \\d+}")
@@ -94,7 +94,7 @@ public class DecoracionCatalogoResource
      * <h1>POST /api/catalogo : Crear una entidad de Decoración Catálogo.</h1>
      * <pre>Cuerpo de petición: JSON {@link DecoracionCatalogoDTO}.
      *
-     * Crea una nueva entidad de promoción con la informacion que se recibe en el cuerpo
+     * Crea una nueva entidad de decoración del catálogo con la informacion que se recibe en el cuerpo
      * de la petición y se regresa un objeto identico con un id auto-generado
      * por la base de datos.
      *
@@ -107,13 +107,13 @@ public class DecoracionCatalogoResource
      * </code>
      * </pre>
      *
-     * @param dto {@link DecoracionCatalogoDTO} - La entidad de promoción que se desea guardar.
-     * @return JSON {@link DecoracionCatalogoDTO}  - La entidad de promoción guardada con el atributo id autogenerado.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
+     * @param decoracionCatalogo {@link DecoracionCatalogoDTO} - La entidad de la decoración del catálogo que se desea guardar.
+     * @return JSON {@link DecoracionCatalogoDTO}  - La entidad de decoración del catálogo guardada con el atributo id autogenerado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de decoración del catálogo.
      */
     @POST
-    public DecoracionCatalogoDetailDTO createDecoracionCatalogo(DecoracionCatalogoDetailDTO decoracionCatalogo) throws BusinessLogicException {        
-         return new DecoracionCatalogoDetailDTO(decoracionCatalogoLogic.createDecoracionCatalogo(decoracionCatalogo.toEntity()));
+    public DecoracionCatalogoDetailDTO createDecoracionCatalogo(DecoracionCatalogoDetailDTO decoracionCatalogo) throws BusinessLogicException {
+        return new DecoracionCatalogoDetailDTO(decoracionCatalogoLogic.createDecoracionCatalogo(decoracionCatalogo.toEntity()));
     }
     
     /**
@@ -131,19 +131,19 @@ public class DecoracionCatalogoResource
      * </pre>
      *
      * @param id        Identificador de la entidad de Decoración Catálogo que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param detailDTO {@link DecoracionCatalogoDTO} La entidad de Decoración Catálogo que se desea guardar.
+     * @param decoracionCatalogo {@link DecoracionCatalogoDTO} La entidad de Decoración Catálogo que se desea guardar.
      * @return JSON {@link DecoracionCatalogoDTO} - La entidad de Decoración Catálogo guardada.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la entidad de Decoración Catálogo porque ya existe una con ese nombre.
      */
     @PUT
     @Path("{id: \\d+}")
-    public DecoracionCatalogoDetailDTO updateBook(@PathParam("id") Long id, DecoracionCatalogoDetailDTO decoracionCatalogo) throws WebApplicationException, BusinessLogicException {
+    public DecoracionCatalogoDetailDTO updateDecoracionCatalogo(@PathParam("id") Long id, DecoracionCatalogoDetailDTO decoracionCatalogo) throws WebApplicationException, BusinessLogicException {
         decoracionCatalogo.setId(id);
-        DecoracionCatalogoEntity entity = bookLogic.getBook(id);
+        DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /catalogo/" + id + " no existe.", 404);
         }
-        return new BookDetailDTO(bookLogic.updateBook(id, book.toEntity()));
+        return new DecoracionCatalogoDetailDTO(decoracionCatalogoLogic.updateDecoracionCatalogo(id, decoracionCatalogo.toEntity()));
     }
     
     /**
@@ -159,11 +159,42 @@ public class DecoracionCatalogoResource
      * </pre>
      *
      * @param id Identificador de la entidad de Decoración Catálogo que se desea borrar. Este debe ser una cadena de dígitos.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando no se puede eliminar la decoración del catálogo.
      */
     @DELETE
-    @Path( "{id: \\d+}" )
-    public void deleteDecoracionCatalogo( @PathParam( "id" ) Long id )
-    {
-        // Void
+    @Path("{id: \\d+}")
+    public void deleteBook(@PathParam("id") Long id) throws BusinessLogicException {
+        DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+        decoracionCatalogoLogic.deleteDecoracionCatalogo(id);
+    }
+    
+    /**
+     * Conexión con el servicio de promociones para una decoración del catálogo. {@link PromocionResource}
+     *
+     * Este método conecta la ruta de /catalogo con las rutas de /promociones que dependen
+     * de la decoración del catálogo, es una redirección al servicio que maneja el segmento de la
+     * URL que se encarga de las promociones.
+     *
+     * @param catalogoId El ID de la decoración del catálogo con respecto al cual se accede al servicio.
+     * @return El servicio de promociones para la decoración del catálogo en paricular.
+     */
+    @Path("{id: \\d+}/reviews")
+    public Class<PromocionResource> getReviewResource(@PathParam("id") Long catalogoId) {
+        DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(catalogoId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promocion no existe.", 404);
+        }
+        return PromocionResource.class;
+    }
+    
+    private List<DecoracionCatalogoDetailDTO> listDecoracionCatalogoEntity2DetailDTO(List<DecoracionCatalogoEntity> entityList) {
+        List<DecoracionCatalogoDetailDTO> list = new ArrayList<>();
+        entityList.forEach((entity) -> {
+            list.add(new DecoracionCatalogoDetailDTO(entity));
+        });
+        return list;
     }
 }
