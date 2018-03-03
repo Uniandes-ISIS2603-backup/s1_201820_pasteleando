@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -30,7 +31,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     @ManyToOne
     private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>( );
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private CarritoEntity carrito = new CarritoEntity( ); 
     
     @ManyToOne

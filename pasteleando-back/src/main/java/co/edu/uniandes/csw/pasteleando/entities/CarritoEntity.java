@@ -5,9 +5,13 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
-import java.awt.List;
+import java.util.List;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import org.eclipse.persistence.jpa.config.Cascade;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,7 +22,9 @@ public class CarritoEntity extends BaseEntity implements Serializable
 {
   private int cantidad;
   private double precio;
-  private List articulos;
+  @PodamExclude
+  @OneToMany(cascade = CascadeType.PERSIST)
+  private List<PastelEntity> pasteles;
   
   /**
    * retorna la cantidad de productos en el carrito
@@ -61,18 +67,18 @@ public class CarritoEntity extends BaseEntity implements Serializable
    * @return pasteles
    */
 
-  public List getArticulos()
+  public List getPasteles()
   {
-      return this.articulos;
+      return this.pasteles;
   }
   /**
  * actualiza la lista de articulos en el carrito
  * @param lista 
  */
 
-    public void setArticulos(List lista)
+    public void setPasteles(List lista)
     {
-        this.articulos = lista;
+        this.pasteles= lista;
     }
 
 }

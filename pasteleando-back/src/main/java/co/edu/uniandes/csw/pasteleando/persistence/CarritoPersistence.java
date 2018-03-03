@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,6 +17,7 @@ import javax.persistence.TypedQuery;
  *
  * @author MIGUELHOYOS
  */
+@Stateless
 public class CarritoPersistence 
 {
   @PersistenceContext( unitName = "PasteleandoPU" )
@@ -32,12 +34,6 @@ public class CarritoPersistence
       return em.find(CarritoEntity.class, id);
   }
   
-  public CarritoEntity findByName(String name)
-  {
-      TypedQuery<CarritoEntity> q = em.createQuery("select u from CarritoEntity where u.name = :name", CarritoEntity.class);
-      q.setParameter("name", name);
-      return q.getSingleResult();
-  }
   
   public List getAll()
   {

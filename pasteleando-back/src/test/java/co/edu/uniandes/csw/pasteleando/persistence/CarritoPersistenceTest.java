@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
-import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -33,7 +32,7 @@ public class CarritoPersistenceTest {
 
     
     @Deployment
-    public JavaArchive createDeployment()
+    public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CarritoEntity.class.getPackage())
@@ -48,7 +47,7 @@ public class CarritoPersistenceTest {
     @PersistenceContext
     private EntityManager em;
     
-    @javax.inject.Inject
+    @Inject
     UserTransaction utx;
     
     @Before
@@ -105,7 +104,7 @@ public class CarritoPersistenceTest {
     }
     
     @Test
-    public void getCarritoesTest() {
+    public void getCarritosTest() {
         List<CarritoEntity> list = carritoPersistence.getAll();
         Assert.assertEquals(data.size(), list.size());
         for (CarritoEntity ent : list) {

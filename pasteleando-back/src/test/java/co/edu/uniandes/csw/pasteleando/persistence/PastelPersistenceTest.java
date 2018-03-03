@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
-import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -32,7 +31,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class PastelPersistenceTest {
     
     @Deployment
-    public JavaArchive createDeployment()
+    public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(PastelEntity.class.getPackage())

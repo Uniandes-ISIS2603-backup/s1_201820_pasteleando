@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -25,7 +26,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      * Atributo que modela los pasteles de la DecoracionEntity
      */    
     @PodamExclude
-    @OneToMany(mappedBy = "Decoracion")
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "Decoracion")
     private List<PastelEntity> pasteles = new ArrayList<>();
 
      /**

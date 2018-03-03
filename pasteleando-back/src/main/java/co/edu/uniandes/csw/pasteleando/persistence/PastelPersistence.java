@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,6 +17,7 @@ import javax.persistence.TypedQuery;
  *
  * @author MIGUELHOYOS
  */
+@Stateless
 public class PastelPersistence {
     @PersistenceContext( unitName = "PasteleandoPU" )
     private EntityManager em;
@@ -31,12 +33,6 @@ public class PastelPersistence {
         return em.find(PastelEntity.class, id);
     }
     
-    public PastelEntity findByName(String name)
-    {
-        TypedQuery<PastelEntity> q = em.createQuery("select u from PastelEntity where u.name = :name", PastelEntity.class);
-        q.setParameter("name", name);
-        return q.getSingleResult();
-    }
     
     public List findAll()
     {
