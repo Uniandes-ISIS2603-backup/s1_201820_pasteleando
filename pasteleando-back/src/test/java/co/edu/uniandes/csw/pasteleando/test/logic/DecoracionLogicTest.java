@@ -130,6 +130,7 @@ public class DecoracionLogicTest {
      *
      * 
      */
+    /**
     @Test
     public void getDecoracionesTest() {
         List<DecoracionEntity> list = decoracionLogic.getDecoraciones();
@@ -158,7 +159,6 @@ public class DecoracionLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
     }
-
     /**
      * Prueba para eliminar un Decoracion
      *
@@ -168,13 +168,11 @@ public class DecoracionLogicTest {
     @Test
     public void deleteDecoracionTest() throws BusinessLogicException {
         DecoracionEntity entity = data.get(0);
-        decoracionLogic.removePastel(pastelesData.get(0).getId(), entity.getId());
         decoracionLogic.deleteDecoracion(entity.getId());
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    */
-
+*/
     /**
      * Prueba para actualizar un Decoracion
      *
@@ -195,87 +193,4 @@ public class DecoracionLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
     }
 
-    /**
-     * Prueba para obtener una instancia de Pastels asociada a una instancia
-     * Decoracion
-     *
-     * 
-     */
-    /*
-    @Test
-    public void getPastelsTest() throws BusinessLogicException {
-        DecoracionEntity entity = data.get(0);
-        PastelEntity bookEntity = pastelesData.get(0);
-        PastelEntity response = decoracionLogic.getPastel(entity.getId(), bookEntity.getId());
-
-        Assert.assertEquals(bookEntity.getId(), response.getId());
-        Assert.assertEquals(bookEntity.getName(), response.getName());
-        Assert.assertEquals(bookEntity.getDescription(), response.getDescription());
-        Assert.assertEquals(bookEntity.getIsbn(), response.getIsbn());
-        Assert.assertEquals(bookEntity.getImage(), response.getImage());
-    }
-*/
-    /**
-     * Prueba para obtener una colección de instancias de Pastels asociadas a una
-     * instancia Decoracion
-     *
-     * 
-     */
-    @Test
-    public void listPastelsTest() {
-        List<PastelEntity> list = decoracionLogic.listPasteles(data.get(0).getId());
-        Assert.assertEquals(1, list.size());
-    }
-
-    /**
-     * Prueba para asociar un Pastels existente a un Decoracion
-     *
-     * 
-     */
-    /*
-    @Test
-    public void addPastelsTest() {
-        DecoracionEntity entity = data.get(0);
-        PastelEntity bookEntity = pastelesData.get(1);
-        PastelEntity response = decoracionLogic.addPastel(bookEntity.getId(), entity.getId());
-
-        Assert.assertNotNull(response);
-        Assert.assertEquals(bookEntity.getId(), response.getId());
-    }
-*/
-    /**
-     * Prueba para remplazar las instancias de Pastels asociadas a una instancia
-     * de Decoracion
-     *
-     * 
-     */
-    /*
-    @Test
-    public void replacePastelsTest() {
-        DecoracionEntity entity = data.get(0);
-        List<PastelEntity> list = pastelesData.subList(1, 3);
-        decoracionLogic.replacePastels(entity.getId(), list);
-
-        entity = decoracionLogic.getDecoracion(entity.getId());
-        Assert.assertFalse(entity.getPastels().contains(pastelesData.get(0)));
-        Assert.assertTrue(entity.getPastels().contains(pastelesData.get(1)));
-        Assert.assertTrue(entity.getPastels().contains(pastelesData.get(2)));
-    }
-*/
-    /**
-     * Prueba para desasociar un Pastel existente de un Decoracion existente
-     *
-     * 
-     */
-    /*
-    @Test
-    public void removePastelsTest() throws BusinessLogicException {
-        try {
-            decoracionLogic.removePastel(data.get(0).getId(), pastelesData.get(0).getId());
-            PastelEntity response = decoracionLogic.getPastel(data.get(0).getId(), pastelesData.get(0).getId());
-        } catch (BusinessLogicException e) {
-        }
-
-    }
-*/
 }
