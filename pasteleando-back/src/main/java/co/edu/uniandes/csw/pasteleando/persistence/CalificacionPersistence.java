@@ -46,20 +46,26 @@ public class CalificacionPersistence {
  * @param name: el nombre de la entidad a encontrar
  *@return si no existe 
      */
-    public CalificacionEntity find(String name) {
+    public CalificacionEntity findByName(String name) {
 
-        TypedQuery<CalificacionEntity> query = em.createQuery("Select e From CalificacionEntity Where e.name = :name", CalificacionEntity.class);
-        query = query.setParameter("name", name);
-
-        List<CalificacionEntity> resultado = query.getResultList();
-
-        if (resultado.isEmpty()) {
-            return null;
-        } else {
-            return resultado.get(0);
-        }
+        TypedQuery<CalificacionEntity> query = em.createQuery( "Select e From CalificacionEntity e where e.name = :name", CalificacionEntity.class );
+		// Se remplaza el placeholder ":name" con el valor del argumento
+		query = query.setParameter( "name", name );
+		// Se invoca el query se obtiene la lista resultado
+		List<CalificacionEntity> sameName = query.getResultList( );
+                
+		if( sameName.isEmpty( ) )
+		{
+			return null;
+		}
+		else
+		{
+			return sameName.get( 0 );
+		}
 
     }
+    
+
 
     public List<CalificacionEntity> findAll() {
         TypedQuery<CalificacionEntity> query = em.createQuery("Select e From CalificacionEntity e", CalificacionEntity.class);
@@ -69,13 +75,17 @@ public class CalificacionPersistence {
     public CalificacionEntity find(Long id) {
         return em.find(CalificacionEntity.class, id);
     }
+    
+   
 
     public CalificacionEntity update(CalificacionEntity entity) {
         return em.merge(entity);
     }
 
-    public void delete(CalificacionEntity entity) {
-        em.remove(entity);
+    public void delete(Long id) 
+    {
+        CalificacionEntity borrar = em.find(CalificacionEntity.class, id);
+        em.remove(borrar);
     }
 
 }

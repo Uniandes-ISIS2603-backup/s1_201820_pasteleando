@@ -39,16 +39,22 @@ public class ClientePersistence {
     }
 
     public ClienteEntity findByName(String name) {
-        TypedQuery<ClienteEntity> query = em.createQuery("Select e From ClienteEntity Where e.name = :name", ClienteEntity.class);
-        query = query.setParameter("name", name);
 
-        List<ClienteEntity> resultado = query.getResultList();
-
-        if (resultado.isEmpty()) {
-            return null;
-        } else {
-            return resultado.get(0);
-        }
+        
+        	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.name = :name", ClienteEntity.class );
+		// Se remplaza el placeholder ":name" con el valor del argumento
+		query = query.setParameter( "name", name );
+		// Se invoca el query se obtiene la lista resultado
+		List<ClienteEntity> sameName = query.getResultList( );
+                
+		if( sameName.isEmpty( ) )
+		{
+			return null;
+		}
+		else
+		{
+			return sameName.get( 0 );
+		}
 
     }
 
@@ -66,8 +72,9 @@ public class ClientePersistence {
         return em.merge(entity);
     }
 
-    public void delete(ClienteEntity entity) {
-        em.remove(entity);
+    public void delete(Long id) {
+        ClienteEntity borrar = em.find(ClienteEntity.class, id);
+        em.remove(borrar);
     }
 
 }
