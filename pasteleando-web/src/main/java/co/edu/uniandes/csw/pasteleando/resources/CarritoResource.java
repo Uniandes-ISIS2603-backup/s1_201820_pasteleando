@@ -6,9 +6,14 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.CarritoDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.CarritoLogic;
+import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
+import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,10 +22,23 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 
 /**
- *
+ *<pre> clase que implementa elrecurso "carritos"
+ * URL: /api/carritos
+ * </pre>
+ * <i> Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
+ * este recurso tiene la ruta "carritos".</i>
+ * 
+ * <h2> Anotaciones </h2>
+ * <pre>
+ * Path: indica la dirección después de "api" para acceder al recurso
+ * Produces/Consumes: indica que los servicios definidos en este recurso reciben y devuelven objetos en formato JSON
+ * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio). 
+ * </pre>
+ * 
  * @author MIGUELHOYOS
  */
 @Path("carritos")
@@ -29,6 +47,10 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class CarritoResource 
 {
+    
+    @Inject
+    private CarritoLogic carritoLogic
+            
       /**
      * <h1>POST /api/carritos : Crear un carrito.</h1>
      * 
@@ -48,10 +70,11 @@ public class CarritoResource
      * </pre>
      * @param carrito {@link CarritoDetailDTO} - el carrito que se desea guardar.
      * @return JSON {@link CarritoDetailDTO}  - el carrito guardado con el atributo id autogenerado.
+     * @throws BusinessLogicException
      */
-    @POST
-    public CarritoDetailDTO createCarrito(CarritoDetailDTO carrito)  {
-        return carrito;
+    //@POST
+    public CarritoDetailDTO createCarrito(CarritoDetailDTO carrito) throws BusinessLogicException  {
+        return new CarritoDetailDTO(carritoLogic.createCarrito(carrito.toEntity()));
     }
 
     /**
@@ -67,7 +90,15 @@ public class CarritoResource
      */
     @GET
     public List<CarritoDetailDTO> getCarritos() {
-        return new ArrayList<>();
+        List<CarritoDetailDTO> rta = new ArrayList<>();
+        List lista = carritoLogic.findCarritos();
+        Iterator ite =  lista.iterator();
+        while(ite.hasNext())
+        {
+            CarritoDetailDTO dto = new CarritoDetailDTO((CarritoEntity) ite.next());
+            rta.add(dto);
+        }
+        return rta;
     }
 
     /**
@@ -88,8 +119,8 @@ public class CarritoResource
      */
     @GET
     @Path("{id: \\d+}")
-    public CarritoDetailDTO getCarrito(@PathParam("id") Long id) {
-        return null;
+    public CarritoDetailDTO getCarrito(@PathParam("id") Long id) throws BusinessLogicException {
+        return new CarritoDetailDTO(carritoLogic.findCarrito(id));
     }
     
     /**
@@ -111,8 +142,16 @@ public class CarritoResource
      */
     @PUT
     @Path("{id: \\d+}")
-    public CarritoDetailDTO updateCarrito(@PathParam("id") Long id, CarritoDetailDTO carrito)  {
-        return carrito;
+    public CarritoDetailDTO updateCarrito(@PathParam("id") Long id, CarritoDetailDTO carrito)throws WebApplicationException, BusinessLogicException  {
+       
+        CarritoEntity entity = carritoLogic.findCarrito(id);
+        
+        if(entity.equals(null)){
+            throw new WebApplicationException("\"El recurso /carrito/" + id + " no existe." , 404);
+        }
+        else{
+            return new CarritoDetailDTO(carritoLogic.updateCarrito(carrito.toEntity()));
+        }
     }
     
     /**
@@ -131,8 +170,15 @@ public class CarritoResource
      */
     @DELETE
     @Path("{id: \\d+}")
-     public void deleteCarrito(@PathParam("id") Long id) {
-        // Void
+     public void deleteCarrito(@PathParam("id") Long id) throws BusinessLogicException {
+       CarritoEntity entity = carritoLogic.findCarrito(id);
+       if(entity.equals(null))
+       {
+           throw new WebApplicationException("El recurso /carrito/" + id + " no existe.", 404);
+       }
+       else{
+           carritoLogic.deleteCarrito(id);
+       }
     }
 
 }
