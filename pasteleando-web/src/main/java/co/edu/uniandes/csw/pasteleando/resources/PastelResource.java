@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.PastelDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.PastelLogic;
+import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *<pre> clase que implementa elrecurso "psteles"
@@ -41,7 +46,10 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class PastelResource 
 {    
-      
+    
+    @Inject
+    PastelLogic pastelLogic;
+    
     /**
      *  <h1>POST /api/pasteles : Crear un pastel.</h1>
      * 
@@ -68,7 +76,7 @@ public class PastelResource
     @Consumes("application/json")
     public PastelDetailDTO createPastel(PastelDetailDTO pastel) throws BusinessLogicException
     {
-        return pastel;
+        return new PastelDetailDTO(pastelLogic.createPastel(pastel.toEntity()));
     }
   
   /**
@@ -90,9 +98,10 @@ public class PastelResource
 
   @Path ("{id: \\\\d+}")
   @GET
-  public PastelDetailDTO getPastel(@PathParam("id") Long id)
+  public PastelDetailDTO getPastel(@PathParam("id") Long id) throws BusinessLogicException
   {
-      return null;
+      PastelEntity entity = pastelLogic.findPastel(id);
+     return new PastelDetailDTO(entity);
   }
   
       /**
@@ -108,7 +117,15 @@ public class PastelResource
      */
     @GET
     public List<PastelDetailDTO> getPasteles() {
-        return new ArrayList<>();
+        
+        List<PastelDetailDTO> rta = new ArrayList();
+        List<PastelEntity> list = pastelLogic.findPasteles();
+        Iterator ite = list.iterator();
+        while(ite.hasNext())
+        {
+            rta.add(new PastelDetailDTO((PastelEntity)ite.next()));
+        }
+        return rta;
     }
   /**
    * <h1>PUT /api/pasteles/{id} : Actualizar pastel con el id dado.</h1>
@@ -129,9 +146,16 @@ public class PastelResource
      */
   @PUT
   @Path("{id: \\d+}")
-  public PastelDetailDTO updatePastel(@PathParam("id") Long id, PastelDetailDTO pastel)
+  public PastelDetailDTO updatePastel(@PathParam("id") Long id, PastelDetailDTO pastel) throws BusinessLogicException
   {
-      return pastel;
+      PastelEntity entity = pastelLogic.findPastel(id);
+      if(entity.equals(null))
+      {
+          throw new WebApplicationException("\"El recurso /pastel/" + id + " no existe." , 404);
+      }
+      else{
+          return new PastelDetailDTO(pastelLogic.updatePastel(pastel.toEntity()));
+      }
   }
   
   /**
@@ -150,8 +174,15 @@ public class PastelResource
      */
     @DELETE
     @Path("{id: \\d+}")
-  public void deletePastel(@PathParam("id") Long id)
+  public void deletePastel(@PathParam("id") Long id) throws BusinessLogicException
   {
-      //Void
+      PastelEntity entity = pastelLogic.findPastel(id);
+      if(entity.equals(null))
+      {
+          throw new WebApplicationException("El recurso /pastel/" + id + " no existe.", 404);
+      }
+      else{
+          pastelLogic.deletePastel(id);
+      }
   }
 }
