@@ -6,7 +6,7 @@
 
 package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
-import java.awt.List;
+import java.util.List;
 import javax.persistence.Id;
 
 
@@ -48,7 +48,7 @@ public class CarritoDTO
   private Long id;
   private Integer cantidad;
   private Double precio;
-  private List articulos;
+  private List pasteles;
   
   	/**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -61,7 +61,7 @@ public class CarritoDTO
       this.id = carritoEntity.getId();
       this.cantidad = carritoEntity.getCantidad();
       this.precio = carritoEntity.getPrecio();
-      this.articulos = carritoEntity.getArticulos();
+      this.pasteles = carritoEntity.getPasteles();
   }
  
   /**
@@ -122,9 +122,9 @@ public class CarritoDTO
    * @return pasteles Lista de articulos de pasteles
    */
 
-  public List getArticulos()
+  public List getPasteles()
   {
-      return this.articulos;
+      return this.pasteles;
   }
   /**
  * actualiza la lista de articulos en el carrito
@@ -133,7 +133,7 @@ public class CarritoDTO
 
     public void setArticulos(List lista)
     {
-        this.articulos = lista;
+        this.pasteles = lista;
     }
 	/**
 	 * Convertir DTO a Entity
@@ -146,7 +146,7 @@ public class CarritoDTO
         rta.setId(this.id);
         rta.setPrecio(this.precio);
         rta.setCantidad(this.cantidad);
-        rta.setArticulos(this.articulos);
+        rta.setPasteles(this.pasteles);
         return rta;
     }
     
