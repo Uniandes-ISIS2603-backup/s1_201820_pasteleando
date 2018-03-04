@@ -5,12 +5,15 @@
  */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import co.edu.uniandes.csw.pasteleando.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author m.leona
@@ -18,20 +21,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
     
+    @PodamExclude
     @OneToOne
-    @PodamExclude
-    private ClienteEntity cliente;
+    private PedidoEntity pedido;
     
-    @ManyToOne
     @PodamExclude
+    @ManyToOne
     private TarjetaPuntosEntity tarjetaPuntos;
 
-    public ClienteEntity getCliente() {
-        return cliente;
+    public PedidoEntity getPedido() {
+        return pedido;
     }
 
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
 
     public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
@@ -45,6 +48,8 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     private String direccion;
     
     
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
   

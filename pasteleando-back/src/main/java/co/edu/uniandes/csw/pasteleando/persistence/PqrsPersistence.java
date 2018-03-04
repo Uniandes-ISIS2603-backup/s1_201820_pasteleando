@@ -87,9 +87,12 @@ public class PqrsPersistence
 		return em.merge( entity );
 	}
 
-	public void delete( PqrsEntity entity )
-	{
-		em.remove( entity );
-	}
+	public void delete(Long id) 
+        {
+               LOGGER.log(Level.INFO, "Borrando pqrs con id ={0}", id);
+               PqrsEntity entity = em.find(PqrsEntity.class, id);
+               em.remove(entity);
+        }
+    
     
 }

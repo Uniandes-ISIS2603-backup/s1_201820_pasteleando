@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -18,8 +21,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PqrsEntity extends BaseEntity implements Serializable
 {
-    @PodamExclude
-    
     private int tipo; 
     
     private int idSolicitud; 
@@ -29,12 +30,19 @@ public class PqrsEntity extends BaseEntity implements Serializable
     private String fecha; 
     
     private String estado; 
+       
+    @PodamExclude
+    @ManyToOne
+    private PedidoEntity pedido; 
     
-    private List<PqrsEntity> pqrs = new ArrayList<PqrsEntity>();
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente; 
     
-     /**
+        /**
 	 * @return El tipo de la solicitud
 	 */
+    
 	public int getTipo( )
 	{
 		return tipo;
@@ -43,14 +51,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pTipo El nuevo tipo de solicitud
 	 */
+        
 	public void setTipo( int pTipo )
 	{
 		this.tipo = pTipo;
 	}
         
-         /**
+        /**
 	 * @return El id de la solicitud
 	 */
+        
 	public int getIdSolicitud( )
 	{
 		return idSolicitud;
@@ -59,14 +69,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pIdSolicitud El nuevo id de la solicitud
 	 */
+        
 	public void setIdSolicitud( int pIdSolicitud )
 	{
 		this.idSolicitud = pIdSolicitud;
 	}
         
-         /**
+        /**
 	 * @return El id del cliente
 	 */
+        
 	public int getIdCliente( )
 	{
 		return idCliente;
@@ -75,14 +87,16 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pIdCliente El nuevo id del cliente
 	 */
+        
 	public void setIdCliente( int pIdCliente )
 	{
 		this.idCliente = pIdCliente;
 	}
         
-         /**
+        /**
 	 * @return La fecha de la solicitud
 	 */
+        
 	public String getFecha() 
 	{
 		return fecha;
@@ -91,6 +105,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pFecha La nueva fecha se la solicitud
 	 */
+        
 	public void setFecha( String pFecha )
 	{
 		this.fecha = pFecha ;
@@ -99,6 +114,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @return El estado de la solicitud
 	 */
+        
 	public String getEstado() 
 	{
 		return estado;
@@ -107,29 +123,51 @@ public class PqrsEntity extends BaseEntity implements Serializable
         /**
 	 * @param pEstado El nuevo estado de la solicitud
 	 */
+        
 	public void setEstado( String pEstado )
 	{
 		this.estado = pEstado ;
 	}
         
         /**
-         * Obtiene la lista de pqrs.
-         *
-         * @return lista de pqrs.
+         * Obtiene el pedido
+         * @return elemento de tipo pedido.
          */
-         public List<PqrsEntity> getPqrs() 
+        
+         public PedidoEntity getPedido() 
          {
-             return pqrs;
+             return pedido;
          }
 
         /**
-         * Establece el valor de la lista de pqrs.
-         *
-         * @param pPqrs nuevo valor de la lista.
+         * Establece un valor al pedido
+         * @param pPedido nuevo valor del elemento
          */
-         public void setPqrs(List<PqrsEntity> pPqrs) 
+         
+         public void setPedido( PedidoEntity pPedido) 
          {
-            this.pqrs = pPqrs;
+            this.pedido = pPedido;
          }
+         
+        /**
+         * Obtiene el cliente
+         * @return elemento de tipo cliente.
+         */
+        
+         public ClienteEntity getCliente() 
+         {
+             return cliente;
+         }
+
+        /**
+         * Establece un valor al cliente
+         * @param pCliente nuevo valor del elemento
+         */
+         
+         public void setCliente( ClienteEntity pCliente) 
+         {
+            this.cliente = pCliente;
+         }
+        
     
 }

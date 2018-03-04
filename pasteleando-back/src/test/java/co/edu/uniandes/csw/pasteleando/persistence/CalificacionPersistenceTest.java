@@ -39,11 +39,12 @@ public class CalificacionPersistenceTest {
     
     @Deployment 
     public static JavaArchive createDeployment()
-    {
-        return ShrinkWrap.create(JavaArchive.class).addPackage(CalificacionPersistence.class.getPackage())
-                .addPackage(CalificacionEntity.class.getPackage()).
-                addAsManifestResource("META-INF/persistence.xml", "persistence.xml").
-                addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    { 
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(CalificacionPersistence.class.getPackage())
+                .addPackage(CalificacionEntity.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     @Test

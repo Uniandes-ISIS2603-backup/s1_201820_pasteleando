@@ -5,11 +5,11 @@
  */
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
-import co.edu.uniandes.csw.pasteleando.ejb.DecoracionLogic;
-import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import co.edu.uniandes.csw.pasteleando.ejb.FacturaLogic;
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.pasteleando.persistence.DecoracionPersistence;
+import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,32 +29,32 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author dc.cepeda
+ * @author m.leona
  */
 @RunWith(Arquillian.class)
-public class DecoracionLogicTest {
+public class FacturaLogicTest {
     
     private PodamFactory factory = new PodamFactoryImpl();
-
+    
     @Inject
-    private DecoracionLogic decoracionLogic;
+    private FacturaLogic factura;
 
     @PersistenceContext
     private EntityManager em;
-
+    
     @Inject
     private UserTransaction utx;
-
-    private List<DecoracionEntity> data = new ArrayList<DecoracionEntity>();
-
-    private List<PastelEntity> pastelesData = new ArrayList();
-
-    @Deployment
+    
+    private List<FacturaEntity> data = new ArrayList<>();
+    
+    private List<TarjetaPuntosEntity> dataBook = new ArrayList<>();
+    
+     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(DecoracionEntity.class.getPackage())
-                .addPackage(DecoracionLogic.class.getPackage())
-                .addPackage(DecoracionPersistence.class.getPackage())
+                .addPackage(FacturaEntity.class.getPackage())
+                .addPackage(FacturaLogic.class.getPackage())
+                .addPackage(FacturaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -62,6 +62,7 @@ public class DecoracionLogicTest {
     /**
      * Configuración inicial de la prueba.
      *
+     * 
      */
     @Before
     public void configTest() {
@@ -83,61 +84,58 @@ public class DecoracionLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      *
+     * 
      */
     private void clearData() {
-        em.createQuery("delete from PastelEntity").executeUpdate();
-        em.createQuery("delete from DecoracionEntity").executeUpdate();
+        em.createQuery("delete from FacturaEntity").executeUpdate();
     }
 
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      *
+     * 
      */
-    private void insertData() {
+    private void insertData() {   
+        
         for (int i = 0; i < 3; i++) {
-            PastelEntity pasteles = factory.manufacturePojo(PastelEntity.class);
-            em.persist(pasteles);
-            pastelesData.add(pasteles);
-        }
-        for (int i = 0; i < 3; i++) {
-            DecoracionEntity entity = factory.manufacturePojo(DecoracionEntity.class);
+            FacturaEntity entity = factory.manufacturePojo(FacturaEntity.class);
             em.persist(entity);
             data.add(entity);
-            if (i == 0) {
-                pastelesData.get(i).setDecoracion(entity);
-            }
         }
     }
 
     /**
-     * Prueba para crear un Decoracion
+     * Prueba para crear un Factura
      *
-     * @throws co.edu.uniandes.csw.pastelestore.exceptions.BusinessLogicException
+     * 
      */
     @Test
-    public void createDecoracionTest() throws BusinessLogicException {
-        DecoracionEntity newEntity = factory.manufacturePojo(DecoracionEntity.class);
-        DecoracionEntity result = decoracionLogic.createDecoracion(newEntity);
+    public void createFacturaTest() {
+        FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+        FacturaEntity result = factura.createFactura(newEntity);
         Assert.assertNotNull(result);
-        DecoracionEntity entity = em.find(DecoracionEntity.class, result.getId());
+        FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
+        Assert.assertEquals(newEntity.getHora(), entity.getHora());
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
 
     /**
-     * Prueba para consultar la lista de Decoraciones
+     * Prueba para consultar la lista de Facturas
      *
      * 
      */
-    /**
+    
     @Test
-    public void getDecoracionesTest() {
-        List<DecoracionEntity> list = decoracionLogic.getDecoraciones();
+    public void getFacturasTest() throws BusinessLogicException {
+        List<FacturaEntity> list =factura.getFacturas();
         Assert.assertEquals(data.size(), list.size());
-        for (DecoracionEntity entity : list) {
+        for (FacturaEntity entity : list) {
             boolean found = false;
-            for (DecoracionEntity storedEntity : data) {
+            for (FacturaEntity storedEntity : data) {
                 if (entity.getId().equals(storedEntity.getId())) {
                     found = true;
                 }
@@ -145,52 +143,60 @@ public class DecoracionLogicTest {
             Assert.assertTrue(found);
         }
     }
-
+     
     /**
-     * Prueba para consultar un Decoracion
+     * Prueba para consultar un Factura
      *
      * 
      */
+    
     @Test
-    public void getDecoracionTest() {
-        DecoracionEntity entity = data.get(0);
-        DecoracionEntity resultEntity = decoracionLogic.getDecoracion(entity.getId());
+    public void getFacturaTest() {
+        FacturaEntity entity = data.get(0);
+        FacturaEntity resultEntity = factura.getFactura(entity.getId());
         Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
+        Assert.assertEquals(entity.getFecha(), resultEntity.getFecha());
+        Assert.assertEquals(entity.getHora(), resultEntity.getHora());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
     }
+
     /**
-     * Prueba para eliminar un Decoracion
+     * Prueba para eliminar un Factura
      *
      * 
      */
-    /*
+ 
     @Test
-    public void deleteDecoracionTest() throws BusinessLogicException {
-        DecoracionEntity entity = data.get(0);
-        decoracionLogic.deleteDecoracion(entity.getId());
-        DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
+    public void deleteFacturaTest() {
+        FacturaEntity entity = data.get(0);
+        factura.deleteFactura(entity.getId());
+        FacturaEntity deleted = em.find(FacturaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-*/
+
     /**
-     * Prueba para actualizar un Decoracion
+     * Prueba para actualizar un Factura
      *
      * 
      */
-    @Test
-    public void updateDecoracionTest() {
-        DecoracionEntity entity = data.get(0);
-        DecoracionEntity pojoEntity = factory.manufacturePojo(DecoracionEntity.class);
+ @Test
+    public void updateFacturaTest() {
+         FacturaEntity entity = data.get(0);
+        FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 
         pojoEntity.setId(entity.getId());
 
-        decoracionLogic.updateDecoracion(pojoEntity.getId(), pojoEntity);
+        factura.updateFactura(pojoEntity);
 
-        DecoracionEntity resp = em.find(DecoracionEntity.class, entity.getId());
+        FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(pojoEntity.getDireccion(),resp.getDireccion());
+        Assert.assertEquals(pojoEntity.getFecha(),resp.getFecha());
+        Assert.assertEquals(pojoEntity.getHora(),resp.getHora());
     }
-
+    
 }

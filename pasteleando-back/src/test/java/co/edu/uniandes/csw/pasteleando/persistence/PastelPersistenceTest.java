@@ -30,9 +30,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class PastelPersistenceTest {
     
-    @Deployment
-    public static JavaArchive createDeployment()
-    {
+     @Deployment
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(PastelEntity.class.getPackage())
                 .addPackage(PastelPersistence.class.getPackage())
@@ -46,7 +45,7 @@ public class PastelPersistenceTest {
     @PersistenceContext
     private EntityManager em;
     
-    @javax.inject.Inject
+    @Inject
     UserTransaction utx;
     
     @Before
@@ -68,12 +67,7 @@ public class PastelPersistenceTest {
     }
     
 
-    private void clearData() {
-        em.createQuery("delete from PastelEntity").executeUpdate();
-    }
-    
-
-    private List<PastelEntity> data = new ArrayList<PastelEntity>();
+    private List<PastelEntity> data = new ArrayList<>();
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -82,9 +76,12 @@ public class PastelPersistenceTest {
             PastelEntity entity = factory.manufacturePojo(PastelEntity.class);
 
             em.persist(entity);
-            
             data.add(entity);
         }
+    }
+    
+    private void clearData() {
+        em.createQuery("delete from PastelEntity").executeUpdate();
     }
 
 
@@ -93,7 +90,7 @@ public class PastelPersistenceTest {
     public void createPastelTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        PastelEntity newEntity = new PastelEntity();
+        PastelEntity newEntity = factory.manufacturePojo(PastelEntity.class);
         PastelEntity result = pastelPersistence.create(newEntity);
         
         Assert.assertNotNull(result);
@@ -110,7 +107,7 @@ public class PastelPersistenceTest {
             boolean found = false;
             for (PastelEntity entity : data) {
                 // revisar id
-                if (ent.getId() == entity.getId()) {
+                if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
             }
@@ -139,7 +136,7 @@ public class PastelPersistenceTest {
     }
 
     @Test
-    public void updateEditorialTest() {
+    public void updatePastelTest() {
         PastelEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         PastelEntity newEntity = factory.manufacturePojo(PastelEntity.class);

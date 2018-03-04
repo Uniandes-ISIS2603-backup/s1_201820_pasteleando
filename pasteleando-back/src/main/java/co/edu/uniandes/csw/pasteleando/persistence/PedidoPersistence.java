@@ -22,9 +22,7 @@ import javax.persistence.TypedQuery;
 public class PedidoPersistence 
 {
      private static final Logger LOGGER = Logger.getLogger(PedidoPersistence.class.getName());
-     
-     private PedidoPersistence pedidoPersistence; 
-            
+                
      @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
      
@@ -87,9 +85,11 @@ public class PedidoPersistence
 		return em.merge( entity );
 	}
 
-	public void delete( PedidoEntity entity )
-	{
-		em.remove( entity );
-	}
+	public void delete(Long id) 
+        {
+               LOGGER.log(Level.INFO, "Borrando pedido con id={0}", id);
+               PedidoEntity entity = em.find(PedidoEntity.class, id);
+               em.remove(entity);
+        }
     
 }

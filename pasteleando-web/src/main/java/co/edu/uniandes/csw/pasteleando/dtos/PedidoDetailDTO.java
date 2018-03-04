@@ -55,16 +55,6 @@ public class PedidoDetailDTO extends PedidoDTO
 	public PedidoDetailDTO( PedidoEntity entity )
 	{
 		super( entity );
-                
-                if (entity != null) 
-                {
-                    pedidos = new ArrayList<>();
-                    
-                    for( PedidoEntity entityPedido : entity.getPedidos() ) 
-                    {
-                        pedidos.add(new PedidoDTO(entityPedido));
-                    }
-                }
 	}
 
 	/**
@@ -75,20 +65,7 @@ public class PedidoDetailDTO extends PedidoDTO
 	@Override
 	public PedidoEntity toEntity( )
 	{
-		PedidoEntity entity = super.toEntity( );
-                
-                if( pedidos != null ) 
-                {
-                      List<PedidoEntity> pedidosEntity = new ArrayList<>();
-                      
-                      for( PedidoDTO dtoPedido : pedidos ) 
-                      {
-                           pedidosEntity.add( dtoPedido.toEntity() );
-                      }
-                      
-                      entity.setPedidos(pedidosEntity); 
-                }
-
+            PedidoEntity entity = super.toEntity( );
             return entity;
 	}
        

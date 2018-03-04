@@ -10,7 +10,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -22,6 +21,7 @@ public class CarritoEntity extends BaseEntity implements Serializable
 {
   private int cantidad;
   private double precio;
+  
   @PodamExclude
   @OneToMany(cascade = CascadeType.PERSIST)
   private List<PastelEntity> pasteles;

@@ -23,6 +23,11 @@ public class CarritoPersistence
   @PersistenceContext( unitName = "PasteleandoPU" )
   protected EntityManager em;
   
+  public CarritoPersistence()
+  {
+      
+  }
+  
   public CarritoEntity create(CarritoEntity entity)
   {
       em.persist(entity);

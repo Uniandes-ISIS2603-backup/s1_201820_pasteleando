@@ -56,16 +56,6 @@ public class PqrsDetailDTO extends PqrsDTO
 	public PqrsDetailDTO( PqrsEntity entity )
 	{
 		super( entity );
-
-                if (entity != null) 
-                {
-                    pqrs = new ArrayList<>();
-                    
-                    for( PqrsEntity entityPqrs : entity.getPqrs() ) 
-                    {
-                        pqrs.add(new PqrsDTO(entityPqrs));
-                    }
-                }
         }
 
 	/**
@@ -76,20 +66,7 @@ public class PqrsDetailDTO extends PqrsDTO
 	@Override
 	public PqrsEntity toEntity( )
 	{
-		PqrsEntity entity = super.toEntity( );
-                
-                if( pqrs != null ) 
-                {
-                      List<PqrsEntity> pqrsEntity = new ArrayList<>();
-                      
-                      for( PqrsDTO dtoPqrs : pqrs ) 
-                      {
-                           pqrsEntity.add( dtoPqrs.toEntity() );
-                      }
-                      
-                      entity.setPqrs(pqrsEntity);
-                }
-                
+		PqrsEntity entity = super.toEntity( );                
 		return entity;
 	}
         

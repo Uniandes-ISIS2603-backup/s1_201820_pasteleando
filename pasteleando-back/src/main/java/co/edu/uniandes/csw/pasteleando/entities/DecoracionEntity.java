@@ -26,7 +26,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      * Atributo que modela los pasteles de la DecoracionEntity
      */    
     @PodamExclude
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "Decoracion")
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "decoracion")
     private List<PastelEntity> pasteles = new ArrayList<>();
 
      /**

@@ -22,6 +22,11 @@ public class PastelPersistence {
     @PersistenceContext( unitName = "PasteleandoPU" )
     private EntityManager em;
     
+    public PastelPersistence()
+    {
+        
+    }
+    
     public PastelEntity create(PastelEntity entity)
     {
         em.persist(entity);

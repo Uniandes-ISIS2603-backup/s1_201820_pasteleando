@@ -17,8 +17,9 @@ import java.util.List;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "categoria": string,
- *      "promociones": 
+ *      "id":number,
+ *      "categoria": String,
+ *      "promociones":
  *      [
  *      {
  *      "cantidad": int
@@ -33,8 +34,9 @@ import java.util.List;
  *
  * <pre>
  *   {
+ *      "id":number,
  *      "categoria": "Bodas",
- *      "promociones": 
+ *      "promociones":
  *      [
  *      {
  *      "cantidad": 30
@@ -71,7 +73,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
         super( entity );
         if (entity.getPromociones() != null) {
             promociones = new ArrayList<>();
-            entity.getPromociones().forEach((entityPromocion) -> {
+            entity.getPromociones().forEach((PromocionEntity entityPromocion) -> {
                 promociones.add(new PromocionDTO(entityPromocion));
             });
         }
@@ -108,7 +110,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
      * Modifica las promociones asociadas a esta decoración del catálogo.
      * @param promociones Las nuevas promociones.
      */
-    public void setReviews(List<PromocionDTO> promociones) {
+    public void setPromociones(List<PromocionDTO> promociones) {
         this.promociones = promociones;
     }
     

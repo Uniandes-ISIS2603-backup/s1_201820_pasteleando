@@ -31,9 +31,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class CarritoPersistenceTest {
 
     
-    @Deployment
-    public static JavaArchive createDeployment()
-    {
+     @Deployment
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CarritoEntity.class.getPackage())
                 .addPackage(CarritoPersistence.class.getPackage())
@@ -69,12 +68,8 @@ public class CarritoPersistenceTest {
     }
     
 
-    private void clearData() {
-        em.createQuery("delete from CarritoEntity").executeUpdate();
-    }
-    
 
-    private List<CarritoEntity> data = new ArrayList<CarritoEntity>();
+    private List<CarritoEntity> data = new ArrayList<>();
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -88,13 +83,16 @@ public class CarritoPersistenceTest {
         }
     }
 
+    private void clearData() {
+        em.createQuery("delete from CarritoEntity").executeUpdate();
+    }
 
     
     @Test
     public void createCarritoTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        CarritoEntity newEntity = new CarritoEntity();
+        CarritoEntity newEntity = factory.manufacturePojo(CarritoEntity.class);
         CarritoEntity result = carritoPersistence.create(newEntity);
         
         Assert.assertNotNull(result);

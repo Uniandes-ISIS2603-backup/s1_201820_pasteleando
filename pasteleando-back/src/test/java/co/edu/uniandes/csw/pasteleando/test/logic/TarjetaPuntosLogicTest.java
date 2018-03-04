@@ -5,11 +5,10 @@
  */
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
-import co.edu.uniandes.csw.pasteleando.ejb.DecoracionLogic;
-import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import co.edu.uniandes.csw.pasteleando.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.pasteleando.persistence.DecoracionPersistence;
+import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,32 +28,31 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author dc.cepeda
+ * @author m.leona
  */
 @RunWith(Arquillian.class)
-public class DecoracionLogicTest {
-    
+public class TarjetaPuntosLogicTest {
     private PodamFactory factory = new PodamFactoryImpl();
-
+    
     @Inject
-    private DecoracionLogic decoracionLogic;
+    private TarjetaPuntosLogic tarjeta;
 
     @PersistenceContext
     private EntityManager em;
-
+    
     @Inject
     private UserTransaction utx;
-
-    private List<DecoracionEntity> data = new ArrayList<DecoracionEntity>();
-
-    private List<PastelEntity> pastelesData = new ArrayList();
-
-    @Deployment
+    
+    private List<TarjetaPuntosEntity> data = new ArrayList<>();
+    
+    private List<TarjetaPuntosEntity> dataBook = new ArrayList<>();
+    
+     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(DecoracionEntity.class.getPackage())
-                .addPackage(DecoracionLogic.class.getPackage())
-                .addPackage(DecoracionPersistence.class.getPackage())
+                .addPackage(TarjetaPuntosEntity.class.getPackage())
+                .addPackage(TarjetaPuntosLogic.class.getPackage())
+                .addPackage(TarjetaPuntosPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -62,6 +60,7 @@ public class DecoracionLogicTest {
     /**
      * Configuración inicial de la prueba.
      *
+     * 
      */
     @Before
     public void configTest() {
@@ -83,61 +82,56 @@ public class DecoracionLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      *
+     * 
      */
     private void clearData() {
-        em.createQuery("delete from PastelEntity").executeUpdate();
-        em.createQuery("delete from DecoracionEntity").executeUpdate();
+        em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();
     }
 
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      *
+     * 
      */
-    private void insertData() {
+    private void insertData() {      
+        
         for (int i = 0; i < 3; i++) {
-            PastelEntity pasteles = factory.manufacturePojo(PastelEntity.class);
-            em.persist(pasteles);
-            pastelesData.add(pasteles);
-        }
-        for (int i = 0; i < 3; i++) {
-            DecoracionEntity entity = factory.manufacturePojo(DecoracionEntity.class);
+            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);           
             em.persist(entity);
             data.add(entity);
-            if (i == 0) {
-                pastelesData.get(i).setDecoracion(entity);
-            }
         }
     }
 
     /**
-     * Prueba para crear un Decoracion
-     *
-     * @throws co.edu.uniandes.csw.pastelestore.exceptions.BusinessLogicException
-     */
-    @Test
-    public void createDecoracionTest() throws BusinessLogicException {
-        DecoracionEntity newEntity = factory.manufacturePojo(DecoracionEntity.class);
-        DecoracionEntity result = decoracionLogic.createDecoracion(newEntity);
-        Assert.assertNotNull(result);
-        DecoracionEntity entity = em.find(DecoracionEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-    }
-
-    /**
-     * Prueba para consultar la lista de Decoraciones
+     * Prueba para crear un TarjetaPuntos
      *
      * 
      */
-    /**
     @Test
-    public void getDecoracionesTest() {
-        List<DecoracionEntity> list = decoracionLogic.getDecoraciones();
+    public void createTarjetaPuntosTest() {
+        TarjetaPuntosEntity newEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
+        TarjetaPuntosEntity result = tarjeta.createTarjetaPuntos(newEntity);
+        Assert.assertNotNull(result);
+        TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getNumeroPuntos(), entity.getNumeroPuntos());
+    }
+
+    /**
+     * Prueba para consultar la lista de TarjetaPuntoss
+     *
+     * 
+     */
+    
+    @Test
+    public void getTarjetaPuntossTest() throws BusinessLogicException {
+        List<TarjetaPuntosEntity> list =tarjeta.getTarjetaPuntoss();
         Assert.assertEquals(data.size(), list.size());
-        for (DecoracionEntity entity : list) {
+        for (TarjetaPuntosEntity entity : list) {
             boolean found = false;
-            for (DecoracionEntity storedEntity : data) {
+            for (TarjetaPuntosEntity storedEntity : data) {
                 if (entity.getId().equals(storedEntity.getId())) {
                     found = true;
                 }
@@ -145,52 +139,56 @@ public class DecoracionLogicTest {
             Assert.assertTrue(found);
         }
     }
-
+     
     /**
-     * Prueba para consultar un Decoracion
+     * Prueba para consultar un TarjetaPuntos
      *
      * 
      */
+    
     @Test
-    public void getDecoracionTest() {
-        DecoracionEntity entity = data.get(0);
-        DecoracionEntity resultEntity = decoracionLogic.getDecoracion(entity.getId());
+    public void getTarjetaPuntosTest() {
+        TarjetaPuntosEntity entity = data.get(0);
+        TarjetaPuntosEntity resultEntity = tarjeta.getTarjetaPuntos(entity.getId());
         Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getNumeroPuntos(), resultEntity.getNumeroPuntos());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
     }
+
     /**
-     * Prueba para eliminar un Decoracion
+     * Prueba para eliminar un TarjetaPuntos
      *
      * 
      */
-    /*
+ 
     @Test
-    public void deleteDecoracionTest() throws BusinessLogicException {
-        DecoracionEntity entity = data.get(0);
-        decoracionLogic.deleteDecoracion(entity.getId());
-        DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
+    public void deleteTarjetaPuntosTest() {
+        TarjetaPuntosEntity entity = data.get(0);
+        System.out.println(entity.getId()+"AAA");
+        tarjeta.deleteTarjetaPuntos(entity.getId());
+        TarjetaPuntosEntity deleted = em.find(TarjetaPuntosEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-*/
+
     /**
-     * Prueba para actualizar un Decoracion
+     * Prueba para actualizar un TarjetaPuntos
      *
      * 
      */
-    @Test
-    public void updateDecoracionTest() {
-        DecoracionEntity entity = data.get(0);
-        DecoracionEntity pojoEntity = factory.manufacturePojo(DecoracionEntity.class);
+ @Test
+    public void updateTarjetaPuntosTest() {
+        TarjetaPuntosEntity entity = data.get(0);
+        TarjetaPuntosEntity pojoEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
 
         pojoEntity.setId(entity.getId());
 
-        decoracionLogic.updateDecoracion(pojoEntity.getId(), pojoEntity);
+        tarjeta.updateTarjetaPuntos(pojoEntity);
 
-        DecoracionEntity resp = em.find(DecoracionEntity.class, entity.getId());
+        TarjetaPuntosEntity resp = em.find(TarjetaPuntosEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
+       Assert.assertEquals(pojoEntity.getNumeroPuntos(), resp.getNumeroPuntos());
     }
-
 }

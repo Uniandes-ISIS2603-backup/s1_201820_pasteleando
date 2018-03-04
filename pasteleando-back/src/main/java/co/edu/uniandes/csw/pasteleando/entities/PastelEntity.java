@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -21,7 +22,7 @@ public class PastelEntity extends BaseEntity implements Serializable
   private double precio;
   
   @PodamExclude
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private DecoracionEntity decoracion;
   /**
    * retorna el peso del pastel

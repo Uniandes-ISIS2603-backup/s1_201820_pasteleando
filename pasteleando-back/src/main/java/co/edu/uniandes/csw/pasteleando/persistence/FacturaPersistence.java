@@ -69,8 +69,8 @@ public class FacturaPersistence {
 
 	public List<FacturaEntity> findAll( )
 	{
-		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<FacturaEntity> query = em.createQuery( "select u from PasteleandoEntity u", FacturaEntity.class );
+		LOGGER.info( "Consultando todas las entidades de Factura" );
+		TypedQuery<FacturaEntity> query = em.createQuery( "select u from FacturaEntity u", FacturaEntity.class );
 		return query.getResultList( );
 	}
 
@@ -84,12 +84,10 @@ public class FacturaPersistence {
 		return em.merge( entity );
 	}
 
-	public void delete( FacturaEntity entity )
+	public void delete( Long id )
 	{
+            FacturaEntity entity = em.find(FacturaEntity.class, id);
 		em.remove( entity );
 	}
 
-    public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

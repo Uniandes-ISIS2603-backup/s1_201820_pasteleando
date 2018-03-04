@@ -9,17 +9,15 @@ import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.core.api.annotation.Inject;
+import javax.inject.Inject;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -31,31 +29,46 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class ClientePersistenceTest {
     
-    @Inject
+   @Inject
     private ClientePersistence clientePersistence;
     
     @PersistenceContext
     private EntityManager em;
     
+      /**
+     *
+     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
+     * embebido. El jar contiene las clases de Pasteleando, el descriptor de la
+     * base de datos y el archivo beans.xml para resolver la inyección de
+     * dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment()
     {
-        return ShrinkWrap.create(JavaArchive.class).addPackage(ClienteEntity.class.getPackage()).
-                addPackage(ClientePersistence.class.getPackage()).
-                addAsManifestResource("META-INF/persistence.xml", "persistence.xml").
-                addAsManifestResource("META-INF/beans.xml", "beans.xml");
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(ClientePersistence.class.getPackage())
+                .addPackage(ClienteEntity.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
+    
+     /**
+     * Prueba para crear un Cliente
+     */
     
     @Test
     public void createClienteEntityTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
         ClienteEntity entidad = factory.manufacturePojo(ClienteEntity.class);
+        
         ClienteEntity result = clientePersistence.create(entidad);
         
         Assert.assertNotNull(result);
         ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
         Assert.assertEquals(entity.getName(), entidad.getName());
+        
+        
     }
     
    

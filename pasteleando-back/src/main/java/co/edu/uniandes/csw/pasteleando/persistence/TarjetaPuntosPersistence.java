@@ -73,7 +73,7 @@ public class TarjetaPuntosPersistence {
 	public List<TarjetaPuntosEntity> findAll( )
 	{
 		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from PasteleandoEntity u", TarjetaPuntosEntity.class );
+		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class );
 		return query.getResultList( );
 	}
 
@@ -87,12 +87,9 @@ public class TarjetaPuntosPersistence {
 		return em.merge( entity );
 	}
 
-	public void delete( TarjetaPuntosEntity entity )
+	public void delete( Long id )
 	{
-		em.remove( entity );
+		TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, id);
+                em.remove(entity);
 	}
-
-    public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
