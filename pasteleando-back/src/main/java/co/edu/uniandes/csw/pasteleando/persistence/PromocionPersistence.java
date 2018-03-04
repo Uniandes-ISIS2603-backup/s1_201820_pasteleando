@@ -29,7 +29,7 @@ public class PromocionPersistence
     
     /**
      * Buscar una promoción
-     * 
+     *
      * Busca si hay alguna promoción asociada a una decoración del catálogo y con un ID específico
      * @param decoracionCatalogoId El ID de la decoración del catálogo con respecto al cual se busca
      * @param promocionId El ID de la promoción buscada
@@ -49,7 +49,7 @@ public class PromocionPersistence
         } else if (results.size() >= 1) {
             promocion = results.get(0);
         }
-
+        
         return promocion;
     }
     
@@ -77,8 +77,15 @@ public class PromocionPersistence
         return em.merge( entity );
     }
     
-    public void delete( PromocionEntity entity )
-    {
-        em.remove( entity );
+    /**
+     * Eliminar una promoción.
+     *
+     * Elimina la promoción asociada al ID que recibe.
+     * @param id El ID de la promoción que se desea borrar.
+     */
+    public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando promocion con id={0}", id);
+        PromocionEntity entity = em.find(PromocionEntity.class, id);
+        em.remove(entity);
     }
 }

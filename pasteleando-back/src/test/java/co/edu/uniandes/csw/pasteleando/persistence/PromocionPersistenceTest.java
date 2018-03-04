@@ -40,7 +40,7 @@ public class PromocionPersistenceTest {
      * se van a probar.
      */
     @Inject
-    private PromocionPersistence PromocionPersistence;
+    private PromocionPersistence promocionPersistence;
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -125,12 +125,11 @@ public class PromocionPersistenceTest {
             em.persist(entity);
             dataCatalogo.add(entity);
         }
-        
         for (int i = 0; i < 3; i++) {
             PromocionEntity entity = factory.manufacturePojo(PromocionEntity.class);
-            
-            entity.setDecoracionCatalogo(dataCatalogo.get(1));
-            
+            if (i == 0) {
+                entity.setDecoracionCatalogo(dataCatalogo.get(0));
+            }
             em.persist(entity);
             data.add(entity);
         }
@@ -148,7 +147,7 @@ public class PromocionPersistenceTest {
         
         PodamFactory factory = new PodamFactoryImpl();
         PromocionEntity newEntity = factory.manufacturePojo(PromocionEntity.class);
-        PromocionEntity result = PromocionPersistence.create(newEntity);
+        PromocionEntity result = promocionPersistence.create(newEntity);
         
         Assert.assertNotNull(result);
         
@@ -165,7 +164,7 @@ public class PromocionPersistenceTest {
     @Test
     public void getPromocionTest() {
         PromocionEntity entity = data.get(0);
-        PromocionEntity newEntity = PromocionPersistence.find(dataCatalogo.get(0).getId(), entity.getId());
+        PromocionEntity newEntity = promocionPersistence.find(dataCatalogo.get(0).getId(), entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getCantidad(), newEntity.getCantidad());
@@ -184,7 +183,7 @@ public class PromocionPersistenceTest {
         
         newEntity.setId(entity.getId());
         
-        PromocionPersistence.update(newEntity);
+        promocionPersistence.update(newEntity);
         
         PromocionEntity resp = em.find(PromocionEntity.class, entity.getId());
         
@@ -200,7 +199,7 @@ public class PromocionPersistenceTest {
     @Test
     public void deletePromocionTest() {
         PromocionEntity entity = data.get(0);
-        PromocionPersistence.delete(entity);
+        promocionPersistence.delete(entity.getId());
         PromocionEntity deleted = em.find(PromocionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
