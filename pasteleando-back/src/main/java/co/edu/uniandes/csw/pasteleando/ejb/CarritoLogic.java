@@ -19,7 +19,7 @@ public class CarritoLogic {
     @Inject
     private CarritoPersistence persistence;
     
-    public CarritoEntity createPastel(CarritoEntity entity) throws BusinessLogicException
+    public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
     {
         if(!persistence.find(entity.getId()).equals(null))
         {
@@ -28,7 +28,7 @@ public class CarritoLogic {
         return persistence.create(entity);
     }
     
-    public void deletePastel(Long id) throws BusinessLogicException
+    public void deleteCarrito(Long id) throws BusinessLogicException
     {
         if(!persistence.find(id).equals(null))
         {
@@ -37,12 +37,12 @@ public class CarritoLogic {
         persistence.delete(id);
     }
     
-    public List findPasteles()
+    public List findCarritos()
     {
         return persistence.getAll();
     }
     
-    public CarritoEntity findPastel(Long id) throws BusinessLogicException
+    public CarritoEntity findCarrito(Long id) throws BusinessLogicException
     {
         if(!persistence.find(id).equals(null))
         {
@@ -51,7 +51,7 @@ public class CarritoLogic {
         return persistence.find(id);
     }
     
-    public CarritoEntity updatePastel(CarritoEntity entity)throws BusinessLogicException
+    public CarritoEntity updateCarrito(CarritoEntity entity)throws BusinessLogicException
     {
         if(!persistence.find(entity.getId()).equals(null))
         {

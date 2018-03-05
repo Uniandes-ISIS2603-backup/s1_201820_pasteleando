@@ -22,7 +22,7 @@ public class PastelLogic {
     
     public PastelEntity createPastel(PastelEntity entity) throws BusinessLogicException
     {
-        if(!persistence.find(entity.getId()).equals(null))
+        if(persistence.find(entity.getId()) != null)
         {
             throw new BusinessLogicException("el pastel con el id:" + entity.getId() + "ya existe");
         }
@@ -31,7 +31,7 @@ public class PastelLogic {
     
     public void deletePastel(Long id) throws BusinessLogicException
     {
-        if(!persistence.find(id).equals(null))
+        if(persistence.find(id) == null)
         {
             throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
         }
@@ -45,7 +45,7 @@ public class PastelLogic {
     
     public PastelEntity findPastel(Long id) throws BusinessLogicException
     {
-        if(!persistence.find(id).equals(null))
+        if(persistence.find(id)==null)
         {
             throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
         }
@@ -54,7 +54,7 @@ public class PastelLogic {
     
     public PastelEntity updatePastel(PastelEntity entity)throws BusinessLogicException
     {
-        if(!persistence.find(entity.getId()).equals(null))
+        if(persistence.find(entity.getId()) == null)
         {
             throw new BusinessLogicException("el pastel con el id:" + entity.getId()+ "no existe");
         }

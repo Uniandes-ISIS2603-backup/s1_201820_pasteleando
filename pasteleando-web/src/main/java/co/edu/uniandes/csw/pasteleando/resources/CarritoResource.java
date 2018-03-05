@@ -49,7 +49,7 @@ public class CarritoResource
 {
     
     @Inject
-    private CarritoLogic carritoLogic
+    CarritoLogic carritoLogic
             
       /**
      * <h1>POST /api/carritos : Crear un carrito.</h1>
