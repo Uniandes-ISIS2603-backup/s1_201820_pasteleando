@@ -109,7 +109,7 @@ public class TarjetaPuntosLogicTest {
      * 
      */
     @Test
-    public void createTarjetaPuntosTest() {
+    public void createTarjetaPuntosTest() throws BusinessLogicException{
         TarjetaPuntosEntity newEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
         TarjetaPuntosEntity result = tarjeta.createTarjetaPuntos(newEntity);
         Assert.assertNotNull(result);
@@ -177,7 +177,7 @@ public class TarjetaPuntosLogicTest {
      * 
      */
  @Test
-    public void updateTarjetaPuntosTest() {
+    public void updateTarjetaPuntosTest() throws BusinessLogicException{
         TarjetaPuntosEntity entity = data.get(0);
         TarjetaPuntosEntity pojoEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
 

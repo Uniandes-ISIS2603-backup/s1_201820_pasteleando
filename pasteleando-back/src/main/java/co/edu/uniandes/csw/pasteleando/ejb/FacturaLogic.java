@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
+import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -48,13 +49,26 @@ public class FacturaLogic {
         return persistence.find(id);
     }
     
+    
+    public boolean validatePrecio(Integer precio)
+    {
+        if(precio <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
     /**
      * Se encarga de crear un Factura en la base de datos.
      *
      * @param entity Objeto de FacturaEntity con los datos nuevos
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      */
-    public FacturaEntity createFactura(FacturaEntity entity) {
+    public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException{
+       if(!validatePrecio(entity.getPrecio()))
+       {
+           throw new BusinessLogicException("El Precio no puede ser menor que 0");
+       }
         
         return persistence.create(entity);
     }
@@ -65,7 +79,11 @@ public class FacturaLogic {
      * @param entity Instancia de FacturaEntity con los nuevos datos.
      * @return Instancia de FacturaEntity con los datos actualizados.
      */
-    public FacturaEntity updateFactura(FacturaEntity entity) {
+    public FacturaEntity updateFactura(FacturaEntity entity) throws BusinessLogicException {
+        if(!validatePrecio(entity.getPrecio()))
+       {
+           throw new BusinessLogicException("El Precio no puede ser menor que 0");
+       }
         return persistence.update(entity);
     }
     

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
+import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,13 +47,30 @@ public class TarjetaPuntosLogic {
         return persistence.find(id);
     }
     
+    public boolean validatePuntos(Integer puntos)
+    {
+        if(puntos < 0)
+        {
+            return false;
+        }
+        
+            return true;
+        
+    }
+    
+    
     /**
      * Se encarga de crear un TarjetaPuntos en la base de datos.
      *
      * @param entity Objeto de TarjetaPuntosEntity con los datos nuevos
      * @return Objeto de TarjetaPuntosEntity con los datos nuevos y su ID.
      */
-    public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity entity) {
+    public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
+        
+        if(!validatePuntos(entity.getNumeroPuntos()))
+        {
+            throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
+        }
         
         return persistence.create(entity);
     }
@@ -63,7 +81,12 @@ public class TarjetaPuntosLogic {
      * @param entity Instancia de TarjetaPuntosEntity con los nuevos datos.
      * @return Instancia de TarjetaPuntosEntity con los datos actualizados.
      */
-    public TarjetaPuntosEntity updateTarjetaPuntos(TarjetaPuntosEntity entity) {
+    public TarjetaPuntosEntity updateTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
+         if(!validatePuntos(entity.getNumeroPuntos()))
+        {
+            throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
+        }
+        
         return persistence.update(entity);
     }
     
