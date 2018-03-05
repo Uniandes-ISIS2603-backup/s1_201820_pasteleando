@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
-import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import javax.inject.Inject;
 import javax.transaction.HeuristicRollbackException;

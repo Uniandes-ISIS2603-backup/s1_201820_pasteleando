@@ -132,8 +132,8 @@ public class DecoracionLogicTest {
      */
     /**
     @Test
-    public void getDecoracionesTest() {
-        List<DecoracionEntity> list = decoracionLogic.getDecoraciones();
+    public void getDecoracionesTest() throws BusinessLogicException {
+         List<DecoracionEntity> list =decoracionLogic.getAll();
         Assert.assertEquals(data.size(), list.size());
         for (DecoracionEntity entity : list) {
             boolean found = false;
@@ -144,8 +144,8 @@ public class DecoracionLogicTest {
             }
             Assert.assertTrue(found);
         }
-    }
-
+        }
+*/
     /**
      * Prueba para consultar un Decoracion
      *
