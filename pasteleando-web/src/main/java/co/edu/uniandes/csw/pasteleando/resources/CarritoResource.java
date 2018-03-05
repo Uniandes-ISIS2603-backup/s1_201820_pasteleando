@@ -72,7 +72,7 @@ public class CarritoResource
      * @return JSON {@link CarritoDetailDTO}  - el carrito guardado con el atributo id autogenerado.
      * @throws BusinessLogicException
      */
-    //@POST
+    @POST
     public CarritoDetailDTO createCarrito(CarritoDetailDTO carrito) throws BusinessLogicException  {
         return new CarritoDetailDTO(carritoLogic.createCarrito(carrito.toEntity()));
     }
