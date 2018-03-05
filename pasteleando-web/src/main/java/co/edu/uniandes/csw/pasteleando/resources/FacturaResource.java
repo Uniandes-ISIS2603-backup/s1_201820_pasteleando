@@ -7,10 +7,12 @@ package co.edu.uniandes.csw.pasteleando.resources;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 import co.edu.uniandes.csw.pasteleando.dtos.FacturaDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.FacturaLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -30,6 +32,9 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class FacturaResource {
 
+    @Inject
+    private FacturaLogic facturaLogic;
+    
     /**
 	 * <h1>POST /api/factura : Crear una entidad de Factura.</h1>
 	 * 
