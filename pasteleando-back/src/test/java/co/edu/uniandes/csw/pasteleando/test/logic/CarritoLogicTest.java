@@ -56,7 +56,7 @@ public class CarritoLogicTest {
     {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CarritoEntity.class.getPackage())
-                .addPackage(CarritoEntity.class.getPackage())
+                .addPackage(CarritoLogic.class.getPackage())
                 .addPackage(CarritoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
@@ -101,7 +101,7 @@ public class CarritoLogicTest {
     }
     
     @Test
-    public void createPastelTest() throws BusinessLogicException 
+    public void createCarritoTest() throws BusinessLogicException 
     {
         CarritoEntity newEntity = factory.manufacturePojo(CarritoEntity.class);
         CarritoEntity result = carritoLogic.createCarrito(newEntity);
@@ -110,11 +110,11 @@ public class CarritoLogicTest {
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getCantidad(), newEntity.getCantidad());
         Assert.assertEquals(entity.getPasteles(), newEntity.getPasteles());
-        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio());
+        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio(),0);
     }
     
     @Test
-    public void getPastelesTest()
+    public void getCarritosTest()
     {
           List<CarritoEntity> list = carritoLogic.findCarritos();
         Assert.assertEquals(data.size(), list.size());
@@ -130,7 +130,7 @@ public class CarritoLogicTest {
     }
     
     @Test
-    public void getPastelTest() throws BusinessLogicException
+    public void getCarritoTest() throws BusinessLogicException
     {
         CarritoEntity entity = data.get(0);
         CarritoEntity resultEntity = carritoLogic.findCarrito(entity.getId());
@@ -139,11 +139,11 @@ public class CarritoLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getCantidad(), resultEntity.getCantidad());
         Assert.assertEquals(entity.getPasteles(), resultEntity.getPasteles());
-        Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio());
+        Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio(),0);
     }
     
     @Test
-    public void deletePastelTest() throws BusinessLogicException
+    public void deleteCarritoTest() throws BusinessLogicException
     {
         CarritoEntity entity = data.get(0);
         carritoLogic.deleteCarrito(entity.getId());
@@ -152,7 +152,7 @@ public class CarritoLogicTest {
     }
     
     @Test
-    public void updatePastelTest() throws BusinessLogicException
+    public void updateCarritoTest() throws BusinessLogicException
     {
         CarritoEntity entity = data.get(0);
         CarritoEntity pojoEntity = factory.manufacturePojo(CarritoEntity.class);
@@ -164,8 +164,8 @@ public class CarritoLogicTest {
         CarritoEntity resp = em.find(CarritoEntity.class, entity.getId());
         
         Assert.assertEquals(entity.getId(), resp.getId());
-        Assert.assertEquals(entity.getCantidad(), resp.getCantidad());
-        Assert.assertEquals(entity.getPasteles(), resp.getPasteles());
-        Assert.assertEquals(entity.getPrecio(), resp.getPrecio());
+        Assert.assertEquals(pojoEntity.getCantidad(), resp.getCantidad());
+        Assert.assertEquals(pojoEntity.getPasteles(), resp.getPasteles());
+        Assert.assertEquals(pojoEntity.getPrecio(), resp.getPrecio(),0);
     }
 }
