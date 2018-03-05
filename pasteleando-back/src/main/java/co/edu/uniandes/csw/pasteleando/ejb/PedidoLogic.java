@@ -64,16 +64,7 @@ public class PedidoLogic
     
     public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException 
     {
-        LOGGER.info("Inicia proceso de creación del pedido");
-        
-        if( !persistence.find(entity.getId()).equals(null) )
-        {
-            throw new BusinessLogicException("El pedido con el id:" + entity.getId() + " ya existe");
-        }
-        persistence.create(entity);
-        LOGGER.info("Termina proceso de creación del pedido");
-        
-        return entity;
+        return persistence.create(entity); 
     }
     
     /**
@@ -86,16 +77,10 @@ public class PedidoLogic
     
     public PedidoEntity updatePedido(Long id, PedidoEntity entity) throws BusinessLogicException 
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);
-        
-       if( !persistence.find(entity.getId()).equals(null) )
-        {
-            throw new BusinessLogicException("El pedido con el id:" + entity.getId() + " ya existe");
-        }
-       
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);     
         PedidoEntity pEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el pedido con id ={0}", entity.getId());
-        
+  
         return pEntity;
     }
     

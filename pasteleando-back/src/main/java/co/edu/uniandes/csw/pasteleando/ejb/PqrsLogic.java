@@ -62,11 +62,6 @@ public class PqrsLogic
     public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
-        
-        if( !persistence.find(entity.getId()).equals(null) )
-        {
-            throw new BusinessLogicException("La pqrs con el id:" + entity.getId() + " ya existe");
-        }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de la pqrs");
         
@@ -83,13 +78,7 @@ public class PqrsLogic
     
     public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException 
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);
-        
-       if( !persistence.find(entity.getId()).equals(null) )
-        {
-            throw new BusinessLogicException("La pqrs con el id:" + entity.getId() + " ya existe");
-        }
-       
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);       
         PqrsEntity pEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pqrs con id ={0}", entity.getId());
         
