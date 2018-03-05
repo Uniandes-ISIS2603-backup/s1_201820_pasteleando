@@ -22,7 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PedidoEntity extends BaseEntity implements Serializable
 {
-    private boolean seRecogePasteleria; 
+    private String seRecogePasteleria; 
     
     private String estado; 
     
@@ -45,7 +45,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
          /**
 	 * @return El valor del atributo seRecogePateleria
 	 */
-	public boolean getValueSeRecogePasteleria( )
+	public String getValueSeRecogePasteleria( )
 	{
 		return seRecogePasteleria;
 	}
@@ -53,7 +53,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
          /**
 	 * @param valueRecogePasteleria El nuevo valor del atributo
 	 */
-	public void setValueSeRecogePasteleria( boolean valueRecogePasteleria )
+	public void setValueSeRecogePasteleria( String valueRecogePasteleria )
 	{
 		this.seRecogePasteleria = valueRecogePasteleria;
 	}

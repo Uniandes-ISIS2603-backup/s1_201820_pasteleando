@@ -17,7 +17,7 @@ import java.io.Serializable;
  * <pre>
  *   {
  *      "id": number,
- *      "seRecogePasteleria": boolean,
+ *      "seRecogePasteleria": string,
  *      "estado": string
  *   }
  * </pre>
@@ -27,7 +27,7 @@ import java.io.Serializable;
  * 
  *   {
  *      "id": 1508,
- *      "seRecogePasteleria: true,
+ *      "seRecogePasteleria: "si",
  *      "estado": "Despachado"
  *   }
  *
@@ -38,7 +38,7 @@ public class PedidoDTO implements Serializable
 {
     private Long id;
     
-    private boolean seRecogePasteleria; 
+    private String seRecogePasteleria; 
     
     private String estado; 
     
@@ -81,7 +81,7 @@ public class PedidoDTO implements Serializable
          /**
 	 * @return El valor del atributo seRecogePateleria
 	 */
-	public boolean getValueSeRecogePasteleria( )
+	public String getValueSeRecogePasteleria( )
 	{
 		return seRecogePasteleria;
 	}
@@ -89,7 +89,7 @@ public class PedidoDTO implements Serializable
          /**
 	 * @param valueRecogePasteleria El nuevo valor del atributo
 	 */
-	public void setValueSeRecogePasteleria( boolean valueRecogePasteleria )
+	public void setValueSeRecogePasteleria( String valueRecogePasteleria )
 	{
 		this.seRecogePasteleria = valueRecogePasteleria;
 	}
