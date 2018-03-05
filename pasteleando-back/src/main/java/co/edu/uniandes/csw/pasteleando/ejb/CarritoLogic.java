@@ -21,7 +21,7 @@ public class CarritoLogic {
     
     public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
     {
-        if(!persistence.find(entity.getId()).equals(null))
+        if(persistence.find(entity.getId()) != null)
         {
             throw new BusinessLogicException("el carrito con el id:" + entity.getId() + "ya existe");
         }
@@ -30,7 +30,7 @@ public class CarritoLogic {
     
     public void deleteCarrito(Long id) throws BusinessLogicException
     {
-        if(!persistence.find(id).equals(null))
+        if(persistence.find(id)== null)
         {
             throw new BusinessLogicException("el carrito con el id:" + id + "no existe");
         }
@@ -44,7 +44,7 @@ public class CarritoLogic {
     
     public CarritoEntity findCarrito(Long id) throws BusinessLogicException
     {
-        if(!persistence.find(id).equals(null))
+        if(persistence.find(id) == null)
         {
             throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
         }
@@ -53,7 +53,7 @@ public class CarritoLogic {
     
     public CarritoEntity updateCarrito(CarritoEntity entity)throws BusinessLogicException
     {
-        if(!persistence.find(entity.getId()).equals(null))
+        if(persistence.find(entity.getId()) == null)
         {
             throw new BusinessLogicException("el pastel con el id:" + entity.getId()+ "no existe");
         }
