@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.test.logic;
 
 import co.edu.uniandes.csw.pasteleando.ejb.PqrsLogic;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
+import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PqrsPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -34,7 +37,7 @@ public class PqrsLogicTest
     private PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private PqrsLogic pedidoLogic;
+    private PqrsLogic pqrsLogic;
     
     @PersistenceContext
     private EntityManager em;
@@ -105,6 +108,98 @@ public class PqrsLogicTest
             em.persist(pqrs);
             pqrsData.add(pqrs);
         }
+    }
+    
+    /**
+     * Prueba para crear una pqrs
+     * Throws BusinessLogicException
+     */
+    
+    @Test
+    public void createPqrsTest() throws BusinessLogicException 
+    {
+        PqrsEntity newEntity = factory.manufacturePojo(PqrsEntity.class);
+        PqrsEntity result = pqrsLogic.createPqrs(newEntity); 
+        Assert.assertNotNull(result);
+        PqrsEntity entity = em.find(PqrsEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
+    /**
+     * Prueba para consultar la lista de pqrs
+     * Throws BusinessLogicException
+     */
+    
+    @Test
+    public void getLPqrsTest() throws BusinessLogicException 
+    {
+        List<PqrsEntity> list = pqrsLogic.getPqrs(); 
+        //Assert.assertEquals( pqrsData.size(), list.size());
+        
+        for (PqrsEntity entity : list) 
+        {
+            boolean found = false;
+            
+            for (PqrsEntity storedEntity : pqrsData) 
+            {
+                if ( entity.getId().equals(storedEntity.getId()) ) 
+                {
+                    found = true;
+                }
+            }
+            
+            Assert.assertTrue(found);
+        }
+    }
+    
+    /**
+     * Prueba para consultar una pqrs
+     */
+    
+    @Test
+    public void getPqrsTest() 
+    {
+        PqrsEntity entity = pqrsData.get(0);
+        PqrsEntity resultEntity = pqrsLogic.getPqrs(entity.getId() );
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+    }
+    
+    /**
+     * Prueba para eliminar una pqrs
+     * Throws BusinessLogicException
+     */
+ 
+    @Test
+    public void deletePqrsTest() throws BusinessLogicException 
+    {
+        PqrsEntity entity = pqrsData.get(0);
+        pqrsLogic.deletPqrs(entity.getId());
+        PqrsEntity deleted = em.find(PqrsEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    /**
+     * Prueba para actualizar una pqrs
+     * Throws BusinessLogicException
+     */
+    
+    @Test
+    public void updatePedidoTest()  throws BusinessLogicException 
+    {
+        PqrsEntity entity = pqrsData.get(0);
+        PqrsEntity pojoEntity = factory.manufacturePojo(PqrsEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        pqrsLogic.updatePqrs(pojoEntity.getId(), pojoEntity);
+
+        PqrsEntity resp = em.find(PqrsEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getName(), resp.getName());
     }
     
     

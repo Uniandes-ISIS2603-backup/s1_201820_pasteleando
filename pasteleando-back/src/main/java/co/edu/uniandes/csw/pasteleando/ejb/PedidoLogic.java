@@ -34,7 +34,7 @@ public class PedidoLogic
      * @return Colección de objetos de PedidoEntity
      */
     
-    public List<PedidoEntity> getPedidos() 
+    public List<PedidoEntity> getPedidos( ) 
     {
         LOGGER.info("Inicia proceso de consultar todas los pedidos");
         List<PedidoEntity> pedidos = persistence.findAll(); 
@@ -144,21 +144,6 @@ public class PedidoLogic
         }
         return null;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     /**
      * Obtiene una lista de calificaciones asociadas a un pedido
