@@ -96,7 +96,7 @@ public class PromocionLogic {
     public void deletePromocion(Long decoracionCatalogoId, Long id) {
         LOGGER.info("Inicia proceso de borrar promocion");
         PromocionEntity old = getPromocion(decoracionCatalogoId, id);
-        persistence.delete(old);
+        persistence.delete(old.getId());
     }
 
 }
