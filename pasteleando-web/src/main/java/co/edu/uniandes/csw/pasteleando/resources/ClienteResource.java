@@ -107,7 +107,6 @@ public class ClienteResource
 	 * @return JSONArray {@link ClienteDTO} - Las entidades de Cliente encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-        @Path("{id: \\d+}")
 	public List<ClienteDetailDTO> getClientes( )
 	{
             List<ClienteEntity> lista = cliente.getAll();

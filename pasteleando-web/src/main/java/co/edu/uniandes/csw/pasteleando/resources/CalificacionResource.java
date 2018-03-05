@@ -24,6 +24,10 @@ SOFTWARE.
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.CalificacionDTO;
+import co.edu.uniandes.csw.pasteleando.dtos.CalificacionDetailDTO;
+import co.edu.uniandes.csw.pasteleando.dtos.ClienteDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.CalificacionLogic;
+import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 
@@ -31,6 +35,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 
 /**
  * <pre>Clase que implementa el recurso "calificacion".
@@ -54,7 +59,8 @@ import java.util.List;
 @RequestScoped
 public class CalificacionResource
 {
-
+        @Inject
+        CalificacionLogic logic;
 	/**
 	 * <h1>POST /api/calificacion : Crear una entidad de calificacion.</h1>
 	
@@ -77,9 +83,9 @@ public class CalificacionResource
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de Pasteleando.
 	 */
 	@POST
-	public CalificacionDTO createCalificacion( CalificacionDTO dto ) throws BusinessLogicException
+	public CalificacionDetailDTO createCalificacion( CalificacionDetailDTO dto ) throws BusinessLogicException
 	{
-		return dto;
+		return new CalificacionDetailDTO(logic.create(dto.toEntity()));
 	}
 
 	/**
@@ -95,9 +101,17 @@ public class CalificacionResource
 	 * @return JSONArray {@link CalificacionDTO} - Las entidades de Pasteleando encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<CalificacionDTO> getCalificacion( )
+	public List<CalificacionDetailDTO> getCalificacion(CalificacionDetailDTO dto )
 	{
-		return new ArrayList<>( );
+		
+            List<CalificacionEntity> lista = logic.getAll();
+            List<CalificacionDetailDTO> listaNueva = new ArrayList<CalificacionDetailDTO>();
+            for (int i = 0 ; i < lista.size() ; i++) 
+            {
+              listaNueva.add(new CalificacionDetailDTO(lista.get(i)));
+                
+            }
+            return listaNueva;
 	}
 
 	/**
@@ -119,9 +133,14 @@ public class CalificacionResource
 	 */
 	@GET
 	@Path( "{id: \\d+}" )
-	public CalificacionDTO getCalificacion( @PathParam( "id" ) Long id )
+	public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id )
 	{
-		return null;
+		CalificacionEntity entity = logic.getById(id);
+		if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+                
+             return new CalificacionDetailDTO(entity);
 	}
 
 	/**
@@ -146,7 +165,12 @@ public class CalificacionResource
 	@Path( "{id: \\d+}" )
 	public CalificacionDTO updateCalificacion( @PathParam( "id" ) Long id, CalificacionDTO detailDTO ) throws BusinessLogicException
 	{
-		return detailDTO;
+		detailDTO.setId(id);
+                CalificacionEntity entity = logic.getById(id);
+                if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+                return new CalificacionDetailDTO(logic.update(detailDTO.toEntity()));
 	}
 
 	/**
@@ -168,6 +192,15 @@ public class CalificacionResource
 	@Path( "{id: \\d+}" )
 	public void deleteCalificacion( @PathParam( "id" ) Long id )
 	{
-		// Void
+		CalificacionEntity entity = logic.getById(id);
+		 if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            
+        }
+            try {
+                logic.delete(entity);
+            } catch (BusinessLogicException ex) {
+                throw new WebApplicationException(ex.getMessage(), 404);
+            }
 	}
 }
