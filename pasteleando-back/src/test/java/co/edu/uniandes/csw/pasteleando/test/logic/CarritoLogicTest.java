@@ -1,0 +1,171 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uniandes.csw.pasteleando.test.logic;
+
+import co.edu.uniandes.csw.pasteleando.ejb.CarritoLogic;
+import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
+import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
+
+/**
+ *
+ * @author MIGUELHOYOS
+ */
+@RunWith(Arquillian.class)
+public class CarritoLogicTest {
+    
+    private PodamFactory factory = new PodamFactoryImpl();
+    
+    @Inject
+    private CarritoLogic carritoLogic;
+    
+    @PersistenceContext
+    private EntityManager em;
+    
+    @Inject
+    private UserTransaction utx;
+    
+    private List<CarritoEntity> data = new ArrayList<>();
+    
+    @Deployment
+    public static JavaArchive createDeployment()
+    {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(CarritoEntity.class.getPackage())
+                .addPackage(CarritoEntity.class.getPackage())
+                .addPackage(CarritoPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+    
+    @Before
+    public void configTest()
+    {
+        try {
+             utx.begin();
+             clearData();
+             insertData();
+             utx.commit();
+        } 
+        catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (IllegalStateException | SecurityException | SystemException e1) {
+                e1.printStackTrace();
+            }
+        }
+      
+    }
+    
+    public void clearData()
+    {
+        em.createQuery("delete from CarritoEntity").executeUpdate();
+    }
+    
+    public void insertData()
+    {
+        int i = 0;
+        while(i<3)
+        {
+            CarritoEntity entity = factory.manufacturePojo(CarritoEntity.class);
+            data.add(entity);
+            em.persist(entity);
+            i++;
+        }
+       
+    }
+    
+    @Test
+    public void createPastelTest() throws BusinessLogicException 
+    {
+        CarritoEntity newEntity = factory.manufacturePojo(CarritoEntity.class);
+        CarritoEntity result = carritoLogic.createCarrito(newEntity);
+        Assert.assertNotNull(result);
+        CarritoEntity entity = em.find(CarritoEntity.class, result.getId());
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getCantidad(), newEntity.getCantidad());
+        Assert.assertEquals(entity.getPasteles(), newEntity.getPasteles());
+        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio());
+    }
+    
+    @Test
+    public void getPastelesTest()
+    {
+          List<CarritoEntity> list = carritoLogic.findCarritos();
+        Assert.assertEquals(data.size(), list.size());
+        for (CarritoEntity entity : list) {
+            boolean found = false;
+            for (CarritoEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void getPastelTest() throws BusinessLogicException
+    {
+        CarritoEntity entity = data.get(0);
+        CarritoEntity resultEntity = carritoLogic.findCarrito(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getCantidad(), resultEntity.getCantidad());
+        Assert.assertEquals(entity.getPasteles(), resultEntity.getPasteles());
+        Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio());
+    }
+    
+    @Test
+    public void deletePastelTest() throws BusinessLogicException
+    {
+        CarritoEntity entity = data.get(0);
+        carritoLogic.deleteCarrito(entity.getId());
+        CarritoEntity deleted = em.find(CarritoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    @Test
+    public void updatePastelTest() throws BusinessLogicException
+    {
+        CarritoEntity entity = data.get(0);
+        CarritoEntity pojoEntity = factory.manufacturePojo(CarritoEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        carritoLogic.updateCarrito(pojoEntity);
+
+        CarritoEntity resp = em.find(CarritoEntity.class, entity.getId());
+        
+        Assert.assertEquals(entity.getId(), resp.getId());
+        Assert.assertEquals(entity.getCantidad(), resp.getCantidad());
+        Assert.assertEquals(entity.getPasteles(), resp.getPasteles());
+        Assert.assertEquals(entity.getPrecio(), resp.getPrecio());
+    }
+}
