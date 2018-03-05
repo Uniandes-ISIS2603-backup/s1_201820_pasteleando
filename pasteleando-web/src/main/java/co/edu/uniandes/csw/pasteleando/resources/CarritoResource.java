@@ -24,9 +24,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 
-
 /**
- *<pre> clase que implementa elrecurso "carritos"
+ * *<pre> clase que implementa elrecurso "carritos"
  * URL: /api/carritos
  * </pre>
  * <i> Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
@@ -45,11 +44,9 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class CarritoResource 
-{
-    
-    @Inject
-    CarritoLogic carritoLogic
+public class CarritoResource {
+ @Inject
+    CarritoLogic carritoLogic;
             
       /**
      * <h1>POST /api/carritos : Crear un carrito.</h1>
@@ -178,7 +175,6 @@ public class CarritoResource
        }
        else{
            carritoLogic.deleteCarrito(id);
-       }
-    }
-
+       }   
+}
 }
