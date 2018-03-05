@@ -23,14 +23,22 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.pasteleando.resources;
 
+
 import co.edu.uniandes.csw.pasteleando.dtos.ClienteDTO;
+import co.edu.uniandes.csw.pasteleando.dtos.ClienteDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.ClienteLogic;
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.inject.Inject;
 
 /**
  * <pre>Clase que implementa el recurso "cliente".
@@ -77,10 +85,14 @@ public class ClienteResource
 	 * @return JSON {@link ClienteDTO}  - La entidad de Cliente guardada con el atributo id autogenerado.
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de Cliente.
 	 */
+    
+        @Inject
+        ClienteLogic cliente;
+        
 	@POST
-	public ClienteDTO createCliente( ClienteDTO dto ) throws BusinessLogicException
+	public ClienteDetailDTO createCliente( ClienteDetailDTO dto ) throws BusinessLogicException
 	{
-		return dto;
+		return new ClienteDetailDTO(cliente.create(dto.toEntity()));
 	}
 
 	/**
@@ -95,9 +107,17 @@ public class ClienteResource
 	 * @return JSONArray {@link ClienteDTO} - Las entidades de Cliente encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<ClienteDTO> getCliente( )
+        @Path("{id: \\d+}")
+	public List<ClienteDetailDTO> getClientes( )
 	{
-		return new ArrayList<>( );
+            List<ClienteEntity> lista = cliente.getAll();
+            List<ClienteDetailDTO> listaNueva = new ArrayList<ClienteDetailDTO>();
+            for (int i = 0 ; i < lista.size() ; i++) 
+            {
+              listaNueva.add(new ClienteDetailDTO(lista.get(i)));
+                
+            }
+            return listaNueva;
 	}
 
 	/**
@@ -118,9 +138,14 @@ public class ClienteResource
 	 */
 	@GET
 	@Path( "{id: \\d+}" )
-	public ClienteDTO getCliente( @PathParam( "id" ) Long id )
+	public ClienteDetailDTO getCliente( @PathParam( "id" ) Long id )
 	{
-		return null;
+            ClienteEntity entity = cliente.getById(id);
+		if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+                
+             return new ClienteDetailDTO(entity);
 	}
 
 	/**
@@ -144,9 +169,15 @@ public class ClienteResource
 	 */
 	@PUT
 	@Path( "{id: \\d+}" )
-	public ClienteDTO updateCliente( @PathParam( "id" ) Long id, ClienteDTO detailDTO ) throws BusinessLogicException
+	public ClienteDetailDTO updateCliente( @PathParam( "id" ) Long id, ClienteDetailDTO detailDTO ) throws BusinessLogicException
 	{
-		return detailDTO;
+		detailDTO.setId(id);
+                ClienteEntity entity = cliente.getById(id);
+                if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+                return new ClienteDetailDTO(cliente.update(detailDTO.toEntity()));
+                
 	}
 
 	/**
@@ -169,6 +200,16 @@ public class ClienteResource
 	@Path( "{id: \\d+}" )
 	public void deleteCliente( @PathParam( "id" ) Long id )
 	{
-		// Void
+            ClienteEntity entity = cliente.getById(id);
+		 if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            
+        }
+            try {
+                cliente.delete(entity);
+            } catch (BusinessLogicException ex) {
+                throw new WebApplicationException(ex.getMessage(), 404);
+            }
+
 	}
 }
