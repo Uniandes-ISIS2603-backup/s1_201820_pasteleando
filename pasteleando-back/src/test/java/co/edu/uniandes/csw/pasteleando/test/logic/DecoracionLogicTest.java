@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
 import co.edu.uniandes.csw.pasteleando.ejb.DecoracionLogic;
@@ -35,21 +35,21 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class DecoracionLogicTest {
     
     private PodamFactory factory = new PodamFactoryImpl();
-
+    
     @Inject
     private DecoracionLogic decoracionLogic;
-
+    
     @PersistenceContext
     private EntityManager em;
     
-
+    
     @Inject
     private UserTransaction utx;
-
+    
     private List<DecoracionEntity> data = new ArrayList<DecoracionEntity>();
-
+    
     private List<PastelEntity> pastelesData = new ArrayList();
-
+    
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -59,7 +59,7 @@ public class DecoracionLogicTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-
+    
     /**
      * Configuración inicial de la prueba.
      *
@@ -80,7 +80,7 @@ public class DecoracionLogicTest {
             }
         }
     }
-
+    
     /**
      * Limpia las tablas que están implicadas en la prueba de decoracion.
      *
@@ -89,7 +89,7 @@ public class DecoracionLogicTest {
         em.createQuery("delete from PastelEntity").executeUpdate();
         em.createQuery("delete from DecoracionEntity").executeUpdate();
     }
-
+    
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
@@ -110,7 +110,7 @@ public class DecoracionLogicTest {
             }
         }
     }
-
+    
     /**
      * Prueba para crear un Decoracion
      *
@@ -125,16 +125,16 @@ public class DecoracionLogicTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
-
+    
     /**
      * Prueba para consultar la lista de Decoraciones
      *
-     * 
+     *
      */
     
     @Test
     public void getDecoracionesTest() throws BusinessLogicException {
-         List<DecoracionEntity> list =decoracionLogic.getDecoraciones();
+        List<DecoracionEntity> list =decoracionLogic.getDecoraciones();
         Assert.assertEquals(data.size(), list.size());
         for (DecoracionEntity entity : list) {
             boolean found = false;
@@ -145,12 +145,12 @@ public class DecoracionLogicTest {
             }
             Assert.assertTrue(found);
         }
-        }
-
+    }
+    
     /**
      * Prueba para consultar un Decoracion
      *
-     * 
+     *
      */
     @Test
     public void getDecoracionTest() {
@@ -163,9 +163,8 @@ public class DecoracionLogicTest {
     /**
      * Prueba para eliminar un Decoracion
      *
-     * 
+     *
      */
-    /**
     @Test
     public void deleteDecoracionTest() throws BusinessLogicException {
         DecoracionEntity entity = data.get(0);
@@ -174,25 +173,25 @@ public class DecoracionLogicTest {
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    * /
+    
     /**
      * Prueba para actualizar un Decoracion en la logica...s
      *
-     * 
+     *
      */
     @Test
     public void updateDecoracionTest() {
         DecoracionEntity entity = data.get(0);
         DecoracionEntity pojoEntity = factory.manufacturePojo(DecoracionEntity.class);
-
+        
         pojoEntity.setId(entity.getId());
-
+        
         decoracionLogic.updateDecoracion(pojoEntity.getId(), pojoEntity);
-
+        
         DecoracionEntity resp = em.find(DecoracionEntity.class, entity.getId());
-
+        
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
     }
-
+    
 }
