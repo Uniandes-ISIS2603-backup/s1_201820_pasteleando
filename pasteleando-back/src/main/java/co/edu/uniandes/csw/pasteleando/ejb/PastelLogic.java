@@ -9,12 +9,14 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author MIGUELHOYOS
  */
+@Stateless
 public class PastelLogic {
    
     @Inject

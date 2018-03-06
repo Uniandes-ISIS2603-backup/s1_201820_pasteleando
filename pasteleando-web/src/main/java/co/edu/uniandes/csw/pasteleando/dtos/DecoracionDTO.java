@@ -50,7 +50,7 @@ public class DecoracionDTO implements Serializable {
      * Atributo que modela la foto de la Decoracion
      */
         private String foto;
-        
+       
       /**
 	 * Constructor por defecto
 	 */

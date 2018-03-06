@@ -18,6 +18,7 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
      * Atributo que modela la coleccion de la Decoraciones
      */
     private List <DecoracionDTO> decoracion;
+
  /**
      * Atributo que modela la coleccion de la Decoraciones Personalizadas
      */    private List <DecoracionPersonalizadaDTO> decoracionPersonalizada;
@@ -52,4 +53,19 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
 		return decoracionPersonalizadaEntity;
 	}
 
+    public List<DecoracionDTO> getDecoracion() {
+        return decoracion;
+    }
+
+    public void setDecoracion(List<DecoracionDTO> decoracion) {
+        this.decoracion = decoracion;
+    }
+
+    public List<DecoracionPersonalizadaDTO> getDecoracionPersonalizada() {
+        return decoracionPersonalizada;
+    }
+
+    public void setDecoracionPersonalizada(List<DecoracionPersonalizadaDTO> decoracionPersonalizada) {
+        this.decoracionPersonalizada = decoracionPersonalizada;
+    }
 }

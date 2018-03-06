@@ -6,8 +6,6 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  * Clase que extiende de {@link PastelDTO} para manejar la transformacion entre
@@ -19,16 +17,19 @@ import javax.persistence.OneToOne;
  */
 public class PastelDetailDTO extends PastelDTO
 {
-    @OneToMany
-    private DecoracionDTO decoracion;
     
-  /**
-     * constructor por defecto
-     */
-  //public PastelDetailDTO()
-  //{    
-  //}
-  
+    private DecoracionDTO decoracion;
+
+    
+      /**
+         * constructor por defecto
+         */
+        /**
+      public PastelDetailDTO()
+      {    
+          super();
+      }
+  */
   /**
 	 * Constructor para transformar un Entity a un DTO
 	 *
@@ -36,8 +37,20 @@ public class PastelDetailDTO extends PastelDTO
 	 */
   public PastelDetailDTO(PastelEntity pastelEntity) {
         super(pastelEntity);
+        if (pastelEntity.getDecoracion() != null) {
+            this.decoracion = new DecoracionDTO(pastelEntity.getDecoracion());
+        } else {
+            pastelEntity.setDecoracion(null);
+        }
     }
   
+    public DecoracionDTO getDecoracion() {
+        return decoracion;
+    }
+
+    public void setDecoracion(DecoracionDTO decoracion) {
+        this.decoracion = decoracion;
+    }
    /**
      * transforma un DTO a un entity
      * @return la entidad construida a partir del DTO
@@ -45,6 +58,9 @@ public class PastelDetailDTO extends PastelDTO
   public PastelEntity toEntity()
   {
       PastelEntity entity = super.toEntity();
+       if (this.getDecoracion() != null) {
+            entity.setDecoracion(this.getDecoracion().toEntity());
+        }
       return entity;
   }
     

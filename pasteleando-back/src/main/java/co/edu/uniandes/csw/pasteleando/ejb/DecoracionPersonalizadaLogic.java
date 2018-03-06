@@ -12,83 +12,94 @@ import co.edu.uniandes.csw.pasteleando.persistence.DecoracionPersonalizadaPersis
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author dc.cepeda
  */
+@Stateless
 public class DecoracionPersonalizadaLogic 
 { 
-    private static final Logger LOGGER = Logger.getLogger(DecoracionPersonalizadaLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DecoracionCatalogoLogic.class.getName());
 
     @Inject
-    private DecoracionPersonalizadaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    private DecoracionPersonalizadaPersistence persistence;
 
-    /**
-     * Crea una decoracionPersonalizada en la persistencia.
-     * @param entity La entidad que representa la decoracionPersonalizada a persistir.
-     * @return La entiddad de la decoracionPersonalizada luego de persistirla.
-     * @throws BusinessLogicException Si la decoracionPersonalizada a persistir ya existe.
-     */
-    public DecoracionPersonalizadaEntity createDecoracionPersonalizada(DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de decoracionPersonalizada");
-        // Verifica la regla de negocio que dice que no puede haber dos decoracionPersonalizadaes con el mismo nombre
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe una DecoracionPersonalizada con el nombre \"" + entity.getName() + "\"");
-        }
-        // Invoca la persistencia para crear la decoracionPersonalizada
-
-        LOGGER.info("Termina proceso de creación de decoracionPersonalizada");
-        return persistence.create(entity);
-    }
-
-    /**
-     *
-     * Obtener todas las decoracionPersonalizadaes existentes en la base de datos.
-     *
-     * @return una lista de decoracionPersonalizadaes.
+   
+    
+/**
+     * Devuelve todos las decoraciones personalizadas que hay en la base de datos.
+     * @return Lista de entidades de tipo decoracion personalizada.
      */
     public List<DecoracionPersonalizadaEntity> getDecoracionesPersonalizadas() {
-        LOGGER.info("Inicia proceso de consultar todas las decoracionPersonalizadaes");
-        // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<DecoracionPersonalizadaEntity> decoracionPersonalizadas = persistence.findAll();
-        LOGGER.info("Termina proceso de consultar todas las decoracionPersonalizadaes");
-        return decoracionPersonalizadas;
+        LOGGER.info( "Inicia proceso de consultar todas las entidades de Decoracion Personalizada" );
+		// Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
+		List<DecoracionPersonalizadaEntity> entities = persistence.findAll( );
+		LOGGER.info( "Termina proceso de consultar todas las entidades de Decoracion Personalizada" );
+		return entities;
     }
-
     /**
-     *
-     * Obtener una decoracionPersonalizada por medio de su id.
-     *
-     * @param id: id de la decoracionPersonalizada para ser buscada.
-     * @return la decoracionPersonalizada solicitada por medio de su id.
+     * Busca una decoración personalizada por ID
+     * @param id El id de la decoración personalizada a buscar
+     * @return La decoración personalizada encontrada, null si no la encuentra.
      */
     public DecoracionPersonalizadaEntity getDecoracionPersonalizada(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar decoracionPersonalizada con id={0}", id);
-        // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
-        DecoracionPersonalizadaEntity decoracionPersonalizada = persistence.find(id);
-        if (decoracionPersonalizada == null) {
-            LOGGER.log(Level.SEVERE, "La decoracionPersonalizada con el id {0} no existe", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar decoración personalizada con id={0}", id);
+        DecoracionPersonalizadaEntity decoracion = persistence.find(id);
+        if (decoracion == null) {
+            LOGGER.log(Level.SEVERE, "La decoración personalizada con el id {0} no existe", id);
         }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar decoracionPersonalizada con id={0}", id);
-        return decoracionPersonalizada;
+        LOGGER.log(Level.INFO, "Termina proceso de consultar la decoración personalizada con id={0}", id);
+        return decoracion;
     }
 
     /**
-     *
-     * Actualizar una decoracionPersonalizada.
-     *
-     * @param id: id de la decoracionPersonalizada para buscarla en la base de datos.
-     * @param entity: decoracionPersonalizada con los cambios para ser actualizada, por
-     * ejemplo el nombre.
-     * @return la decoracionPersonalizada con los cambios actualizados en la base de datos.
+     * Guardar una nueva decoración personalizada
+     * @param entity La entidad de tipo decoración personalizada de la nueva decoración  a persistir.
+     * @return La entidad luego de persistirla
+     * @throws BusinessLogicException Si el ISBN ya existe en la persitencia.
      */
-    public DecoracionPersonalizadaEntity updateDecoracionPersonalizada(Long id, DecoracionPersonalizadaEntity entity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoracionPersonalizada con id={0}", id);
-        // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+    public DecoracionPersonalizadaEntity createDecoracionPersonalizada(DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
+        LOGGER.info("Inicia proceso de creación de decoración personalizada");
+        if (!validateCategoria(entity.getFoto())) {
+            throw new BusinessLogicException("La foto es invalida. No se puede hacer un pastel con esta foto");
+        }
+        persistence.create(entity);
+        LOGGER.info("Termina proceso de creación de la decoración persnalizada");
+        return entity;
+    }
+
+    /**
+     * Actualizar una decoración personalizada por ID
+     * @param id El ID de la decoración personalizada a actualizar
+     * @param entity La entidad de la decoración personalizada con los cambios deseados
+     * @return La entidad de la decoración personalizada luego de actualizarla
+     * @throws BusinessLogicException Si la foto de la actualización es inválida
+     */
+    public DecoracionPersonalizadaEntity updateDecoracionPersonalizada(Long id, DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoración personalizada con id={0}", id);
+        if (!validateCategoria(entity.getFoto())) {
+            throw new BusinessLogicException("La foto es inválida. No se puede hacer un pastel con esta foto");
+        }
         DecoracionPersonalizadaEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar decoracionPersonalizada con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar decoración personalizada con id={0}", entity.getId());
         return newEntity;
     }
-     }
+
+    /**
+     * Eliminar una decoración personalizada por ID
+     * @param id El ID de la decoración personalizada a eliminar
+     */
+    public void deleteDecoracionPersonalizada(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración personalizada con id={0}", id);
+        persistence.delete(id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
+    }
+
+    private boolean validateCategoria(String categoria) {
+        return !categoria.isEmpty();
+    }
+    
+    }

@@ -22,7 +22,7 @@ public class PastelEntity extends BaseEntity implements Serializable
     private double precio;
     
     @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private DecoracionEntity decoracion;
     /**
      * retorna el peso del pastel

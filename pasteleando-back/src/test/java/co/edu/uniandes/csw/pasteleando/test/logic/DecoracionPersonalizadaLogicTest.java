@@ -135,7 +135,7 @@ public class DecoracionPersonalizadaLogicTest {
      *
      *
      */
-    /**
+    
     @Test
     public void getDecoracionesPersonalizadasTest() {
         List<DecoracionPersonalizadaEntity> list = decoracionPersonalizadaLogic.getDecoracionesPersonalizadas();
@@ -152,7 +152,7 @@ public class DecoracionPersonalizadaLogicTest {
             Assert.assertTrue(found);
         });
     }
-    */
+    
     /**
      * Prueba para consultar una decoración personalizadas
      *

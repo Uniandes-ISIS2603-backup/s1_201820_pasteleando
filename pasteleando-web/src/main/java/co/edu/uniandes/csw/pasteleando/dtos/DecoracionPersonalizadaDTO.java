@@ -36,7 +36,7 @@ import java.io.Serializable;
  *
  * @author dc.cepeda
  */
-public class DecoracionPersonalizadaDTO implements Serializable
+public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Serializable
 {
     
     /**
@@ -44,14 +44,18 @@ public class DecoracionPersonalizadaDTO implements Serializable
      */
     private String color;
      /**
-     * Atributo que modela la imagen de la DecoracionPersonalizada
-     */
-    private String imagen;
-     /**
      * Atributo que modela el estado de la DecoracionPersonalizada
      */
     private String estado;
-    
+    /**
+     * Atributo que modela imagen de la DecoracionPersonalizada
+     */
+    private String imagen;
+    /**
+     * Atributo que modela el id de la DecoracionPersonalizada
+     */
+    private Long id;
+
     /**
 	 * Constructor por defecto
 	 */
@@ -70,6 +74,7 @@ public class DecoracionPersonalizadaDTO implements Serializable
 		this.color = decoracionPersonalizadaEntity.getColor();
 		this.estado = decoracionPersonalizadaEntity.getEstado();
 		this.imagen = decoracionPersonalizadaEntity.getImagen();
+                this.id=decoracionPersonalizadaEntity.getId();
 
 	}
          /**
@@ -121,4 +126,13 @@ public class DecoracionPersonalizadaDTO implements Serializable
 		entity.setEstado( this.estado );
 		return entity;
 	}
+        
+        
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

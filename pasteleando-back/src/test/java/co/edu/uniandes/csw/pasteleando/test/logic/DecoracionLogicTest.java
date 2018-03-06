@@ -133,7 +133,7 @@ public class DecoracionLogicTest {
     
     @Test
     public void getDecoracionesTest() throws BusinessLogicException {
-         List<DecoracionEntity> list =decoracionLogic.getAll();
+         List<DecoracionEntity> list =decoracionLogic.getDecoraciones();
         Assert.assertEquals(data.size(), list.size());
         for (DecoracionEntity entity : list) {
             boolean found = false;
@@ -164,16 +164,14 @@ public class DecoracionLogicTest {
      *
      * 
      */
-    /**
     @Test
     public void deleteDecoracionTest() throws BusinessLogicException {
-      DecoracionEntity entity = data.get(0);
-        decoracionLogic.delete(entity);
+        DecoracionEntity entity = data.get(0);
+        decoracionLogic.removePastel(pastelesData.get(0).getId(), entity.getId());
+        decoracionLogic.deleteDecoracion(entity.getId());
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
-      
         Assert.assertNull(deleted);
     }
-     */
     /**
      * Prueba para actualizar un Decoracion
      *
