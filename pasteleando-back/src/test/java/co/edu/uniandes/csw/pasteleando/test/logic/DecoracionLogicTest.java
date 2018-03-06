@@ -41,6 +41,7 @@ public class DecoracionLogicTest {
 
     @PersistenceContext
     private EntityManager em;
+    
 
     @Inject
     private UserTransaction utx;
@@ -81,7 +82,7 @@ public class DecoracionLogicTest {
     }
 
     /**
-     * Limpia las tablas que están implicadas en la prueba.
+     * Limpia las tablas que están implicadas en la prueba de decoracion.
      *
      */
     private void clearData() {
