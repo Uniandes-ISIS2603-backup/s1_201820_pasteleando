@@ -71,7 +71,7 @@ public class PedidoPersistence
 	public List<PedidoEntity> findAll( )
 	{
 		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<PedidoEntity> query = em.createQuery( "select u from PasteleandoEntity u", PedidoEntity.class );
+		TypedQuery<PedidoEntity> query = em.createQuery( "select u from PedidoEntity u", PedidoEntity.class );
 		return query.getResultList( );
 	}
 
