@@ -163,7 +163,7 @@ public class DecoracionCatalogoResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteBook(@PathParam("id") Long id) throws BusinessLogicException {
+    public void deleteDecoracionCatalogo(@PathParam("id") Long id) throws BusinessLogicException {
         DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
@@ -182,7 +182,7 @@ public class DecoracionCatalogoResource
      * @return El servicio de promociones para la decoración del catálogo en paricular.
      */
     @Path("{id: \\d+}/reviews")
-    public Class<PromocionResource> getReviewResource(@PathParam("id") Long catalogoId) {
+    public Class<PromocionResource> getPromocionResource(@PathParam("id") Long catalogoId) {
         DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(catalogoId);
         if (entity == null) {
             throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promocion no existe.", 404);

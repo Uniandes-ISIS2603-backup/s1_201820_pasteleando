@@ -115,7 +115,7 @@ public class PromocionResource
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
      */
     @POST
-    public PromocionDTO createReview(@PathParam("catalogoId") Long catalogoId, PromocionDTO promocion) throws BusinessLogicException {
+    public PromocionDTO createPromocion(@PathParam("catalogoId") Long catalogoId, PromocionDTO promocion) throws BusinessLogicException {
         return new PromocionDTO(promocionLogic.createPromocion(catalogoId, promocion.toEntity()));
     }
     
@@ -169,7 +169,7 @@ public class PromocionResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteReview(@PathParam("catalogoId") Long catalogoId, @PathParam("id") Long id) throws BusinessLogicException {
+    public void deletePromocion(@PathParam("catalogoId") Long catalogoId, @PathParam("id") Long id) throws BusinessLogicException {
         PromocionEntity entity = promocionLogic.getPromocion(catalogoId, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promocion/" + id + " no existe.", 404);
