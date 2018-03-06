@@ -66,7 +66,10 @@ public class TarjetaPuntosLogic {
      * @return Objeto de TarjetaPuntosEntity con los datos nuevos y su ID.
      */
     public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
-        
+          if(!validatePuntos(entity.getNumeroPuntos()))
+        {
+            throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
+        }
      
         
         return persistence.create(entity);

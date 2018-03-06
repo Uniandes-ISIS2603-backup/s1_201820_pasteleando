@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
  *
@@ -20,6 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
+    @PodamIntValue(minValue = 0)
     private Integer numeroPuntos;
     
     @OneToOne
