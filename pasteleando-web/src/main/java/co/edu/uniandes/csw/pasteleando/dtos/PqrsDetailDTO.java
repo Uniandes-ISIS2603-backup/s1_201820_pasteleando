@@ -22,6 +22,10 @@ public class PqrsDetailDTO extends PqrsDTO
     
         private List<PqrsDTO> pqrs; 
             
+        private ClienteDTO cliente;
+        
+        private PedidoDTO pedido;
+        
         /**
 	 * Constructor por defecto
 	 */
@@ -29,6 +33,44 @@ public class PqrsDetailDTO extends PqrsDTO
 	{
             super( ); 
 	}
+        
+        public PqrsDetailDTO(PqrsEntity entity)
+        {
+            super(entity);
+            if(entity.getCliente() != null)
+            {
+                this.cliente = new ClienteDTO(entity.getCliente());
+            }
+            if(entity.getCliente()==null)
+            {
+                entity.setCliente(null);
+            }
+            if(entity.getPedido() != null)
+            {
+                this.pedido = new PedidoDTO(entity.getPedido());
+            }
+            if(entity.getPedido()==null)
+            {
+                entity.setPedido(null);
+            }
+        }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public PedidoDTO getPedido() {
+        return pedido;
+    }
+
         
          /**
          * Obtiene la lista de pqrs
@@ -48,15 +90,7 @@ public class PqrsDetailDTO extends PqrsDTO
                 this.pqrs = pPqrs;
          }
 
-	/**
-	 * Constructor para transformar un Entity a un DTO
-	 *
-	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
-	 */
-	public PqrsDetailDTO( PqrsEntity entity )
-	{
-		super( entity );
-        }
+	
 
 	/**
 	 * Transformar un DTO a un Entity
@@ -67,7 +101,15 @@ public class PqrsDetailDTO extends PqrsDTO
 	public PqrsEntity toEntity( )
 	{
 		PqrsEntity entity = super.toEntity( );                
-		return entity;
+		if(this.getCliente() != null)
+                {
+                    entity.setCliente(this.getCliente().toEntity());
+                }
+                if(this.getPedido() != null)
+                {
+                    entity.setPedido(this.getPedido().toEntity());
+                }
+                return entity;
 	}
         
        
