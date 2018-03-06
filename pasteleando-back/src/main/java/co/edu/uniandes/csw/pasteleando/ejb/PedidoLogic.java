@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
@@ -22,7 +22,7 @@ import javax.inject.Inject;
  */
 
 @Stateless
-public class PedidoLogic 
+public class PedidoLogic
 {
     private static final Logger LOGGER = Logger.getLogger( PedidoLogic.class.getName());
     
@@ -34,12 +34,12 @@ public class PedidoLogic
      * @return Colección de objetos de PedidoEntity
      */
     
-    public List<PedidoEntity> getPedidos( ) 
+    public List<PedidoEntity> getPedidos( )
     {
         LOGGER.info("Inicia proceso de consultar todas los pedidos");
-        List<PedidoEntity> pedidos = persistence.findAll(); 
+        List<PedidoEntity> pedidos = persistence.findAll();
         
-        return pedidos; 
+        return pedidos;
     }
     
     /**
@@ -48,7 +48,7 @@ public class PedidoLogic
      * @return Instancia de PedidoEntity con los datos del pedido consultado.
      */
     
-    public PedidoEntity getPedido(Long id) 
+    public PedidoEntity getPedido(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un pedido con id = {0}", id);
         
@@ -62,9 +62,9 @@ public class PedidoLogic
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
     
-    public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException 
+    public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException
     {
-        return persistence.create(entity); 
+        return persistence.create(entity);
     }
     
     /**
@@ -75,12 +75,12 @@ public class PedidoLogic
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
     
-    public PedidoEntity updatePedido(Long id, PedidoEntity entity) throws BusinessLogicException 
+    public PedidoEntity updatePedido(Long id, PedidoEntity entity) throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);     
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);
         PedidoEntity pEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el pedido con id ={0}", entity.getId());
-  
+        
         return pEntity;
     }
     
@@ -102,9 +102,9 @@ public class PedidoLogic
      * @return Lista de Pqrs asociadas a un pedido
      */
     
-    public List<PqrsEntity> listPqrs(Long pedidoId) 
+    public List<PqrsEntity> listPqrs(Long pedidoId)
     {
-        return getPedido(pedidoId).getPqrs(); 
+        return getPedido(pedidoId).getPqrs();
     }
     
     /**
@@ -114,16 +114,16 @@ public class PedidoLogic
      * @return La entidad de pqrs asociada al pedido
      */
     
-    public PqrsEntity getPqrs(Long pedidoId, Long pqrsId) 
+    public PqrsEntity getPqrs(Long pedidoId, Long pqrsId)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una pqrs del pedido con id = {0}", pedidoId);
-        List<PqrsEntity> pqrs = getPedido(pedidoId).getPqrs(); 
+        List<PqrsEntity> pqrs = getPedido(pedidoId).getPqrs();
         PqrsEntity pqrsEntity = new PqrsEntity();
         pqrsEntity.setId(pqrsId);
         
         int index = pqrs.indexOf(pqrsEntity);
         
-        if (index >= 0) 
+        if (index >= 0)
         {
             return pqrs.get(index);
         }
@@ -132,12 +132,12 @@ public class PedidoLogic
     
     /**
      * Obtiene una lista de calificaciones asociadas a un pedido
-     * @param pedidoId Identificador del pedido 
+     * @param pedidoId Identificador del pedido
      * @return Lista de calificaciones asociadas a un pedido
      */
     
-    public List<CalificacionEntity> listCalificaciones(Long pedidoId) 
+    public List<CalificacionEntity> listCalificaciones(Long pedidoId)
     {
-        return getPedido(pedidoId).getCalificaciones(); 
+        return getPedido(pedidoId).getCalificaciones();
     }
 }

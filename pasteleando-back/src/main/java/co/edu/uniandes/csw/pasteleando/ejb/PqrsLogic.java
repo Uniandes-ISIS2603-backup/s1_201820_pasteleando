@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
@@ -20,7 +20,7 @@ import javax.inject.Inject;
  */
 
 @Stateless
-public class PqrsLogic 
+public class PqrsLogic
 {
     private static final Logger LOGGER = Logger.getLogger( PqrsLogic.class.getName());
     
@@ -32,12 +32,12 @@ public class PqrsLogic
      * @return Colección de objetos de PqrsEntity
      */
     
-    public List<PqrsEntity> getPqrs() 
+    public List<PqrsEntity> getPqrs()
     {
         LOGGER.info("Inicia proceso de consultar todas las pqrs");
-        List<PqrsEntity> pqrs = persistence.findAll(); 
+        List<PqrsEntity> pqrs = persistence.findAll();
         
-        return pqrs; 
+        return pqrs;
     }
     
     /**
@@ -46,7 +46,7 @@ public class PqrsLogic
      * @return Instancia de PqrsEntity con los datos del pqrs consultado.
      */
     
-    public PqrsEntity getPqrs(Long id) 
+    public PqrsEntity getPqrs(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un pqrs con id = {0}", id);
         return persistence.find(id);
@@ -54,11 +54,7 @@ public class PqrsLogic
     
     public boolean validarReglasDeNegocio(Integer id_solicitud, Integer id_tipo)
     {
-        if(id_solicitud == null || id_solicitud <0 || id_tipo < 0 || id_tipo ==null)
-        {
-            return false;
-        }
-        return true;
+        return !(id_solicitud >0 && id_tipo > 0 && id_solicitud == null && id_tipo ==null);
     }
     
     /**
@@ -68,7 +64,7 @@ public class PqrsLogic
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
     
-    public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException 
+    public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
         persistence.create(entity);
@@ -89,11 +85,11 @@ public class PqrsLogic
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
     
-    public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException 
+    public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);       
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);
         PqrsEntity pEntity = persistence.update(entity);
-         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
+        if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
         {
             throw new BusinessLogicException("El tipo de solicitud o el tipo son invalidos");
         }

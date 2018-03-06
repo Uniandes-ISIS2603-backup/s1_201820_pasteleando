@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
