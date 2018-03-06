@@ -15,6 +15,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
+ *      "id": number,
  *      "peso": number,
  *      "precio": number,
  *   }
@@ -23,6 +24,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  * <pre>
  *
  *   {
+ *      "id":2891230
  *      "peso": 2,
  *      "precio": 280,9,
  *   }
