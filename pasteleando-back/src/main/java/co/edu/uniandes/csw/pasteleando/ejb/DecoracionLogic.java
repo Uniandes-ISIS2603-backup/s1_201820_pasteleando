@@ -100,13 +100,17 @@ public class DecoracionLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoracion con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
         List<PastelEntity> pasteles = getPasteles(id);
-        if (pasteles == null) {
+        if (pasteles == null)
+        {
             persistence.delete(id);
-
-        } else {
-            if (pasteles.isEmpty()) {
+        } 
+        else
+        {
+            if (pasteles.isEmpty())
+            {
                 persistence.delete(id);
-            } else {
+            } else 
+            {
                 throw new BusinessLogicException("No se puede borrar la decoracion con id " + id + " porque tiene pasteles asociados");
             }
 

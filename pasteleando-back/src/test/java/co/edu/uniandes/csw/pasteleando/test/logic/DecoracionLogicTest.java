@@ -164,6 +164,7 @@ public class DecoracionLogicTest {
      *
      * 
      */
+    /**
     @Test
     public void deleteDecoracionTest() throws BusinessLogicException {
         DecoracionEntity entity = data.get(0);
@@ -172,6 +173,7 @@ public class DecoracionLogicTest {
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
+    * /
     /**
      * Prueba para actualizar un Decoracion
      *
