@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
+
 
 /**
  * *Un ejemplo de este DTO es:
@@ -28,6 +30,8 @@ public class FacturaDetailDTO extends FacturaDTO {
   
         TarjetaPuntosDTO tarjeta;
         
+        PedidoDTO pedido;
+        
 	/**
 	 * Constructor por defecto
 	 */
@@ -35,5 +39,67 @@ public class FacturaDetailDTO extends FacturaDTO {
 	{
             super();
 	}
+        
+        /**
+         * Constructor para transformar un Entity a un DTO
+         * @param entity la entidad de la cual se construye el DTO
+         */
+        public FacturaDetailDTO(FacturaEntity entity)
+        {
+            super(entity);
+            if(entity != null)
+            {
+                if(entity.getPedido() != null)
+                {
+                    this.pedido = new PedidoDTO(entity.getPedido());
+                }
+                if(entity.getPedido() == null)
+                {
+                    entity.setPedido(null);
+                }
+                if(entity.getTarjetaPuntos() != null)
+                {
+                    this.tarjeta = new TarjetaPuntosDTO(entity.getTarjetaPuntos());
+                }
+                if(entity.getTarjetaPuntos() == null)
+                {
+                    entity.setTarjetaPuntos(null);
+                }
+            }
+        }
+        
+        @Override
+        public FacturaEntity toEntity()
+        {
+            FacturaEntity facturaE = super.toEntity();
+            if(this.getTarjeta() != null)
+            {
+                facturaE.setTarjetaPuntos(this.getTarjeta().toEntity());
+            }
+            if(this.getPedido() != null)
+            {
+                facturaE.setPedido(this.getPedido().toEntity());
+            }
+            return facturaE;
+        }
+
+    public TarjetaPuntosDTO getTarjeta() {
+        return tarjeta;
+    }
+
+    public PedidoDTO getPedido() {
+        return pedido;
+    }
+
+    public void setTarjeta(TarjetaPuntosDTO tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
+        
+       
+        
 
 }

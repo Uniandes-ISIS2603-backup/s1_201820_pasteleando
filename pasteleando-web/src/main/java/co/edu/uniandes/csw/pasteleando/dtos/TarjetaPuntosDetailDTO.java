@@ -68,25 +68,51 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO{
         super();
     }
     
-    
-    public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity)
-    {
+    /**
+     * Constructor para transformar un Entity a un DTO
+     * @param entity la entidad a de la cual se construye el DTO
+     */
+    public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity) {
         super(entity);
-        if(entity.getCliente() != null)
-        {
-            this.cliente = new ClienteDTO(entity.getCliente());
-        }
-        else
-        {
-            entity.setCliente(null);
-        }
-        
-        if(entity.getFacturas() != null)
-        {
-           facturas = new ArrayList<>();
-            for (FacturaEntity entityFactura : entity.getFacturas()) {
+        if (entity != null) {
+
+            if (entity.getCliente() != null) {
+                this.cliente = new ClienteDTO(entity.getCliente());
+            }
+            if (entity.getCliente() == null) {
+                entity.setCliente(null);
+            }
+
+            if (entity.getFacturas() != null) {
+                facturas = new ArrayList<>();
+                for (FacturaEntity entityFactura : entity.getFacturas()) {
                     facturas.add(new FacturaDTO(entityFactura));
                 }
-       }
+            }
+        }
+    }
+    
+    /**
+     * Transformar el DTO a una entidad
+     * @return La entidad que representa la tarjeta
+     */
+    @Override
+    public TarjetaPuntosEntity toEntity()
+    {
+        TarjetaPuntosEntity tarjetaE = super.toEntity();
+        if(this.getCliente() != null)
+        {
+            tarjetaE.setCliente(this.getCliente().toEntity());
+        }
+        if(this.getFacturas() != null)
+        {
+            List<FacturaEntity> facturasEntity = new ArrayList<>();
+            for(FacturaDTO dtoFactura: getFacturas())
+            {
+                facturasEntity.add(dtoFactura.toEntity());
+            }
+            tarjetaE.setFacturas(facturasEntity);
+        }
+        return tarjetaE;
     }
 }

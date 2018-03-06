@@ -188,7 +188,7 @@ public class FacturaLogicTest {
 
         pojoEntity.setId(entity.getId());
 
-        factura.updateFactura(pojoEntity);
+        factura.updateFactura(pojoEntity.getId(),pojoEntity);
 
         FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
 

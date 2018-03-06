@@ -8,6 +8,7 @@ import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 import co.edu.uniandes.csw.pasteleando.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.pasteleando.ejb.FacturaLogic;
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import javax.ws.rs.Produces;
  *
  * @author m.leona
  */
-@Path( "factura" )
+@Path( "facturas" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
@@ -60,7 +61,9 @@ public class FacturaResource {
         @POST
 	public FacturaDetailDTO createFactura( FacturaDetailDTO dto ) throws BusinessLogicException
 	{
-		return dto;
+		FacturaEntity facturaEntity = dto.toEntity();
+                FacturaEntity nuevaFactura = facturaLogic.createFactura(facturaEntity);
+                return new FacturaDetailDTO(nuevaFactura);
 	}
         
         /**
@@ -76,10 +79,20 @@ public class FacturaResource {
 	 * @return JSONArray {@link FacturaDetailDTO} - Las entidades de Factura encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<FacturaDetailDTO> getFactura( )
+	public List<FacturaDetailDTO> getFacturas( )
 	{
-		return new ArrayList<>( );
+		return listEntity2DetailDTO(facturaLogic.getFacturas());
 	}
+        
+        private List<FacturaDetailDTO> listEntity2DetailDTO(List<FacturaEntity> entityList)
+        {
+            List<FacturaDetailDTO> list = new ArrayList<>();
+            for(FacturaEntity entity: entityList)
+            {
+                list.add(new FacturaDetailDTO(entity));
+            }
+            return list;
+        }
 
 	/**
 	 * <h1>GET /api/factura/{id} : Obtener una entidad de Factura por id.</h1>
@@ -102,7 +115,8 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public FacturaDetailDTO getFactura( @PathParam( "id" ) Long id )
 	{
-		return null;
+		FacturaEntity entity = facturaLogic.getFactura(id);
+                return new FacturaDetailDTO(facturaLogic.getFactura(id));
 	}
 
 	/**
@@ -128,7 +142,9 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public FacturaDetailDTO updateFactura( @PathParam( "id" ) Long id, FacturaDetailDTO detailDTO ) throws BusinessLogicException
 	{
-		return detailDTO;
+		detailDTO.setId(id);
+                FacturaEntity entity = facturaLogic.getFactura(id);
+                return new FacturaDetailDTO(facturaLogic.updateFactura(id, detailDTO.toEntity()));
 	}
 
 	/**
@@ -150,6 +166,9 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public void deleteFactura( @PathParam( "id" ) Long id )
 	{
-		// Void
+		FacturaEntity entity = facturaLogic.getFactura(id);
+                facturaLogic.deleteFactura(id);
 	}
+        
+        
 }

@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.TarjetaPuntosDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -44,6 +47,10 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class TarjetaPuntosResource {
     
+    
+        @Inject
+        TarjetaPuntosLogic tarjetaLogic;
+    
 	/**
 	 * <h1>POST /api/TarjetaPuntos : Crear una entidad de TarjetaPuntos.</h1>
 	 * 
@@ -69,8 +76,18 @@ public class TarjetaPuntosResource {
 	@POST
 	public TarjetaPuntosDetailDTO createTarjetaPuntos( TarjetaPuntosDetailDTO dto ) throws BusinessLogicException
 	{
-		return dto;
+		TarjetaPuntosEntity tarjetaPuntosEntity = dto.toEntity();
+                TarjetaPuntosEntity nuevaTarjeta = tarjetaLogic.createTarjetaPuntos(tarjetaPuntosEntity);
+                return new TarjetaPuntosDetailDTO(nuevaTarjeta);
 	}
+        
+         private List<TarjetaPuntosDetailDTO> listEntity2DetailDTO(List<TarjetaPuntosEntity> entityList) {
+        List<TarjetaPuntosDetailDTO> list = new ArrayList<>();
+        for (TarjetaPuntosEntity entity : entityList) {
+            list.add(new TarjetaPuntosDetailDTO(entity));
+        }
+        return list;
+    }
 
 	/**
 	 * <h1>GET /api/TarjetaPuntos : Obtener todas las entidadese de TarjetaPuntos.</h1>
@@ -87,7 +104,7 @@ public class TarjetaPuntosResource {
 	@GET
 	public List<TarjetaPuntosDetailDTO> getTarjetaPuntos( )
 	{
-		return new ArrayList<>( );
+		return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntoss());
 	}
 
 	/**
@@ -109,9 +126,10 @@ public class TarjetaPuntosResource {
 	 */
 	@GET
 	@Path( "{id: \\d+}" )
-	public TarjetaPuntosDetailDTO getTarjetaPuntos( @PathParam( "id" ) Long id )
+	public TarjetaPuntosDetailDTO getTodasTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		return null;
+		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
+                return new TarjetaPuntosDetailDTO(tarjetaLogic.getTarjetaPuntos(id));
 	}
 
 	/**
@@ -137,7 +155,9 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long id, TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
 	{
-		return detailDTO;
+		detailDTO.setId(id);
+                TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
+                return new TarjetaPuntosDetailDTO(tarjetaLogic.updateTarjetaPuntos(id, detailDTO.toEntity()));
 	}
 
 	/**
@@ -159,6 +179,7 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public void deleteTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		// Void
+		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
+                tarjetaLogic.deleteTarjetaPuntos(id);
 	}
 }

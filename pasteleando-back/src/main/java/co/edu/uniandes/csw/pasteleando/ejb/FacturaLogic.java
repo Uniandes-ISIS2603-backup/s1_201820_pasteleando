@@ -79,7 +79,7 @@ public class FacturaLogic {
      * @param entity Instancia de FacturaEntity con los nuevos datos.
      * @return Instancia de FacturaEntity con los datos actualizados.
      */
-    public FacturaEntity updateFactura(FacturaEntity entity) throws BusinessLogicException {
+    public FacturaEntity updateFactura(Long id,FacturaEntity entity) throws BusinessLogicException {
         if(!validatePrecio(entity.getPrecio()))
        {
            throw new BusinessLogicException("El Precio no puede ser menor que 0");
@@ -95,4 +95,6 @@ public class FacturaLogic {
     public void deleteFactura(Long id) {
         persistence.delete(id);
     }
+
+    
 }

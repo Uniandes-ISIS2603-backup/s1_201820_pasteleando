@@ -81,7 +81,7 @@ public class TarjetaPuntosLogic {
      * @param entity Instancia de TarjetaPuntosEntity con los nuevos datos.
      * @return Instancia de TarjetaPuntosEntity con los datos actualizados.
      */
-    public TarjetaPuntosEntity updateTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
+    public TarjetaPuntosEntity updateTarjetaPuntos(Long id,TarjetaPuntosEntity entity) throws BusinessLogicException{
          if(!validatePuntos(entity.getNumeroPuntos()))
         {
             throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
