@@ -69,7 +69,7 @@ public class DecoracionPersistence
 	public List<DecoracionEntity> findAll( )
 	{
 		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-		TypedQuery<DecoracionEntity> query = em.createQuery( "select u from PasteleandoEntity u", DecoracionEntity.class );
+		TypedQuery<DecoracionEntity> query = em.createQuery( "select u from DecoracionEntity u", DecoracionEntity.class );
 		return query.getResultList( );
 	}
 
