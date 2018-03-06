@@ -76,7 +76,7 @@ public class PqrsDTO implements Serializable
     /**
 	 * @return El tipo de la solicitud
 	 */
-	public int getTipo( )
+	public Integer getTipo( )
 	{
 		return tipo;
 	}
@@ -84,7 +84,7 @@ public class PqrsDTO implements Serializable
         /**
 	 * @param pTipo El nuevo tipo de solicitud
 	 */
-	public void setTipo( int pTipo )
+	public void setTipo( Integer pTipo )
 	{
 		this.tipo = pTipo;
 	}
@@ -92,7 +92,7 @@ public class PqrsDTO implements Serializable
          /**
 	 * @return El id de la solicitud
 	 */
-	public int getIdSolicitud( )
+	public Integer getIdSolicitud( )
 	{
 		return idSolicitud;
 	}
@@ -100,7 +100,7 @@ public class PqrsDTO implements Serializable
         /**
 	 * @param pIdSolicitud El nuevo id de la solicitud
 	 */
-	public void setIdSolicitud( int pIdSolicitud )
+	public void setIdSolicitud( Integer pIdSolicitud )
 	{
 		this.idSolicitud = pIdSolicitud;
 	}
@@ -108,7 +108,7 @@ public class PqrsDTO implements Serializable
          /**
 	 * @return El id del cliente
 	 */
-	public int getIdCliente( )
+	public Integer getIdCliente( )
 	{
 		return idCliente;
 	}
@@ -116,7 +116,7 @@ public class PqrsDTO implements Serializable
         /**
 	 * @param pIdCliente El nuevo id del cliente
 	 */
-	public void setIdCliente( int pIdCliente )
+	public void setIdCliente( Integer pIdCliente )
 	{
 		this.idCliente = pIdCliente;
 	}

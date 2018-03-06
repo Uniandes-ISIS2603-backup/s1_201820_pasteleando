@@ -21,11 +21,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PqrsEntity extends BaseEntity implements Serializable
 {
-    private int tipo; 
+    private Integer tipo; 
     
-    private int idSolicitud; 
+    private Integer idSolicitud; 
     
-    private int idCliente; 
+    private Integer idCliente; 
     
     private String fecha; 
     
@@ -43,7 +43,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @return El tipo de la solicitud
 	 */
     
-	public int getTipo( )
+	public Integer getTipo( )
 	{
 		return tipo;
 	}
@@ -52,7 +52,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @param pTipo El nuevo tipo de solicitud
 	 */
         
-	public void setTipo( int pTipo )
+	public void setTipo( Integer pTipo )
 	{
 		this.tipo = pTipo;
 	}
@@ -61,7 +61,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @return El id de la solicitud
 	 */
         
-	public int getIdSolicitud( )
+	public Integer getIdSolicitud( )
 	{
 		return idSolicitud;
 	}
@@ -70,7 +70,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @param pIdSolicitud El nuevo id de la solicitud
 	 */
         
-	public void setIdSolicitud( int pIdSolicitud )
+	public void setIdSolicitud( Integer pIdSolicitud )
 	{
 		this.idSolicitud = pIdSolicitud;
 	}
@@ -79,7 +79,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @return El id del cliente
 	 */
         
-	public int getIdCliente( )
+	public Integer getIdCliente( )
 	{
 		return idCliente;
 	}
@@ -88,7 +88,7 @@ public class PqrsEntity extends BaseEntity implements Serializable
 	 * @param pIdCliente El nuevo id del cliente
 	 */
         
-	public void setIdCliente( int pIdCliente )
+	public void setIdCliente( Integer pIdCliente )
 	{
 		this.idCliente = pIdCliente;
 	}
