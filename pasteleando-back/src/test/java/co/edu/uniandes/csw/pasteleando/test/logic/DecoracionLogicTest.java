@@ -176,7 +176,7 @@ public class DecoracionLogicTest {
     }
     * /
     /**
-     * Prueba para actualizar un Decoracion en la logica..
+     * Prueba para actualizar un Decoracion en la logica...s
      *
      * 
      */
