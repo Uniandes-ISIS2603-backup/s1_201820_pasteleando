@@ -103,7 +103,7 @@ public class CarritoPersistenceTest {
     
     @Test
     public void getCarritosTest() {
-        List<CarritoEntity> list = carritoPersistence.getAll();
+        List<CarritoEntity> list = carritoPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (CarritoEntity ent : list) {
             boolean found = false;

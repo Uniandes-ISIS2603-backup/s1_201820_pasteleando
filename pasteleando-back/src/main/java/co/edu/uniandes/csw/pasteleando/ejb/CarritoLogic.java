@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
@@ -39,14 +39,14 @@ public class CarritoLogic {
     
     public List findCarritos()
     {
-        return persistence.getAll();
+        return persistence.findAll();
     }
     
     public CarritoEntity findCarrito(Long id) throws BusinessLogicException
     {
         if(persistence.find(id) == null)
         {
-            throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
+            throw new BusinessLogicException("el carrito con el id:" + id + "no existe");
         }
         return persistence.find(id);
     }
@@ -55,9 +55,9 @@ public class CarritoLogic {
     {
         if(persistence.find(entity.getId()) == null)
         {
-            throw new BusinessLogicException("el pastel con el id:" + entity.getId()+ "no existe");
+            throw new BusinessLogicException("el carrito con el id:" + entity.getId()+ "no existe");
         }
         return persistence.update(entity);
     }
-            
+    
 }

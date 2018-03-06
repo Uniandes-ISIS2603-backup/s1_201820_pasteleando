@@ -23,10 +23,9 @@ public class DecoracionLogic {
 
     @Inject
     private DecoracionPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-/**
+    
     @Inject
     private PastelLogic pastelLogic;
-*/
     /**
      * Crea una decoracion en la persistencia.
      * @param entity La entidad que representa la decoracion a persistir.
@@ -100,7 +99,7 @@ public class DecoracionLogic {
     public void deleteDecoracion(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoracion con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
-        List<PastelEntity> pasteles = getPastels(id);
+        List<PastelEntity> pasteles = getPasteles(id);
         if (pasteles == null) {
             persistence.delete(id);
 
@@ -122,14 +121,13 @@ public class DecoracionLogic {
      * libro.
      * @return El libro que fue agregado a la decoracion.
      */
-    /**
-    public PastelEntity addPastel(Long pastelId, Long decoracionId) {
-        DecoracionEntity decoracionEntity = getDecoracion(decoracionId);
-        PastelEntity pastelEntity = pastelLogic.getPastel(pastelId);
-        pastelEntity.setDecoracion(decoracionEntity);
-        return pastelEntity;
-    }
-*/
+   /** public PastelEntity addPastel(Long pastelId, Long decoracionId) {
+        DecoracionEntity DecoracionEntity = getDecoracion(decoracionId);
+        PastelEntity PastelEntity= new PastelEntity();
+        PastelEntity.setId(pastelId);
+        DecoracionEntity.getPasteles().add(PastelEntity);
+        return getPastel(decoracionId, pastelId);
+    }*/
     /**
      * Borrar un pastel de una decoracion
      *
@@ -172,7 +170,7 @@ public class DecoracionLogic {
      * @param decoracionId El ID de la decoracion buscada
      * @return La lista de libros de la decoracion
      */
-    public List<PastelEntity> getPastels(Long decoracionId) {
+    public List<PastelEntity> getPasteles(Long decoracionId) {
         return getDecoracion(decoracionId).getPasteles();
     }
 
@@ -184,18 +182,17 @@ public class DecoracionLogic {
      * @return El libro encontrado dentro de la decoracion.
      * @throws BusinessLogicException Si el libro no se encuentra en la decoracion
      */
-    /**
-    public PastelEntity getPastel(Long decoracionId, Long pastelId) throws BusinessLogicException {
+    /**public PastelEntity getPastel(Long decoracionId, Long pastelId) throws BusinessLogicException {
         List<PastelEntity> pasteles = getDecoracion(decoracionId).getPasteles();
         PastelEntity pastel = pastelLogic.getPastel(pastelId);
         int index = pasteles.indexOf(pastel);
         if (index >= 0) {
             return pasteles.get(index);
         }
-        throw new BusinessLogicException("El libro no está asociado a la decoracion");
+        throw new BusinessLogicException("El pastel no está asociado a la decoracion");
 
-    }
-*/
+    }*/
+    
     /**
      * Obtiene una colección de instancias de PastelEntity asociadas a una
      * instancia de Decoracion
@@ -205,7 +202,7 @@ public class DecoracionLogic {
      * Decoracion
      *
      */
-    public List<PastelEntity> listPastels(Long decoracionId) {
+    public List<PastelEntity> listPasteles(Long decoracionId) {
         return getDecoracion(decoracionId).getPasteles();
     }
 }

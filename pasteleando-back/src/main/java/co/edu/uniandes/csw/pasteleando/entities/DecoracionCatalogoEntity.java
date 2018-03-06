@@ -17,12 +17,12 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jf.garcia
  */
 @Entity
-public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
+public class DecoracionCatalogoEntity extends DecoracionEntity implements Serializable
 {
     /**
      * Atributo que modela la categoria de la DecoracionCatalogoEntiry
      */
-    public String categoria;
+    private String categoria;
     
     /**
      * Atributo que modela las promociones asociadas de la DecoracionCatalogoEntity
@@ -57,7 +57,7 @@ public class DecoracionCatalogoEntity extends BaseEntity implements Serializable
 
     /**
      * Modifica las promociones de la decoración del catálogo.
-     * @param reviews Las nuevas promociones.
+     * @param promociones Las nuevas promociones.
      */
     public void setPromociones(List<PromocionEntity> promociones) {
         this.promociones = promociones;
