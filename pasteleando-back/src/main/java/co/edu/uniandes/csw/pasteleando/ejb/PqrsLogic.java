@@ -52,6 +52,15 @@ public class PqrsLogic
         return persistence.find(id);
     }
     
+    public boolean validarReglasDeNegocio(Integer id_solicitud, Integer id_tipo)
+    {
+        if(id_solicitud == null || id_solicitud <0 || id_tipo < 0 || id_tipo ==null)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * Crea una nueva pqrs.
      * @param entity La entidad de tipo pqrs a persistir.
@@ -63,6 +72,10 @@ public class PqrsLogic
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
         persistence.create(entity);
+        if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
+        {
+            throw new BusinessLogicException("El tipo de solicitud o el tipo son invalidos");
+        }
         LOGGER.info("Termina proceso de creación de la pqrs");
         
         return entity;
@@ -80,6 +93,10 @@ public class PqrsLogic
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);       
         PqrsEntity pEntity = persistence.update(entity);
+         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
+        {
+            throw new BusinessLogicException("El tipo de solicitud o el tipo son invalidos");
+        }
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pqrs con id ={0}", entity.getId());
         
         return pEntity;
