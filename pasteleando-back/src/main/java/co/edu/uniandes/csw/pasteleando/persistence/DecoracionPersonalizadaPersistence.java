@@ -50,7 +50,7 @@ public DecoracionPersonalizadaEntity findByName( String name )
     LOGGER.log( Level.INFO, "Consultando entidades de Decoracion Personalizada por nombre ", name );
     
     // Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-    TypedQuery<DecoracionPersonalizadaEntity> query = em.createQuery( "Select e From DecoracionEntity e where e.name = :name", DecoracionPersonalizadaEntity.class );
+    TypedQuery<DecoracionPersonalizadaEntity> query = em.createQuery( "Select e From DecoracionPersonalizadaEntity e where e.name = :name", DecoracionPersonalizadaEntity.class );
     // Se remplaza el placeholder ":name" con el valor del argumento
     query = query.setParameter( "name", name );
     // Se invoca el query se obtiene la lista resultado
@@ -68,7 +68,7 @@ public DecoracionPersonalizadaEntity findByName( String name )
 public List<DecoracionPersonalizadaEntity> findAll( )
 {
     LOGGER.info( "Consultando todas las entidades de Pasteleando" );
-    TypedQuery<DecoracionPersonalizadaEntity> query = em.createQuery( "select u from PasteleandoEntity u", DecoracionPersonalizadaEntity.class );
+    TypedQuery<DecoracionPersonalizadaEntity> query = em.createQuery( "select u from DecoracionPersonalizadaEntity u", DecoracionPersonalizadaEntity.class );
     return query.getResultList( );
 }
 

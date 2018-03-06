@@ -85,7 +85,7 @@ public class DecoracionPersistence
     /**
      *
      * Borra una Decoración de la base de datos recibiendo como argumento el id
-     * del libro
+     * del pastel
      *
      * @param id: id correspondiente a la Decoración a borrar.
      */
