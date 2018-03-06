@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -41,10 +42,9 @@ import javax.ws.rs.Produces;
  * </pre>
  *
  */
-@Path( "tarjetapuntos" )
-@Produces( "application/json" )
-@Consumes( "application/json" )
-@RequestScoped
+@Path( "/tarjetapuntos" )
+@Produces(MediaType.APPLICATION_JSON )
+@Consumes(MediaType.APPLICATION_JSON )
 public class TarjetaPuntosResource {
     
     
@@ -74,14 +74,16 @@ public class TarjetaPuntosResource {
 	 * @throws BusinessLogicException  Error de lógica que se genera cuando ya existe la entidad de TarjetaPuntos.
 	 */
 	@POST
+        @Path("/create")
 	public TarjetaPuntosDetailDTO createTarjetaPuntos( TarjetaPuntosDetailDTO dto ) throws BusinessLogicException
 	{
+            
 		TarjetaPuntosEntity tarjetaPuntosEntity = dto.toEntity();
                 TarjetaPuntosEntity nuevaTarjeta = tarjetaLogic.createTarjetaPuntos(tarjetaPuntosEntity);
                 return new TarjetaPuntosDetailDTO(nuevaTarjeta);
 	}
         
-         private List<TarjetaPuntosDetailDTO> listEntity2DetailDTO(List<TarjetaPuntosEntity> entityList) {
+        private List<TarjetaPuntosDetailDTO> listEntity2DetailDTO(List<TarjetaPuntosEntity> entityList) {
         List<TarjetaPuntosDetailDTO> list = new ArrayList<>();
         for (TarjetaPuntosEntity entity : entityList) {
             list.add(new TarjetaPuntosDetailDTO(entity));
@@ -104,6 +106,7 @@ public class TarjetaPuntosResource {
 	@GET
 	public List<TarjetaPuntosDetailDTO> getTarjetaPuntos( )
 	{
+            System.out.print("Hola mamá");
 		return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntoss());
 	}
 
@@ -156,8 +159,9 @@ public class TarjetaPuntosResource {
 	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long id, TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
 	{
 		detailDTO.setId(id);
-                TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
-                return new TarjetaPuntosDetailDTO(tarjetaLogic.updateTarjetaPuntos(id, detailDTO.toEntity()));
+                TarjetaPuntosEntity entity = detailDTO.toEntity();
+                entity.setId(id);
+                return new TarjetaPuntosDetailDTO(tarjetaLogic.updateTarjetaPuntos(entity));
 	}
 
 	/**

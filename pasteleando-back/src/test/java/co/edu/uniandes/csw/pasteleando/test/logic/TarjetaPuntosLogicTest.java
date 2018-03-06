@@ -183,7 +183,7 @@ public class TarjetaPuntosLogicTest {
 
         pojoEntity.setId(entity.getId());
 
-        tarjeta.updateTarjetaPuntos(pojoEntity.getId(),pojoEntity);
+        tarjeta.updateTarjetaPuntos(pojoEntity);
 
         TarjetaPuntosEntity resp = em.find(TarjetaPuntosEntity.class, entity.getId());
 
