@@ -23,3 +23,14 @@ insert into PqrsEntity (id, tipo, cliente_id , fecha, estado, pedido_id) values 
 insert into PqrsEntity (id, tipo, cliente_id , fecha, estado, pedido_id) values (025, 02, 209 , '8/20/2018' , 'En revision', 101);
 insert into PqrsEntity (id, tipo, cliente_id , fecha, estado, pedido_id) values (026, 03, 210 , '8/21/2018' , 'respuesta enviada', 102);
 insert into PqrsEntity (id, tipo, cliente_id , fecha, estado, pedido_id) values (027, 04, 211 , '8/24/2018' , 'En revision', 099);
+
+insert into DecoracionCatalogoEntity (id, categoria, promocion_id) values (100,'Cumpleaños' , 100);
+insert into DecoracionCatalogoEntity (id, categoria, promocion_id) values (200,'Boda' , 100);
+insert into DecoracionCatalogoEntity (id, categoria, promocion_id) values (300,'Cumpleaños' , 100);
+insert into DecoracionCatalogoEntity (id, categoria, promocion_id) values (300,'Aniversario' , 200);
+insert into DecoracionCatalogoEntity (id, categoria, promocion_id) values (400,'Cumpleaños' , 200);
+
+insert into PromocionEntity (id, cantidad) values (001, 15);
+insert into PromocionEntity (id, cantidad) values (002, 10);
+insert into PromocionEntity (id, cantidad) values (003, 50);
+insert into PromocionEntity (id, cantidad) values (004, 20);
