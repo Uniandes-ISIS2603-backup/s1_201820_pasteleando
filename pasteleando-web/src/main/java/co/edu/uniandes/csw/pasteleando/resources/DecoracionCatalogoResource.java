@@ -166,7 +166,7 @@ public class DecoracionCatalogoResource
     public void deleteDecoracionCatalogo(@PathParam("id") Long id) throws BusinessLogicException {
         DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /catalogo/" + id + " no existe.", 404);
         }
         decoracionCatalogoLogic.deleteDecoracionCatalogo(id);
     }
