@@ -37,23 +37,26 @@ public class PqrsDetailDTO extends PqrsDTO
         public PqrsDetailDTO(PqrsEntity entity)
         {
             super(entity);
+            
             if(entity.getCliente() != null)
             {
                 this.cliente = new ClienteDTO(entity.getCliente());
             }
-            if(entity.getCliente()==null)
+            else
             {
-                entity.setCliente(null);
+                cliente = null; 
             }
+            
             if(entity.getPedido() != null)
             {
                 this.pedido = new PedidoDTO(entity.getPedido());
             }
-            if(entity.getPedido()==null)
+            else
             {
-                entity.setPedido(null);
+                pedido = null; 
             }
         }
+           
 
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;

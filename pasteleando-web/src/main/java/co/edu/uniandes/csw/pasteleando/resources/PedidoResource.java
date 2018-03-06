@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.PedidoDTO; 
+import co.edu.uniandes.csw.pasteleando.dtos.PedidoDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.PedidoLogic;
+import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,6 +26,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -47,7 +52,7 @@ import javax.ws.rs.core.MediaType;
 public class PedidoResource 
 {
     @Inject
-    //private PedidoLogic pedidoLogic; 
+    private PedidoLogic pedidoLogic; 
     
     /**
 	 * <h1>POST /api/pedido : Crear una entidad de pedido.</h1>
@@ -71,9 +76,9 @@ public class PedidoResource
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
 	 */
 	@POST
-	public PedidoDTO createPedido( PedidoDTO pPedido ) throws BusinessLogicException
+	public PedidoDetailDTO createPedido( PedidoDTO pPedido ) throws BusinessLogicException
 	{
-		return pPedido;
+		return new PedidoDetailDTO( pedidoLogic.createPedido(pPedido.toEntity())); 
 	}
 
 	/**
@@ -88,9 +93,20 @@ public class PedidoResource
 	 * @return JSONArray {@link PedidoDTO} - Las entidades de pedido encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<PedidoDTO> getPedido( )
+	public List<PedidoDetailDTO> getPedido( )
 	{
-		return new ArrayList<>( );
+            List<PedidoDetailDTO> rta = new ArrayList<>();
+            List lista = pedidoLogic.getPedidos(); 
+            Iterator ite =  lista.iterator();
+                
+            while(ite.hasNext())
+            {
+                PedidoDetailDTO dto = new PedidoDetailDTO((PedidoEntity) ite.next());
+                rta.add(dto);
+            }
+            
+        return rta;
+        
 	}
 
 	/**
@@ -111,9 +127,9 @@ public class PedidoResource
 	 */
 	@GET
 	@Path( "{id: \\d+}" )
-	public PedidoDTO getPedido( @PathParam( "id" ) Long id )
+	public PedidoDetailDTO getPedido( @PathParam( "id" ) Long id )
 	{
-		return null;
+		return new PedidoDetailDTO(pedidoLogic.getPedido(id));
 	}
 
 	/**
@@ -137,9 +153,18 @@ public class PedidoResource
 	 */
 	@PUT
 	@Path( "{id: \\d+}" )
-	public PedidoDTO updatePedido( @PathParam( "id" ) Long id, PedidoDTO detailDTO ) throws BusinessLogicException
+	public PedidoDetailDTO updatePedido( @PathParam( "id" ) Long id, PedidoDTO detailDTO ) throws BusinessLogicException, WebApplicationException
 	{
-		return detailDTO;
+            PedidoEntity entity = pedidoLogic.getPedido(id); 
+        
+            if( entity.equals(null) )
+            {
+                throw new WebApplicationException("\"El recurso /pedido/" + id + " no existe." , 404);
+            }
+            else
+            {
+                return new PedidoDetailDTO(pedidoLogic.updatePedido(id, detailDTO.toEntity()));
+            }
 	}
 
 	/**
@@ -160,7 +185,16 @@ public class PedidoResource
 	@Path( "{id: \\d+}" )
 	public void deletePedido( @PathParam( "id" ) Long id )
 	{
-		// Void
+            PedidoEntity entity = pedidoLogic.getPedido(id); 
+            
+            if( entity.equals(null) )
+            {
+                throw new WebApplicationException("El recurso /pedido/" + id + " no existe.", 404);
+            }
+            else
+            {
+                pedidoLogic.deletePedido(id);
+            }   
 	}
     
     

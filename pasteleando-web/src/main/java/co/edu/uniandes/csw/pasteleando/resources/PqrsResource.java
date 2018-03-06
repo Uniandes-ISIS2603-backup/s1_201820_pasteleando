@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.PqrsDTO; 
+import co.edu.uniandes.csw.pasteleando.dtos.PqrsDetailDTO;
+import co.edu.uniandes.csw.pasteleando.ejb.PqrsLogic;
+import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,6 +26,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -50,7 +55,7 @@ public class PqrsResource
 {
     
     @Inject
-    //private PqrsLogic pqrsLogic; 
+    private PqrsLogic pqrsLogic; 
         
         
     /**
@@ -75,9 +80,9 @@ public class PqrsResource
 	 * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
 	 */
 	@POST
-	public PqrsDTO createPqrs( PqrsDTO pPqrs ) throws BusinessLogicException
+	public PqrsDetailDTO createPqrs( PqrsDTO pPqrs ) throws BusinessLogicException
 	{
-		return pPqrs;
+		return new PqrsDetailDTO( pqrsLogic.createPqrs(pPqrs.toEntity()) ); 
 	}
 
 	/**
@@ -92,9 +97,20 @@ public class PqrsResource
 	 * @return JSONArray {@link PqrsDTO} - Las entidades de pqrs encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<PqrsDTO> getPqrs( )
+	public List<PqrsDetailDTO> getPqrs( )
 	{
-		return new ArrayList<>( );
+            List<PqrsDetailDTO> rta = new ArrayList<>();
+            List lista = pqrsLogic.getPqrs(); 
+            Iterator ite =  lista.iterator();
+                
+            while(ite.hasNext())
+            {
+                PqrsDetailDTO dto = new PqrsDetailDTO((PqrsEntity) ite.next());
+                rta.add(dto);
+            }
+            
+        return rta;
+        
 	}
 
 	/**
@@ -115,9 +131,9 @@ public class PqrsResource
 	 */
 	@GET
 	@Path( "{id: \\d+}" )
-	public PqrsDTO getPqrs( @PathParam( "id" ) Long id )
+	public PqrsDetailDTO getPqrs( @PathParam( "id" ) Long id )
 	{
-		return null;
+		return new PqrsDetailDTO(pqrsLogic.getPqrs(id));
 	}
 
 	/**
@@ -141,9 +157,18 @@ public class PqrsResource
 	 */
 	@PUT
 	@Path( "{id: \\d+}" )
-	public PqrsDTO updatePqrs( @PathParam( "id" ) Long id, PqrsDTO detailDTO ) throws BusinessLogicException
+	public PqrsDetailDTO updatePqrs( @PathParam( "id" ) Long id, PqrsDTO detailDTO ) throws BusinessLogicException, WebApplicationException
 	{
-		return detailDTO;
+            PqrsEntity entity = pqrsLogic.getPqrs(id); 
+        
+            if( entity.equals(null) )
+            {
+                throw new WebApplicationException("\"El recurso /pqrs/" + id + " no existe." , 404);
+            }
+            else
+            {
+                return new PqrsDetailDTO(pqrsLogic.updatePqrs(id, detailDTO.toEntity()));
+            }
 	}
 
 	/**
@@ -164,7 +189,16 @@ public class PqrsResource
 	@Path( "{id: \\d+}" )
 	public void deletePqrs( @PathParam( "id" ) Long id )
 	{
-		// Void
+            PqrsEntity entity = pqrsLogic.getPqrs(id); 
+            
+            if( entity.equals(null) )
+            {
+                throw new WebApplicationException("El recurso /pqrs/" + id + " no existe.", 404);
+            }
+            else
+            {
+                pqrsLogic.deletPqrs(id);
+            }   
 	}
     
 }
