@@ -20,7 +20,7 @@ public class DecoracionDetailDTO extends DecoracionDTO
          /**
      * Atributo que modela la coleccion de pasteles 
      */
-        private List <PastelDTO> pasteles;
+        private List<PastelDTO> pasteles;
         
 	/**
 	 * Constructor por defecto

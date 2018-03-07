@@ -157,7 +157,7 @@ public class PedidoResource
 	{
             PedidoEntity entity = pedidoLogic.getPedido(id); 
         
-            if( entity.equals(null) )
+            if( entity == null )
             {
                 throw new WebApplicationException("\"El recurso /pedido/" + id + " no existe." , 404);
             }
@@ -187,7 +187,7 @@ public class PedidoResource
 	{
             PedidoEntity entity = pedidoLogic.getPedido(id); 
             
-            if( entity.equals(null) )
+            if( entity == null )
             {
                 throw new WebApplicationException("El recurso /pedido/" + id + " no existe.", 404);
             }

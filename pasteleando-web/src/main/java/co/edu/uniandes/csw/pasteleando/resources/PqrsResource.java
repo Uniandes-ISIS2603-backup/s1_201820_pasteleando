@@ -161,7 +161,7 @@ public class PqrsResource
 	{
             PqrsEntity entity = pqrsLogic.getPqrs(id); 
         
-            if( entity.equals(null) )
+            if( entity == null )
             {
                 throw new WebApplicationException("\"El recurso /pqrs/" + id + " no existe." , 404);
             }
@@ -191,7 +191,7 @@ public class PqrsResource
 	{
             PqrsEntity entity = pqrsLogic.getPqrs(id); 
             
-            if( entity.equals(null) )
+            if( entity == null )
             {
                 throw new WebApplicationException("El recurso /pqrs/" + id + " no existe.", 404);
             }

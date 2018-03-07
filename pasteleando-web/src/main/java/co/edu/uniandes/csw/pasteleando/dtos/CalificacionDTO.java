@@ -108,6 +108,7 @@ public class CalificacionDTO
         CalificacionEntity entity = new CalificacionEntity( );
         entity.setComentario(this.comentario);
         entity.setPuntaje(this.puntaje);
+        entity.setId(this.id);
         return entity;
     }
 

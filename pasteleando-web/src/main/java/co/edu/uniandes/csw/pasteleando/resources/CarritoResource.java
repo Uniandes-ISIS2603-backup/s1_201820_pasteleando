@@ -143,7 +143,7 @@ public class CarritoResource {
        
         CarritoEntity entity = carritoLogic.findCarrito(id);
         
-        if(entity.equals(null)){
+        if(entity == null){
             throw new WebApplicationException("\"El recurso /carrito/" + id + " no existe." , 404);
         }
         else{
@@ -169,7 +169,7 @@ public class CarritoResource {
     @Path("{id: \\d+}")
      public void deleteCarrito(@PathParam("id") Long id) throws BusinessLogicException {
        CarritoEntity entity = carritoLogic.findCarrito(id);
-       if(entity.equals(null))
+       if(entity == null)
        {
            throw new WebApplicationException("El recurso /carrito/" + id + " no existe.", 404);
        }

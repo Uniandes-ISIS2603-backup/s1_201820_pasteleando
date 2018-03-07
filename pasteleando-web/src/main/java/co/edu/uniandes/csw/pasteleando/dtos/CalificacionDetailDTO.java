@@ -49,9 +49,11 @@ public class CalificacionDetailDTO extends CalificacionDTO
 {
     private ClienteDTO cliente;
     private DecoracionDTO decoracion;
+    private PedidoDTO pedido;
     
     public CalificacionDetailDTO()
     {
+        super();
     }
      /**
 	 * Constructor para transformar un Entity a un DTO
@@ -63,21 +65,37 @@ public class CalificacionDetailDTO extends CalificacionDTO
         super(entity);
         if(entity.getCliente() != null)
         {
-            cliente = new ClienteDTO(entity.getCliente());
+            this.cliente = new ClienteDTO(entity.getCliente());
         }
         else
         {
-            cliente = null;
+           entity.setCliente(null);
         }
         
         if(entity.getDecoracion() != null)
         {
-            decoracion = new DecoracionDTO(entity.getDecoracion());
+            this.decoracion = new DecoracionDTO(entity.getDecoracion());
         }
         else
         {
-            decoracion = null;
+            entity.setDecoracion(null);
         }
+        if(entity.getPedido() != null)
+        {
+            this.pedido = new PedidoDTO(entity.getPedido());
+        }
+        else
+        {
+            entity.setPedido(null);
+        }
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
+
+    public PedidoDTO getPedido() {
+        return pedido;
     }
     
     
@@ -113,6 +131,10 @@ public class CalificacionDetailDTO extends CalificacionDTO
         if(this.decoracion != null)
         {
             entity.setDecoracion(this.decoracion.toEntity());
+        }
+        if(this.pedido != null)
+        {
+            entity.setPedido(this.pedido.toEntity());
         }
        return entity;
     }

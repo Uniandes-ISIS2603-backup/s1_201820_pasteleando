@@ -21,7 +21,6 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class TarjetaPuntosPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosPersistence.class.getName());
     
     @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
@@ -33,11 +32,8 @@ public class TarjetaPuntosPersistence {
      
 	public TarjetaPuntosEntity create(TarjetaPuntosEntity entity )
 	{
-		LOGGER.info( "Creando una nueva entidad de TarjetaPuntos" );
-                                System.out.println("Holaaaaaaaaa"+entity);
-
+		
 		em.persist( entity );
-		LOGGER.info( "Creando una entidad de TarjetaPuntos" );
 		return entity;
 	}
 
@@ -51,7 +47,6 @@ public class TarjetaPuntosPersistence {
         
 	public TarjetaPuntosEntity findByName( String name )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Factura por nombre ", name );
 
 		// Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
 		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "Select e From TarjetaPuntosEntity e where e.name = :name", TarjetaPuntosEntity.class );
@@ -72,7 +67,6 @@ public class TarjetaPuntosPersistence {
 
 	public List<TarjetaPuntosEntity> findAll( )
 	{
-		LOGGER.info( "Consultando todas las entidades de Pasteleando" );
 		TypedQuery<TarjetaPuntosEntity> query = em.createQuery( "select u from TarjetaPuntosEntity u", TarjetaPuntosEntity.class );
 		return query.getResultList( );
 	}

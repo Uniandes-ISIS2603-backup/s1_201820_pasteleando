@@ -27,7 +27,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "decoracion")
-    public List<PastelEntity> pasteles = new ArrayList<>();
+    private List<PastelEntity> pasteles = new ArrayList<>();
     
     /**
      * Atributo que modela la fecha de la DecoracionEntity

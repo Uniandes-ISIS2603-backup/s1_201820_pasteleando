@@ -88,6 +88,15 @@ public class CalificacionResource
 		return new CalificacionDetailDTO(logic.create(dto.toEntity()));
 	}
 
+        
+        private List<CalificacionDetailDTO> listEntity2DetailDTO(List<CalificacionEntity> entityList) {
+        List<CalificacionDetailDTO> list = new ArrayList<>();
+        for (CalificacionEntity entity : entityList) {
+            list.add(new CalificacionDetailDTO(entity));
+        }
+        return list;
+        }
+        
 	/**
 	 * <h1>GET /api/pasteleando : Obtener todas las entidadese de Pasteleando.</h1>
 	
@@ -101,17 +110,9 @@ public class CalificacionResource
 	 * @return JSONArray {@link CalificacionDTO} - Las entidades de Pasteleando encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<CalificacionDetailDTO> getCalificacion(CalificacionDetailDTO dto )
-	{
-		
-            List<CalificacionEntity> lista = logic.getAll();
-            List<CalificacionDetailDTO> listaNueva = new ArrayList<CalificacionDetailDTO>();
-            for (int i = 0 ; i < lista.size() ; i++) 
-            {
-              listaNueva.add(new CalificacionDetailDTO(lista.get(i)));
-                
-            }
-            return listaNueva;
+	public List<CalificacionDetailDTO> getCalificacion( )
+        {
+          return listEntity2DetailDTO(logic.getAll());
 	}
 
 	/**
