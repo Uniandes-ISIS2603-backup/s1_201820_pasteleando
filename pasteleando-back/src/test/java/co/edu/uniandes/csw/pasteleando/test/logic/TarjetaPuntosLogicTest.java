@@ -191,4 +191,19 @@ public class TarjetaPuntosLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
        Assert.assertEquals(pojoEntity.getNumeroPuntos(), resp.getNumeroPuntos());
     }
+    
+     @Test
+    public void validateNumeropuntos()
+    {
+        TarjetaPuntosEntity entity = data.get(0);
+        Integer integercito = entity.getNumeroPuntos();
+        if(integercito >= 0)
+        {
+            Assert.assertTrue(true);
+        }
+        else
+        {
+            Assert.assertTrue(false);
+        }
+    }
 }

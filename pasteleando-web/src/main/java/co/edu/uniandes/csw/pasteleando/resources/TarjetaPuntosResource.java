@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -50,7 +51,7 @@ public class TarjetaPuntosResource {
     
     
         @Inject
-        TarjetaPuntosLogic tarjetaLogic;
+        private TarjetaPuntosLogic tarjetaLogic;
     
 	/**
 	 * <h1>POST /api/TarjetaPuntos : Crear una entidad de TarjetaPuntos.</h1>
@@ -159,6 +160,10 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long id, TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
 	{
+            if(tarjetaLogic.getTarjetaPuntos(id) == null)
+            {
+                throw new WebApplicationException("No se encontró el recurso carrito con la entidad con id: " + id);
+            }
 		detailDTO.setId(id);
                 TarjetaPuntosEntity entity = detailDTO.toEntity();
                 entity.setId(id);

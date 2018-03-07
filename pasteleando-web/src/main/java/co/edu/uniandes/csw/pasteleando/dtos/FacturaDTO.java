@@ -28,31 +28,26 @@ public class FacturaDTO {
     
     //Atributos
     
-    //id en la base de datos
     /**
      * Referencia a la base de datos
      */
     private Long id;
     
-    //Dirección a la cual se hace el comprobante de pago
     /**
      * Dirección de la factura
      */
     private String direccion;
     
-    //Fecha en que se facturó formato dd/mm/yy
     /**
      * Fecha de la factura
      */
     private Date fecha;
     
-    //Hora del comprobante de pago dado en HH:MM
     /**
      * Hora de la factura
      */
     private String hora;
     
-    //Precio total de la factura dado en COP
     /**
      * Precio de la factura
      */
@@ -61,11 +56,13 @@ public class FacturaDTO {
     //Constructor
     
     /**
-     * constructor
+     * constructor por defecto
      */
     public FacturaDTO()
     {
-     
+     /**
+      * vacío
+      */
     }
     
     /**
@@ -74,13 +71,13 @@ public class FacturaDTO {
 	 *
 	 * @param FacturaEntity: Es la entidad que se va a convertir a DTO
 	 */
-	public FacturaDTO( FacturaEntity FacturaEntity )
+	public FacturaDTO( FacturaEntity facturaEntity )
 	{
-		this.direccion = FacturaEntity.getDireccion();
-		this.fecha=FacturaEntity.getFecha();
-                this.hora=FacturaEntity.getHora();
-                this.id=FacturaEntity.getId();
-                this.precio=FacturaEntity.getPrecio();
+		this.direccion = facturaEntity.getDireccion();
+		this.fecha=facturaEntity.getFecha();
+                this.hora=facturaEntity.getHora();
+                this.id=facturaEntity.getId();
+                this.precio=facturaEntity.getPrecio();
 	}
     
     //Metodos

@@ -36,7 +36,9 @@ public class CalificacionDTO
 
     private String comentario;
 
-
+    /**
+     * Constructor por defecto
+     */
     public CalificacionDTO( )
     {
     }

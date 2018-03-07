@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
@@ -55,6 +56,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
   
     private String hora;
     
+    @PodamIntValue(minValue = 1)
     private Integer precio;
 
     /**
