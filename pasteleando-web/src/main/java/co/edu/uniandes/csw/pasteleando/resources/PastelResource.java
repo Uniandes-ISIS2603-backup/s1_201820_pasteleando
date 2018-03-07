@@ -149,7 +149,7 @@ public class PastelResource
   public PastelDetailDTO updatePastel(@PathParam("id") Long id, PastelDetailDTO pastel) throws BusinessLogicException
   {
       PastelEntity entity = pastelLogic.findPastel(id);
-      if(entity.equals(null))
+      if(entity == null)
       {
           throw new WebApplicationException("\"El recurso /pastel/" + id + " no existe." , 404);
       }
@@ -177,7 +177,7 @@ public class PastelResource
   public void deletePastel(@PathParam("id") Long id) throws BusinessLogicException
   {
       PastelEntity entity = pastelLogic.findPastel(id);
-      if(entity.equals(null))
+      if(entity == null)
       {
           throw new WebApplicationException("El recurso /pastel/" + id + " no existe.", 404);
       }

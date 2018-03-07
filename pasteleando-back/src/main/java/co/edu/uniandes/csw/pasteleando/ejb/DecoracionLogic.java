@@ -96,26 +96,9 @@ public class DecoracionLogic {
      * @param id: id de la decoracion a borrar
      * @throws BusinessLogicException Si la decoracion a eliminar tiene pasteles.
      */
-    public void deleteDecoracion(Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar decoracion con id={0}", id);
-        // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
-        List<PastelEntity> pasteles = getPasteles(id);
-        if (pasteles == null)
-        {
-            persistence.delete(id);
-        } 
-        else
-        {
-            if (pasteles.isEmpty())
-            {
-                persistence.delete(id);
-            } else 
-            {
-                throw new BusinessLogicException("No se puede borrar la decoracion con id " + id + " porque tiene pasteles asociados");
-            }
+    public void deleteDecoracion(DecoracionEntity entity) throws BusinessLogicException {
+      		persistence.delete( entity.getId() );
 
-            LOGGER.log(Level.INFO, "Termina proceso de borrar decoracion con id={0}", id);
-        }
     }
      /**
      * Agregar un pastel a la decoracion

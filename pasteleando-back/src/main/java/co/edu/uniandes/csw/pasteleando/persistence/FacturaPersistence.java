@@ -20,7 +20,6 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class FacturaPersistence {
-     private static final Logger LOGGER = Logger.getLogger(FacturaPersistence.class.getName());
     
     @PersistenceContext(unitName = "PasteleandoPU")   
      protected EntityManager em;
@@ -32,9 +31,7 @@ public class FacturaPersistence {
      
 	public FacturaEntity create(FacturaEntity entity )
 	{
-		LOGGER.info( "Creando una nueva entidad de Factura" );
 		em.persist( entity );
-		LOGGER.info( "Creando una entidad de Factura" );
 		return entity;
 	}
 
@@ -48,7 +45,6 @@ public class FacturaPersistence {
         
 	public FacturaEntity findByName( String name )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Factura por nombre ", name );
 
 		// Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
 		TypedQuery<FacturaEntity> query = em.createQuery( "Select e From FacturaEntity e where e.name = :name", FacturaEntity.class );
@@ -69,7 +65,6 @@ public class FacturaPersistence {
 
 	public List<FacturaEntity> findAll( )
 	{
-		LOGGER.info( "Consultando todas las entidades de Factura" );
 		TypedQuery<FacturaEntity> query = em.createQuery( "select u from FacturaEntity u", FacturaEntity.class );
 		return query.getResultList( );
 	}

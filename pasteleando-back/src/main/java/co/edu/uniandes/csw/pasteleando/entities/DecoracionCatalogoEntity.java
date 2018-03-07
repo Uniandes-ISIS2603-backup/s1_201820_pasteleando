@@ -29,7 +29,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      */
     @PodamExclude
     @OneToMany(mappedBy = "DecoracionCatalogo")
-    public List<PromocionEntity> promociones = new ArrayList<>();
+    private List<PromocionEntity> promociones = new ArrayList<>();
     
     /**
      * @return categoria

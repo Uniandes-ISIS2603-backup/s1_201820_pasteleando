@@ -43,8 +43,9 @@ import javax.ws.rs.core.MediaType;
  *
  */
 @Path( "/tarjetapuntos" )
-@Produces(MediaType.APPLICATION_JSON )
-@Consumes(MediaType.APPLICATION_JSON )
+@Produces("application/json")
+@Consumes("application/json" )
+@RequestScoped
 public class TarjetaPuntosResource {
     
     
@@ -89,7 +90,7 @@ public class TarjetaPuntosResource {
             list.add(new TarjetaPuntosDetailDTO(entity));
         }
         return list;
-    }
+        }
 
 	/**
 	 * <h1>GET /api/TarjetaPuntos : Obtener todas las entidadese de TarjetaPuntos.</h1>
