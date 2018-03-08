@@ -199,4 +199,19 @@ public class FacturaLogicTest {
         Assert.assertEquals(pojoEntity.getHora(),resp.getHora());
     }
     
+    @Test
+    public void validatePrecio()
+    {
+        FacturaEntity entity = data.get(0);
+        Integer integercito = entity.getPrecio();
+        if(integercito > 0)
+        {
+            Assert.assertTrue(true);
+        }
+         else
+        {
+            Assert.assertTrue(false);
+        }
+    }
+    
 }
