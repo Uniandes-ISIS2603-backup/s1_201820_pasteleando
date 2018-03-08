@@ -18,19 +18,18 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 public class PastelDetailDTO extends PastelDTO
 {
     
-    
     private DecoracionDTO decoracion;
 
     
       /**
          * constructor por defecto
          */
-        
+        /**
       public PastelDetailDTO()
       {    
-          
+          super();
       }
-  
+  */
   /**
 	 * Constructor para transformar un Entity a un DTO
 	 *
