@@ -10,6 +10,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -25,6 +26,14 @@ public class CarritoEntity extends BaseEntity implements Serializable
   @PodamExclude
   @OneToMany(cascade = CascadeType.PERSIST)
   private List<PastelEntity> pasteles;
+  
+  @PodamExclude
+  @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "carrito")
+  private ClienteEntity cliente;
+  
+  @PodamExclude
+  @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "carrito")
+  private PedidoEntity pedido;
   
   /**
    * retorna la cantidad de productos en el carrito
@@ -79,6 +88,42 @@ public class CarritoEntity extends BaseEntity implements Serializable
     public void setPasteles(List lista)
     {
         this.pasteles= lista;
+    }
+    
+    /**
+     * retorna el cliente
+     * @return cliente
+     */
+    public ClienteEntity getCliente()
+    {
+        return this.cliente;
+    }
+    
+    /**
+     * actualiza el clliente
+     * @param entity 
+     */
+    public void setCliente(ClienteEntity entity)
+    {
+        this.cliente = entity;
+    }
+    
+    /**
+     * retorna el pedido
+     * @return pedido
+     */
+    public PedidoEntity getPedido()
+    {
+        return this.pedido;
+    }
+    
+    /**
+     * actualiza el pedido
+     * @param pedido 
+     */
+    public void setPedido(PedidoEntity pedido)
+    {
+        this.pedido = pedido;
     }
 
 }

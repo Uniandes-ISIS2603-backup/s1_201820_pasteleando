@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.ejb;
 
+import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
@@ -22,6 +23,9 @@ public class PastelLogic {
     @Inject
     private PastelPersistence persistence;
     
+    //@Inject
+    //private DecoracionLogic decoracionLogic;
+    
     public PastelEntity createPastel(PastelEntity entity) throws BusinessLogicException
     {
         if(persistence.find(entity.getId()) != null)
@@ -33,11 +37,18 @@ public class PastelLogic {
     
     public void deletePastel(Long id) throws BusinessLogicException
     {
-        if(persistence.find(id) == null)
-        {
-            throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
-        }
+        
+        
+        DecoracionEntity decoracion = getDecoracion(id);
+        if (decoracion == null) {
         persistence.delete(id);
+
+        } else {
+            persistence.delete(id);
+           //decoracionLogic.removePastel(id, decoracion.getId());
+          
+            
+    }
     }
     
     public List findPasteles()
@@ -61,6 +72,22 @@ public class PastelLogic {
             throw new BusinessLogicException("el pastel con el id:" + entity.getId()+ "no existe");
         }
         return persistence.update(entity);
+    }
+            
+    public DecoracionEntity getDecoracion(Long pastelId) throws BusinessLogicException
+    {
+        return findPastel(pastelId).getDecoracion();
+}
+    
+    public void replaceDecoracion(Long idPastel, DecoracionEntity decoracion) throws BusinessLogicException
+    {
+        if(persistence.find(idPastel) == null)
+        {
+            throw new BusinessLogicException("el pastel no existe");
+}
+        PastelEntity ent = persistence.find(idPastel);
+        ent.setDecoracion(decoracion);
+        updatePastel(ent);
     }
             
 }

@@ -50,7 +50,16 @@ public class CarritoDTO
   private Double precio;
   private List pasteles;
   
-  	/**
+  /**
+   * constructor vacio
+   */
+  public CarritoDTO()
+  {
+      
+  }
+  
+  
+  /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
 	 *
