@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -42,7 +43,7 @@ import javax.ws.rs.core.MediaType;
  * </pre>
  *
  */
-@Path( "/tarjetapuntos" )
+@Path( "tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
@@ -50,7 +51,7 @@ public class TarjetaPuntosResource {
     
     
         @Inject
-        TarjetaPuntosLogic tarjetaLogic;
+        private TarjetaPuntosLogic tarjetaLogic;
     
 	/**
 	 * <h1>POST /api/TarjetaPuntos : Crear una entidad de TarjetaPuntos.</h1>
@@ -107,7 +108,6 @@ public class TarjetaPuntosResource {
 	@GET
 	public List<TarjetaPuntosDetailDTO> getTarjetaPuntos( )
 	{
-            System.out.print("Hola mamá");
 		return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntoss());
 	}
 
@@ -132,7 +132,6 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public TarjetaPuntosDetailDTO getTodasTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
                 return new TarjetaPuntosDetailDTO(tarjetaLogic.getTarjetaPuntos(id));
 	}
 
@@ -159,6 +158,10 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long id, TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
 	{
+            if(tarjetaLogic.getTarjetaPuntos(id) == null)
+            {
+                throw new WebApplicationException("No se encontró el recurso carrito con la entidad con id: " + id);
+            }
 		detailDTO.setId(id);
                 TarjetaPuntosEntity entity = detailDTO.toEntity();
                 entity.setId(id);
@@ -184,7 +187,6 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public void deleteTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
                 tarjetaLogic.deleteTarjetaPuntos(id);
 	}
 }

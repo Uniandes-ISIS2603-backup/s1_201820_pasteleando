@@ -39,7 +39,9 @@ public class TarjetaPuntosDTO {
      */
     public TarjetaPuntosDTO()
     {
-     
+     /**
+      * Vacío
+      */
     }
     
      /**
@@ -48,10 +50,10 @@ public class TarjetaPuntosDTO {
 	 *
 	 * @param TarjetaPuntosEntity: Es la entidad que se va a convertir a DTO
 	 */
-	public TarjetaPuntosDTO( TarjetaPuntosEntity TarjetaPuntosEntity )
+	public TarjetaPuntosDTO( TarjetaPuntosEntity tarjetaPuntosEntity )
 	{
-		this.numeroPuntos = TarjetaPuntosEntity.getNumeroPuntos();
-		this.id=TarjetaPuntosEntity.getId();
+		this.numeroPuntos = tarjetaPuntosEntity.getNumeroPuntos();
+		this.id=tarjetaPuntosEntity.getId();
 	}
     
     //metodos

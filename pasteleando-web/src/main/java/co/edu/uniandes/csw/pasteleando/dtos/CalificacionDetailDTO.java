@@ -51,6 +51,9 @@ public class CalificacionDetailDTO extends CalificacionDTO
     private DecoracionDTO decoracion;
     private PedidoDTO pedido;
     
+    /**
+     * Constructor por defecto
+     */
     public CalificacionDetailDTO()
     {
         super();

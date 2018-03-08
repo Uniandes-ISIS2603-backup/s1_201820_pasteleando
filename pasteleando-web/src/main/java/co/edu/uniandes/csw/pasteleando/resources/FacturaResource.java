@@ -23,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author m.leona
@@ -115,7 +116,6 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public FacturaDetailDTO getFactura( @PathParam( "id" ) Long id )
 	{
-		FacturaEntity entity = facturaLogic.getFactura(id);
                 return new FacturaDetailDTO(facturaLogic.getFactura(id));
 	}
 
@@ -142,8 +142,11 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public FacturaDetailDTO updateFactura( @PathParam( "id" ) Long id, FacturaDetailDTO detailDTO ) throws BusinessLogicException
 	{
+                if(facturaLogic.getFactura(id)==null)
+                {
+                    throw new WebApplicationException("No se encontró la factura con el id: "+id);
+                }
 		detailDTO.setId(id);
-                FacturaEntity entity = facturaLogic.getFactura(id);
                 return new FacturaDetailDTO(facturaLogic.updateFactura(id, detailDTO.toEntity()));
 	}
 
@@ -166,7 +169,6 @@ public class FacturaResource {
 	@Path( "{id: \\d+}" )
 	public void deleteFactura( @PathParam( "id" ) Long id )
 	{
-		FacturaEntity entity = facturaLogic.getFactura(id);
                 facturaLogic.deleteFactura(id);
 	}
         

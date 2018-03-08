@@ -23,6 +23,10 @@ public class CarritoDetailDTO extends CarritoDTO
     
     private List pasteles;
     
+    private ClienteDTO cliente;
+    
+    private PedidoDTO pedido;
+    
     /**
      * constructor por defecto
      */
