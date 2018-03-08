@@ -44,8 +44,8 @@ public class PastelLogic {
             persistence.delete(id);
 
         } else {
-           
-                throw new BusinessLogicException("No se puede borrar el pastel con id " + id + " porque tiene una decoracion asociada asociados");
+           decoracionLogic.removePastel(id, decoracion.getId());
+          
             
         }
     }
@@ -76,6 +76,17 @@ public class PastelLogic {
     public DecoracionEntity getDecoracion(Long pastelId) throws BusinessLogicException
     {
         return findPastel(pastelId).getDecoracion();
+    }
+    
+    public void replaceDecoracion(Long idPastel, DecoracionEntity decoracion) throws BusinessLogicException
+    {
+        if(persistence.find(idPastel) == null)
+        {
+            throw new BusinessLogicException("el pastel no existe");
+        }
+        PastelEntity ent = persistence.find(idPastel);
+        ent.setDecoracion(decoracion);
+        updatePastel(ent);
     }
             
 }

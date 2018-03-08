@@ -38,7 +38,15 @@ public class PastelDTO
   private Integer peso;
   private Double precio;
   
-  	/**
+  /**
+   * constructor vacio
+   */
+  public PastelDTO()
+  {
+      
+  }
+  
+  /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
 	 *
