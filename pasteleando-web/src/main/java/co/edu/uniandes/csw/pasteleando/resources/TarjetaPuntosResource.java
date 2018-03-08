@@ -43,7 +43,7 @@ import javax.ws.rs.core.MediaType;
  * </pre>
  *
  */
-@Path( "/tarjetapuntos" )
+@Path( "tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
