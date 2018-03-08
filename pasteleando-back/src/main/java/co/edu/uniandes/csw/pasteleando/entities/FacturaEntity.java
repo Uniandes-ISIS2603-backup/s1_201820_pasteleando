@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
@@ -20,6 +21,19 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
+    
+    private String direccion;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fecha;
+    
+  
+    private String hora;
+    
+    @PodamIntValue(minValue = 1)
+    private Integer precio;
+
     
     @PodamExclude
     @OneToOne
@@ -45,17 +59,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
         return tarjetaPuntos;
     }
     
-    private String direccion;
     
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
-    private Date fecha;
-    
-  
-    private String hora;
-    
-    private Integer precio;
 
     /**
     @return Dirección de la factura
