@@ -1,0 +1,118 @@
+{
+	"id": "302a5fca-49e1-4f69-9a2b-ae720f72bf0e",
+	"name": "TarjetaPuntos Collection",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"8c18a748-453a-422f-9a85-29c1f41fbbe3",
+		"dc27dba4-69ec-4b09-b3af-7600a64d2ea7",
+		"cb790d90-f4d4-41d9-9219-c588180efd95",
+		"4b18abb0-3282-404b-b1b2-bd434950901d"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "4b18abb0-3282-404b-b1b2-bd434950901d",
+			"name": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1002",
+			"url": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1002",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"id\": 412,\n\t\"numeroPuntos\": 802\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8c18a748-453a-422f-9a85-29c1f41fbbe3",
+			"name": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1004",
+			"url": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1004",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"numeroPuntos\": \"1004\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "cb790d90-f4d4-41d9-9219-c588180efd95",
+			"name": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1001",
+			"url": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/1001",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"id\": 412,\n\t\"numeroPuntos\": 700\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "dc27dba4-69ec-4b09-b3af-7600a64d2ea7",
+			"name": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/create",
+			"url": "http://localhost:8080/pasteleando-web/api/tarjetapuntos/create",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"id\": 412,\n\t\"numeroPuntos\": 700\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
