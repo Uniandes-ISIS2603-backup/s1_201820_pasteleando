@@ -22,6 +22,19 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable {
     
+    private String direccion;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fecha;
+    
+  
+    private String hora;
+    
+    @PodamIntValue(minValue = 1)
+    private Integer precio;
+
+    
     @PodamExclude
     @OneToOne
     private PedidoEntity pedido;
@@ -46,18 +59,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
         return tarjetaPuntos;
     }
     
-    private String direccion;
     
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
-    private Date fecha;
-    
-  
-    private String hora;
-    
-    @PodamIntValue(minValue = 1)
-    private Integer precio;
 
     /**
     @return Dirección de la factura

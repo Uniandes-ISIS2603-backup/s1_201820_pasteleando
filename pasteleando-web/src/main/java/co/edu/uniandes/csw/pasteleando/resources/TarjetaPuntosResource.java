@@ -108,7 +108,6 @@ public class TarjetaPuntosResource {
 	@GET
 	public List<TarjetaPuntosDetailDTO> getTarjetaPuntos( )
 	{
-            System.out.print("Hola mamá");
 		return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntoss());
 	}
 
@@ -133,7 +132,6 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public TarjetaPuntosDetailDTO getTodasTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
                 return new TarjetaPuntosDetailDTO(tarjetaLogic.getTarjetaPuntos(id));
 	}
 
@@ -189,7 +187,6 @@ public class TarjetaPuntosResource {
 	@Path( "{id: \\d+}" )
 	public void deleteTarjetaPuntos( @PathParam( "id" ) Long id )
 	{
-		TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(id);
                 tarjetaLogic.deleteTarjetaPuntos(id);
 	}
 }
