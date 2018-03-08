@@ -97,7 +97,7 @@ public class DecoracionLogic {
      * @throws BusinessLogicException Si la decoracion a eliminar tiene pasteles.
      */
     public void deleteDecoracion(DecoracionEntity entity) throws BusinessLogicException {
-        persistence.delete( entity.getId() );
+      		persistence.delete( entity.getId() );
 
     }
      /**
