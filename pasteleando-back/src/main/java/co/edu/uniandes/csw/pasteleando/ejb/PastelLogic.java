@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.pasteleando.ejb;
 
-import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
@@ -23,9 +22,6 @@ public class PastelLogic {
     @Inject
     private PastelPersistence persistence;
     
-    @Inject
-    private DecoracionLogic decoracionLogic;
-    
     public PastelEntity createPastel(PastelEntity entity) throws BusinessLogicException
     {
         if(persistence.find(entity.getId()) != null)
@@ -37,17 +33,11 @@ public class PastelLogic {
     
     public void deletePastel(Long id) throws BusinessLogicException
     {
-        
-        
-        DecoracionEntity decoracion = getDecoracion(id);
-        if (decoracion == null) {
-            persistence.delete(id);
-
-        } else {
-           
-                throw new BusinessLogicException("No se puede borrar el pastel con id " + id + " porque tiene una decoracion asociada asociados");
-            
+        if(persistence.find(id) == null)
+        {
+            throw new BusinessLogicException("el pastel con el id:" + id + "no existe");
         }
+        persistence.delete(id);
     }
     
     public List findPasteles()
@@ -71,11 +61,6 @@ public class PastelLogic {
             throw new BusinessLogicException("el pastel con el id:" + entity.getId()+ "no existe");
         }
         return persistence.update(entity);
-    }
-    
-    public DecoracionEntity getDecoracion(Long pastelId) throws BusinessLogicException
-    {
-        return findPastel(pastelId).getDecoracion();
     }
             
 }

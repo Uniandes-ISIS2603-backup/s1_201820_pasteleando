@@ -23,10 +23,6 @@ public class CarritoDetailDTO extends CarritoDTO
     @OneToMany
     private List articulos;
     
-    private ClienteDTO cliente;
-    
-    private PedidoDTO pedido;
-    
     /**
      * constructor por defecto
      */

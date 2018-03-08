@@ -37,6 +37,7 @@ public class TarjetaPuntosLogicTest {
     @Inject
     private TarjetaPuntosLogic tarjeta;
 
+    
     @PersistenceContext
     private EntityManager em;
     
