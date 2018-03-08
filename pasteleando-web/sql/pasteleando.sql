@@ -34,3 +34,9 @@ insert into PromocionEntity (id, cantidad) values (001, 15);
 insert into PromocionEntity (id, cantidad) values (002, 10);
 insert into PromocionEntity (id, cantidad) values (003, 50);
 insert into PromocionEntity (id, cantidad) values (004, 20);
+
+insert into tarjetaPuntosEntity(id, numeroPuntos) values (1001,0);
+insert into tarjetaPuntosEntity(id, numeroPuntos) values (1002,10);
+insert into tarjetaPuntosEntity(id, numeroPuntos) values (1003,20);
+insert into tarjetaPuntosEntity(id, numeroPuntos) values (1004,30);
+insert into tarjetaPuntosEntity(id, numeroPuntos) values (1005,200);
