@@ -20,8 +20,8 @@ import javax.persistence.OneToMany;
 public class CarritoDetailDTO extends CarritoDTO
 {
  
-    
-    private List pasteles;
+    @OneToMany
+    private List articulos;
     
     private ClienteDTO cliente;
     
@@ -30,11 +30,9 @@ public class CarritoDetailDTO extends CarritoDTO
     /**
      * constructor por defecto
      */
-    public CarritoDetailDTO()
-    { 
-    }
-    
-
+    //public CarritoDetailDTO()
+    //{ 
+    //}
     
     /**
      * Constructor para transformar un Entity a un DTO
