@@ -43,7 +43,7 @@ import javax.ws.rs.core.MediaType;
  * </pre>
  *
  */
-@Path( "tarjetapuntos" )
+@Path( "clientes/{idCiente: \\d+}/tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
@@ -53,6 +53,9 @@ public class TarjetaPuntosResource {
         @Inject
         private TarjetaPuntosLogic tarjetaLogic;
     
+        @Inject
+        private ClienteResource clienteLogic;
+        
 	/**
 	 * <h1>POST /api/TarjetaPuntos : Crear una entidad de TarjetaPuntos.</h1>
 	 * 
@@ -76,10 +79,12 @@ public class TarjetaPuntosResource {
 	 * @throws BusinessLogicException  Error de lógica que se genera cuando ya existe la entidad de TarjetaPuntos.
 	 */
 	@POST
-        @Path("/create")
-	public TarjetaPuntosDetailDTO createTarjetaPuntos( TarjetaPuntosDetailDTO dto ) throws BusinessLogicException
+	public TarjetaPuntosDetailDTO createTarjetaPuntos( TarjetaPuntosDetailDTO dto, @PathParam("idCliente") Long idCliente ) throws BusinessLogicException
 	{
-            
+            if (clienteLogic.getCliente(idCliente) == null)
+            {
+                throw new WebApplicationException("El cliente no existe");
+            }
 		TarjetaPuntosEntity tarjetaPuntosEntity = dto.toEntity();
                 TarjetaPuntosEntity nuevaTarjeta = tarjetaLogic.createTarjetaPuntos(tarjetaPuntosEntity);
                 return new TarjetaPuntosDetailDTO(nuevaTarjeta);
@@ -93,6 +98,8 @@ public class TarjetaPuntosResource {
         return list;
         }
 
+        
+        
 	/**
 	 * <h1>GET /api/TarjetaPuntos : Obtener todas las entidadese de TarjetaPuntos.</h1>
 	 * 
@@ -106,9 +113,19 @@ public class TarjetaPuntosResource {
 	 * @return JSONArray {@link TarjetaPuntosDetailDTO} - Las entidades de TarjetaPuntos encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<TarjetaPuntosDetailDTO> getTarjetaPuntos( )
+        @Path( "{idTarjeta: \\d+}" )
+	public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("idCliente") Long idCliente,@PathParam("id") Long idTarjeta ) throws WebApplicationException
 	{
-		return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntoss());
+            if(clienteLogic.getCliente(idCliente) == null)
+            {
+                throw new WebApplicationException("404, No se encontró la(s) tarjetas del cliente");
+            }
+            else if(tarjetaLogic.getTarjetaPuntos(idTarjeta) == null)
+            {
+                throw new WebApplicationException("404, no se encontro la tarjeta");
+            }
+                return new TarjetaPuntosDetailDTO(tarjetaLogic.getTarjetaPuntos(idTarjeta));
+                //NOTA: NO SE IMPLEMENTO EL GET ALL, YA QUE SOLO EXISTE UNA TARJETA POR CLIENTE
 	}
 
 	/**
@@ -126,14 +143,24 @@ public class TarjetaPuntosResource {
 	 * </pre>
 	 *
 	 * @param id Identificador de la entidad de TarjetaPuntos que se esta buscando. Este debe ser una cadena de dígitos.
+     * @param idTarjetaPuntos
 	 * @return JSON {@link TarjetaPuntosDetailDTO} - La entidad de TarjetaPuntos buscada
 	 */
-	@GET
-	@Path( "{id: \\d+}" )
-	public TarjetaPuntosDetailDTO getTodasTarjetaPuntos( @PathParam( "id" ) Long id )
-	{
-                return new TarjetaPuntosDetailDTO(tarjetaLogic.getTarjetaPuntos(id));
-	}
+	//@GET
+	//
+	//public List<TarjetaPuntosDetailDTO> getTodasTarjetaPuntos( @PathParam( "idCliente") Long idCliente) throws WebApplicationException
+	//{
+            //if(clienteLogic.getCliente(idCliente)== null)
+           // {
+             //   throw new WebApplicationException("404, No se encontró el cliente con ese id");
+            //}
+          
+            //    return listEntity2DetailDTO(tarjetaLogic.getTarjetaPuntos());
+          //  
+        
+        //NO SE MODELA, PUES SOLO HAY UNA TARJETA CON ÚNICO ID PARA CADA CLIENTE.
+        
+	//}
 
 	/**
 	 * <h1>PUT /api/TarjetaPuntos/{id} : Actualizar una entidad de TarjetaPuntos con el id dado.</h1>
@@ -156,15 +183,22 @@ public class TarjetaPuntosResource {
 	 */
 	@PUT
 	@Path( "{id: \\d+}" )
-	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long id, TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
+	public TarjetaPuntosDetailDTO updateTarjetaPuntos( @PathParam( "id" ) Long idTarjeta, @PathParam("idCliente") Long idCliente , TarjetaPuntosDetailDTO detailDTO ) throws BusinessLogicException
 	{
-            if(tarjetaLogic.getTarjetaPuntos(id) == null)
+            
+            if(clienteLogic.getCliente(idCliente) == null)
             {
-                throw new WebApplicationException("No se encontró el recurso carrito con la entidad con id: " + id);
+                throw new WebApplicationException("404, No se encontró la(s) tarjetas del cliente");
             }
-		detailDTO.setId(id);
+            
+            if(tarjetaLogic.getTarjetaPuntos(idTarjeta) == null)
+            {
+                throw new WebApplicationException("404, No se encontró la tarjeta del cliente");
+            }
+            
+		detailDTO.setId(idTarjeta);
                 TarjetaPuntosEntity entity = detailDTO.toEntity();
-                entity.setId(id);
+                entity.setId(idTarjeta);
                 return new TarjetaPuntosDetailDTO(tarjetaLogic.updateTarjetaPuntos(entity));
 	}
 
@@ -185,8 +219,13 @@ public class TarjetaPuntosResource {
 	 */
 	@DELETE
 	@Path( "{id: \\d+}" )
-	public void deleteTarjetaPuntos( @PathParam( "id" ) Long id )
+	public void deleteTarjetaPuntos( @PathParam( "id" ) Long id , @PathParam("idCliente") Long idCliente)
 	{
+            
+            if(clienteLogic.getCliente(idCliente) == null)
+            {
+                throw new WebApplicationException("404, No se encontró la(s) tarjetas del cliente");
+            }
                 tarjetaLogic.deleteTarjetaPuntos(id);
 	}
 }
