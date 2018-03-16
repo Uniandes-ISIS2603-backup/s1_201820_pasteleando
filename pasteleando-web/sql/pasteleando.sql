@@ -41,6 +41,12 @@ insert into TarjetaPuntosEntity(id, numeroPuntos) values (1003,20);
 insert into TarjetaPuntosEntity(id, numeroPuntos) values (1004,30);
 insert into TarjetaPuntosEntity(id, numeroPuntos) values (1005,500);
 
+
+insert into DecoracionPersonalizadaEntity(id, color, estado, imagen) values (1011,'Blanco', 'Entregado','https://thestayathomechef.com/wp-content/uploads/2017/05/White-Cake-3-e1497020677316.jpg');
+insert into DecoracionPersonalizadaEntity(id, color, estado, image) values (1012,'Negro', 'Enviado','http://sweetapolita.com/wp-content/uploads/2016/04/glamrocktray581.jpg');
+insert into DecoracionPersonalizadaEntity(id, color, estado, image) values (1013,'Multicolor', 'En Proceso','https://data.whicdn.com/images/81276179/large.jpg');
+insert into DecoracionPersonalizadaEntity(id, color, estado, image) values (1014,'Rosa', 'Cancelado','http://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dwcd49c879/images/project/WLPROJ-9084/PiStCa_43176%2005.jpg?sw=502&sh=502&sm=fit');
+
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4040, 'calle 100', '2014-08-23','22:00',250);
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4141, 'calle 101', '2015-04-24','23:00',260);
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4242, 'calle 102', '2016-01-25','21:00',270);
