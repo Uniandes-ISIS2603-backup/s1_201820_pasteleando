@@ -31,6 +31,16 @@ public class CalificacionDTO
 {
 
     private Long id;
+    
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private Integer puntaje;
 
@@ -93,7 +103,7 @@ public class CalificacionDTO
      */
     public CalificacionDTO( CalificacionEntity calificacionEntity )
     {
-
+        this.id = calificacionEntity.getId();
         this.puntaje = calificacionEntity.getPuntaje();
         this.comentario = calificacionEntity.getComentario();
 
@@ -111,6 +121,8 @@ public class CalificacionDTO
         entity.setComentario(this.comentario);
         entity.setPuntaje(this.puntaje);
         entity.setId(this.id);
+        entity.setName(this.name);
+        
         return entity;
     }
 
