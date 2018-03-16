@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.ejb;
 
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
@@ -22,8 +23,8 @@ import javax.inject.Inject;
 @Stateless
 public class TarjetaPuntosLogic {
     
-  //  @Inject
-//    private ClienteLogic cliente;
+    @Inject
+    private ClienteLogic clienteLogic;
     
     @Inject
     private TarjetaPuntosPersistence persistence;
@@ -33,8 +34,13 @@ public class TarjetaPuntosLogic {
      *
      * @return Colección de objetos de TarjetaPuntosEntity.
      */
-    public List<TarjetaPuntosEntity> getTarjetaPuntoss() {
-        return persistence.findAll();
+    public TarjetaPuntosEntity getTarjetaPuntos(Long idCliente) throws BusinessLogicException {
+        ClienteEntity cliente = clienteLogic.getById(idCliente);
+        if (cliente.getTarjeta() == null) {
+            throw new BusinessLogicException("El cliente no tiene tarjeta");
+        }
+       
+        return cliente.getTarjeta();
     }
     
     /**
@@ -43,8 +49,8 @@ public class TarjetaPuntosLogic {
      * @param id Identificador de la instancia a consultar
      * @return Instancia de TarjetaPuntosEntity con los datos del TarjetaPuntos consultado.
      */
-    public TarjetaPuntosEntity getTarjetaPuntos(Long id) {
-        return persistence.find(id);
+    public TarjetaPuntosEntity getTarjetaPuntos(Long idCliente, Long idTarjeta) {
+        return persistence.find(idCliente, idTarjeta);
     }
     
     public boolean validatePuntos(Integer puntos)
@@ -65,12 +71,13 @@ public class TarjetaPuntosLogic {
      * @param entity Objeto de TarjetaPuntosEntity con los datos nuevos
      * @return Objeto de TarjetaPuntosEntity con los datos nuevos y su ID.
      */
-    public TarjetaPuntosEntity createTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
+    public TarjetaPuntosEntity createTarjetaPuntos(Long clienteId,TarjetaPuntosEntity entity) throws BusinessLogicException{
           if(!validatePuntos(entity.getNumeroPuntos()))
         {
             throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
         }
-     
+          ClienteEntity cliente = clienteLogic.getById(clienteId);
+          entity.setCliente(cliente);
         
         return persistence.create(entity);
     }
@@ -81,11 +88,13 @@ public class TarjetaPuntosLogic {
      * @param entity Instancia de TarjetaPuntosEntity con los nuevos datos.
      * @return Instancia de TarjetaPuntosEntity con los datos actualizados.
      */
-    public TarjetaPuntosEntity updateTarjetaPuntos(TarjetaPuntosEntity entity) throws BusinessLogicException{
+    public TarjetaPuntosEntity updateTarjetaPuntos(Long clienteId,TarjetaPuntosEntity entity) throws BusinessLogicException{
          if(!validatePuntos(entity.getNumeroPuntos()))
         {
             throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
         }
+        ClienteEntity cliente = clienteLogic.getById(clienteId);
+        entity.setCliente(cliente);
         
         return persistence.update(entity);
     }
@@ -95,7 +104,9 @@ public class TarjetaPuntosLogic {
      *
      * @param id Identificador de la instancia a eliminar.
      */
-    public void deleteTarjetaPuntos(Long id) {
-        persistence.delete(id);
+    public void deleteTarjetaPuntos(Long clienteId,Long id) {
+        
+        TarjetaPuntosEntity old = getTarjetaPuntos(clienteId, id);
+        persistence.delete(old.getId());
     }
 }
