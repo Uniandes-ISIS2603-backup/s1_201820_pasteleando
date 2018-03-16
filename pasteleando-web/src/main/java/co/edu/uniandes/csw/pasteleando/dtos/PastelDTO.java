@@ -17,7 +17,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  *   {
  *      "id": number,
  *      "peso": number,
- *      "precio": number,
+ *      "precio": number
  *   }
  * </pre>
  * Por ejemplo una entidad de Pastel se representa asi:<br>
@@ -26,7 +26,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  *   {
  *      "id":2891230
  *      "peso": 2,
- *      "precio": 280,9,
+ *      "precio": 280.9
  *   }
  *
  * </pre>
