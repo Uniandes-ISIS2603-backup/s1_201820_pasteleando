@@ -110,9 +110,17 @@ public class CalificacionResource
 	 * @return JSONArray {@link CalificacionDTO} - Las entidades de Pasteleando encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
 	 */
 	@GET
-	public List<CalificacionDetailDTO> getCalificacion( )
+	public List<CalificacionDetailDTO> getCalificaciones( )
         {
-          return listEntity2DetailDTO(logic.getAll());
+              List<CalificacionEntity> lista = logic.getAll();
+            List<CalificacionDetailDTO> listaNueva = new ArrayList<CalificacionDetailDTO>();
+            for (int i = 0 ; i < lista.size() ; i++) 
+            {
+              listaNueva.add(new CalificacionDetailDTO(lista.get(i)));
+                
+            }
+            return listaNueva;
+          
 	}
 
 	/**
@@ -191,17 +199,15 @@ public class CalificacionResource
 	 */
 	@DELETE
 	@Path( "{id: \\d+}" )
-	public void deleteCalificacion( @PathParam( "id" ) Long id )
+	public void deleteCalificacion( @PathParam( "id" ) Long id ) throws BusinessLogicException
 	{
 		CalificacionEntity entity = logic.getById(id);
 		 if (entity == null) {
             throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
             
         }
-            try {
+            
                 logic.delete(entity);
-            } catch (BusinessLogicException ex) {
-                throw new WebApplicationException(ex.getMessage(), 404);
-            }
+            
 	}
 }

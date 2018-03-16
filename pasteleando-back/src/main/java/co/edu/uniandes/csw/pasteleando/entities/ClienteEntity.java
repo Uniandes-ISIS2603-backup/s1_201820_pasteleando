@@ -21,6 +21,17 @@ public class ClienteEntity extends BaseEntity implements Serializable
 
     private Boolean tipoUsuario;
     private String formaPagoActual;
+    
+    private String name;
+
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @ElementCollection
     private List<String> tiposPagos;

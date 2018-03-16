@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
 import co.edu.uniandes.csw.pasteleando.ejb.TarjetaPuntosLogic;
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
@@ -46,7 +47,7 @@ public class TarjetaPuntosLogicTest {
     
     private List<TarjetaPuntosEntity> data = new ArrayList<>();
     
-    private List<TarjetaPuntosEntity> dataBook = new ArrayList<>();
+    private List<ClienteEntity> dataCliente = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment() {
@@ -87,6 +88,7 @@ public class TarjetaPuntosLogicTest {
      */
     private void clearData() {
         em.createQuery("delete from TarjetaPuntosEntity").executeUpdate();
+        em.createQuery("delete from ClienteEntity").executeUpdate();
     }
 
     /**
@@ -98,7 +100,15 @@ public class TarjetaPuntosLogicTest {
     private void insertData() {      
         
         for (int i = 0; i < 3; i++) {
-            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);           
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+            em.persist(entity);
+            dataCliente.add(entity);
+        }
+        for (int i = 0; i < 3; i++) {
+            TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);     
+            if (i == 0) {
+                entity.setCliente(dataCliente.get(0));
+            }
             em.persist(entity);
             data.add(entity);
         }
@@ -112,7 +122,7 @@ public class TarjetaPuntosLogicTest {
     @Test
     public void createTarjetaPuntosTest() throws BusinessLogicException{
         TarjetaPuntosEntity newEntity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-        TarjetaPuntosEntity result = tarjeta.createTarjetaPuntos(newEntity);
+        TarjetaPuntosEntity result = tarjeta.createTarjetaPuntos(dataCliente.get(0).getId(),newEntity);
         Assert.assertNotNull(result);
         TarjetaPuntosEntity entity = em.find(TarjetaPuntosEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
@@ -120,26 +130,6 @@ public class TarjetaPuntosLogicTest {
         Assert.assertEquals(newEntity.getNumeroPuntos(), entity.getNumeroPuntos());
     }
 
-    /**
-     * Prueba para consultar la lista de TarjetaPuntoss
-     *
-     * 
-     */
-    
-    @Test
-    public void getTarjetaPuntossTest() throws BusinessLogicException {
-        List<TarjetaPuntosEntity> list =tarjeta.getTarjetaPuntoss();
-        Assert.assertEquals(data.size(), list.size());
-        for (TarjetaPuntosEntity entity : list) {
-            boolean found = false;
-            for (TarjetaPuntosEntity storedEntity : data) {
-                if (entity.getId().equals(storedEntity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
      
     /**
      * Prueba para consultar un TarjetaPuntos
@@ -150,7 +140,7 @@ public class TarjetaPuntosLogicTest {
     @Test
     public void getTarjetaPuntosTest() {
         TarjetaPuntosEntity entity = data.get(0);
-        TarjetaPuntosEntity resultEntity = tarjeta.getTarjetaPuntos(entity.getId());
+        TarjetaPuntosEntity resultEntity = tarjeta.getTarjetaPuntos(dataCliente.get(0).getId(),entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getNumeroPuntos(), resultEntity.getNumeroPuntos());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
@@ -166,8 +156,8 @@ public class TarjetaPuntosLogicTest {
     @Test
     public void deleteTarjetaPuntosTest() {
         TarjetaPuntosEntity entity = data.get(0);
-        System.out.println(entity.getId()+"AAA");
-        tarjeta.deleteTarjetaPuntos(entity.getId());
+        
+        tarjeta.deleteTarjetaPuntos(dataCliente.get(1).getId(),entity.getId());
         TarjetaPuntosEntity deleted = em.find(TarjetaPuntosEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -184,7 +174,7 @@ public class TarjetaPuntosLogicTest {
 
         pojoEntity.setId(entity.getId());
 
-        tarjeta.updateTarjetaPuntos(pojoEntity);
+        tarjeta.updateTarjetaPuntos(dataCliente.get(1).getId(),pojoEntity);
 
         TarjetaPuntosEntity resp = em.find(TarjetaPuntosEntity.class, entity.getId());
 

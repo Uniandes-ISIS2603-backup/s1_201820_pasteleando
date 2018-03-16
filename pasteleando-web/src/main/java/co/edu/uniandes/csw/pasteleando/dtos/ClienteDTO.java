@@ -61,6 +61,14 @@ public class ClienteDTO
 	private Integer idCarrito;
 	private Boolean tipoUsuario;
 	private String formaPagoActual;
+        private String name;
+            public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 	private List<String> tiposPagos;
 
@@ -82,6 +90,7 @@ public class ClienteDTO
 	public ClienteDTO( ClienteEntity clienteEntity )
 	{
 		this.id = clienteEntity.getId();
+                this.name =  clienteEntity.getName();
 		this.tipoUsuario = clienteEntity.getTipoUsuario();
 		this.formaPagoActual = clienteEntity.getFormaPagoActual();
 		this.tiposPagos = clienteEntity.getTiposPagos();
@@ -173,6 +182,7 @@ public class ClienteDTO
 	{
 		ClienteEntity entity = new ClienteEntity( );
 		entity.setId( this.id );
+                entity.setName(this.name);
 		entity.setTipoUsuario(this.tipoUsuario);
 		entity.setTiposPagos(this.tiposPagos);
 

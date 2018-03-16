@@ -71,9 +71,22 @@ public class TarjetaPuntosPersistence {
 		return query.getResultList( );
 	}
 
-	public TarjetaPuntosEntity find( Long id )
+	public TarjetaPuntosEntity find( Long idCliente, Long idTarjeta )
 	{
-		return em.find( TarjetaPuntosEntity.class, id );
+		TypedQuery<TarjetaPuntosEntity> q = em.createQuery("select p from TarjetaPuntos p where (p.cliente.id = :idCliente) and (p.id = :idTarjeta)", TarjetaPuntosEntity.class);
+        q.setParameter("idCliente", idCliente);
+        q.setParameter("idTarjeta", idTarjeta);
+        List<TarjetaPuntosEntity> results = q.getResultList();
+        TarjetaPuntosEntity tarjeta = null;
+        if (results == null) {
+            tarjeta = null;
+        } else if (results.isEmpty()) {
+            tarjeta = null;
+        } else if (results.size() >= 1) {
+            tarjeta = results.get(0);
+        }
+
+        return tarjeta;
 	}
 
 	public TarjetaPuntosEntity update( TarjetaPuntosEntity entity )

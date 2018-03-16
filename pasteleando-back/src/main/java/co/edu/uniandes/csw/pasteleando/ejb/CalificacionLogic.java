@@ -49,7 +49,7 @@ public class CalificacionLogic
 	{
 		LOGGER.info( "Inicia proceso de creación de una entidad de Calificacion" );
 		// Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
-		if( persistence.findByName( entity.getName( ) ) != null )
+		if( persistence.findByName( entity.getComentario() ) != null )
 		{
 			throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
 		}

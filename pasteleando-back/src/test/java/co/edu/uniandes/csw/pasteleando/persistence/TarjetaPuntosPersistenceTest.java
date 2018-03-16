@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class TarjetaPuntosPersistenceTest {
     }
     
     private List<TarjetaPuntosEntity> data = new ArrayList<>();
-
+    private List<ClienteEntity> dataCliente = new ArrayList<>();
     
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
@@ -101,9 +102,18 @@ public class TarjetaPuntosPersistenceTest {
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        
+        for (int i = 0; i < 3; i++) {
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+            em.persist(entity);
+            dataCliente.add(entity);
+        }
+        
         for (int i = 0; i < 3; i++) {
             TarjetaPuntosEntity entity = factory.manufacturePojo(TarjetaPuntosEntity.class);
-            
+            if (i == 0) {
+                entity.setCliente(dataCliente.get(0));
+            }
             em.persist(entity);
             data.add(entity);
         }
@@ -177,7 +187,7 @@ public class TarjetaPuntosPersistenceTest {
     @Test
     public void getTarjetaPuntosTest() {
         TarjetaPuntosEntity entity = data.get(0);
-        TarjetaPuntosEntity newEntity = TarjetaPuntosPersistence.find(entity.getId());
+        TarjetaPuntosEntity newEntity = TarjetaPuntosPersistence.find(dataCliente.get(0).getId(),entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getNumeroPuntos(), newEntity.getNumeroPuntos());

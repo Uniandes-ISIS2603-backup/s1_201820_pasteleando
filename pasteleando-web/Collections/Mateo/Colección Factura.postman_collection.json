@@ -1,0 +1,143 @@
+{
+	"info": {
+		"name": "Colección Factura",
+		"_postman_id": "234014e6-e566-45c4-9438-522fd3851230",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/pasteleando-web/api/facturas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"numeroPuntos\": 400\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pasteleando-web/api/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pasteleando-web",
+						"api",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/pasteleando-web/api/facturas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"precio\": 200,\n\"direccion\":\"asjdnasndasdn\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pasteleando-web/api/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pasteleando-web",
+						"api",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"precio\": 200,\n\"direccion\":\"asjdnasndasdn\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pasteleando-web",
+						"api",
+						"facturas",
+						"4040"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"direccion\": \"calle 142\",\n    \"hora\": \"12:00\",\n    \"id\": 4040,\n    \"precio\": 240\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pasteleando-web",
+						"api",
+						"facturas",
+						"4040"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"direccion\": \"calle 142\",\n    \"hora\": \"12:00\",\n    \"id\": 4040,\n    \"precio\": 240\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pasteleando-web/api/facturas/4040",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pasteleando-web",
+						"api",
+						"facturas",
+						"4040"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
