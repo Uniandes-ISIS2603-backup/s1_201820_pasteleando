@@ -92,6 +92,17 @@ public class ClienteResource
 	@POST
 	public ClienteDetailDTO createCliente( ClienteDetailDTO dto ) throws BusinessLogicException
 	{
+                List<ClienteEntity> entity = cliente.getAll();
+                
+                for(int i =0 ; i< entity.size(); i++)
+                {
+                    ClienteEntity actual = entity.get(i);
+                    if(actual.getName().equals(dto.getName()))
+                    {
+                        throw new BusinessLogicException( "Ya existe una entidad de Cliente con el nombre " );
+                    }
+                
+                }
 		return new ClienteDetailDTO(cliente.create(dto.toEntity()));
 	}
 

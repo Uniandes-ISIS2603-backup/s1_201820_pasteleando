@@ -13,6 +13,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class CalificacionEntity extends BaseEntity implements Serializable
 {
     private Integer puntaje;
+    
+    
 
     private String comentario;
     

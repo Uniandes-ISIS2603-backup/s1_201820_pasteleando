@@ -57,6 +57,28 @@ public class ClientePersistence {
 		}
 
     }
+    
+      public ClienteEntity findByCarrito(int name) {
+
+        
+        	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.name = :name", ClienteEntity.class );
+		// Se remplaza el placeholder ":name" con el valor del argumento
+		query = query.setParameter( "name", name );
+		// Se invoca el query se obtiene la lista resultado
+		List<ClienteEntity> sameName = query.getResultList( );
+                
+		if( sameName.isEmpty( ) )
+		{
+			return null;
+		}
+		else
+		{
+			return sameName.get( 0 );
+		}
+
+    }
+    
+    
 
     public List<ClienteEntity> findAll() {
         TypedQuery query = em.createQuery("Select u From ClienteEntity u", ClienteEntity.class);
