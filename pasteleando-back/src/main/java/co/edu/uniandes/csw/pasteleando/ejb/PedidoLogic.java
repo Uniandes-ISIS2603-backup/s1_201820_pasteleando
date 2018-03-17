@@ -64,6 +64,7 @@ public class PedidoLogic
     
     public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException
     {
+       //TODO: No hay ninguna regla de negocio?  
         return persistence.create(entity);
     }
     
@@ -78,6 +79,7 @@ public class PedidoLogic
     public PedidoEntity updatePedido(Long id, PedidoEntity entity) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);
+        //TODO: No hay ninguna regla de negocio? 
         PedidoEntity pEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el pedido con id ={0}", entity.getId());
         
@@ -90,12 +92,14 @@ public class PedidoLogic
      */
     
     public void deletePedido(Long id)
-    {
+    {// TODO: Hay que validar que existe un pedido con ese id
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el pedido con id ={0}", id);
+        
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el pedido con id ={0}", id);
     }
     
+    //TODO: este método debería ser responsabilidad dela lógica de PQRS
     /**
      * Obtiene una lista de Pqrs asociadas a un pedido
      * @param pedidoId Identificador del pedido
@@ -113,10 +117,11 @@ public class PedidoLogic
      * @param pqrsId Identificador de la pqrs
      * @return La entidad de pqrs asociada al pedido
      */
-    
+    //TODO: este método debería ser responsabilidad dela lógica de PQRS
     public PqrsEntity getPqrs(Long pedidoId, Long pqrsId)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una pqrs del pedido con id = {0}", pedidoId);
+        //TODO: esta busqueda debe hacerse con un query en la base de datos
         List<PqrsEntity> pqrs = getPedido(pedidoId).getPqrs();
         PqrsEntity pqrsEntity = new PqrsEntity();
         pqrsEntity.setId(pqrsId);

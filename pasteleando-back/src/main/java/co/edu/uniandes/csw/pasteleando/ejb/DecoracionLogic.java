@@ -18,6 +18,8 @@ import javax.inject.Inject;
  *
  * @author dc.cepeda
  */
+
+//TODO: No es claro qué es DecoracionCatalogo y qué es Decoracion. 
 public class DecoracionLogic {
      private static final Logger LOGGER = Logger.getLogger(DecoracionLogic.class.getName());
 
@@ -85,11 +87,14 @@ public class DecoracionLogic {
      */
     public DecoracionEntity updateDecoracion(Long id, DecoracionEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoracion con id={0}", id);
+        	
+//TODO: No hay ninguna regla de negocio? 
         DecoracionEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar decoracion con id={0}", entity.getId());
         return newEntity;
     }
 
+    //TODO: actualizar la documentación
     /**
      * Borrar un decoracion
      *
@@ -97,6 +102,7 @@ public class DecoracionLogic {
      * @throws BusinessLogicException Si la decoracion a eliminar tiene pasteles.
      */
     public void deleteDecoracion(DecoracionEntity entity) throws BusinessLogicException {
+        //TODO: este método debe recibir un id y hay que validar que existe una DecoracionEntity con ese id
         persistence.delete( entity.getId() );
 
     }

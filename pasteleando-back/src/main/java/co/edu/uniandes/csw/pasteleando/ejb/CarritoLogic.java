@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class CarritoLogic {
     @Inject
     private CarritoPersistence persistence;
-    
+//TODO: Borrar las variables que no se usan.    
     @Inject
     private PastelLogic pastelLogic;
     
@@ -31,10 +31,14 @@ public class CarritoLogic {
     
     public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
     {
+         //TODO: No se puede validar que existe la entidad con el id porque
+        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
+ 
         if(persistence.find(entity.getId()) != null)
         {
             throw new BusinessLogicException("el carrito con el id:" + entity.getId() + "ya existe");
         }
+        //TODO: No hay ninguna regla de negocio? 
         return persistence.create(entity);
     }
     
@@ -53,6 +57,7 @@ public class CarritoLogic {
         {
             throw new BusinessLogicException("el carrito con el id: " + id + "no se puede borrar porque tiene un cliente aspciado");
         }
+        
         persistence.delete(id);
     }
     
@@ -76,6 +81,7 @@ public class CarritoLogic {
         {
             throw new BusinessLogicException("el carrito con el id:" + entity.getId()+ "no existe");
         }
+       //TODO: No hay ninguna regla de negocio?  
         return persistence.update(entity);
     }
     
@@ -127,6 +133,8 @@ public class CarritoLogic {
         {
             throw new BusinessLogicException("el carrito con el id: " + id + "no existe");
         }
+        
+        //TODO: Esto debe remplazarse por un query en la base de datos. Hacer en la persistencia un método findPastelByCarrito
         List<PastelEntity> listaPasteles = ent.getPasteles();
         boolean enc = false;
         for(int i = 0; i<listaPasteles.size() && !enc; i++)
@@ -145,7 +153,7 @@ public class CarritoLogic {
         }
         
   }
-  
+  //TODO: Porqué este metodo es responsabildiad de esta clase?
   public void replacePedido(Long id, PedidoEntity pedido) throws BusinessLogicException
   {
        CarritoEntity ent = persistence.find(id);

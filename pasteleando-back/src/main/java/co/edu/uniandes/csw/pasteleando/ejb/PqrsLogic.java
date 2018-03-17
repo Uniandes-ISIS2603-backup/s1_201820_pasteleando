@@ -67,6 +67,7 @@ public class PqrsLogic
     public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
+        //TODO: Primero se valida y luego se persiste
         persistence.create(entity);
         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
         {
@@ -88,6 +89,7 @@ public class PqrsLogic
     public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);
+          //TODO: Primero se valida y luego se actualiza
         PqrsEntity pEntity = persistence.update(entity);
         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
         {
@@ -106,6 +108,7 @@ public class PqrsLogic
     public void deletPqrs(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la pqrs con id ={0}", id);
+    // TODO: Hay que validar que existe pqrs con ese id    
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar la pqrs con id ={0}", id);
     }

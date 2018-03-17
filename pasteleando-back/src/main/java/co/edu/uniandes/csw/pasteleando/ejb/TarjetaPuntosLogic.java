@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
+//TODO: Borrar lo que no se usa
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
@@ -36,6 +37,7 @@ public class TarjetaPuntosLogic {
      */
     public TarjetaPuntosEntity getTarjetaPuntos(Long idCliente) throws BusinessLogicException {
         ClienteEntity cliente = clienteLogic.getById(idCliente);
+        //TODO: QUé pasa si cliente no existe? Arrojaría un NullPointerException
         if (cliente.getTarjeta() == null) {
             throw new BusinessLogicException("El cliente no tiene tarjeta");
         }

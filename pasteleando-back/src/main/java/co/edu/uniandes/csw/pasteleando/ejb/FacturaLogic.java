@@ -12,23 +12,21 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-
-
 /**
  *
  * @Factura m.leona
  */
 @Stateless
 public class FacturaLogic {
-    
+
     @Inject
     private FacturaPersistence persistence;
-    
-    
+
+    //TODO: Borrar lo que no se usa
     @Inject
     private TarjetaPuntosLogic tarjetaPuntos;
-    
-     /**
+
+    /**
      * Obtiene la lista de los registros de Factura.
      *
      * @return Colección de objetos de FacturaEntity.
@@ -36,7 +34,7 @@ public class FacturaLogic {
     public List<FacturaEntity> getFacturas() {
         return persistence.findAll();
     }
-    
+
     /**
      * Obtiene los datos de una instancia de Factura a partir de su ID.
      *
@@ -46,46 +44,44 @@ public class FacturaLogic {
     public FacturaEntity getFactura(Long id) {
         return persistence.find(id);
     }
-    
-    
-    public boolean validatePrecio(Integer precio)
-    {
-        if(precio <= 0)
-        {
+
+    public boolean validatePrecio(Integer precio) {
+        if (precio <= 0) {
             return false;
         }
         return true;
     }
+
     /**
      * Se encarga de crear un Factura en la base de datos.
      *
      * @param entity Objeto de FacturaEntity con los datos nuevos
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      */
-    public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException{
-     
+    public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException {
+        //TODO: No hay ninguna regla de negocio? 
         return persistence.create(entity);
     }
-    
-     /**
+
+    /**
      * Actualiza la información de una instancia de Factura.
      *
      * @param entity Instancia de FacturaEntity con los nuevos datos.
      * @return Instancia de FacturaEntity con los datos actualizados.
      */
-    public FacturaEntity updateFactura(Long id,FacturaEntity entity) throws BusinessLogicException {
-       
+    public FacturaEntity updateFactura(Long id, FacturaEntity entity) throws BusinessLogicException {
+        //TODO: No hay ninguna regla de negocio? 
         return persistence.update(entity);
     }
-    
-      /**
+
+    /**
      * Elimina una instancia de Factura de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
      */
     public void deleteFactura(Long id) {
+        // TODO: Hay que validar que existe FacturaEntity con ese id
         persistence.delete(id);
     }
 
-    
 }

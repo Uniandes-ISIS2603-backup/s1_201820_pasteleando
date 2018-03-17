@@ -84,6 +84,7 @@ public class CalificacionLogic
 
 	public void delete( CalificacionEntity entity ) throws BusinessLogicException
 	{
+           //TODO: este método debe recibir un id y hay que validar que existe un Calificacion con ese id 
 		LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
 		persistence.delete( entity.getId() );
 		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );

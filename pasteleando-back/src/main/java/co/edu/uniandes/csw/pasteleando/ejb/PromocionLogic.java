@@ -68,6 +68,7 @@ public class PromocionLogic {
         LOGGER.info("Inicia proceso de crear promocion");
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
+       //TODO: No hay ninguna regla de negocio?  
         return persistence.create(entity);
     }
 
@@ -83,6 +84,7 @@ public class PromocionLogic {
         LOGGER.info("Inicia proceso de actualizar promoción");
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
+        //TODO: No hay ninguna regla de negocio? 
         return persistence.update(entity);
     }
 

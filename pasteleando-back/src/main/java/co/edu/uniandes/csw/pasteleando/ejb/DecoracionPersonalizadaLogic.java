@@ -94,10 +94,12 @@ public class DecoracionPersonalizadaLogic
      */
     public void deleteDecoracionPersonalizada(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración personalizada con id={0}", id);
+        // TODO: Hay que validar que existe DecoracionPersonalizadaEntity con ese id
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
+    //TODO: NO entiendo este método. No lo llama con una foto?
     private boolean validateCategoria(String categoria) {
         return !categoria.isEmpty();
     }

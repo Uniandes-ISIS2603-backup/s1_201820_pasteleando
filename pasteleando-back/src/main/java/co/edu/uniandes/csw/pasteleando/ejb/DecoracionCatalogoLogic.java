@@ -90,7 +90,7 @@ public class DecoracionCatalogoLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración del catálogo con id={0}", id);
     }
-    
+    //TODO Validar la categoría es solo ver que no sea vacía?
     private boolean validateCategoria(String categoria) {
         return !categoria.isEmpty();
     }
@@ -106,6 +106,7 @@ public class DecoracionCatalogoLogic {
      */
     public List<PromocionEntity> listPromociones(Long decoracionCatalogoId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las promociones asociadas a la decoración del catálogo con id = {0}", decoracionCatalogoId);
+        //TODO: QUé pasa si no existe la docoración con ese decoracionCatalogoId? Arrojaría un NullPointerException
         return getDecoracionCatalogo(decoracionCatalogoId).getPromociones();
     }
     
@@ -118,6 +119,7 @@ public class DecoracionCatalogoLogic {
      */
     public PromocionEntity getPromocion(Long DecoracionCatalogoId, Long PromocionId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar una promoción de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
+        // Este código hayq ue remplazarlo por un query en la base de datos
         List<PromocionEntity> list = getDecoracionCatalogo(DecoracionCatalogoId).getPromociones();
         PromocionEntity PromocionEntity = new PromocionEntity();
         PromocionEntity.setId(PromocionId);

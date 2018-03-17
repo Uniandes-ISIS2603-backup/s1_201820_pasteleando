@@ -57,6 +57,7 @@ public class ClienteLogic
 		}
                
 		// Invoca la persistencia para crear la entidad de Pasteleando
+                //TODO: Por qué todos los clientes deben llamrse distinto?
 		persistence.create( entity );
 		LOGGER.info( "Termina proceso de creación de entidad de Cliente" );
 		return entity;
@@ -77,17 +78,19 @@ public class ClienteLogic
 	}
 
 	public ClienteEntity update( ClienteEntity entity ) throws BusinessLogicException
-	{
+	{//TODO: Por qué todos los clientes deben llamrse distinto?
 		if( persistence.findByName( entity.getName( ) ) != null )
 		{
 			throw new BusinessLogicException( "Ya existe una entidad de Cliente con el nombre \"" + entity.getName( ) + "\"" );
 		}
+                
 		return persistence.update( entity );
 	}
 
 	public void delete( ClienteEntity entity ) throws BusinessLogicException
 	{
 		LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Cliente con id={0}", entity.getId( ) );
+                //TODO: este método debe recibir un id y hay que validar que existe un Cliente con ese id
 		persistence.delete( entity.getId() );
 		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Cliente con id={0}", entity.getId( ) );
 	}
