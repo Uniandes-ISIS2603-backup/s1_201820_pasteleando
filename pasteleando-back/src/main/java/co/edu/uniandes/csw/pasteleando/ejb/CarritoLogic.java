@@ -22,23 +22,20 @@ import javax.inject.Inject;
 public class CarritoLogic {
     @Inject
     private CarritoPersistence persistence;
-//TODO: Borrar las variables que no se usan.    
-    @Inject
-    private PastelLogic pastelLogic;
+
     
-    @Inject
-    private ClienteLogic clienteLogic;
+
     
     public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
     {
-         //TODO: No se puede validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
- 
-        if(persistence.find(entity.getId()) != null)
+        if(entity.getCliente() == null)
         {
-            throw new BusinessLogicException("el carrito con el id:" + entity.getId() + "ya existe");
+            throw new BusinessLogicException("el carrito no se puede agregar porque no tiene un cliente asociado");
         }
-        //TODO: No hay ninguna regla de negocio? 
+        if(entity.getPedido() == null)
+        {
+            throw new BusinessLogicException("el carrito no tiene un pedido asociado");
+        }
         return persistence.create(entity);
     }
     
@@ -134,24 +131,15 @@ public class CarritoLogic {
             throw new BusinessLogicException("el carrito con el id: " + id + "no existe");
         }
         
-        //TODO: Esto debe remplazarse por un query en la base de datos. Hacer en la persistencia un método findPastelByCarrito
-        List<PastelEntity> listaPasteles = ent.getPasteles();
-        boolean enc = false;
-        for(int i = 0; i<listaPasteles.size() && !enc; i++)
-        {
-            if(listaPasteles.get(i).getId() == pastelId)
-            {
-                listaPasteles.remove(i);
-                enc = true;
-                ent.setPrecio(ent.getPrecio() - listaPasteles.get(i).getPrecio());
-                ent.setCantidad(ent.getCantidad()-1);
-            }
-        }
-        if(!enc)
+        PastelEntity pastel = persistence.findPastelByCarrito(pastelId, id);
+        
+        if(pastel == null)
         {
             throw new BusinessLogicException("el pastel con el id: " + pastelId + "no se encuentra en el carrito con el id: " + id);
         }
-        
+        ent.setPrecio(ent.getPrecio() - pastel.getPrecio());
+        ent.setCantidad(ent.getCantidad()-1);
+        updateCarrito(ent);
   }
   //TODO: Porqué este metodo es responsabildiad de esta clase?
   public void replacePedido(Long id, PedidoEntity pedido) throws BusinessLogicException
