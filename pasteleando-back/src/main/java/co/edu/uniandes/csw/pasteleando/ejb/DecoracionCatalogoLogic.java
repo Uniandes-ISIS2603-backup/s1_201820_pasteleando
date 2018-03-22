@@ -92,7 +92,10 @@ public class DecoracionCatalogoLogic {
     }
     //TODO Validar la categoría es solo ver que no sea vacía?
     private boolean validateCategoria(String categoria) {
-        return !categoria.isEmpty();
+        if (persistence.findByName(categoria) != null || categoria.isEmpty()) {
+            return false;
+        }
+        return true;
     }
     
     /**
@@ -104,9 +107,12 @@ public class DecoracionCatalogoLogic {
      * de DecoracionCatalogo
      *
      */
-    public List<PromocionEntity> listPromociones(Long decoracionCatalogoId) {
+    public List<PromocionEntity> listPromociones(Long decoracionCatalogoId) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las promociones asociadas a la decoración del catálogo con id = {0}", decoracionCatalogoId);
         //TODO: QUé pasa si no existe la docoración con ese decoracionCatalogoId? Arrojaría un NullPointerException
+        if (getDecoracionCatalogo(decoracionCatalogoId) == null) {
+            throw new BusinessLogicException("La decoración no existe");
+        }
         return getDecoracionCatalogo(decoracionCatalogoId).getPromociones();
     }
     
