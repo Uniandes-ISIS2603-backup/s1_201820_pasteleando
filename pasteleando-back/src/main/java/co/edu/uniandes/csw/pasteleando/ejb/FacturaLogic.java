@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,10 +23,7 @@ public class FacturaLogic {
     @Inject
     private FacturaPersistence persistence;
 
-    //TODO: Borrar lo que no se usa
-    @Inject
-    private TarjetaPuntosLogic tarjetaPuntos;
-
+  
     /**
      * Obtiene la lista de los registros de Factura.
      *
@@ -48,7 +46,7 @@ public class FacturaLogic {
     public boolean validatePrecio(Integer precio) {
         if (precio <= 0) {
             return false;
-        }
+                         }
         return true;
     }
 
@@ -59,8 +57,16 @@ public class FacturaLogic {
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      */
     public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException {
-        //TODO: No hay ninguna regla de negocio? 
-        return persistence.create(entity);
+        if(entity.getDireccion() != null && entity.getFecha() != null && entity.getFecha().after(new Date()) && entity.getPrecio() >= 0)
+        {
+          return persistence.create(entity);
+        }
+        else
+        {
+            throw new BusinessLogicException("Hay algún campo vacío o alguna de los siguientes campos está vacío: "
+                    + "Direccion: " + entity.getDireccion()
+                    + ", Fecha: " + entity.getFecha() + ", Precio: " + entity.getPrecio());
+        }
     }
 
     /**
@@ -70,7 +76,6 @@ public class FacturaLogic {
      * @return Instancia de FacturaEntity con los datos actualizados.
      */
     public FacturaEntity updateFactura(Long id, FacturaEntity entity) throws BusinessLogicException {
-        //TODO: No hay ninguna regla de negocio? 
         return persistence.update(entity);
     }
 
@@ -79,9 +84,15 @@ public class FacturaLogic {
      *
      * @param id Identificador de la instancia a eliminar.
      */
-    public void deleteFactura(Long id) {
-        // TODO: Hay que validar que existe FacturaEntity con ese id
+    public void deleteFactura(Long id) throws BusinessLogicException{
+        if(persistence.find(id) != null)
+        {
         persistence.delete(id);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe una entidad con el id: "+id);
+        }
     }
 
 }
