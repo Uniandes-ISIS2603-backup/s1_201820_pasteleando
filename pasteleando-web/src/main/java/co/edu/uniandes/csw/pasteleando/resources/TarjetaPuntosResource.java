@@ -43,7 +43,7 @@ import javax.ws.rs.WebApplicationException;
  * </pre>
  *
  */
-@Path( "clientes/{idCiente: \\d+}/tarjetapuntos" )
+@Path( "/tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
@@ -96,7 +96,11 @@ public class TarjetaPuntosResource {
         return list;
         }
 
-        
+        @GET
+        @Path("/all")
+        public List<TarjetaPuntosDTO> getTarjetasPuntos(){
+            return listEntity2DTO(tarjetaLogic.getTarjetasPuntos());
+        }
         
 	/**
 	 * <h1>GET /api/TarjetaPuntos : Obtener todas las entidadese de TarjetaPuntos.</h1>

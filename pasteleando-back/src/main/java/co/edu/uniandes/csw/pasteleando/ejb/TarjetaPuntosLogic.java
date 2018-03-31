@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.TarjetaPuntosPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -66,7 +67,9 @@ public class TarjetaPuntosLogic {
             return true;
         
     }
-    
+    public List<TarjetaPuntosEntity> getTarjetasPuntos(){
+        return persistence.findAll();
+    }
     
     /**
      * Se encarga de crear un TarjetaPuntos en la base de datos.

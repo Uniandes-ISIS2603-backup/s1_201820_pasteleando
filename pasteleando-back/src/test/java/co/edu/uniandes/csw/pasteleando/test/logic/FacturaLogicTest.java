@@ -166,10 +166,11 @@ public class FacturaLogicTest {
      * Prueba para eliminar un Factura
      *
      * 
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
  
     @Test
-    public void deleteFacturaTest() {
+    public void deleteFacturaTest() throws BusinessLogicException {
         FacturaEntity entity = data.get(0);
         factura.deleteFactura(entity.getId());
         FacturaEntity deleted = em.find(FacturaEntity.class, entity.getId());
