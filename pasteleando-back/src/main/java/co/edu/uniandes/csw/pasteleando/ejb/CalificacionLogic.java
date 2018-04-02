@@ -86,7 +86,13 @@ public class CalificacionLogic
 	{
            //TODO: este método debe recibir un id y hay que validar que existe un Calificacion con ese id 
 		LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
-		persistence.delete( entity.getId() );
+		
+                
+                if( persistence.find(entity.getId()) == null )
+		{
+			throw new BusinessLogicException( "NO existe una entidad de Calificacion con el id \"" + entity.getId() + "\"" );
+		}
+                persistence.delete( entity.getId() );
 		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
 	}
 }
