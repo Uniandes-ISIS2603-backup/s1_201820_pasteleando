@@ -43,7 +43,7 @@ import javax.ws.rs.WebApplicationException;
  * </pre>
  *
  */
-@Path( "/tarjetapuntos" )
+@Path( "/cliente/{idCliente: \\d+}/tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
