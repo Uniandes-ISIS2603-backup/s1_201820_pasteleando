@@ -92,7 +92,7 @@ public class DecoracionCatalogoLogic {
     }
     //TODO Validar la categoría es solo ver que no sea vacía?
     private boolean validateCategoria(String categoria) {
-        if (persistence.findByName(categoria) != null || categoria.isEmpty()) {
+        if (persistence.findByCategoria(categoria) != null || categoria.isEmpty()) {
             return false;
         }
         return true;

@@ -41,27 +41,27 @@ public class DecoracionCatalogoPersistence
     /**
      * Busca si hay alguna entidad de DecoracionCatalogo con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la entidad de DecoracionCatalogo que se está buscando
+     * @param categoria: Nombre de la entidad de DecoracionCatalogo que se está buscando
      * @return null si no existe ninguna entidad DecoracionCatalogo con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-    public DecoracionCatalogoEntity findByName( String name )
+    public DecoracionCatalogoEntity findByCategoria( String categoria )
     {
-        LOGGER.log( Level.INFO, "Consultando entidades de DecoracionCatalogo por nombre ", name );
+        LOGGER.log( Level.INFO, "Consultando entidades de DecoracionCatalogo por categoria ", categoria );
         
         // Se crea un query para buscar entidades de Pasteleando con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery<DecoracionCatalogoEntity> query = em.createQuery("Select e From DecoracionCatalogoEntity e where e.name = :name", DecoracionCatalogoEntity.class );
+        TypedQuery<DecoracionCatalogoEntity> query = em.createQuery("Select e From DecoracionCatalogoEntity e where e.categoria = :categoria", DecoracionCatalogoEntity.class );
         // Se remplaza el placeholder ":name" con el valor del argumento
-        query = query.setParameter( "name", name );
+        query = query.setParameter( "categoria", categoria );
         // Se invoca el query se obtiene la lista resultado
-        List<DecoracionCatalogoEntity> sameName = query.getResultList( );
-        if( sameName.isEmpty( ) )
+        List<DecoracionCatalogoEntity> sameCategoria = query.getResultList( );
+        if( sameCategoria.isEmpty( ) )
         {
             return null;
         }
         else
         {
-            return sameName.get( 0 );
+            return sameCategoria.get( 0 );
         }
     }
     
