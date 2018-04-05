@@ -78,7 +78,7 @@ public class CarritoLogic {
         {
             throw new BusinessLogicException("el carrito con el id:" + entity.getId()+ "no existe");
         }
-       //TODO: No hay ninguna regla de negocio?  
+
         return persistence.update(entity);
     }
     
@@ -141,16 +141,5 @@ public class CarritoLogic {
         ent.setCantidad(ent.getCantidad()-1);
         updateCarrito(ent);
   }
-  //TODO: Porqué este metodo es responsabildiad de esta clase?
-  public void replacePedido(Long id, PedidoEntity pedido) throws BusinessLogicException
-  {
-       CarritoEntity ent = persistence.find(id);
-        if(ent == null)
-        {
-            throw new BusinessLogicException("el carrito con el id: " + id + "no existe");
-        }
-        ent.setPedido(pedido);
-        updateCarrito(ent);
-  }
-    
+
 }
