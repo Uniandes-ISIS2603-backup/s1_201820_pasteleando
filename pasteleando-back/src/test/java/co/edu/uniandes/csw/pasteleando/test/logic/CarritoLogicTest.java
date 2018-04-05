@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.pasteleando.test.logic;
 
 import co.edu.uniandes.csw.pasteleando.ejb.CarritoLogic;
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
+import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
 import java.util.ArrayList;
@@ -104,6 +106,8 @@ public class CarritoLogicTest {
     public void createCarritoTest() throws BusinessLogicException 
     {
         CarritoEntity newEntity = factory.manufacturePojo(CarritoEntity.class);
+        newEntity.setCliente(factory.manufacturePojo(ClienteEntity.class));
+        newEntity.setPedido(factory.manufacturePojo(PedidoEntity.class));
         CarritoEntity result = carritoLogic.createCarrito(newEntity);
         Assert.assertNotNull(result);
         CarritoEntity entity = em.find(CarritoEntity.class, result.getId());
