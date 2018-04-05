@@ -8,9 +8,12 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamIntValue;
 
@@ -23,8 +26,7 @@ public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     
     @PodamIntValue(minValue = 0)
     private Integer numeroPuntos;
-    
-    @OneToOne
+    @OneToOne(mappedBy="tarjeta", fetch = FetchType.LAZY)
     @PodamExclude
     private ClienteEntity cliente;
     

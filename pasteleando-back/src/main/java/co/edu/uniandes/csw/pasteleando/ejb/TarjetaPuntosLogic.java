@@ -83,6 +83,7 @@ public class TarjetaPuntosLogic {
             throw new BusinessLogicException("Los puntos no pueden ser menores que 0");
         }
           ClienteEntity cliente = clienteLogic.getById(clienteId);
+          cliente.setTarjeta(entity);
           entity.setCliente(cliente);
         
         return persistence.create(entity);

@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -49,7 +51,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private CarritoEntity carrito;
     
     @PodamExclude
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private TarjetaPuntosEntity tarjeta;
 
     public List<PqrsEntity> getPqrs() {
