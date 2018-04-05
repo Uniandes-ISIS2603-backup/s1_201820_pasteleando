@@ -85,7 +85,7 @@ public class DecoracionCatalogoResource
     public DecoracionCatalogoDetailDTO getDecoracionCatalogo(@PathParam("id") Long id) {
         DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /catalogo/" + id + " no existe.", 404);
         }
         return new DecoracionCatalogoDetailDTO(entity);
     }

@@ -1,0 +1,271 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Calificacion",
+		"_postman_id": "038802a4-6ccb-4c1b-b656-c4d2a0841754",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cargar todas las calificaciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id\",data.id);\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"console.log(data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Trata de cargar una calificacion que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una nueva calificacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id\",data.id);\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"console.log(data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Trata de agregar una calificacion que ya existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza la calificacion de id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Trata de actualizar una calificacion que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina la calificacion con id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Trata de eliminar una calificacion que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/9",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -115,8 +115,16 @@ public class FacturaResource {
 	@GET
 	@Path( "{id: \\d+}" )
 	public FacturaDetailDTO getFactura( @PathParam( "id" ) Long id )
-	{
-                return new FacturaDetailDTO(facturaLogic.getFactura(id));
+	{       
+            FacturaEntity ent = facturaLogic.getFactura(id);
+            if(ent==null){
+                                throw new WebApplicationException("El recurso facturas con identificador "+id+" no fue encontrado",404);
+
+            }
+             return new FacturaDetailDTO(facturaLogic.getFactura(id));
+
+            
+            
 	}
 
 	/**
@@ -167,8 +175,12 @@ public class FacturaResource {
 	 */
 	@DELETE
 	@Path( "{id: \\d+}" )
-	public void deleteFactura( @PathParam( "id" ) Long id )
+	public void deleteFactura( @PathParam( "id" ) Long id ) throws BusinessLogicException
 	{
+            FacturaEntity entity = facturaLogic.getFactura(id);
+            if (entity == null) {
+            throw new WebApplicationException("El recurso /facturas/" + id + " no existe.", 404);
+            }
                 facturaLogic.deleteFactura(id);
 	}
         

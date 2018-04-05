@@ -123,7 +123,7 @@ public class PromocionLogicTest {
      *
      */
     @Test
-    public void createPromocionTest() {
+    public void createPromocionTest() throws BusinessLogicException{
         PromocionEntity newEntity = factory.manufacturePojo(PromocionEntity.class);
         PromocionEntity result = PromocionLogic.createPromocion(data.get(0).getDecoracionCatalogo().getId(), newEntity);
         Assert.assertNotNull(result);
@@ -173,7 +173,7 @@ public class PromocionLogicTest {
      *
      */
     @Test
-    public void updatePromocionTest() {
+    public void updatePromocionTest() throws BusinessLogicException{
         PromocionEntity entity = data.get(0);
         PromocionEntity pojoEntity = factory.manufacturePojo(PromocionEntity.class);
         

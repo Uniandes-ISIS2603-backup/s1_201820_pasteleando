@@ -7,8 +7,6 @@ package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -97,9 +97,9 @@ public class ClienteResource
                 for(int i =0 ; i< entity.size(); i++)
                 {
                     ClienteEntity actual = entity.get(i);
-                    if(actual.getName().equals(dto.getName()))
+                    if(actual.getId() == dto.getId())
                     {
-                        throw new BusinessLogicException( "Ya existe una entidad de Cliente con el nombre " );
+                        throw new BusinessLogicException( "Ya existe una entidad de Cliente con el id dado" );
                     }
                 
                 }

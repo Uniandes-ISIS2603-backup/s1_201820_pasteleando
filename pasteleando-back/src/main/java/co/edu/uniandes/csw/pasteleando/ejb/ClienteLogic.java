@@ -51,9 +51,9 @@ public class ClienteLogic
 	{
 		LOGGER.info( "Inicia proceso de creación de una entidad de Pasteleando" );
 		// Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
-		if( persistence.findByName( entity.getName() ) != null )
+		if( persistence.find(entity.getId())  != null )
 		{
-			throw new BusinessLogicException( "Ya existe una entidad de Pasteleando con el nombre \"" + entity.getName( ) + "\"" );
+			throw new BusinessLogicException( "Ya existe una entidad de Pasteleando con el id \"" + entity.getId() + "\"" );
 		}
                
 		// Invoca la persistencia para crear la entidad de Pasteleando
@@ -79,9 +79,9 @@ public class ClienteLogic
 
 	public ClienteEntity update( ClienteEntity entity ) throws BusinessLogicException
 	{//TODO: Por qué todos los clientes deben llamrse distinto?
-		if( persistence.findByName( entity.getName( ) ) != null )
+		if( persistence.find(entity.getId())  == null )
 		{
-			throw new BusinessLogicException( "Ya existe una entidad de Cliente con el nombre \"" + entity.getName( ) + "\"" );
+			throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + entity.getId() + "\"" );
 		}
                 
 		return persistence.update( entity );
@@ -91,7 +91,11 @@ public class ClienteLogic
 	{
 		LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Cliente con id={0}", entity.getId( ) );
                 //TODO: este método debe recibir un id y hay que validar que existe un Cliente con ese id
-		persistence.delete( entity.getId() );
+		if( persistence.find(entity.getId())  == null )
+		{
+			throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + entity.getId() + "\"" );
+		}
+                persistence.delete( entity.getId() );
 		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Cliente con id={0}", entity.getId( ) );
 	}
 }

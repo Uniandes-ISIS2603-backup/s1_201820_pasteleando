@@ -15,15 +15,15 @@ import javax.inject.Inject;
  */
 @Stateless
 public class PromocionLogic {
-
+    
     private static final Logger LOGGER = Logger.getLogger(PromocionLogic.class.getName());
-
+    
     @Inject
     private PromocionPersistence persistence;
-
+    
     @Inject
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
-
+    
     /**
      * Obtiene la lista de los registros de Promocion que pertenecen a una decoracion del catalogo.
      *
@@ -42,7 +42,7 @@ public class PromocionLogic {
         }
         return decoracionCatalogo.getPromociones();
     }
-
+    
     /**
      * Obtiene los datos de una instancia de Promocion a partir de su ID.
      * La existencia del elemento padre DecoracionCatalogo se debe garantizar.
@@ -50,55 +50,61 @@ public class PromocionLogic {
      * @param decoracionCatalogoId El id de la decoración del catálogo buscada
      * @param promocionId Identificador de la Promocion a consultar
      * @return Instancia de PromocionEntity con los datos de la Promocion consultado.
-     * 
+     *
      */
     public PromocionEntity getPromocion(Long decoracionCatalogoId, Long promocionId) {
         return persistence.find(decoracionCatalogoId, promocionId);
     }
-
+    
     /**
      * Se encarga de crear una promoción en la base de datos.
      *
      * @param entity Objeto de PromocionEntity con los datos nuevos
      * @param decoracionCatalogoId id de la decoración del catálogo el cual sera padre del nuevo Review.
      * @return Objeto de PromocionEntity con los datos nuevos y su ID.
-     * 
+     * @throws BusinessLogicException
      */
-    public PromocionEntity createPromocion(Long decoracionCatalogoId, PromocionEntity entity) {
+    public PromocionEntity createPromocion(Long decoracionCatalogoId, PromocionEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de crear promocion");
+        if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
+            throw  new BusinessLogicException("El catalogo asociado no existe");
+        }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
-       //TODO: No hay ninguna regla de negocio?  
+        //TODO: No hay ninguna regla de negocio?
         return persistence.create(entity);
     }
-
+    
     /**
      * Actualiza la información de una instancia de Promocion.
      *
      * @param entity Instancia de PromocionEntity con los nuevos datos.
      * @param decoracionCatalogoId id de la decoración del catálogo la cual será padre de la promoción actualizada.
      * @return Instancia de ReviewEntity con los datos actualizados.
-     * 
+     * @throws BusinessLogicException
      */
-    public PromocionEntity updatePromocion(Long decoracionCatalogoId, PromocionEntity entity) {
+    public PromocionEntity updatePromocion(Long decoracionCatalogoId, PromocionEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar promoción");
+        if (decoracionCatalogoLogic.getPromocion(decoracionCatalogoId, entity.getId()) == null) {
+            throw  new BusinessLogicException("La promoción a actualizar no existe");
+        }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
-        //TODO: No hay ninguna regla de negocio? 
+        //TODO: No hay ninguna regla de negocio?
         return persistence.update(entity);
     }
-
+    
     /**
      * Elimina una instancia de Promocion de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
      * @param decoracionCatalogoId id de la decoración del catálogo el cual es padre de la promoción.
-     * 
+     *
      */
     public void deletePromocion(Long decoracionCatalogoId, Long id) {
         LOGGER.info("Inicia proceso de borrar promocion");
         PromocionEntity old = getPromocion(decoracionCatalogoId, id);
         persistence.delete(old.getId());
     }
-
+    
 }
