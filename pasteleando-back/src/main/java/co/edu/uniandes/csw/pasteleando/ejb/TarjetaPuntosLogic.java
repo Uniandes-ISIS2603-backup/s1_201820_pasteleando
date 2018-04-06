@@ -114,6 +114,8 @@ public class TarjetaPuntosLogic {
     public void deleteTarjetaPuntos(Long clienteId,Long id) {
         
         TarjetaPuntosEntity old = getTarjetaPuntos(clienteId, id);
+        ClienteEntity cliente = clienteLogic.getById(clienteId);
+        cliente.setTarjeta(null);
         persistence.delete(old.getId());
     }
 }
