@@ -63,7 +63,7 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity createDecoracionPersonalizada(DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de decoración personalizada");
-        if (!validateCategoria(entity.getFoto())) {
+        if (!validateFoto(entity.getFoto())) {
             throw new BusinessLogicException("La foto es invalida. No se puede hacer un pastel con esta foto");
         }
         persistence.create(entity);
@@ -80,7 +80,7 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity updateDecoracionPersonalizada(Long id, DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoración personalizada con id={0}", id);
-        if (!validateCategoria(entity.getFoto())) {
+        if (!validateFoto(entity.getFoto())) {
             throw new BusinessLogicException("La foto es inválida. No se puede hacer un pastel con esta foto");
         }
         DecoracionPersonalizadaEntity newEntity = persistence.update(entity);
@@ -92,16 +92,18 @@ public class DecoracionPersonalizadaLogic
      * Eliminar una decoración personalizada por ID
      * @param id El ID de la decoración personalizada a eliminar
      */
-    public void deleteDecoracionPersonalizada(Long id) {
+    public void deleteDecoracionPersonalizada(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración personalizada con id={0}", id);
-        // TODO: Hay que validar que existe DecoracionPersonalizadaEntity con ese id
+        if(persistence.find(id)==null)
+        {
+            throw new BusinessLogicException("No existe una decoración personalizada con ese id");
+        }
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
-    //TODO: NO entiendo este método. No lo llama con una foto?
-    private boolean validateCategoria(String categoria) {
-        return !categoria.isEmpty();
+    private boolean validateFoto(String foto) {
+        return !foto.isEmpty();
     }
     
     }

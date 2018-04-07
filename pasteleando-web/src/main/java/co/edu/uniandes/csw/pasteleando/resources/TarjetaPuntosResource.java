@@ -43,7 +43,7 @@ import javax.ws.rs.WebApplicationException;
  * </pre>
  *
  */
-@Path( "/cliente/{idCliente: \\d+}/tarjetapuntos" )
+@Path( "/clientes/{idCliente: \\d+}/tarjetapuntos" )
 @Produces("application/json")
 @Consumes("application/json" )
 @RequestScoped
@@ -116,7 +116,7 @@ public class TarjetaPuntosResource {
 	 */
 	@GET
         @Path( "{idTarjeta: \\d+}" )
-	public TarjetaPuntosDTO getTarjetaPuntos(@PathParam("idCliente") Long idCliente,@PathParam("id") Long idTarjeta ) throws WebApplicationException
+	public TarjetaPuntosDTO getTarjetaPuntos(@PathParam("idCliente") Long idCliente,@PathParam("idTarjeta") Long idTarjeta ) throws WebApplicationException
 	{
             TarjetaPuntosEntity entity = tarjetaLogic.getTarjetaPuntos(idCliente, idTarjeta);
         if (entity == null) {

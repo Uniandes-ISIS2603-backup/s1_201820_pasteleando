@@ -1,271 +1,163 @@
 {
-	"variables": [],
-	"info": {
-		"name": "Calificacion",
-		"_postman_id": "038802a4-6ccb-4c1b-b656-c4d2a0841754",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+	"name": "Calificacion",
+	"description": "",
+	"order": [
+		"529b2cbb-2979-6b4c-f585-5a16807ae5c2",
+		"35d3ebbd-3170-6cd9-b496-312944659823",
+		"640e83fd-647c-f3d0-5099-e6a7e0fe403d",
+		"805e9675-a0e5-c440-08da-a8e3407d1a5f",
+		"ddca24d2-beb3-ac38-aec4-52ee5fb9f485",
+		"f1960beb-a514-ee4f-85fc-a843d1342571",
+		"a8acdde0-e6d4-4655-a399-3760e9eff327",
+		"fb4595a0-1bf6-4bae-fa8a-44168fc471ec"
+	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": "3680515",
+	"public": false,
+	"requests": [
 		{
-			"name": "Cargar todas las calificaciones",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"var data = JSON.parse(responseBody);\r",
-							"postman.setGlobalVariable(\"new_id\",data.id);\r",
-							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
-							"console.log(data.id);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Trata de cargar una calificacion que no existe",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
+			"id": "35d3ebbd-3170-6cd9-b496-312944659823",
 			"name": "Agregar una nueva calificacion",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"var data = JSON.parse(responseBody);\r",
-							"postman.setGlobalVariable(\"new_id\",data.id);\r",
-							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
-							"console.log(data.id);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"method": "POST",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }",
+			"tests": "var data = JSON.parse(responseBody);\r\npostman.setGlobalVariable(\"new_id\",data.id);\r\ntests[\"Status code is 200\"] = responseCode.code === 200;\r\nconsole.log(data.id);",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+			"responses": []
 		},
 		{
+			"id": "529b2cbb-2979-6b4c-f585-5a16807ae5c2",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "\r\n\r\ntests[\"Status code is 200\"] = responseCode.code === 200;\r\n\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523054455404,
+			"name": "Cargar todas las calificaciones",
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": [],
+			"rawModeData": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+		},
+		{
+			"id": "640e83fd-647c-f3d0-5099-e6a7e0fe403d",
 			"name": "Trata de agregar una calificacion que ya existe",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 412\"] = responseCode.code === 412;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"method": "POST",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\"name\": \"Comentario 1\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }",
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;\r\n",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones",
+			"responses": []
 		},
 		{
+			"id": "805e9675-a0e5-c440-08da-a8e3407d1a5f",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones/{{new_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522962815798,
 			"name": "Actualiza la calificacion de id 1",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": [],
+			"rawModeData": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
 		},
 		{
+			"id": "a8acdde0-e6d4-4655-a399-3760e9eff327",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones/{{new_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523053448800,
 			"name": "Trata de actualizar una calificacion que no existe",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/4",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": [],
+			"rawModeData": "{\n\"name\": \"Comentario 1 Actualixado\",\n\"puntaje\": 2,\n \"comentario\": \"La atencion fue terrible\"\n }"
 		},
 		{
+			"id": "ddca24d2-beb3-ac38-aec4-52ee5fb9f485",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones/{{new_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 204\"] = responseCode.code === 204;\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522962809196,
 			"name": "Elimina la calificacion con id 1",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 204\"] = responseCode.code === 204;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/1",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": []
 		},
 		{
+			"id": "f1960beb-a514-ee4f-85fc-a843d1342571",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones/{{new_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523054500385,
+			"name": "Trata de cargar una calificacion que no existe",
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": [],
+			"rawModeData": "{\n\"name\": \"Comentario2Actualizado\",\n\"puntaje\": 3,\n \"comentario\": \"El pedido se demoro demasiado\"\n }"
+		},
+		{
+			"id": "fb4595a0-1bf6-4bae-fa8a-44168fc471ec",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/pasteleando-web/api/calificaciones/{{new_id}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523054647548,
 			"name": "Trata de eliminar una calificacion que no existe",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/pasteleando-web/api/calificaciones/9",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "fb475141-0fa1-5ced-6bd0-0f3a39d6ed1f",
+			"responses": []
 		}
 	]
 }
