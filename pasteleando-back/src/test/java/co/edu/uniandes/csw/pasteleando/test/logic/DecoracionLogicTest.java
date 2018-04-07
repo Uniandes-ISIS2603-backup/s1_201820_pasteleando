@@ -169,7 +169,7 @@ public class DecoracionLogicTest {
     public void deleteDecoracionTest() throws BusinessLogicException {
         DecoracionEntity entity = data.get(0);
         decoracionLogic.removePastel(pastelesData.get(0).getId(), entity.getId());
-        decoracionLogic.deleteDecoracion(entity);
+        decoracionLogic.deleteDecoracion(entity, entity.getId());
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

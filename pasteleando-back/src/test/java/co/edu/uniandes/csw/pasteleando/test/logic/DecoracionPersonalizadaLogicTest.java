@@ -197,7 +197,7 @@ public class DecoracionPersonalizadaLogicTest {
      *
      */
     @Test
-    public void deleteDecoracionPersonalizadaTest() {
+    public void deleteDecoracionPersonalizadaTest() throws BusinessLogicException {
         DecoracionPersonalizadaEntity entity = data.get(0);
         decoracionPersonalizadaLogic.deleteDecoracionPersonalizada(entity.getId());
         DecoracionPersonalizadaEntity deleted = em.find(DecoracionPersonalizadaEntity.class, entity.getId());
