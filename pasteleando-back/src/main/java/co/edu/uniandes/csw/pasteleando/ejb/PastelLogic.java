@@ -22,17 +22,10 @@ public class PastelLogic {
 
     @Inject
     private PastelPersistence persistence;
-    //TODO: Borrar loq ue no se use
-    //@Inject
-    //private DecoracionLogic decoracionLogic;
+
 
     public PastelEntity createPastel(PastelEntity entity) throws BusinessLogicException {
-        //TODO: No se puede validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
- 
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("el pastel con el id:" + entity.getId() + "ya existe");
-        }
+     
         return persistence.create(entity);
     }
 

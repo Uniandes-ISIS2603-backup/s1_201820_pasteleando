@@ -30,7 +30,7 @@ public class CarritoLogic {
     {
         if(entity.getCliente() == null)
         {
-            throw new BusinessLogicException("el carrito no se puede agregar porque no tiene un cliente asociado");
+             throw new BusinessLogicException("el carrito no se puede agregar porque no tiene un cliente asociado");
         }
         if(entity.getPedido() == null)
         {
