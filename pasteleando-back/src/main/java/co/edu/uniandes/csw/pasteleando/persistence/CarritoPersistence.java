@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
+import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -54,6 +55,24 @@ public class CarritoPersistence
     {
         CarritoEntity entity = em.find(CarritoEntity.class, id);
         em.remove(entity);
+    }
+    
+    public PastelEntity findPastelByCarrito(Long idPastel, Long idCarrito)
+    {
+        PastelEntity rta = null;
+        CarritoEntity carrito = em.find(CarritoEntity.class, idCarrito);
+        List<PastelEntity> listaPasteles = carrito.getPasteles();
+         boolean enc = false;
+        for(int i = 0; i<listaPasteles.size() && !enc; i++)
+        {
+            if(listaPasteles.get(i).getId() == idPastel)
+            {
+                enc = true;
+                rta = listaPasteles.get(i);
+            }
+        }
+        return rta;
+     
     }
 }
 
