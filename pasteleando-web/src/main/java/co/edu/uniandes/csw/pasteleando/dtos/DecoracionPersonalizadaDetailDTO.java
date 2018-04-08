@@ -9,7 +9,16 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
 import java.util.List;
 
 /**
- *
+ ** *Un ejemplo de este DTO es:
+ * <br>
+*<pre>
+*{
+ *"color":"Azul",
+ *  "imagen": "C:\Users\dc.cepeda\Desktop\cake.jpg",
+ *  "estado": "aprobado",
+ *"Decoracion":[{
+ * "esPersonalizada: true
+ * }]
  * @author dc.cepeda
  */
 public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO

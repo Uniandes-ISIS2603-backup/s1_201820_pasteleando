@@ -16,7 +16,8 @@ import java.util.Date;
  * <pre>
  *   {
  *      "fechaAgregado": Date,
- *      "foto": String
+ *      "foto": String, 
+ *      "esPersonalizada": Boolean
  *   }
  * </pre>
  * </br>
@@ -27,6 +28,7 @@ import java.util.Date;
  *{
  *  "fechaAgregado":12/08/18,
  *  "foto": "C:\Users\dc.cepeda\Desktop\cake.jpg"
+ * "esPersonalizada": true
  * }
  * </br>
  * </pre>
@@ -50,6 +52,10 @@ public class DecoracionDTO implements Serializable {
      * Atributo que modela la foto de la Decoracion
      */
         private String foto;
+           /**
+     * Atributo que modela si la decoracion es Personalizada
+     */
+        private Boolean esPersonalizada;
        
       /**
 	 * Constructor por defecto
@@ -68,6 +74,18 @@ public class DecoracionDTO implements Serializable {
 		this.fechaAgregado = decoracionEntity.getFechaAgregado();
 		this.foto=decoracionEntity.getFoto();
 	}
+/**
+            * @return Si la entidad es Personalizada
+	 */
+    public Boolean getEsPersonalizada() {
+        return esPersonalizada;
+    }
+/**
+	 * @param esPersonalizada El nuevo estado de la entidad Decoracion
+	 */
+    public void setEsPersonalizada(Boolean esPersonalizada) {
+        this.esPersonalizada = esPersonalizada;
+    }
 
         /**
 	 * @return La fecha de la entidad Decoracion

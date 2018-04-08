@@ -31,22 +31,17 @@ import javax.ws.rs.WebApplicationException;
  * <pre>Clase que implementa el recurso "Decoración Personalizada".
  * URL: /api/Decoración Personalizada
  * </pre>
+ *
+ * @author dc.cepeda
  */
 @Path( "personalizada" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
-
-/**
- *
- * @author dc.cepeda
- */
 public class DecoracionPersonalizadaResource
 {
-    
-    
     @Inject
-            DecoracionPersonalizadaLogic decoracionPersonalizadaLogic;
+    private DecoracionPersonalizadaLogic decoracionPersonalizadaLogic;
     
     /**
      * <h1>GET /api/personalizada : Obtener todas las entidades de decoración del personalizada.</h1>
@@ -57,7 +52,7 @@ public class DecoracionPersonalizadaResource
      * 200 OK Devuelve todas las entidades de decoración personalizada de la aplicación.</code>
      * </pre>
      *
-     * @return JSONArray {@link DecoracionPersonalizadaDTO} - Las entidades de decoración personalizada encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
+     * @return JSONArray {@link DecoracionPersonalizadaDetailDTO} - Las entidades de decoración personalizada encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
     public List<DecoracionPersonalizadaDetailDTO> getDecoracionesPersonalizadas() {
@@ -78,7 +73,7 @@ public class DecoracionPersonalizadaResource
      * </pre>
      *
      * @param id Identificador de la entidad de decoración del personalizada que se esta buscando. Este debe ser una cadena de dígitos.
-     * @return JSON {@link DecoracionPersonalizadaDTO} - La entidad de decoración personalizada buscada.
+     * @return JSON {@link DecoracionPersonalizadaDetailDTO} - La entidad de decoración personalizada buscada.
      */
     @GET
     @Path("{id: \\d+}")
@@ -92,7 +87,7 @@ public class DecoracionPersonalizadaResource
     
     /**
      * <h1>POST /api/personalizada : Crear una entidad de Decoración Personalizada.</h1>
-     * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDTO}.
+     * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDetailDTO}.
      *
      * Crea una nueva entidad de decoración personalizada con la informacion que se recibe en el cuerpo
      * de la petición y se regresa un objeto identico con un id auto-generado
@@ -107,8 +102,8 @@ public class DecoracionPersonalizadaResource
      * </code>
      * </pre>
      *
-     * @param decoracionPersonalizada {@link DecoracionPersonalizadaDTO} - La entidad de la decoración personalizada que se desea guardar.
-     * @return JSON {@link DecoracionPersonalizadaDTO}  - La entidad de decoración personalizada guardada con el atributo id autogenerado.
+     * @param decoracionPersonalizada {@link DecoracionPersonalizadaDetailDTO} - La entidad de la decoración personalizada que se desea guardar.
+     * @return JSON {@link DecoracionPersonalizadaDetailDTO}  - La entidad de decoración personalizada guardada con el atributo id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de decoración personalizada.
      */
     @POST
@@ -118,7 +113,7 @@ public class DecoracionPersonalizadaResource
     
     /**
      * <h1>PUT /api/personalizada/{id} : Actualizar una entidad de Decoración Personalizada con el id dado.</h1>
-     * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDTO}.
+     * <pre>Cuerpo de petición: JSON {@link DecoracionPersonalizadaDetailDTO}.
      *
      * Actualiza la entidad de Decoración Personalizada con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
      *
@@ -131,8 +126,8 @@ public class DecoracionPersonalizadaResource
      * </pre>
      *
      * @param id        Identificador de la entidad de Decoración Personalizada que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param decoracionPersonalizada {@link DecoracionPersonalizadaDTO} La entidad de Decoración Personalizada que se desea guardar.
-     * @return JSON {@link DecoracionPersonalizadaDTO} - La entidad de Decoración Personalizada guardada.
+     * @param decoracionPersonalizada {@link DecoracionPersonalizadaDetailDTO} La entidad de Decoración Personalizada que se desea guardar.
+     * @return JSON {@link DecoracionPersonalizadaDetailDTO} - La entidad de Decoración Personalizada guardada.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la entidad de Decoración Personalizada porque ya existe una con ese nombre.
      */
     @PUT

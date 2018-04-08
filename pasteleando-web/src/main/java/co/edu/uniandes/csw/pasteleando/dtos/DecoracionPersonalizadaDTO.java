@@ -9,30 +9,18 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
 import java.io.Serializable;
 
 /**
- * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * 
- * <pre>
- *   {
- *      "color": String,
- *      "imagen": String,
- *      "estado": String
- *   }
- * </pre>
- * 
- * Por ejemplo una decoracion se representa asi:<br>
+ * Por ejemplo una decoracion se representa asi:
+ * <br>
  * 
  * <pre>
  * 
  *{
- *  "color":Azul,
+ *  "color":"Azul",
  *  "imagen": "C:\Users\dc.cepeda\Desktop\cake.jpg",
- *  "estado": enviadoa
+ *  "estado": "aprobado"
  * }
  * 
  * </pre>
- * 
- */
-/**
  *
  * @author dc.cepeda
  */
