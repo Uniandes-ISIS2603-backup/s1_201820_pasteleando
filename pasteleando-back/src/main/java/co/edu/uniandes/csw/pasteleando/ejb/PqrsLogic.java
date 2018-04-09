@@ -67,12 +67,13 @@ public class PqrsLogic
     public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
-        //TODO: Primero se valida y luego se persiste
-        persistence.create(entity);
+
         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
         {
             throw new BusinessLogicException("El tipo de solicitud o el tipo son invalidos");
         }
+        persistence.create(entity);
+        
         LOGGER.info("Termina proceso de creación de la pqrs");
         
         return entity;
@@ -89,13 +90,14 @@ public class PqrsLogic
     public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);
-          //TODO: Primero se valida y luego se actualiza
-        PqrsEntity pEntity = persistence.update(entity);
+
         if(!validarReglasDeNegocio(entity.getIdSolicitud(), entity.getTipo()))
         {
             throw new BusinessLogicException("El tipo de solicitud o el tipo son invalidos");
         }
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la pqrs con id ={0}", entity.getId());
+        
+        PqrsEntity pEntity = persistence.update(entity);
         
         return pEntity;
     }
@@ -105,11 +107,16 @@ public class PqrsLogic
      * @param id El ID de la pqrs a eliminar
      */
     
-    public void deletPqrs(Long id)
+    public void deletPqrs(Long id) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la pqrs con id ={0}", id);
-    // TODO: Hay que validar que existe pqrs con ese id    
+
+        if(persistence.find(id) == null)
+        {
+           throw new BusinessLogicException ("No existe un pqrs con ese id");
+        }
         persistence.delete(id);
+        
         LOGGER.log(Level.INFO, "Termina proceso de borrar la pqrs con id ={0}", id);
     }
     

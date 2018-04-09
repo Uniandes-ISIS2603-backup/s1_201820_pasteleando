@@ -183,7 +183,7 @@ public class PedidoResource
 	 */
 	@DELETE
 	@Path( "{id: \\d+}" )
-	public void deletePedido( @PathParam( "id" ) Long id )
+	public void deletePedido( @PathParam( "id" ) Long id ) throws BusinessLogicException, WebApplicationException
 	{
             PedidoEntity entity = pedidoLogic.getPedido(id); 
             
