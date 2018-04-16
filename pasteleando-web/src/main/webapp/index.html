@@ -10,10 +10,17 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+     
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+         
     
         <!-- pasteleando -->
         <script src="src/modules/pasteleando/pasteleando.mod.js" type="text/javascript"></script>
         <script src="src/modules/pasteleando/pasteleando.ctrl.js" type="text/javascript"></script>
+          <!-- Cientes -->
+        <script src="src/modules/Clientes/clientes.mod.js" type="text/javascript"></script>
+        <script src="src/modules/Clientes/clientes.ctrl.js" type="text/javascript"></script>
+    
         
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -28,7 +35,9 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
                         <!-- Enlace al estado de listar las entidades de pasteleando -->
-                        <li><a ui-sref="pasteleandoList">Pasteleando</a></li>
+                        <li><a ui-sref="clientesList">clientes</a></li>
+                     
+                         <li><a ui-sref="pasteleandoList">pasteleando</a></li>
                     
                         
                     </ul>
