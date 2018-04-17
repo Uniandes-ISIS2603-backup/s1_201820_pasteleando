@@ -57,16 +57,7 @@ public class FacturaLogic {
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      */
     public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException {
-        if(entity.getDireccion() != null && entity.getFecha() != null && entity.getFecha().after(new Date()) && entity.getPrecio() >= 0)
-        {
           return persistence.create(entity);
-        }
-        else
-        {
-            throw new BusinessLogicException("Hay algún campo vacío o alguna de los siguientes campos está vacío: "
-                    + "Direccion: " + entity.getDireccion()
-                    + ", Fecha: " + entity.getFecha() + ", Precio: " + entity.getPrecio());
-        }
     }
 
     /**

@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
-import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,7 @@ import java.util.List;
  *    "id": long ,
  *    "idCarrito":Integer ,
  *    "formaPagoActual": String,
+ *    "numeroPuntos":Integer,
  *    "tiposPago": String[],
  *    "calificaciones": [ 
  *                       {
@@ -60,9 +60,7 @@ import java.util.List;
  *                  "formaPagoActual": String,
  *                  "tiposPago": String[]
  *                 } ,
- *      "tarjeta": { 
- *                  "numeropuntos":Integer
- *                 }
+ *     
  *  }
  * </pre>
  * Por ejemplo un cliente se representa asi:<br>
@@ -117,7 +115,7 @@ import java.util.List;
 public class ClienteDetailDTO extends ClienteDTO{
     
     private CarritoDTO carrito;
-    private TarjetaPuntosDTO tarjeta;
+   
     private List<PqrsDTO> pqrs;
     private List<CalificacionDTO> calificaciones;
     
@@ -165,15 +163,6 @@ public class ClienteDetailDTO extends ClienteDTO{
         else
         {
             this.pqrs = null;
-        }
-        
-        if(entity.getTarjeta() != null)
-        {
-            this.tarjeta = new TarjetaPuntosDTO(entity.getTarjeta());
-        }
-        else
-        {
-            this.tarjeta = null;
         }
         
         if(entity.getCarrito() != null)
@@ -226,18 +215,6 @@ public class ClienteDetailDTO extends ClienteDTO{
              entity.setPqrs(null);
         }
         
-        if(this.tarjeta != null)
-        {
-            TarjetaPuntosEntity nuevo = this.tarjeta.toEntity();
-            entity.setTarjeta(nuevo);
-            
-           
-        }
-        else
-        {
-           entity.setTarjeta(null);
-        }
-        
         if(this.carrito != null)
         {
             entity.setCarrito(this.carrito.toEntity());
@@ -259,17 +236,6 @@ public class ClienteDetailDTO extends ClienteDTO{
      */
     public void setCarrito(CarritoDTO carrito) {
         this.carrito = carrito;
-    }
-
-    public TarjetaPuntosDTO getTarjeta() {
-        return tarjeta;
-    }
-     /**
-     * Modifica la tarjeta asociada a este cliente.
-     * @param tarjeta the promocion to set
-     */
-    public void setTarjeta(TarjetaPuntosDTO tarjeta) {
-        this.tarjeta = tarjeta;
     }
 
     public List<PqrsDTO> getPqrs() {

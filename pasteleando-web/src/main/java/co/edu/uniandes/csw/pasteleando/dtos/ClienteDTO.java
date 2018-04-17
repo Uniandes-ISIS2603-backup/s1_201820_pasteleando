@@ -61,7 +61,17 @@ public class ClienteDTO
 	private Integer idCarrito;
 	private Boolean tipoUsuario;
 	private String formaPagoActual;
+        private Integer numeroPuntos;
         private String name;
+
+    public void setNumeroPuntos(Integer numeroPuntos) {
+        this.numeroPuntos = numeroPuntos;
+    }
+
+    public Integer getNumeroPuntos() {
+        return numeroPuntos;
+    }
+        
             public String getName() {
         return name;
     }
@@ -94,6 +104,7 @@ public class ClienteDTO
 		this.tipoUsuario = clienteEntity.getTipoUsuario();
 		this.formaPagoActual = clienteEntity.getFormaPagoActual();
 		this.tiposPagos = clienteEntity.getTiposPagos();
+                this.numeroPuntos = clienteEntity.getNumeroPuntos();
 
 
 	}
@@ -185,6 +196,7 @@ public class ClienteDTO
                 entity.setName(this.name);
 		entity.setTipoUsuario(this.tipoUsuario);
 		entity.setTiposPagos(this.tiposPagos);
+                entity.setNumeroPuntos(this.numeroPuntos);
 
 		return entity;
 	}

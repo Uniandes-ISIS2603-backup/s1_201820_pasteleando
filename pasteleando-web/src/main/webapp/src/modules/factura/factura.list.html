@@ -1,0 +1,41 @@
+
+<div class="col-sm-4">
+    <div class="responsive-table">
+        <table class="table table-bordered" style="margin-top: 10px; ">
+            <thead>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Hora
+            </th>
+            <th>
+                Precio
+            </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="factura in facturasRecords">
+                    <td>
+                        {{factura.direccion}}
+                    </td>
+                    <td>
+                        {{factura.fecha}}
+                    </td>
+                    <td>
+                       {{factura.hora}} 
+                    </td>
+                    <td>
+                        ${{factura.precio}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

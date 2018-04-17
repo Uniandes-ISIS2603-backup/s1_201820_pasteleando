@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -34,15 +35,23 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     @PodamIntValue(minValue = 1)
     private Integer precio;
 
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
     
     @PodamExclude
     @OneToOne
     private PedidoEntity pedido;
-    
+   
     @PodamExclude
     @ManyToOne
-    private TarjetaPuntosEntity tarjetaPuntos;
-
+    private ClienteEntity cliente;
+   
     public PedidoEntity getPedido() {
         return pedido;
     }
@@ -51,13 +60,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
         this.pedido = pedido;
     }
 
-    public void setTarjetaPuntos(TarjetaPuntosEntity tarjetaPuntos) {
-        this.tarjetaPuntos = tarjetaPuntos;
-    }
-
-    public TarjetaPuntosEntity getTarjetaPuntos() {
-        return tarjetaPuntos;
-    }
+ 
     
     
 

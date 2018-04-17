@@ -18,9 +18,6 @@ import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
  *"fecha":"13/02/18", 
  *"hora":"22:00",
  *"precio":"55,000 COP",
- *"TarjetaPuntos":[{
- * "NumeroPuntos: 0"
- * }]
 *}
 *</pre>
 * 
@@ -28,9 +25,10 @@ import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
  */
 public class FacturaDetailDTO extends FacturaDTO {
   
-        TarjetaPuntosDTO tarjeta;
         
         PedidoDTO pedido;
+        
+        ClienteDTO cliente;
         
 	/**
 	 * Constructor por defecto
@@ -57,43 +55,50 @@ public class FacturaDetailDTO extends FacturaDTO {
                 {
                     entity.setPedido(null);
                 }
-                if(entity.getTarjetaPuntos() != null)
+                if(entity.getCliente() != null)
                 {
-                    this.tarjeta = new TarjetaPuntosDTO(entity.getTarjetaPuntos());
+                    this.cliente = new ClienteDTO(entity.getCliente());
                 }
-                if(entity.getTarjetaPuntos() == null)
+                if(entity.getCliente() == null)
                 {
-                    entity.setTarjetaPuntos(null);
+                    entity.setCliente(null);
                 }
+                
             }
+            
         }
         
         @Override
         public FacturaEntity toEntity()
         {
             FacturaEntity facturaE = super.toEntity();
-            if(this.getTarjeta() != null)
-            {
-                facturaE.setTarjetaPuntos(this.getTarjeta().toEntity());
-            }
+           
             if(this.getPedido() != null)
             {
                 facturaE.setPedido(this.getPedido().toEntity());
             }
+            if(this.getCliente() != null)
+            {
+                facturaE.setCliente(this.getCliente().toEntity());
+            }
             return facturaE;
         }
 
-    public TarjetaPuntosDTO getTarjeta() {
-        return tarjeta;
-    }
+
 
     public PedidoDTO getPedido() {
         return pedido;
     }
 
-    public void setTarjeta(TarjetaPuntosDTO tarjeta) {
-        this.tarjeta = tarjeta;
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
     }
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+ 
 
     public void setPedido(PedidoDTO pedido) {
         this.pedido = pedido;

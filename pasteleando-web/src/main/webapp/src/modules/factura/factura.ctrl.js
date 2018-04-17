@@ -1,10 +1,14 @@
 (function(ng)
 {
     var mod = ng.module('facturaModule');
-    mod.constant("facturaContext", "api/pasteleando");
-   mod.controller("facturaListCtrl", ['$scope', '$http','facturas',
-        function ($scope, facturas) {
-            $scope.facturasRecords = facturas.data;
+   mod.controller("facturaCtrl", ['$scope', '$http','facturaContext',
+        function ($scope, $http, context) {
+            $http.get(context).then(function(response)
+            {
+                 $scope.facturasRecords = response.data;
+                 console.log($scope.facturasRecords);
+            })
+           
         }
     ]);
 })(window.angular);

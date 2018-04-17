@@ -185,7 +185,7 @@ public class PqrsResource
 	 */
 	@DELETE
 	@Path( "{id: \\d+}" )
-	public void deletePqrs( @PathParam( "id" ) Long id )
+	public void deletePqrs( @PathParam( "id" ) Long id ) throws BusinessLogicException
 	{
             PqrsEntity entity = pqrsLogic.getPqrs(id); 
             

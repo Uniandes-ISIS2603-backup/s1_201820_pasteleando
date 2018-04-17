@@ -8,6 +8,7 @@ import javax.persistence.ElementCollection;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,6 +24,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
 
     private Boolean tipoUsuario;
     private String formaPagoActual;
+    private Integer numeroPuntos;
     
     private String name;
 
@@ -49,11 +51,28 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToOne(cascade = CascadeType.PERSIST)
     private CarritoEntity carrito;
+
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
+    }
     
     @PodamExclude
-    @OneToOne (cascade = CascadeType.ALL)
-    private TarjetaPuntosEntity tarjeta;
+    @OneToMany(mappedBy = "cliente")
+    private List<FacturaEntity> facturas = new ArrayList<>();
 
+    public Integer getNumeroPuntos() {
+        return numeroPuntos;
+    }
+
+    public void setNumeroPuntos(Integer numeroPuntos) {
+        this.numeroPuntos = numeroPuntos;
+    }
+
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
+    
+    
     public List<PqrsEntity> getPqrs() {
         return pqrs;
     }
@@ -78,14 +97,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.carrito = carrito;
     }
 
-    public TarjetaPuntosEntity getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(TarjetaPuntosEntity tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-    
+ 
     
 
     /**
