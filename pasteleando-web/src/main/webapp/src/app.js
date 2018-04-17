@@ -1,8 +1,7 @@
 (function (ng) {
     var app = angular.module('mainApp', [
         // External dependencies
-       'ui.router',
-       'ui.bootstrap',
+        'ui.router',
        
         // Internal modules dependencies       
         'pasteleandoModule',
