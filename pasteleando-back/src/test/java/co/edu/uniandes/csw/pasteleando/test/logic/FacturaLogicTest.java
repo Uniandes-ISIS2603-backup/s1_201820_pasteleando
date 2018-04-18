@@ -6,8 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.test.logic;
 
 import co.edu.uniandes.csw.pasteleando.ejb.FacturaLogic;
+import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
-import co.edu.uniandes.csw.pasteleando.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class FacturaLogicTest {
     
     private List<FacturaEntity> data = new ArrayList<>();
     
-    private List<TarjetaPuntosEntity> dataBook = new ArrayList<>();
+    private List<ClienteEntity> dataBook = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment() {

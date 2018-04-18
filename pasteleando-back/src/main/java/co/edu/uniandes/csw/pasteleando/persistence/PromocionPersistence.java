@@ -40,17 +40,9 @@ public class PromocionPersistence
         TypedQuery<PromocionEntity> q = em.createQuery("select p from PromocionEntity p where (p.decoracionCatalogo.id = :decoracionCatalogoId) and (p.id = :promocionId)", PromocionEntity.class);
         q.setParameter("decoracionCatalogoId", decoracionCatalogoId);
         q.setParameter("promocionId", promocionId);
-        List<PromocionEntity> results = q.getResultList();
-        PromocionEntity promocion = null;
-        if (results == null) {
-            promocion= null;
-        } else if (results.isEmpty()) {
-            promocion = null;
-        } else if (results.size() >= 1) {
-            promocion = results.get(0);
-        }
         
-        return promocion;
+        
+        return em.find(PromocionEntity.class, promocionId);
     }
     
     public List<PromocionEntity> findAll( )

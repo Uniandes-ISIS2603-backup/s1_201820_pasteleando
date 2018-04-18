@@ -9,7 +9,6 @@ delete from PasteleandoEntity;
 delete from PedidoEntity;
 delete from PqrsEntity;
 delete from PromocionEntity;
-delete from TarjetaPuntosEntity;
 
 
 insert into PedidoEntity (id, estado, seRecogePasteleria , factura_id) values (099,'En espera' , 'si' , 089);
@@ -32,13 +31,6 @@ insert into PromocionEntity (id, cantidad) values (002, 10);
 insert into PromocionEntity (id, cantidad) values (003, 50);
 insert into PromocionEntity (id, cantidad) values (004, 20);
 
-insert into TarjetaPuntosEntity(id, numeroPuntos) values (1001,0);
-insert into TarjetaPuntosEntity(id, numeroPuntos) values (1002,10);
-insert into TarjetaPuntosEntity(id, numeroPuntos) values (1003,20);
-insert into TarjetaPuntosEntity(id, numeroPuntos) values (1004,30);
-insert into TarjetaPuntosEntity(id, numeroPuntos) values (1005,500);
-
-
 insert into DecoracionEntity(id, color, estado, imagen) values (1011,'Blanco', 'Entregado','https://thestayathomechef.com/wp-content/uploads/2017/05/White-Cake-3-e1497020677316.jpg');
 insert into DecoracionEntity(id, color, estado, imagen) values (1012,'Negro', 'Enviado','http://sweetapolita.com/wp-content/uploads/2016/04/glamrocktray581.jpg');
 insert into DecoracionEntity(id, color, estado, imagen) values (1013,'Multicolor', 'En Proceso','https://data.whicdn.com/images/81276179/large.jpg');
@@ -50,4 +42,4 @@ insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4242, 'cal
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4343, 'calle 103', '2017-02-26','20:00',280);
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4444, 'calle 104', '2018-03-27','19:00',290);
 
-insert into ClienteEntity(id, idCarrito, tipoUsuario, formaPagoActual) values(5555, 20, true, "tarjetaCredito");
+insert into ClienteEntity(id, idCarrito, tipoUsuario, formaPagoActual,numeroPuntos) values(5555, 20, true, "tarjetaCredito",123);
