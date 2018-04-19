@@ -7,9 +7,9 @@
         // Internal modules dependencies       
         'pasteleandoModule',
 
-        'facturaModule', 'loginModule', 'clienteModule',
-        
+        'facturaModule',  'loginModule','clienteModule',
         'personalizadaModule'
+        
 
         
 
