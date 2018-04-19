@@ -5,21 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Pasteleando</title>
-         
- 
-        
 
-  <!-- Custom styles -->
-  <link href="src/css/landing-page.min.css" rel="stylesheet">
-  <link href="src/css/additionalStyles.css" rel="stylesheet">
-
- 
-  <!-- Import del js de este file -->  
         <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
      
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
          
@@ -30,6 +20,12 @@
           <!-- Cientes -->
         <script src="src/modules/Clientes/clientes.mod.js" type="text/javascript"></script>
         <script src="src/modules/Clientes/clientes.ctrl.js" type="text/javascript"></script>
+<<<<<<< HEAD
+    
+        
+        <script src="src/app.js" type="text/javascript"></script> 
+        <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
+=======
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
 
@@ -79,78 +75,29 @@
       <div ui-view="mainView"></div>
       </div>
   <div class="col-sm-4">
+>>>>>>> parent of e1fd405... se agrego la lista de los clientes
       
-  </div>
-  
-  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
-       <div class ="container-fluid">
-  	
-  </div>
-      
-    <div class="container">
-      <h1>Nuestro equipo</h1>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+    </head>
 
-            <div class="features-icons-icon d-flex">
-                <span class="glyphicon glyphicon-user"></span>
-            </div>
-            <h3>Diana Cepeda</h3>
-            <p class="lead mb-0">Github:  <a href="https://www.github.com/DianaC18">DianaC18</a></p>
-
-          </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-               <span class="glyphicon glyphicon-user"></span>
-            </div>
-            <h3>Monica Paola Bayona</h3>
-            <p class="lead mb-0">Github: <a href="https://www.github.com/mpbayonal">mpbayonal</a></p>
-          </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-               <span class="glyphicon glyphicon-user"></span>
-            </div>
-
+    <body style="padding-top: 20px;">
+        <div class="container-fluid col-md-12">
+            <h3>Ejemplo Pasteleando</h3>
           
-
-          <h3>Juan Felipe Garcia</h3>
-          <p class="lead mb-0">Github: <a href="https://www.github.com/juanfelipegc">juanfelipegc</a></p>
-          </div>
-        </div>
-      </div> 
-
-
-      <div class="row">
-
-
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-               <span class="glyphicon glyphicon-user"></span>
+             <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <!-- Enlace al estado de listar las entidades de pasteleando -->
+                        <li><a ui-sref="clientesList">clientes</a></li>
+                     
+                         <li><a ui-sref="pasteleandoList">pasteleando</a></li>
+                    
+                        
+                    </ul>
+                </div>
             </div>
-
-          
-
-          <h3>Nestor Ivan</h3>
-          <p class="lead mb-0">Github: <a href="https://www.github.com/nestorivan95">nestorivan95</a></p>
-          </div>
-        </div>
-
-
-
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-               <span class="glyphicon glyphicon-user"></span>
-            </div>
+<<<<<<< HEAD
+            <div ui-view="mainView"></div> 
+=======
 
           
 <<<<<<< HEAD
@@ -228,6 +175,7 @@
 
 
             
+>>>>>>> parent of e1fd405... se agrego la lista de los clientes
         </div>
     </body>
 </html>
