@@ -8,10 +8,7 @@
     <packaging>pom</packaging>
     <name>s1_pasteleando</name>
 
-    <modules>
-        <module>pasteleando-back</module>
-        <module>pasteleando-web</module>
-    </modules>
+    <modules></modules>
     
     <repositories>
         <repository>

@@ -1,0 +1,71 @@
+<style>
+      .containers {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 20px;
+    top: 20px;
+    -webkit-box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+}
+</style>
+
+<div class="col-sm-1"> </div>
+<div class='containers col-sm-5' style="height:50%">
+    <h1><strong>Datos viejos de la factura</strong></h1>
+    <div ng-value="facturasRecords1">
+        
+        <div class="container-fluid" style="margin-top: 10px"><label>Direccion: </label> <label>{{facturasRecords1.direccion}} </label></div>
+        
+        <div class="container-fluid" style="margin-top:10px"> <label>Fecha: </label> <label>{{facturasRecords1.fecha}} </label></div>
+       
+        <div class="container-fluid" style="margin-top:10px"><label>Hora: </label> <label>{{facturasRecords1.hora}} </label></div>
+        
+        <div class="container-fluid" style="margin-top:10px"><label>Precio: </label> <label>{{facturasRecords1.precio}} </label></div>
+        
+        
+    </div>
+     
+</div>
+<div class='containers col-sm-5' style="height:50%"> 
+    <h1><strong>Datos a insertar de la factura</strong></h1>
+    
+    <div class="containers" ng-value="facturasRecords1">
+    <label class='control-label' for='facturaDireccion'> Dirección: *</label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-home"></span>
+    </div>
+        
+    <input id="facturaDireccion"  ng-model="data.direccion" class="col-sm-6 form-control" ng-value="facturasRecords1.direccion">
+    
+  </div>
+    
+    <label class='control-label' for='facturaFecha'>Fecha:(En YYYY-MM-DD) * </label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </div>
+       
+    <input id="facturaFecha"  ng-model="data.fecha" class="col-sm-6 form-control" ng-value='facturasRecords1.fecha'>
+  </div>
+    
+    <label class='control-label' for='facturaHora'> Hora:(En HH:MM) * </label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-time"></span>
+    </div>
+    <input id="facturaHora"  ng-model="data.hora" class="col-sm-6 form-control" ng-value='facturasRecords1.hora'>
+  </div>
+    
+     <label class='control-label' for='facturaPrecio'> Precio: *</label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-usd"></span>
+    </div>
+    <input id="facturaPrecio"  ng-model="data.precio" class="col-sm-6 form-control" ng-init="data.precio" ng-value='facturasRecords1.precio'>
+    </div>
+    
+     <button class="btn btn-success" style="margin-top:50px"  ng-click="updateFactura(facturasRecords1.id)" ng-click="parseFecha()" value="Save">¡Editar!</button>     
+     <button class="btn btn-warning" style="margin-top:50px" ui-sref="facturas">Cancelar </button>
+     </div>
+</div>

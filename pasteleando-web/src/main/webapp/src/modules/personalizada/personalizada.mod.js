@@ -6,7 +6,7 @@
 
             var basePath = 'src/modules/personalizada/';
 
-            $urlRouterProvider.otherwise("/personalizadaList");
+            $urlRouterProvider.otherwise("/home");
 
             $stateProvider.state('personalizada', {
                 url: '/personalizada',

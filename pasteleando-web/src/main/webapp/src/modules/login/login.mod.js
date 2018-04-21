@@ -3,7 +3,7 @@ var mod = ng.module("loginModule", ['ui.router']);
   
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/login/';
-            $urlRouterProvider.otherwise("/login");
+            $urlRouterProvider.otherwise("/home");
 
             $stateProvider.state('login', {
                 url: '/login',

@@ -3,7 +3,7 @@ var mod = ng.module("pasteleandoModule", []);
     mod.constant("pasteleandoContext", "api/pasteleando");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/pasteleando/';
-            $urlRouterProvider.otherwise("/pasteleandoList");
+            $urlRouterProvider.otherwise("/home");
 
             $stateProvider.state('pasteleandoList', {
                 url: '/pasteleando',

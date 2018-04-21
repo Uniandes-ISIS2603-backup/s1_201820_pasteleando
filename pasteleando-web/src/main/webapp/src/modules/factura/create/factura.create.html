@@ -1,0 +1,50 @@
+<style>
+      .containers {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 20px;
+    top: 20px;
+    -webkit-box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+}
+</style>
+
+<div class="col-sm-3"></div>
+<div class='containers col-sm-6'>
+    <h1><strong>Crear nueva factura</strong></h1>
+    <label class='control-label' for='facturaDireccion'> Dirección: *</label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-home"></span>
+    </div>
+    <input id="facturaDireccion"  ng-model="data.direccion" class="col-sm-6 form-control" required>
+  </div>
+    
+    <label class='control-label' for='facturaFecha'>Fecha:(En YYYY-MM-DD) * </label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </div>
+    <input id="facturaFecha"  ng-model="data.fecha" class="col-sm-6 form-control" required>
+  </div>
+    
+    <label class='control-label' for='facturaHora'> Hora:(En HH:MM) * </label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-time"></span>
+    </div>
+    <input id="facturaHora"   ng-model="data.hora" class="col-sm-6 form-control" required>
+  </div>
+    
+    <label class='control-label' for='facturaPrecio'> Precio: *</label>
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-usd"></span>
+    </div>
+    <input id="facturaPrecio"  ng-model="data.precio" class="col-sm-6 form-control" required>
+    </div>
+   
+     <button class="btn btn-success" style="margin-top:10px"  ng-click="createFactura(factura.id)" ng-click="parseFecha()" value="Save">¡Crear!</button>
+     <button class="btn btn-warning" style="margin-top:10px" ui-sref="facturas">Cancelar </button>
+</div>
+
