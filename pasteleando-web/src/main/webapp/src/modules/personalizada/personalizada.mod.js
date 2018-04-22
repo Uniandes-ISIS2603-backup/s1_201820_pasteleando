@@ -26,7 +26,17 @@
                         templateUrl: basePath + 'personalizada.list.html'
                     }
                 }
-            }).state('personalizadaDetail', {
+            }).state('personalizadaCreate', {
+                url: '/personalizada/create',
+                views: {
+                    'mainView': {
+                        controller: 'personalizadaCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'personalizada.create.html'
+                    }
+                }
+
+            }) .state('personalizadaDetail', {
                 url: '/{personalizadaId:int}/detail',
                 parent: 'personalizada',
                 param: {personalizadaId: null},
