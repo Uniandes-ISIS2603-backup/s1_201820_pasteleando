@@ -1,0 +1,22 @@
+<div class="col-md-12">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Puntaje</th> 
+                    <th>Comentario</th> 
+                    <th>Id cliente</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="{{$index}}-name">{{currentcalificacion.id}}</td>
+                    <td id="{{$index}}-name">{{currentcalificacion.puntaje}}</td>
+                    <td id="{{$index}}-name">{{currentcalificacion.comentario}}</td>
+                    <td id="{{$index}}-name">{{currentcalificacion.cliente.id}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,15 +1,14 @@
 (function (ng) {
     var mod = ng.module("calificacionModule");
-    mod.constant("calificacionContext", "api/calificacion");
-    mod.controller('calificacionCtrl', ['$scope', '$http', 'calificacionContext', '$state',
+    mod.constant("calificacionContext", "api/calificaciones");
+    mod.controller('calificacionDetailCtrl', ['$scope', '$http', 'calificacionContext', '$state',
         /**
          * @ngdoc controller
-         * @name editorials.controller:editorialCtrl
+         * @name editorials.controller:editorialDetailCtrl
          * @description
-         * Definición del controlador de Angular del módulo Editorial. 
-         * Se crea el controlador con el cual se maneja el módulo.
-         * En el controlador se definen los atributos y métodos que pueden
-         * ser accedidos desde el HTML utilizando el $scope.
+         * Definición de un controlador auxiliar del módulo Editorial. 
+         * Se crea el controlador con el cual se manejan las vistas de detalle
+         * del módulo.
          * @param {Object} $scope Referencia injectada al Scope definida para este
          * controlador, el scope es el objeto que contiene las variables o 
          * funciones que se definen en este controlador y que son utilizadas 
@@ -21,22 +20,22 @@
          * estado actual de la navegación definida en el módulo.
          */
         function ($scope, $http, calificacionContext, $state) {
-            /**
+            if (($state.params.calificacionId !== undefined)&& ($state.params.calificacionId !== null)) {
+             /**
              * @ngdoc function
-             * @name getEditorials
-             * @methodOf editorials.controller:editorialCtrl
+             * @name getEditorialID
+             * @methodOf editorials.controller:editorialDetailCtrl
              * @description
              * Esta función utiliza el protocolo HTTP para obtener el recurso 
-             * donde se encuentran las editoriales en formato JSON. El recurso
-             * puede ser un archivo o un API Rest. La función se ejecuta
-             * automáticamente cuando el controlador es accedido desde el
-             * navegador.
+             * donde se encuentra la editorial por ID en formato JSON.
              * @param {String} URL Dirección donde se encuentra el recurso
-             * de las editoriales o API donde se puede consultar.
+             * de la editorial o API donde se puede consultar.
              */
-            $http.get(calificacionContext).then(function (response) {
-                $scope.calificacionRecords = response.data;
-            });
+                $http.get(calificacionContext + '/' + $state.params.calificacionId).then(function (response) {
+//                    $scope.clienteRecords = response.data.books;
+                    $scope.currentcalificacion = response.data;
+                });
+            }
         }
     ]);
 }
