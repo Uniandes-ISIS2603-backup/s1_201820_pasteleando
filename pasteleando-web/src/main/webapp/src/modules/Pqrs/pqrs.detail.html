@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentPqrs.image}}"/>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <dl>     
+                <dt>{{currentPqrs.tipo}}</dt>
+                
+                <hr>
+                <dt>Solicitud No: </dt>
+                <dd>{{currentPqrs.id_solicitud}}</dd>
+                
+                <hr>
+                <dt>Fecha</dt>
+                <dd>{{currentPqrs.fecha| date:'yyyy-MM-dd'}}</dd>
+          
+                <hr>
+                <dt>Estado </dt>
+                <dd>{{currentPqrs.estado}}</dd>
+
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
