@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="panel-group"  >
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createcatalogo">Crear nuevo catalogo</label>
+                <label ng-if="edit" id="editcatalogo">Editar catalogo</label></div>
+            <div class="panel-body">
+                <form name="catalogo">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            
+                             <label for="catalogoId" class="col-sm-2">Id:</label>
+                            <input id="catalogoId" required ng-model="data.id" class="col-sm-6"/>
+                            
+                           
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            
+                          <label for="catalogoCategoria" class="col-sm-2">Categoria:</label>
+                            <input id="catalogoCategoria" required ng-model="data.categoria" class="col-sm-6"/>
+                           
+                        </div>
+                        
+                       
+                       
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" >
+
+                            <div class="alert alert-warning" >
+                                <strong>Advertencia!</strong><p>Todos los campos son necesarios*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-click="createcatalogo()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="catalogoList">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+</div>
+
+

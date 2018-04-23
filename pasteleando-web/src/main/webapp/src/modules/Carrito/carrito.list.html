@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Carrito list</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="carritoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar carrito</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>    
+                                <th>Cantidad</th> 
+                                <th>Precio</th>
+                                <th ng-if="isAuthenticated() && hasPermissions()">Actions</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="carrito in carritoRecords">
+                                <td id="{{$index}}-id"><a ui-sref="carritoDetail({authorId: author.id})">{{carrito.id}}</a></td>
+                                <td id="{{$index}}-cantidad">{{carrito.cantidad}}</td>
+                                 <td id="{{$index}}-precio">{{carrito.precio}}</td>
+                                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">
+                                    <a ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-delete" class="btn btn-danger btn-sm" ui-sref="carritoDelete({authorId: author.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

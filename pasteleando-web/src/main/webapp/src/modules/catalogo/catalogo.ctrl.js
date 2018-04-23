@@ -1,12 +1,12 @@
 (function (ng) {
-    var mod = ng.module("clienteModule");
-    mod.constant("clienteContext", "api/clientes");
-    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext', '$state',
+    var mod = ng.module("catalogoModule");
+    mod.constant("catalogoContext", "api/catalogo");
+    mod.controller('catalogoCtrl', ['$scope', '$http', 'catalogoContext', '$state',
         /**
          * @ngdoc controller
-         * @name editorials.controller:editorialCtrl
+         * @name catalogo.controller:catalogoCtrl
          * @description
-         * Definición del controlador de Angular del módulo Editorial. 
+         * Definición del controlador de Angular del módulo Catálogo. 
          * Se crea el controlador con el cual se maneja el módulo.
          * En el controlador se definen los atributos y métodos que pueden
          * ser accedidos desde el HTML utilizando el $scope.
@@ -16,15 +16,15 @@
          * desde el HTML.
          * @param {Object} $http Objeto injectado para la manejar consultas HTTP
          * @param {Object} editorialContext Constante injectada que contiene la ruta
-         * donde se encuentra el API de Editoriales en el Backend.
+         * donde se encuentra el API de Catalogo en el Backend.
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http, clienteContext, $state) {
+        function ($scope, $http, catalogoContext, $state) {
             /**
              * @ngdoc function
-             * @name getEditorials
-             * @methodOf editorials.controller:editorialCtrl
+             * @name getDecoracionesCatalogo
+             * @methodOf catalogo.controller:catalogoCtrl
              * @description
              * Esta función utiliza el protocolo HTTP para obtener el recurso 
              * donde se encuentran las editoriales en formato JSON. El recurso
@@ -32,10 +32,10 @@
              * automáticamente cuando el controlador es accedido desde el
              * navegador.
              * @param {String} URL Dirección donde se encuentra el recurso
-             * de las editoriales o API donde se puede consultar.
+             * de las decoraciones del catálogo o API donde se puede consultar.
              */
-            $http.get("clienteContext").then(function (response) {
-                $scope.clienteRecords = response.data;
+            $http.get("catalogoContext").then(function (response) {
+                $scope.catalogoRecords = response.data;
             });
         }
     ]);

@@ -32,82 +32,82 @@
  *```
  */
 (function (ng) {
-    var mod = ng.module("clienteModule", ['ui.router']);
-    mod.constant("clienteContext", "api/clientes");
+    var mod = ng.module("calificacionModule", ['ui.router']);
+    mod.constant("calificacionContext", "api/calificaciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/cliente/';
+            var basePath = 'src/modules/calificacion/';
             
-            $urlRouterProvider.otherwise("/clienteList");
-            $stateProvider.state('cliente', {
-                url: '/cliente',
+            $urlRouterProvider.otherwise("/calificacionList");
+            $stateProvider.state('calificacion', {
+                url: '/calificacion',
                 abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'cliente.html',
-                        controller: 'clienteCtrl',
+                        templateUrl: basePath + 'calificacion.html',
+                        controller: 'calificacionCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
     
-            }).state('clienteList', {
+            }).state('calificacionList', {
                 url: '/list',
-                parent: 'cliente',
+                parent: 'calificacion',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'cliente.list.html'
+                        templateUrl: basePath + 'calificacion.list.html'
                     }
                 }
-            }).state('clienteDetail', {
-                url: '/{clienteId:int}/detail',
-                parent: 'cliente',
+            }).state('calificacionDetail', {
+                url: '/{calificacionId:int}/detail',
+                parent: 'calificacion',
                 param: {
                     calificacionId: null
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'cliente.list.html',
-                        controller: 'clienteDetailCtrl',
+                        templateUrl: basePath + 'calificacion.list.html',
+                        controller: 'calificacionDetailCtrl',
                         controllerAs: 'ctrl'
                     },
                     'detailView': {
-                        templateUrl: basePath + 'cliente.detail.html',
-                        controller: 'clienteDetailCtrl',
+                        templateUrl: basePath + 'calificacion.detail.html',
+                        controller: 'calificacionDetailCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('clienteCreate', {
+            }).state('calificacionCreate', {
                 url: '/create',
-                parent: 'cliente',
+                parent: 'calificacion',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/cliente.new.html',
-                        controller: 'clienteNewCtrl'
+                        templateUrl: basePath + '/new/calificacion.new.html',
+                        controller: 'calificacionNewCtrl'
                     }
                 }
                
-            }).state('clienteUpdate', {
-                url: '/update/{clienteId:int}',
-                parent: 'cliente',
+            }).state('calificacionUpdate', {
+                url: '/update/{calificacionId:int}',
+                parent: 'calificacion',
                 param: {
-                    clienteId: null
+                    calificacionId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/cliente.new.html',
-                        controller: 'clienteUpdateCtrl'
+                        templateUrl: basePath + '/new/calificacion.new.html',
+                        controller: 'calificacionUpdateCtrl'
                     }
                 }
                 
-            }).state('clienteDelete', {
-                url: '/delete/{clienteId:int}',
-                parent: 'cliente',
+            }).state('calificacionDelete', {
+                url: '/delete/{calificacionId:int}',
+                parent: 'calificacion',
                 param: {
                     editorialId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/delete/cliente.delete.html',
-                        controller: 'clienteDeleteCtrl'
+                        templateUrl: basePath + '/delete/calificacion.delete.html',
+                        controller: 'calificacionDeleteCtrl'
                     }
                 }
                

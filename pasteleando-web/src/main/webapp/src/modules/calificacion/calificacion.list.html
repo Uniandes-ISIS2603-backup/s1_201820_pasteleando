@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Lista de las Calificaciones</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="calificacionCreate"><span class="glyphicon glyphicon-plus-sign"></span> Añadir una nueva calificacion</a>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Puntaje</th> 
+                            
+                            <th>Actions</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="calificacion in calificacionRecords">
+                            <td id="{{$index}}-name"><a ui-sref="calificacionDetail({calificacionId: calificacion.id})">{{calificacion.id}}</a></td>
+                            <td>
+                        {{calificacion.puntaje}}
+                    </td>
+                    
+                            <td id="{{$index}}-actions">
+                                <a class="btn btn-default btn-sm" ui-sref="calificacionUpdate({calificacionId: calificacion.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a class="btn btn-danger btn-sm" ui-sref="calificacionDelete({calificacionId: calificacion.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 (function (ng) {
-    var mod = ng.module("clienteModule");
-    mod.constant("clienteContext", "api/clientes");
-    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext', '$state',
+    var mod = ng.module("calificacionModule");
+    mod.constant("calificacionContext", "api/calificacion");
+    mod.controller('calificacionCtrl', ['$scope', '$http', 'calificacionContext', '$state',
         /**
          * @ngdoc controller
          * @name editorials.controller:editorialCtrl
@@ -20,7 +20,7 @@
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http, clienteContext, $state) {
+        function ($scope, $http, calificacionContext, $state) {
             /**
              * @ngdoc function
              * @name getEditorials
@@ -34,8 +34,8 @@
              * @param {String} URL Dirección donde se encuentra el recurso
              * de las editoriales o API donde se puede consultar.
              */
-            $http.get("clienteContext").then(function (response) {
-                $scope.clienteRecords = response.data;
+            $http.get(calificacionContext).then(function (response) {
+                $scope.calificacionRecords = response.data;
             });
         }
     ]);

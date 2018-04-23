@@ -1,15 +1,14 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
     mod.constant("clienteContext", "api/clientes");
-    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext', '$state',
+    mod.controller('clienteDetailCtrl', ['$scope', '$http', 'clienteContext', '$state',
         /**
          * @ngdoc controller
-         * @name editorials.controller:editorialCtrl
+         * @name editorials.controller:editorialDetailCtrl
          * @description
-         * Definición del controlador de Angular del módulo Editorial. 
-         * Se crea el controlador con el cual se maneja el módulo.
-         * En el controlador se definen los atributos y métodos que pueden
-         * ser accedidos desde el HTML utilizando el $scope.
+         * Definición de un controlador auxiliar del módulo Editorial. 
+         * Se crea el controlador con el cual se manejan las vistas de detalle
+         * del módulo.
          * @param {Object} $scope Referencia injectada al Scope definida para este
          * controlador, el scope es el objeto que contiene las variables o 
          * funciones que se definen en este controlador y que son utilizadas 
@@ -21,22 +20,22 @@
          * estado actual de la navegación definida en el módulo.
          */
         function ($scope, $http, clienteContext, $state) {
-            /**
+            if (($state.params.clienteId !== undefined)&& ($state.params.clienteId !== null)) {
+             /**
              * @ngdoc function
-             * @name getEditorials
-             * @methodOf editorials.controller:editorialCtrl
+             * @name getEditorialID
+             * @methodOf editorials.controller:editorialDetailCtrl
              * @description
              * Esta función utiliza el protocolo HTTP para obtener el recurso 
-             * donde se encuentran las editoriales en formato JSON. El recurso
-             * puede ser un archivo o un API Rest. La función se ejecuta
-             * automáticamente cuando el controlador es accedido desde el
-             * navegador.
+             * donde se encuentra la editorial por ID en formato JSON.
              * @param {String} URL Dirección donde se encuentra el recurso
-             * de las editoriales o API donde se puede consultar.
+             * de la editorial o API donde se puede consultar.
              */
-            $http.get("clienteContext").then(function (response) {
-                $scope.clienteRecords = response.data;
-            });
+                $http.get(clienteContext + '/' + $state.params.clienteId).then(function (response) {
+//                    $scope.clienteRecords = response.data.books;
+                    $scope.currentcliente = response.data;
+                });
+            }
         }
     ]);
 }
