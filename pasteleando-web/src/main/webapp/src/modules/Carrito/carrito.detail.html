@@ -1,8 +1,12 @@
 <div class="panel panel-default">
     <div class="col-md-3">
         <ul ng-repeat="pastel in currentCarrito.pasteles">
-            <a ui-sref="pastelDetail({pastelId: pastel.id})">{{pastel.id}}</a>
-        </ul>
-             
+            <a ui-sref="pastelCatalogoDetail({pastelId: pastel.id})">{{pastel.id}}</a>
+        </ul>      
+    </div>
+    
+    <div class="row">
+        <button>Vaciar Carrito</button>
+        <button>Checkout</button>
     </div>
 </div>
