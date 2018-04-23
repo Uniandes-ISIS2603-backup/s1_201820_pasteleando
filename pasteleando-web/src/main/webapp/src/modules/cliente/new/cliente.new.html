@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="panel-group"  >
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createcliente">Crear nueva cliente</label>
+                <label ng-if="edit" id="editcliente">Editar cliente</label></div>
+            <div class="panel-body">
+                <form name="cliente">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            
+                             <label for="clienteId" class="col-sm-2">Id:</label>
+                            <input id="clienteId" required ng-model="data.id" class="col-sm-6"/>
+                            
+                           
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            
+                          <label for="clienteName" class="col-sm-2">Nombre:</label>
+                            <input id="clienteName" required ng-model="data.name" class="col-sm-6"/>
+                           
+                        </div>
+                        
+                       
+                       
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" >
+
+                            <div class="alert alert-warning" >
+                                <strong>Advertencia!</strong><p>Todos los campos son necesarios*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-click="createcliente()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="clienteList">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+</div>
+
+
