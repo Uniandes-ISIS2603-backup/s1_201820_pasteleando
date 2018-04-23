@@ -37,7 +37,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
             
-            $urlRouterProvider.otherwise("/clienteList");
+            $urlRouterProvider.otherwise("/home");
             $stateProvider.state('cliente', {
                 url: '/cliente',
                 abstract: true,

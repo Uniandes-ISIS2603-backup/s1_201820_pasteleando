@@ -37,7 +37,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/catalogo/';
             
-            $urlRouterProvider.otherwise("/catalogoList");
+            $urlRouterProvider.otherwise("/home");
             $stateProvider.state('catalogo', {
                 url: '/catalogo',
                 abstract: true,
