@@ -9,6 +9,8 @@
 
         'facturaModule',  'loginModule','clienteModule',
         'personalizadaModule', 'carritoModule'
+        'facturaModule',  'loginModule','clienteModule','calificacionModule',
+        'personalizadaModule'
         
 
         
