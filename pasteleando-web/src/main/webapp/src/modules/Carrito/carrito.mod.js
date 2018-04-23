@@ -34,7 +34,8 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                 });
+        }]);
             
     
 })(window.angular);
-
