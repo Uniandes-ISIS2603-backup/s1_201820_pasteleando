@@ -5,3 +5,27 @@
  */
 
 
+(function (ng) 
+{
+    var mod = ng.module("pqrsModule");
+    mod.constant("pqrsContext", "api/pqrs");
+    mod.controller('pqrsNewCtrl', ['$scope', '$http', 'pqrsContext', '$state', '$rootScope',
+ 
+        function ($scope, $http, pqrsContext, $state, $rootScope) 
+        {
+            $rootScope.edit = false;
+
+            $scope.data = {};
+
+            $scope.createPqrs = function () 
+            {
+                $http.post(pqrsContext, $scope.data).then(function (response) 
+                {
+                    $state.go('pqrsList', {pqrsId: response.data.id}, {reload: true});
+                });
+            };
+        }
+    ]);
+}
+)
+(window.angular);
