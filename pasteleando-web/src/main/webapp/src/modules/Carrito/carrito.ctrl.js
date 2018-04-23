@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("carritoModule");
+    var mod = ng.module('carritoModule');
     mod.constant("carritoContext", "api/carritos");
     mod.controller('carritoCtrl', ['$scope', '$http', 'carritoContext', '$state',
 

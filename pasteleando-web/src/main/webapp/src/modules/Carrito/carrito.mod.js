@@ -8,20 +8,19 @@
             
             $stateProvider.state('carritoList',
             {
-                url:'/carritos/list',
+                url:'/carritos',
                   views:
                           {
                               mainView:
                             {
-                                templateUrl:basePath+'carrito.list.html',
-                                controller:'carritoCtrl',
-                                controllerAs:'ctrl'
+                                templateUrl:basePath+'carrito.html',
+                                
                             }
                           }
             }).state('carritoDetail', {
                 url: '{carritoId: int}/detail',
                 parent:'carritos',
-                param:{carritoId = null},
+                param:{carritoId : null},
                 views: {
                    'listView': {
                         templateUrl: basePath + 'carrito.list.html',

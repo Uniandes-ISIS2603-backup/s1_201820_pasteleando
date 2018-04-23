@@ -8,8 +8,8 @@
         'pasteleandoModule',
 
         'facturaModule',  'loginModule','clienteModule',
-        'personalizadaModule', 'carritoModule'
-        'facturaModule',  'loginModule','clienteModule','calificacionModule',
+        'personalizadaModule', 'carritoModule',
+        'calificacionModule',
         'personalizadaModule'
         
 
