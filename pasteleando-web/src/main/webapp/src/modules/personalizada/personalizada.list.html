@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2" ng-repeat="personalizada in personalizadaRecords">
+            <div class="thumbnail">
+                <a ui-sref="personalizadaDetail({personalizadaId: personalizada.id})">       
+                    <img class="img-responsive" ng-src='{{personalizada.imagen}}' alt="{{personalizada.name}}" style="height:300px;width:400px">  
+                </a>
+                <div class="caption text-center">{{personalizada.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

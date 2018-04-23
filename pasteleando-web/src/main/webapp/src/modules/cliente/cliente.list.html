@@ -1,0 +1,40 @@
+<div class="container-fluid">
+<div class="col-sm-4">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Añadir un nuevo cliente</a>
+        </div>
+    </div>
+    <div class="responsive-table">
+        <table class="table table-bordered" style="margin-top: 10px; ">
+            <thead>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cliente in clientesRecords">
+                    <td>
+                        {{cliente.id}}
+                    </td>
+                    <td>
+                        {{cliente.name}}
+                    </td>
+                  
+                      <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="clienteEdit({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteCliente(cliente.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+

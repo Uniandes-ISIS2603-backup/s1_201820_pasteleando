@@ -1,23 +1,26 @@
+
+<alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
  <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
          
                
             <div class="panel-body">
-                <form ng-submit="ctrl.saveRecord(currentRecord.id)" name="pasteleando">
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="pasteleandoName" class="col-sm-2">Name:</label>
-                            <input id="pasteleandoName" required ng-model="currentRecord.name" class="col-sm-6"/>
-                        </div>
-                    </div>
+                <form ng-submit="ctrl.saveRecord(currentRecord.id)" name="personalizada">
+                    
                     
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="pasteleandoAtributo" class="col-sm-2">Atributo</label>
-                            <textarea id="pasteleandoAtributo" required ng-model="currentRecord.atributo" class="col-sm-6"></textarea>
+                            <label for="personalizadaPeso" class="col-sm-2">Peso:</label>
+                            <textarea id="personalizadaPeso" required ng-model="currentRecord.peso" class="col-sm-6"></textarea>
                         </div>
-                    </div>                               
+                    </div>          
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="personalizadaColor" class="col-sm-2">Color: </label>
+                            <textarea id="personalizadaColor" required ng-model="currentRecord.color" class="col-sm-6"></textarea>
+                        </div>
+                    </div>   
 
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!atributo.$valid">
@@ -29,8 +32,8 @@
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-show="pasteleando.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="pasteleandoList">Cancel</a>
+                            <input ng-show="cliente.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="clienteList">Cancel</a>
                         </div>
                     </div>
                 </form>

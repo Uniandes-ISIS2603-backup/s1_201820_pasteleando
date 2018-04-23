@@ -1,0 +1,33 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentPersonalizada.imagen}}" style="height:400px;width:600px"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl>    
+                    <dt>{{currentPersonalizada.name}}</dt>
+                    <hr>
+                    <dt class="bold">Color del Pastel</dt>
+                    <dd>{{currentPersonalizada.color}}</dd>
+                    <hr>
+                    <dt class="bold">Descripción del Pastel </dt>
+                    <dd>{{currentPersonalizada.descripcion}}</dd>
+                    <hr>
+                    <dt class="bold">Peso del Pastel </dt>
+                    <dd>{{currentPersonalizada.peso}}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="personalizadaCreate"><span class="glyphicon glyphicon-plus-sign"></span> Crea tu nuevo pastel personalizado</a>
+        </div>
+    </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,19 +1,26 @@
 
-<div class="col-sm-4">
+<div class="row" style="margin-top: 10px; margin-left: 10px">
+    <button class="btn btn-primary"><a  ui-sref="facturas-create" style="color:white">Crear factura</a></button>
+</div>
+    <div class="col-sm-10">
     <div class="responsive-table">
         <table class="table table-bordered" style="margin-top: 10px; ">
             <thead>
+             
             <th>
-                Direccion
+                Dirección
             </th>
             <th>
-                Fecha
+                Fecha (YYYY-MM-DD)
             </th>
             <th>
                 Hora
             </th>
             <th>
                 Precio
+            </th>
+            <th>
+                Acciones
             </th>
             </thead>
             <tbody>
@@ -30,11 +37,18 @@
                     <td>
                         ${{factura.precio}}
                     </td>
+                    <td>
+                        <button id="botonEditar" class="btn btn-info"><a  ui-sref="facturas-update({facturaId: factura.id})" style="color:white"><span class="glyphicon glyphicon-edit"></span></a></button>
+                        <button id="botonEliminar" class="btn btn-danger"  ng-click="eliminarFactura(factura.id)"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+
+
 
 
 
