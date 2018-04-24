@@ -11,7 +11,8 @@
         'personalizadaModule', 'carritoModule',
         'calificacionModule',
         'personalizadaModule',
-        'catalogoModule'
+        'catalogoModule',
+        'pedidoModule', 'pqrsModule'        
         //'promocionModule'
         
 
