@@ -5,13 +5,14 @@
     mod.controller('carritoDetailCtrl', ['$scope', '$http', 'carritoContext', '$state',
     function($scope, $http, carritoContext, $state)
     {
+        var carritoId = 1;
         if(($state.params.carritoId !== undefined) && ($state.params.carritoId !== null) )
         {
-            $http.get(carritoCotext + '/' + $stateParams.carritoId).then(function (response) {
+            $http.get(carritoContext + '/' + $stateParams.carritoId).then(function (response) {
                 $scope.currentCarrito = response.data;
             });
         }
     }
-    ])
+    ]);
 }
-        )
+        );
