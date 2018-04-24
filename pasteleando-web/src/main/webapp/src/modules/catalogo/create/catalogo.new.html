@@ -1,49 +1,47 @@
-<div class="container-fluid">
-    <div class="panel-group"  >
+
+<alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+ <div class="container-fluid">
+    <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createcatalogo">Crear nuevo catalogo</label>
-                <label ng-if="edit" id="editcatalogo">Editar catalogo</label></div>
+         
+               
             <div class="panel-body">
-                <form name="catalogo">
+                <form ng-submit="ctrl.saveRecord(currentRecord.id)" name="catalogo">
+                    
+                    
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            
-                             <label for="catalogoId" class="col-sm-2">Id:</label>
-                            <input id="catalogoId" required ng-model="data.id" class="col-sm-6"/>
-                            
-                           
+                            <label for="catalogoPeso" class="col-sm-2">Peso:</label>
+                            <textarea id="catalogoPeso" required ng-model="currentRecord.peso" class="col-sm-6"></textarea>
                         </div>
-                        
+                    </div>          
+                    <div class="form-group row">
                         <div class="form-group col-md-6">
-                            
-                          <label for="catalogoCategoria" class="col-sm-2">Categoria:</label>
-                            <input id="catalogoCategoria" required ng-model="data.categoria" class="col-sm-6"/>
-                           
+                            <label for="catalogoColor" class="col-sm-2">Color: </label>
+                            <textarea id="catalogoColor" required ng-model="currentRecord.color" class="col-sm-6"></textarea>
                         </div>
-                        
-                       
-                       
-                    </div>
+                    </div>   
 
                     <div class="form-group row">
-                        <div class="form-group col-sm-4" >
+                        <div class="form-group col-sm-4" ng-if="!atributo.$valid">
 
                             <div class="alert alert-warning" >
-                                <strong>Advertencia!</strong><p>Todos los campos son necesarios*</p>
+                                <strong>Warning!</strong><p>All inputs are required*</p>
                             </div> 
                         </div> 
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-click="createcatalogo()" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="catalogoList">Cancelar</a>
+                            <input ng-show="cliente.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="clienteList">Cancel</a>
                         </div>
                     </div>
                 </form>
 
             </div>
         </div>
-
+    </div>
 </div>
+
 
 

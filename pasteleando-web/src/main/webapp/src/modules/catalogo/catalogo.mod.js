@@ -32,12 +32,15 @@
  *```
  */
 (function (ng) {
+
     var mod = ng.module("catalogoModule", ['ui.router']);
-    mod.constant("catalogoContext", "api/catalogo");
+
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+
             var basePath = 'src/modules/catalogo/';
-            
+
             $urlRouterProvider.otherwise("/home");
+
             $stateProvider.state('catalogo', {
                 url: '/catalogo',
                 abstract: true,
@@ -48,7 +51,6 @@
                         controllerAs: 'ctrl'
                     }
                 }
-    
             }).state('catalogoList', {
                 url: '/list',
                 parent: 'catalogo',
@@ -57,17 +59,23 @@
                         templateUrl: basePath + 'catalogo.list.html'
                     }
                 }
-            }).state('catalogoDetail', {
+            }).state('catalogoCreate', {
+                url: '/catalogo/create',
+                views: {
+                    'mainView': {
+                        controller: 'catalogoCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'catalogo.create.html'
+                    }
+                }
+
+            }) .state('catalogoDetail', {
                 url: '/{catalogoId:int}/detail',
                 parent: 'catalogo',
-                param: {
-                    calificacionId: null
-                },
+                param: {catalogoId: null},
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'catalogo.list.html',
-                        controller: 'catalogoDetailCtrl',
-                        controllerAs: 'ctrl'
+                        templateUrl: basePath + 'catalogo.list.html'
                     },
                     'detailView': {
                         templateUrl: basePath + 'catalogo.detail.html',
@@ -75,42 +83,7 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('catalogoCreate', {
-                url: '/create',
-                parent: 'catalogo',
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + '/new/catalogo.new.html',
-                        controller: 'catalogoNewCtrl'
-                    }
-                }
-               
-            }).state('catalogoUpdate', {
-                url: '/update/{catalogoId:int}',
-                parent: 'catalogo',
-                param: {
-                    catalogoId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + '/new/catalogo.new.html',
-                        controller: 'catalogoUpdateCtrl'
-                    }
-                }
-                
-            }).state('catalogoDelete', {
-                url: '/delete/{catalogoId:int}',
-                parent: 'catalogo',
-                param: {
-                    editorialId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + '/delete/catalogo.delete.html',
-                        controller: 'catalogoDeleteCtrl'
-                    }
-                }
-               
             });
-        }]);
+        }
+    ]);
 })(window.angular);

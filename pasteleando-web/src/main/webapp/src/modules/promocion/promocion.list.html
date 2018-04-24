@@ -1,0 +1,55 @@
+
+<div class="row" style="margin-top: 10px; margin-left: 10px">
+    <button class="btn btn-primary"><a  ui-sref="promocion-create" style="color:white">Crear promocion</a></button>
+</div>
+    <div class="col-sm-10">
+    <div class="responsive-table">
+        <table class="table table-bordered" style="margin-top: 10px; ">
+            <thead>
+             
+            <th>
+                Dirección
+            </th>
+            <th>
+                Fecha (YYYY-MM-DD)
+            </th>
+            <th>
+                Hora
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Acciones
+            </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="promocion in promocionRecords">
+                    <td>
+                        {{promocion.direccion}}
+                    </td>
+                    <td>
+                        {{promocion.fecha}}
+                    </td>
+                    <td>
+                       {{promocion.hora}} 
+                    </td>
+                    <td>
+                        ${{promocion.precio}}
+                    </td>
+                    <td>
+                        <button id="botonEditar" class="btn btn-info"><a  ui-sref="promocion-update({promocionId: promocion.id})" style="color:white"><span class="glyphicon glyphicon-edit"></span></a></button>
+                        <button id="botonEliminar" class="btn btn-danger"  ng-click="eliminarpromocion(promocion.id)"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

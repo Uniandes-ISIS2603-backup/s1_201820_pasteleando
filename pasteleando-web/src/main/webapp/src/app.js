@@ -12,6 +12,7 @@
         'calificacionModule',
         'personalizadaModule',
         'catalogoModule'
+        //'promocionModule'
         
 
         
