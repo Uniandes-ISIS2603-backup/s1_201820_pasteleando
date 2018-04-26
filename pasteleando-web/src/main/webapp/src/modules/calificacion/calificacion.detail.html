@@ -7,6 +7,7 @@
                     <th>Puntaje</th> 
                     <th>Comentario</th> 
                     <th>Id cliente</th> 
+                    
                 </tr>
             </thead>
             <tbody>
@@ -14,7 +15,8 @@
                     <td id="{{$index}}-name">{{currentcalificacion.id}}</td>
                     <td id="{{$index}}-name">{{currentcalificacion.puntaje}}</td>
                     <td id="{{$index}}-name">{{currentcalificacion.comentario}}</td>
-                    <td id="{{$index}}-name">{{currentcalificacion.cliente.id}}</td>
+                    <td id="{{$index}}-name"><a ui-sref="clienteDetail({clienteId: currentcalificacion.cliente.id})">{{currentcalificacion.cliente.id}}</a></td>
+                    
                 </tr>
             </tbody>
         </table>
