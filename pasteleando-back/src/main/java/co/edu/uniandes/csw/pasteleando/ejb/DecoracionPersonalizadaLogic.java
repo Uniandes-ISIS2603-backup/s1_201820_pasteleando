@@ -63,7 +63,7 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity createDecoracionPersonalizada(DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de decoración personalizada");
-        if (!validateFoto(entity.getFoto())) {
+        if (!validateImagen(entity.getImagen())) {
             throw new BusinessLogicException("La foto es invalida. No se puede hacer un pastel con esta foto");
         }
         persistence.create(entity);
@@ -80,7 +80,7 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity updateDecoracionPersonalizada(Long id, DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoración personalizada con id={0}", id);
-        if (!validateFoto(entity.getFoto())) {
+        if (!validateImagen(entity.getImagen())) {
             throw new BusinessLogicException("La foto es inválida. No se puede hacer un pastel con esta foto");
         }
         DecoracionPersonalizadaEntity newEntity = persistence.update(entity);
@@ -102,8 +102,11 @@ public class DecoracionPersonalizadaLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
-    private boolean validateFoto(String foto) {
-        return !foto.isEmpty();
+    private boolean validateImagen(String imagen) {
+        if(imagen == null)
+            return false;
+        else
+            return true;
     }
     
     }
