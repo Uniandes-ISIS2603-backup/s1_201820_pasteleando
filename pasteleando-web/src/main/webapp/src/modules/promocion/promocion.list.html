@@ -1,55 +1,37 @@
-
-<div class="row" style="margin-top: 10px; margin-left: 10px">
-    <button class="btn btn-primary"><a  ui-sref="promocion-create" style="color:white">Crear promocion</a></button>
-</div>
-    <div class="col-sm-10">
-    <div class="responsive-table">
-        <table class="table table-bordered" style="margin-top: 10px; ">
-            <thead>
-             
-            <th>
-                Dirección
-            </th>
-            <th>
-                Fecha (YYYY-MM-DD)
-            </th>
-            <th>
-                Hora
-            </th>
-            <th>
-                Precio
-            </th>
-            <th>
-                Acciones
-            </th>
-            </thead>
-            <tbody>
-                <tr ng-repeat="promocion in promocionRecords">
-                    <td>
-                        {{promocion.direccion}}
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Lista de promociones</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="promocionCreate"><span class="glyphicon glyphicon-plus-sign"></span> Añadir una nueva promocion</a>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                         
+                            <th>Cantidad</th>
+                            <th>Actions</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="promocion in promocionRecords">
+                            <td id="{{$index}}-name"><a ui-sref="promocionDetail({promocionId: promocion.id})">{{promocion.id}}</a></td>
+                            <td>
+                        {{promocion.name}}
                     </td>
-                    <td>
-                        {{promocion.fecha}}
-                    </td>
-                    <td>
-                       {{promocion.hora}} 
-                    </td>
-                    <td>
-                        ${{promocion.precio}}
-                    </td>
-                    <td>
-                        <button id="botonEditar" class="btn btn-info"><a  ui-sref="promocion-update({promocionId: promocion.id})" style="color:white"><span class="glyphicon glyphicon-edit"></span></a></button>
-                        <button id="botonEliminar" class="btn btn-danger"  ng-click="eliminarpromocion(promocion.id)"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    
+                            <td id="{{$index}}-actions">
+                                <a class="btn btn-default btn-sm" ui-sref="promocionUpdate({promocionId: promocion.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a class="btn btn-danger btn-sm" ui-sref="promocionDelete({promocionId: promocion.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-
-
-
-
-
-
-
