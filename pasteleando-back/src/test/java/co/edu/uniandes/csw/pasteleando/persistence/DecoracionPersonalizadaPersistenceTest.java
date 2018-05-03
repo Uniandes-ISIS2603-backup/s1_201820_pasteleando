@@ -147,7 +147,7 @@ public class DecoracionPersonalizadaPersistenceTest {
      *
      *
      */
-     /**
+     
     @Test
     public void getDecoracionesPersonalizadasTest() {
         List<DecoracionPersonalizadaEntity> list = decoracionPersonalizadaPersistence.findAll();
@@ -162,7 +162,7 @@ public class DecoracionPersonalizadaPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    */
+    
     /**
      * Prueba para consultar una decoración personalizada.
      *

@@ -8,7 +8,7 @@
  {
      var mod = ng.module('pedidoModule');
      
-     mod.constant("pedidoContext", "api/pedidos");
+     mod.constant("pedidoContext", "api/pedido");
      mod.controller("pedidoCtrl", ['$scope', '$http','pedidoContext',
          
          function ($scope, $http, context) 
@@ -21,3 +21,4 @@
      ]);
  })
  (window.angular);
+

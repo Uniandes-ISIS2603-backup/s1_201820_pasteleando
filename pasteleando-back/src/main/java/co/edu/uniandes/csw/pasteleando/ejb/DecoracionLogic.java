@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.csw.pasteleando.ejb;
 
+import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.DecoracionPersistence;
+import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,23 +28,41 @@ public class DecoracionLogic {
     private DecoracionPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
     @Inject
-    private PastelLogic pastelLogic;
+    private PastelPersistence pastelPersistence;
+    
+    private DecoracionPersonalizadaLogic personalizadaLo;
+    
+    private DecoracionCatalogoLogic catalogoLo;
+    
     /**
      * Crea una decoracion en la persistencia.
      * @param entity La entidad que representa la decoracion a persistir.
-     * @return La entiddad de la decoracion luego de persistirla.
+     * @param entityP La entidad que representa la decoracion personalizada a persistir.
+     * @param entityC La entidad que representa la decoracion catalogo a persistir.
      * @throws BusinessLogicException Si la decoracion a persistir ya existe.
      */
-    public DecoracionEntity createDecoracion(DecoracionEntity entity) throws BusinessLogicException {
+    public void createDecoracion(DecoracionPersonalizadaEntity entityP, DecoracionCatalogoEntity entityC, DecoracionEntity entity) throws BusinessLogicException {
+       
         LOGGER.info("Inicia proceso de creación de decoracion");
         // Una de las reglas de negocio es la siguiente: No puede haber dos decoraciones con el mismo nombre
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe una Decoracion con el nombre \"" + entity.getName() + "\"");
+        if(pastelPersistence.find(entity.getPastel().getId())==null)
+        {
+            throw new BusinessLogicException("El pastel con el id "+entity.getId());
         }
+        if (pastelPersistence.find(entity.getPastel().getId()).getDecoracion() == null) {
+            throw new BusinessLogicException("El pastel con id " + entity.getId()+ "ya tiene una decoracion");
+        }
+         if(entity.getEsPersonalizada()==0)
+        {
+         personalizadaLo.createDecoracionPersonalizada(entityP);
+        }
+         else if(entity.getEsPersonalizada()==1)
+         {
+          catalogoLo.createDecoracionCatalogo(entityC);
+         }
         // Invoca la persistencia para crear la decoracion
-
+        
         LOGGER.info("Termina proceso de creación de decoracion");
-        return persistence.create(entity);
     }
 
     /**
@@ -78,122 +98,44 @@ public class DecoracionLogic {
     /**
      *
      * Actualizar una decoracion.
-     *
-     * @param id: id de la decoracion para buscarla en la base de datos.
      * @param entity: decoracion con los cambios para ser actualizada, por
      * ejemplo el nombre.
-     * @return la decoracion con los cambios actualizados en la base de datos.
+     * @param entityP La entidad que representa la decoracion personalizada a persistir.
+     * @param entityC La entidad que representa la decoracion catalogo a persistir.
      */
-    public DecoracionEntity updateDecoracion(Long id, DecoracionEntity entity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoracion con id={0}", id);
-        	
-        DecoracionEntity newEntity = persistence.update(entity);
+    public void updateDecoracion( DecoracionEntity entity,DecoracionPersonalizadaEntity entityP, DecoracionCatalogoEntity entityC) throws BusinessLogicException
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoracion con id={0}", entity.getId());
+        if (persistence.find(entity.getId()) == null) {
+            throw new BusinessLogicException("No existe una decoración con id "+ entity);
+        }	
+           if(pastelPersistence.find(entity.getPastel().getId())==null)
+        {
+            throw new BusinessLogicException("El pastel con el id "+entity.getId());
+        }
+        if(entity.getEsPersonalizada()==0)
+        {
+            personalizadaLo.updateDecoracionPersonalizada(entity.getId(), entityP);
+        }
+        else if(entity.getEsPersonalizada()==1)
+        {
+            catalogoLo.updateDecoracionCatalogo(entity.getId(), entityC);
+        }
         LOGGER.log(Level.INFO, "Termina proceso de actualizar decoracion con id={0}", entity.getId());
-        return newEntity;
+       
     }
 
     /**
-     * Borrar un decoracion
-     *
-     * @param entity: entidad que corresponde a la decoracion que se desea eliminar
-     * @param id: id de la decoracion a borrar
-     * @throws BusinessLogicException Si la decoracion a eliminar tiene pasteles.
+     * Eliminar una decoración personalizada por ID
+     * @param id El ID de la decoración personalizada a eliminar
      */
-    public void deleteDecoracion(DecoracionEntity entity, Long id) throws BusinessLogicException {
-       if(persistence.find(id)==null)
-       {
-           throw new BusinessLogicException ("El id presentado no exite");
-       }
-        persistence.delete( entity.getId() );
-
-    }
-     /**
-     * Agregar un pastel a la decoracion
-     *
-     * @param pastelId El id pastel a guardar
-     * @param decoracionId El id de la decoracion en la cual se va a guardar el
-     * pastel.
-     * @return El pastel que fue agregado a la decoracion.
-     */
-    public PastelEntity addPastel(Long pastelId, Long decoracionId) throws BusinessLogicException {
-        DecoracionEntity decoracionEntity = getDecoracion(decoracionId);
-        PastelEntity pastelEntity = pastelLogic.findPastel(pastelId);
-        pastelEntity.setDecoracion(decoracionEntity);
-        return pastelEntity;
-    }
-
-    /**
-     * Borrar un pastel de una decoracion
-     *
-     * @param pastelId El pastel que se desea borrar de la decoracion.
-     * @param decoracionId La decoracion de la cual se desea eliminar.
-     */
-    public void removePastel(Long pastelId, Long decoracionId) throws BusinessLogicException {
-        DecoracionEntity decoracionEntity = getDecoracion(decoracionId);
-        PastelEntity pastel = pastelLogic.findPastel(pastelId);
-        pastel.setDecoracion(null);
-        decoracionEntity.getPasteles().remove(pastel);
-    }
-
-    /**
-     * Remplazar pasteles de una decoracion
-     *
-     * @param pasteles Lista de pasteles que serán los de la decoracion.
-     * @param decoracionId El id de la decoracion que se quiere actualizar.
-     * @return La lista de pasteles actualizada.
-     */
-    public List<PastelEntity> replacePasteles(Long decoracionId, List<PastelEntity> pasteles) {
-        DecoracionEntity decoracion = getDecoracion(decoracionId);
-        List<PastelEntity> pastelList = pastelLogic.findPasteles();
-        for (PastelEntity pastel : pastelList) {
-            if (pasteles.contains(pastel)) {
-                pastel.setDecoracion(decoracion);
-            } else if (pastel.getDecoracion() != null && pastel.getDecoracion().equals(decoracion)) {
-                pastel.setDecoracion(null);
-            }
+    public void deleteDecoracionPersonalizada(Long id) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración  con id={0}", id);
+        if(persistence.find(id)==null)
+        {
+            throw new BusinessLogicException("No existe una decoración  con ese id");
         }
-        return pasteles;
-    }
-
-    /**
-     * Retorna todos los pasteles asociados a una decoracion
-     *
-     * @param decoracionId El ID de la decoracion buscada
-     * @return La lista de pasteles de la decoracion
-     */
-    public List<PastelEntity> getPasteles(Long decoracionId) {
-        return getDecoracion(decoracionId).getPasteles();
-    }
-
-    /**
-     * Retorna un pastel asociado a una decoracion
-     *
-     * @param decoracionId El id de la decoracion a buscar.
-     * @param pastelId El id del pastel a buscar
-     * @return El pastel encontrado dentro de la decoracion.
-     * @throws BusinessLogicException Si el pastel no se encuentra en la decoracion
-     */
-    public PastelEntity getPastel(Long decoracionId, Long pastelId) throws BusinessLogicException {
-        List<PastelEntity> pasteles = getDecoracion(decoracionId).getPasteles();
-        PastelEntity pastel = pastelLogic.findPastel(pastelId);
-        int index = pasteles.indexOf(pastel);
-        if (index >= 0) {
-            return pasteles.get(index);
-        }
-        throw new BusinessLogicException("El pastel no está asociado a la decoracion");
-
-    }
-
-    /**
-     * Obtiene una colección de instancias de PastelEntity asociadas a una
-     * instancia de Decoracion
-     *
-     * @param decoracionId Identificador de la instancia de Decoracion
-     * @return Colección de instancias de PastelEntity asociadas a la instancia de
-     * Decoracion
-     *
-     */
-    public List<PastelEntity> listPasteles(Long decoracionId) {
-        return getDecoracion(decoracionId).getPasteles();
+        persistence.delete(id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar decoración  con id={0}", id);
     }
 }

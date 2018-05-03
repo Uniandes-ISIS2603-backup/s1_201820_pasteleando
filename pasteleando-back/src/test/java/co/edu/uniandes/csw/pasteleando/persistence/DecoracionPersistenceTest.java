@@ -83,6 +83,7 @@ public class DecoracionPersistenceTest {
     public void configTest() {
         try {
             utx.begin();
+            em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
@@ -148,7 +149,7 @@ public class DecoracionPersistenceTest {
      *
      *
      */
-    /**
+    
     @Test
     public void getDecoracionesTest() {
         List<DecoracionEntity> list = decoracionPersistence.findAll();
@@ -163,7 +164,7 @@ public class DecoracionPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    */
+    
     
     /**
      * Prueba para consultar una decoración del catálogo.

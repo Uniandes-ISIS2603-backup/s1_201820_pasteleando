@@ -42,7 +42,7 @@ import java.util.Date;
 
 
 public class DecoracionDTO implements Serializable {
-    
+ 
      /**
      * Atributo que modela la fecha de la Decoracion
      */
@@ -55,7 +55,9 @@ public class DecoracionDTO implements Serializable {
            /**
      * Atributo que modela si la decoracion es Personalizada
      */
-        private Boolean esPersonalizada;
+        private int esPersonalizada;
+        
+        private Long id;
        
       /**
 	 * Constructor por defecto
@@ -71,19 +73,24 @@ public class DecoracionDTO implements Serializable {
 	 */
 	public DecoracionDTO( DecoracionEntity decoracionEntity )
 	{
+            if(decoracionEntity!=null)
+            {
 		this.fechaAgregado = decoracionEntity.getFechaAgregado();
 		this.foto=decoracionEntity.getFoto();
+                this.esPersonalizada=decoracionEntity.getEsPersonalizada();
+                this.id=decoracionEntity.getId();
+            }
 	}
 /**
             * @return Si la entidad es Personalizada
 	 */
-    public Boolean getEsPersonalizada() {
+    public int getEsPersonalizada() {
         return esPersonalizada;
     }
 /**
 	 * @param esPersonalizada El nuevo estado de la entidad Decoracion
 	 */
-    public void setEsPersonalizada(Boolean esPersonalizada) {
+    public void setEsPersonalizada(int esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
 
@@ -112,6 +119,15 @@ public class DecoracionDTO implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+     public Long getId() {
+        return id;
+    }
+        /**
+	 * @param id El nuevo id de la entidad decoracion
+	 */
+    public void setId(Long id) {
+        this.id = id;
+    }
     
 	/**
 	 * Convertir DTO a Entity
@@ -123,6 +139,8 @@ public class DecoracionDTO implements Serializable {
 		DecoracionEntity entity = new DecoracionEntity( );
 		entity.setFoto( this.foto );
 		entity.setFechaAgregado( this.fechaAgregado );
+                entity.setEsPersonalizada(this.esPersonalizada);
+                entity.setId(this.getId());
 		return entity;
 	}
 }

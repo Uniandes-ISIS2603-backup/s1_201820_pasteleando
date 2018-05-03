@@ -20,13 +20,21 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
      */
     private String color;
     /**
-     * Atributo que modela la imagen de la DecoracionPersonalizada
-     */
-    private String imagen;
-    /**
      * Atributo que modela el estado de la DecoracionPersonalizada
      */
     private String estado;
+    
+    private int peso;
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+    
+    
     
     /**
      * @return foto
@@ -42,22 +50,6 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     public void setColor( String color )
     {
         this.color = color;
-    }
-    
-    /**
-     * @return the imagen
-     */
-    public String getImagen( )
-    {
-        return imagen;
-    }
-    
-    /**
-     * @param imagen the atribute to set
-     */
-    public void setImagen( String imagen )
-    {
-        this.imagen = imagen;
     }
     /**
      * @return the Estado

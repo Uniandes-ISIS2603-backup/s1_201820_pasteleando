@@ -63,8 +63,8 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity createDecoracionPersonalizada(DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de decoración personalizada");
-        if (!validateImagen(entity.getImagen())) {
-            throw new BusinessLogicException("La foto es invalida. No se puede hacer un pastel con esta foto");
+        if (!validatePeso(entity.getPeso())) {
+            throw new BusinessLogicException("El peso del pastel no es valido. Debe ser mayor o igual a 0");
         }
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de la decoración persnalizada");
@@ -80,8 +80,8 @@ public class DecoracionPersonalizadaLogic
      */
     public DecoracionPersonalizadaEntity updateDecoracionPersonalizada(Long id, DecoracionPersonalizadaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoración personalizada con id={0}", id);
-        if (!validateImagen(entity.getImagen())) {
-            throw new BusinessLogicException("La foto es inválida. No se puede hacer un pastel con esta foto");
+        if (!validatePeso(entity.getPeso())) {
+            throw new BusinessLogicException("El peso del pastel no es valido. Debe ser mayor o igual a 0");
         }
         DecoracionPersonalizadaEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar decoración personalizada con id={0}", entity.getId());
@@ -102,11 +102,12 @@ public class DecoracionPersonalizadaLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
-    private boolean validateImagen(String imagen) {
-        if(imagen == null)
+    private boolean validatePeso(int peso) {
+        if(peso <=0)
             return false;
         else
             return true;
     }
+    
     
     }

@@ -41,7 +41,7 @@ import javax.ws.rs.WebApplicationException;
 public class DecoracionPersonalizadaResource
 {
     @Inject
-    DecoracionPersonalizadaLogic decoracionPersonalizadaLogic;
+    private DecoracionPersonalizadaLogic decoracionPersonalizadaLogic;
     
     /**
      * <h1>GET /api/personalizada : Obtener todas las entidades de decoración del personalizada.</h1>
