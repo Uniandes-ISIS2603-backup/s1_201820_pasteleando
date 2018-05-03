@@ -6,21 +6,23 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
-import javax.inject.Inject;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-
 import org.junit.Assert;
-
+import org.junit.Before;
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
 
 /**
  *
@@ -34,6 +36,11 @@ public class ClientePersistenceTest {
     
     @PersistenceContext
     private EntityManager em;
+    
+    @Inject
+    UserTransaction utx;
+    
+    private List<ClienteEntity> data = new ArrayList<>();
     
       /**
      *
@@ -71,7 +78,87 @@ public class ClientePersistenceTest {
         
     }
     
-   
+     @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+     private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+
+            em.persist(entity);
+            
+            data.add(entity);
+        }
+    }
+     
+      @Test
+    public void getClientesTest() {
+        List<ClienteEntity> list = clientePersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (ClienteEntity ent : list) {
+            boolean found = false;
+            for (ClienteEntity entity : data) {
+                if (ent.getId() == entity.getId()) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    
+     @Test
+    public void getClienteTest() {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        // id
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+    }
+    
+     @Test
+    public void deleteClienteTest() {
+        ClienteEntity entity = data.get(0);
+        clientePersistence.delete(entity.getId());
+        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    @Test
+    public void updateClienteTest() {
+        ClienteEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        clientePersistence.update(newEntity);
+
+        ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ClienteEntity").executeUpdate();
+    }
     
  
     
