@@ -54,16 +54,7 @@ public class DecoracionPersistence
         TypedQuery<DecoracionEntity> query = em.createQuery( "Select e From DecoracionEntity e where e.name = :name", DecoracionEntity.class );
         // Se remplaza el placeholder ":name" con el valor del argumento
         query = query.setParameter( "name", name );
-        // Se invoca el query se obtiene la lista resultado
-        List<DecoracionEntity> sameName = query.getResultList( );
-        if( sameName.isEmpty( ) )
-        {
-            return null;
-        }
-        else
-        {
-            return sameName.get( 0 );
-        }
+        return query.getSingleResult();
     }
     
     public List<DecoracionEntity> findAll( )

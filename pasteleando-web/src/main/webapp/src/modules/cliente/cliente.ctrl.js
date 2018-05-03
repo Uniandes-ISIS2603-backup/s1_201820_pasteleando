@@ -34,7 +34,7 @@
              * @param {String} URL Dirección donde se encuentra el recurso
              * de las editoriales o API donde se puede consultar.
              */
-            $http.get("clienteContext").then(function (response) {
+            $http.get(clienteContext).then(function (response) {
                 $scope.clienteRecords = response.data;
             });
         }

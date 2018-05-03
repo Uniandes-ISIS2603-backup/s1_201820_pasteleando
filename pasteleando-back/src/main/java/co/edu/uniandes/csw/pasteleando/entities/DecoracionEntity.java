@@ -5,15 +5,19 @@
 */
 package co.edu.uniandes.csw.pasteleando.entities;
 
+import co.edu.uniandes.csw.pasteleando.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -26,18 +30,34 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      * Atributo que modela los pasteles de la DecoracionEntity
      */
     @PodamExclude
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "decoracion")
-    private List<PastelEntity> pasteles = new ArrayList<>();
+    @OneToOne( fetch=FetchType.EAGER,  targetEntity = PastelEntity.class,cascade = CascadeType.PERSIST)
+    private PastelEntity pastel; 
     
     /**
      * Atributo que modela la fecha de la DecoracionEntity
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaAgregado;
     /**
      * Atributo que modela la foto de la DecoracionEntity
      */
     private String foto;
+    
+    private int esPersonalizada;
+    
+    public DecoracionEntity()
+    {
+        
+    }
+
+    public int getEsPersonalizada() {
+        return esPersonalizada;
+    }
+
+    public void setEsPersonalizada(int esPersonalizada) {
+        this.esPersonalizada = esPersonalizada;
+    }
     
     /**
      * @return foto
@@ -69,13 +89,13 @@ public class DecoracionEntity extends BaseEntity implements Serializable
     {
         this.fechaAgregado = fechaAgregado;
     }
-    
-    public List<PastelEntity> getPasteles() {
-        return pasteles;
+
+    public PastelEntity getPastel() {
+        return pastel;
     }
-    
-    public void setPasteles(List<PastelEntity> pasteles) {
-        this.pasteles = pasteles;
+
+    public void setPastel(PastelEntity pastel) {
+        this.pastel = pastel;
     }
     
 }

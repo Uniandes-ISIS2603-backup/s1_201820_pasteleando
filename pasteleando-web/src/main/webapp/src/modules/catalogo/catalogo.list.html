@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2" ng-repeat="catalogo in catalogoRecords">
+            <div class="thumbnail">
+                <a ui-sref="catalogoDetail({catalogoId: catalogo.id})">       
+                    <img class="img-responsive" ng-src='{{catalogo.imagen}}' alt="{{catalogo.name}}" style="height:300px;width:400px">  
+                </a>
+                <div class="caption text-center">{{catalogo.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

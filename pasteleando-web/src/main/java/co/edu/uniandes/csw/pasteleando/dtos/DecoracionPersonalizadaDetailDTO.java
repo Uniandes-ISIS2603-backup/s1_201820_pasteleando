@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
+import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,16 +25,7 @@ import java.util.List;
  */
 public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
 {
-     /**
-     * Atributo que modela la coleccion de la Decoraciones
-     */
-    private List <DecoracionDTO> decoracion;
-
- /**
-     * Atributo que modela la coleccion de la Decoraciones Personalizadas
-     */    private List <DecoracionPersonalizadaDTO> decoracionPersonalizada;
-        
-
+    
 	/**
 	 * Constructor por defecto
 	 */
@@ -55,26 +48,11 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
 	 *
 	 * @return La entidad construida a partir del DTO.
 	 */
-	@Override
 	public DecoracionPersonalizadaEntity toEntity( )
 	{
-		DecoracionPersonalizadaEntity decoracionPersonalizadaEntity = super.toEntity( );
-		return decoracionPersonalizadaEntity;
+		DecoracionPersonalizadaEntity entity = super.toEntity();
+              
+        return entity;
 	}
 
-    public List<DecoracionDTO> getDecoracion() {
-        return decoracion;
-    }
-
-    public void setDecoracion(List<DecoracionDTO> decoracion) {
-        this.decoracion = decoracion;
-    }
-
-    public List<DecoracionPersonalizadaDTO> getDecoracionPersonalizada() {
-        return decoracionPersonalizada;
-    }
-
-    public void setDecoracionPersonalizada(List<DecoracionPersonalizadaDTO> decoracionPersonalizada) {
-        this.decoracionPersonalizada = decoracionPersonalizada;
-    }
 }

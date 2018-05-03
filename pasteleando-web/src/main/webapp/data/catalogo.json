@@ -1,0 +1,37 @@
+[{
+        "id":1,
+        "name": "Pastel de Cumpleaños",
+        "color":"Blanco", 
+        "estado":"Entregado",
+        "peso":"500 gr",
+        "imagen":"http://blog.kiwilimon.com/wp-content/uploads/2015/10/hoy2.jpg",
+        "descripcion":"El nacimiento debe celebrarse, y nada mejor como un pastel."
+},
+{
+    "id":2,
+    "name": "Pastel de Boda",
+    "color":"Negro",
+    "estado":"Enviado",
+    "peso":"700 gr",
+    "imagen":"https://cdn0.bodas.com.mx/usr/4/8/9/4/cfb_363671.jpg",
+    "descripcion":"Este pastel se recomienda para una ocasión un poco más formal, como una boda."
+},
+{
+    "id":3,
+    "name" : "Pastel de Fútbol",
+    "color" : "Verde",
+    "peso" :"600 gr",
+    "imagen":"https://i.pinimg.com/originals/6e/bc/5b/6ebc5bfbf2d3ccd060bebcefbdc63696.jpg",
+    "descripcion":"Perfecto para una fiesta infantil, o no."
+},
+{
+    "id":4,
+    "name":"Pastel de super héroes",
+    "color":"Multicolor",
+    "peso": "550 gr",
+    "imagen":"https://s-media-cache-ak0.pinimg.com/originals/be/fb/b3/befbb3e5a7d61fab51d63c82ab155ba6.jpg",
+        "descripcion":"Ideal para los amantes del Marvel."
+}
+
+
+]

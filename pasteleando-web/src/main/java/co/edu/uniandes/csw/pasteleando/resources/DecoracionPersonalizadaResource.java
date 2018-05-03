@@ -80,7 +80,7 @@ public class DecoracionPersonalizadaResource
     public DecoracionPersonalizadaDetailDTO getDecoracionPersonalizada(@PathParam("id") Long id) {
         DecoracionPersonalizadaEntity entity = decoracionPersonalizadaLogic.getDecoracionPersonalizada(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /personalizada/" + id + " no existe.", 404);
         }
         return new DecoracionPersonalizadaDetailDTO(entity);
     }
@@ -108,7 +108,7 @@ public class DecoracionPersonalizadaResource
      */
     @POST
     public DecoracionPersonalizadaDetailDTO createDecoracionPersonalizada(DecoracionPersonalizadaDetailDTO decoracionPersonalizada) throws BusinessLogicException {
-        return new DecoracionPersonalizadaDetailDTO(decoracionPersonalizadaLogic.createDecoracionPersonalizada(decoracionPersonalizada.toEntity()));
+          return new DecoracionPersonalizadaDetailDTO(decoracionPersonalizadaLogic.createDecoracionPersonalizada(decoracionPersonalizada.toEntity()));
     }
     
     /**
@@ -158,33 +158,13 @@ public class DecoracionPersonalizadaResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteBook(@PathParam("id") Long id) throws BusinessLogicException {
+    public void deleteDecoracionPersonalizada(@PathParam("id") Long id) throws BusinessLogicException {
         DecoracionPersonalizadaEntity entity = decoracionPersonalizadaLogic.getDecoracionPersonalizada(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso //" + id + " no existe.", 404);
         }
         decoracionPersonalizadaLogic.deleteDecoracionPersonalizada(id);
     }
-    
-    /**
-     * Conexión con el servicio de promociones para una decoración del personalizada. {@link PromocionResource}
-     *
-     * Este método conecta la ruta de /personalizada con las rutas de /promociones que dependen
-     * de la decoración del personalizada, es una redirección al servicio que maneja el segmento de la
-     * URL que se encarga de las promociones.
-     *
-     * @param personalizadaId El ID de la decoración del personalizada con respecto al cual se accede al servicio.
-     * @return El servicio de promociones para la decoración del personalizada en paricular.
-     */
-    @Path("{id: \\d+}/reviews")
-    public Class<PromocionResource> getReviewResource(@PathParam("id") Long personalizadaId) {
-        DecoracionPersonalizadaEntity entity = decoracionPersonalizadaLogic.getDecoracionPersonalizada(personalizadaId);
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /personalizada/" + personalizadaId , 404);
-        }
-        return PromocionResource.class;
-    }
-    
     private List<DecoracionPersonalizadaDetailDTO> listDecoracionPersonalizadaEntity2DetailDTO(List<DecoracionPersonalizadaEntity> entityList) {
         List<DecoracionPersonalizadaDetailDTO> list = new ArrayList<>();
         entityList.forEach((entity) -> {

@@ -7,7 +7,7 @@
 (function (ng) 
 {
     var mod = ng.module("pedidoModule");
-    mod.constant("pedidoContext", "api/pedidos");
+    mod.constant("pedidoContext", "api/pedido");
     mod.controller('pedidoDetailCtrl', ['$scope', '$http', 'pedidoContext', '$state', '$filter',
         
         function ($scope, $http, pedidoContext, $state, $filter) 

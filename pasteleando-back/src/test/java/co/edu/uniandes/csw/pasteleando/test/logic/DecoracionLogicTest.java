@@ -110,22 +110,6 @@ public class DecoracionLogicTest {
             }
         }
     }
-    
-    /**
-     * Prueba para crear un Decoracion
-     *
-     * @throws co.edu.uniandes.csw.pastelestore.exceptions.BusinessLogicException
-     */
-    @Test
-    public void createDecoracionTest() throws BusinessLogicException {
-        DecoracionEntity newEntity = factory.manufacturePojo(DecoracionEntity.class);
-        DecoracionEntity result = decoracionLogic.createDecoracion(newEntity);
-        Assert.assertNotNull(result);
-        DecoracionEntity entity = em.find(DecoracionEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-    }
-    
     /**
      * Prueba para consultar la lista de Decoraciones
      *
@@ -164,34 +148,14 @@ public class DecoracionLogicTest {
      * Prueba para eliminar un Decoracion
      *
      *
-     */
+     
+    
     @Test
     public void deleteDecoracionTest() throws BusinessLogicException {
         DecoracionEntity entity = data.get(0);
-        decoracionLogic.removePastel(pastelesData.get(0).getId(), entity.getId());
-        decoracionLogic.deleteDecoracion(entity, entity.getId());
+        decoracionLogic.deleteDecoracion(entity.getId());
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    
-    /**
-     * Prueba para actualizar un Decoracion en la logica...s
-     *
-     *
-     */
-    @Test
-    public void updateDecoracionTest() {
-        DecoracionEntity entity = data.get(0);
-        DecoracionEntity pojoEntity = factory.manufacturePojo(DecoracionEntity.class);
-        
-        pojoEntity.setId(entity.getId());
-        
-        decoracionLogic.updateDecoracion(pojoEntity.getId(), pojoEntity);
-        
-        DecoracionEntity resp = em.find(DecoracionEntity.class, entity.getId());
-        
-        Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getName(), resp.getName());
-    }
-    
+    */
 }

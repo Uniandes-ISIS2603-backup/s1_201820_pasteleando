@@ -4,13 +4,75 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+
+  <head>
+    <link data-require="bootstrap@*" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <script data-require="bootstrap@*" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div ng-if="isAuthenticated() && hasPermissions()" class="panel-group">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <label ng-if="!edit" id="createPedido">Crear un nuevo pedido</label>
+          </div>
+          <div class="panel-body">
+            <form name="pedido">
+              <div class="form-group row">
+                <div class="form-group col-md-6">
+                  <label for="nombreCliente" class="col-sm-2">Nombre:</label>
+                  <input id="nombreCliente" required="" ng-model="data.name" class="col-sm-6" />
+                </div>
+              </div>
+               <div class="form-group row">
+                <div class="form-group col-md-6">
+                  <label for="idCliente" class="col-sm-2">Cedula:</label>
+                  <input id="idCliente" required="" ng-model="data.name" class="col-sm-6" />
+                </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-group col-md-6">
+                  <label for="fechaPedido" class="col-sm-2">Fecha de realizacion del pedido:</label>
+                  <input type="date" id="fechaPedido" placeholder="DD/MM/YYYY" required="" ng-model="data.fechaPedido" class="col-sm-6" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-group col-md-6">
+                  <label for="Descripcion del pedido" class="col-sm-2">Digite su orden:</label>
+                  <textarea id="Descripcion del pedido" required="" ng-model="data.description" class="col-sm-6"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-group col-md-6">
+                  <label for="seRecogePasteleria" class="col-sm-2">Como desea recibir su orden:</label>
+                  <label><input type="checkbox" id="cbox1" value="first_checkbox"> Domicilio</label><br>
+                  <label><input type="checkbox" id="cbox1" value="first_checkbox"> Recoger en pasteleria</label><br>
+                </div>
+              </div>
+              <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+              <div class="form-group row">
+                <div class="form-group col-sm-4" ng-if="!pedido.$valid">
+                  <div class="alert alert-warning">
+                    <strong>Warning!</strong>
+                    <p>All inputs are required*</p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-group col-sm-12">
+                  <input ng-show="pedido.$valid" ng-click="createPedido()" value="Save" class="btn btn-success" />
+                  <a class="btn btn-info" ui-sref="pedidoList">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
 </html>

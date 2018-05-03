@@ -37,7 +37,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/calificacion/';
             
-            $urlRouterProvider.otherwise("/calificacionList");
+            $urlRouterProvider.otherwise("/home");
             $stateProvider.state('calificacion', {
                 url: '/calificacion',
                 abstract: true,

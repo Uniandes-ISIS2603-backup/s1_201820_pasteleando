@@ -10,7 +10,10 @@
         'facturaModule',  'loginModule','clienteModule',
         'personalizadaModule', 'carritoModule',
         'calificacionModule',
-        'personalizadaModule'
+        'personalizadaModule',
+        'catalogoModule',
+        'pedidoModule', 'pqrsModule',        
+        'promocionModule'
         
 
         

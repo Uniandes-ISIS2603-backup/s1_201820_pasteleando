@@ -35,10 +35,16 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
      * Atributo que modela el estado de la DecoracionPersonalizada
      */
     private String estado;
-    /**
-     * Atributo que modela imagen de la DecoracionPersonalizada
-     */
-    private String imagen;
+    
+    private int peso;
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
     /**
      * Atributo que modela el id de la DecoracionPersonalizada
      */
@@ -61,8 +67,8 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
 	{
 		this.color = decoracionPersonalizadaEntity.getColor();
 		this.estado = decoracionPersonalizadaEntity.getEstado();
-		this.imagen = decoracionPersonalizadaEntity.getImagen();
                 this.id=decoracionPersonalizadaEntity.getId();
+                this.peso=decoracionPersonalizadaEntity.getPeso();
 
 	}
          /**
@@ -77,18 +83,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
     public void setColor(String color) {
         this.color = color;
     }
-        /**
-	 * @return La imagen de la entidad DecoracionPersonalizada
-	 */
-    public String getImagen() {
-        return imagen;
-    }
-        /**
-	 * @param imagen La nueva imagen de la entidad DecoracionPersonalizada
-	 */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
+       
          /**
 	 * @return El estado de la entidad DecoracionPersonalizada
 	 */
@@ -100,6 +95,15 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
 	 */
     public void setEstado(String estado) {
         this.estado = estado;
+    }      
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
     /**
 	 * Convertir DTO a Entity
@@ -110,17 +114,9 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
 	{
 		DecoracionPersonalizadaEntity entity = new DecoracionPersonalizadaEntity( );
 		entity.setColor( this.color );
-		entity.setImagen( this.imagen );
 		entity.setEstado( this.estado );
+                entity.setId(this.id);
+                entity.setPeso(this.peso);
 		return entity;
 	}
-        
-        
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
