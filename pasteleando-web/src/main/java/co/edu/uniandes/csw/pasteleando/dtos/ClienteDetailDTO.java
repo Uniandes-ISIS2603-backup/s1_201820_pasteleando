@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
+import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +119,15 @@ public class ClienteDetailDTO extends ClienteDTO{
    
     private List<PqrsDTO> pqrs;
     private List<CalificacionDTO> calificaciones;
+    private List<FacturaDTO> facturas;
+
+    public void setFacturas(List<FacturaDTO> facturas) {
+        this.facturas = facturas;
+    }
+
+    public List<FacturaDTO> getFacturas() {
+        return facturas;
+    }
     
     /**
 	 * Constructor por defecto
@@ -173,6 +183,23 @@ public class ClienteDetailDTO extends ClienteDTO{
         {
             this.carrito = null;
         }
+        
+         if(entity.getFacturas()!= null)
+        {
+           this.facturas = new ArrayList<FacturaDTO>();
+           for(int i = 0 ; i < entity.getFacturas().size(); i++)
+           {
+               FacturaDTO nuevo = new FacturaDTO(entity.getFacturas().get(i));
+               this.facturas.add(nuevo);
+           }
+            
+        }
+        
+        else
+        {
+            this.pqrs = null;
+        }
+        
     }
     
      /**
@@ -222,6 +249,22 @@ public class ClienteDetailDTO extends ClienteDTO{
         else
         {
             entity.setCarrito(null);
+        }
+        
+        if(this.facturas != null)
+        {
+           entity.setFacturas(new ArrayList<FacturaEntity>());
+           for(int i = 0 ; i < this.facturas.size(); i++)
+           {
+               FacturaEntity nuevo = this.facturas.get(i).toEntity();
+               entity.getFacturas().add(nuevo);
+           }
+            
+        }
+        
+        else
+        {
+             entity.setPqrs(null);
         }
         
         return entity;

@@ -19,11 +19,40 @@
                  $scope.facturasRecords1.fecha = $scope.facturasRecords1.fecha.split("T")[0];
                  
             })
+            
             $scope.updateFactura = function (idFactura)
             {
+                $scope.data.hora = $scope.data.horas + ":" + $scope.data.minutos;
+                $scope.data.fecha = new Date();
                 $http.put(context + "/" + idFactura, $scope.data).then(function (response) {
                 $state.go('facturas',{facturaId: response.data.id},{reload:true});
                 });
+            }
+            
+            $scope.horas = []
+            
+            for (var i = 0; i < 24; i++) {
+                if(i < 10)
+                {
+                    $scope.horas.push("0"+i);
+                }
+                else
+                {
+                    $scope.horas.push(i);
+                }
+            }
+            
+            $scope.minutos = []
+            
+            for (var i = 0; i < 60; i++) {
+                if(i<10)
+                {
+                    $scope.minutos.push("0" + i);
+                }
+                else
+                {
+                    $scope.minutos.push(i);
+                }
             }
         }
     ]);

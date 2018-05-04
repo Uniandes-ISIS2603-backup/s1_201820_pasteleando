@@ -19,8 +19,6 @@ and open the template in the editor.
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Pqrs No.</th>
-                        
                             <th>Estado</th>  
                             
                             <th>Fecha</th>  
@@ -28,6 +26,19 @@ and open the template in the editor.
                             <th>Tipo</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr ng-repeat="pqrs in pqrsRecords">
+                    <td>
+                        {{pqrs.id}}
+                    </td>
+                    <td>
+                        <p>{{pqrs.estado}}</p> <label>¿Resuelto?</label>  <input class="form-check-input" type="checkbox" ng-model="pqrs.estado" ng-true-value="Resuelto" ng-false-value="Pendiente" id="defaultCheck1">
+                    </td>
+                    <td>
+                        {{pqrs.tipo}}
+                    </td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

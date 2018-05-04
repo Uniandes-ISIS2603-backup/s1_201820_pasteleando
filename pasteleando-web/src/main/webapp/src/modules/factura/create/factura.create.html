@@ -20,22 +20,20 @@
     <input id="facturaDireccion"  ng-model="data.direccion" class="col-sm-6 form-control" required>
   </div>
     
-    <label class='control-label' for='facturaFecha'>Fecha:(En YYYY-MM-DD) * </label>
-    <div class="input-group">
-    <div class="input-group-addon">
-      <span class="glyphicon glyphicon-calendar"></span>
-    </div>
-    <input id="facturaFecha"  ng-model="data.fecha" class="col-sm-6 form-control" required>
+
+    
+    <div class="input-group" style="margin-top: 10px">
+        <label class='control-label'>Hora </label>
+        <select class="selectpicker" ng-init="data.horas = horas[0]" ng-model="data.horas" ng-options="x for x in horas" style="width: 60px; height: 30px; margin-left: 10px">
+    </select>
+    
+        <label class='control-label' style="padding-left: 10px">Minutos </label>
+    <select class="selectpicker" ng-init="data.minutos = minutos[0]" ng-model="data.minutos" ng-options="x for x in minutos" style="width: 60px; height: 30px; margin-left: 10px">
+    </select>
+
   </div>
     
-    <label class='control-label' for='facturaHora'> Hora:(En HH:MM) * </label>
-    <div class="input-group">
-    <div class="input-group-addon">
-      <span class="glyphicon glyphicon-time"></span>
-    </div>
-    <input id="facturaHora"   ng-model="data.hora" class="col-sm-6 form-control" required>
-  </div>
-
+    <div class="input-group" style="margin-top: 10px">
     <label class='control-label' for='facturaPrecio'> Precio: *</label>
     <div class="input-group">
     <div class="input-group-addon">
@@ -45,6 +43,7 @@
     </div>
    
      <button class="btn btn-success" style="margin-top:10px"  ng-click="createFactura(factura.id)" ng-click="parseFecha()" value="Save">¡Crear!</button>
-     <button class="btn btn-warning" style="margin-top:10px" ui-sref="facturas">Cancelar </button>
+     <button class="btn btn-warning" style="margin-top:10px; margin-left: 10px" ui-sref="facturas">Cancelar </button>
+    </div>
 </div>
 
