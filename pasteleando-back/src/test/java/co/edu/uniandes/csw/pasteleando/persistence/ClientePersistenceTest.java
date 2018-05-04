@@ -16,15 +16,13 @@ import javax.transaction.UserTransaction;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-
 import org.junit.Assert;
 import org.junit.Before;
-
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
 
 /**
  *
@@ -38,6 +36,11 @@ public class ClientePersistenceTest {
     
     @PersistenceContext
     private EntityManager em;
+    
+    @Inject
+    UserTransaction utx;
+    
+    private List<ClienteEntity> data = new ArrayList<>();
     
       /**
      *
@@ -56,7 +59,6 @@ public class ClientePersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-     private List<ClienteEntity> data = new ArrayList<>();
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -73,9 +75,7 @@ public class ClientePersistenceTest {
     private void clearData() {
         em.createQuery("delete from ClienteEntity").executeUpdate();
     }
-    
-    @Inject
-    UserTransaction utx;
+
     
     @Before
     public void configTest() {
@@ -114,6 +114,7 @@ public class ClientePersistenceTest {
         
     }
     
+
    @Test
     public void getClientesTest() {
         List<ClienteEntity> list = clientePersistence.findAll();
@@ -128,7 +129,43 @@ public class ClientePersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
  
     
-}
+
+
+    
+    
+     @Test
+    public void getClienteTest() {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        // id
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+    }
+    
+     @Test
+    public void deleteClienteTest() {
+        ClienteEntity entity = data.get(0);
+        clientePersistence.delete(entity.getId());
+        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    @Test
+    public void updateClienteTest() {
+        ClienteEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        clientePersistence.update(newEntity);
+
+        ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }
+
+
+    }
