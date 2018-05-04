@@ -55,7 +55,7 @@ public class DecoracionDTO implements Serializable {
            /**
      * Atributo que modela si la decoracion es Personalizada
      */
-        private int esPersonalizada;
+        private Integer esPersonalizada;
         
         private Long id;
        
@@ -84,13 +84,13 @@ public class DecoracionDTO implements Serializable {
 /**
             * @return Si la entidad es Personalizada
 	 */
-    public int getEsPersonalizada() {
+    public Integer getEsPersonalizada() {
         return esPersonalizada;
     }
 /**
 	 * @param esPersonalizada El nuevo estado de la entidad Decoracion
 	 */
-    public void setEsPersonalizada(int esPersonalizada) {
+    public void setEsPersonalizada(Integer esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
 

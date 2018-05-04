@@ -18,7 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PastelEntity extends BaseEntity implements Serializable
 {
-    private int peso;
+    private Integer peso;
     private double precio;
     
     @PodamExclude
@@ -29,7 +29,7 @@ public class PastelEntity extends BaseEntity implements Serializable
      * @return peso
      */
     
-    public int getPeso()
+    public Integer getPeso()
     {
         return peso;
     }
@@ -38,7 +38,7 @@ public class PastelEntity extends BaseEntity implements Serializable
      * @param pPeso
      */
     
-    public void setPeso(int pPeso)
+    public void setPeso(Integer pPeso)
     {
         this.peso = pPeso;
     }

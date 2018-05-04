@@ -43,7 +43,7 @@ public class PromocionDTO {
     /**
      * Atributo que modela el porcentaje de la promocion.
      */
-    private int cantidad;
+    private Integer cantidad;
     
     /**
      * Constructor por defecto
@@ -87,7 +87,7 @@ public class PromocionDTO {
      * Devuelve la cantidad de la promoción.
      * @return la cantidad.
      */
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
     
@@ -95,7 +95,7 @@ public class PromocionDTO {
      * Modifica la cantidad de la promoción.
      * @param cantidad La cantidad nueva.
      */
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
     

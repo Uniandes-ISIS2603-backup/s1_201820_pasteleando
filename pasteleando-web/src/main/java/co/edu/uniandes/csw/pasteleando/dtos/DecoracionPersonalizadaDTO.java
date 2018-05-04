@@ -36,13 +36,13 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
      */
     private String estado;
     
-    private int peso;
+    private Integer peso;
 
-    public int getPeso() {
+    public Integer getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(Integer peso) {
         this.peso = peso;
     }
     /**

@@ -40,7 +40,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * @return cantidad
      */
-    public int getCantidad( )
+    public Integer getCantidad( )
     {
         return cantidad;
     }
@@ -48,7 +48,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * @param cantidad the atribute to set
      */
-    public void setCantidad( int cantidad )
+    public void setCantidad( Integer cantidad )
     {
         this.cantidad = cantidad;
     }

@@ -44,18 +44,18 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      */
     private String foto;
     
-    private int esPersonalizada;
+    private Integer esPersonalizada;
     
     public DecoracionEntity()
     {
         
     }
 
-    public int getEsPersonalizada() {
+    public Integer getEsPersonalizada() {
         return esPersonalizada;
     }
 
-    public void setEsPersonalizada(int esPersonalizada) {
+    public void setEsPersonalizada(Integer esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
     

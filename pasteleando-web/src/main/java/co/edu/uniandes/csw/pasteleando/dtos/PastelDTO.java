@@ -63,7 +63,7 @@ public class PastelDTO
    * @return peso Peso del pastel
    */
 
-  public int getPeso()
+  public Integer getPeso()
   {
       return peso;
   }
@@ -72,7 +72,7 @@ public class PastelDTO
    * @param pPeso Nuevo Peso del Pastel
    */
 
-  public void setPeso(int pPeso)
+  public void setPeso(Integer pPeso)
   {
       this.peso = pPeso;
   }
