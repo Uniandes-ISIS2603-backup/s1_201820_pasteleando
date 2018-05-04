@@ -6,15 +6,19 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import javax.inject.Inject;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.Assert;
+import org.junit.Before;
 
 import org.junit.Test;
 
@@ -52,6 +56,45 @@ public class ClientePersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+     private List<ClienteEntity> data = new ArrayList<>();
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+
+            em.persist(entity);
+            
+            data.add(entity);
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ClienteEntity").executeUpdate();
+    }
+    
+    @Inject
+    UserTransaction utx;
+    
+    @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
      /**
      * Prueba para crear un Cliente
      */
@@ -71,7 +114,20 @@ public class ClientePersistenceTest {
         
     }
     
-   
+   @Test
+    public void getClientesTest() {
+        List<ClienteEntity> list = clientePersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (ClienteEntity ent : list) {
+            boolean found = false;
+            for (ClienteEntity entity : data) {
+                if (ent.getId() == entity.getId()) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
  
     
