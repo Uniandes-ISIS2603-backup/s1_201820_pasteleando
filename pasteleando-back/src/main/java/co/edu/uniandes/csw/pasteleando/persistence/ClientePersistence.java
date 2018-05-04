@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
+import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -58,25 +59,6 @@ public class ClientePersistence {
 
     }
     
-      public ClienteEntity findByCarrito(int carrito) {
-
-        
-        	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.carrito = :carrito", ClienteEntity.class );
-		// Se remplaza el placeholder ":name" con el valor del argumento
-		query = query.setParameter( "carrito", carrito );
-		// Se invoca el query se obtiene la lista resultado
-		List<ClienteEntity> sameName = query.getResultList( );
-                
-		if( sameName.isEmpty( ) )
-		{
-			return null;
-		}
-		else
-		{
-			return sameName.get( 0 );
-		}
-
-    }
     
     
 

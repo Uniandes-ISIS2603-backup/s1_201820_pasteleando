@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
+import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -166,6 +167,14 @@ public class ClientePersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
-
-
+    
+    @Test
+    public void findByNameTest()
+    {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.findByName(entity.getName());
+        
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
+   
+}
