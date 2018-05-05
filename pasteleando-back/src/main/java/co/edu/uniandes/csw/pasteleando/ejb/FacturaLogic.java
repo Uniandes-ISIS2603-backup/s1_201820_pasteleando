@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.FacturaPersistence;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -78,7 +77,7 @@ public class FacturaLogic {
     public void deleteFactura(Long id) throws BusinessLogicException{
         if(persistence.find(id) != null)
         {
-        persistence.delete(id);
+            persistence.delete(id);
         }
         else
         {

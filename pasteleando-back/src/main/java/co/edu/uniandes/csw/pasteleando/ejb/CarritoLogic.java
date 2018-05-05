@@ -13,19 +13,24 @@ import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author MIGUELHOYOS
  */
+@Stateless
 public class CarritoLogic {
+    
     @Inject
     private CarritoPersistence persistence;
 
-    
-
-    
+    /**
+     * Se encarga de crear un Carrito en la base de datos.
+     * @param entity Objeto de CarritoEntity con los datos nuevos
+     * @return Objeto de CarritoEntity con los datos nuevos y su ID.
+     */
     public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
     {
         if(entity.getCliente() == null)
@@ -39,6 +44,10 @@ public class CarritoLogic {
         return persistence.create(entity);
     }
     
+    /**
+     * Elimina una instancia de Carrito de la base de datos.
+     * @param id Identificador de la instancia a eliminar.
+     */
     public void deleteCarrito(Long id) throws BusinessLogicException
     {
         CarritoEntity ent = persistence.find(id);
@@ -58,11 +67,20 @@ public class CarritoLogic {
         persistence.delete(id);
     }
     
+    /**
+     * Obtiene la lista de los registros de Carrito.
+     * @return Colección de objetos de CarritoEntity.
+     */
     public List findCarritos()
     {
         return persistence.findAll();
     }
     
+    /**
+     * Obtiene los datos de una instancia de Carrito a partir de su ID.
+     * @param id Identificador de la instancia a consultar
+     * @return Instancia de CarritoEntity con los datos del Carrito consultado.
+     */
     public CarritoEntity findCarrito(Long id) throws BusinessLogicException
     {
         if(persistence.find(id) == null)
@@ -72,6 +90,11 @@ public class CarritoLogic {
         return persistence.find(id);
     }
     
+    /**
+     * Actualiza la información de una instancia de Carrito.
+     * @param entity Instancia de CarritoEntity con los nuevos datos.
+     * @return Instancia de CarritoEntity con los datos actualizados.
+     */
     public CarritoEntity updateCarrito(CarritoEntity entity)throws BusinessLogicException
     {
         if(persistence.find(entity.getId()) == null)
