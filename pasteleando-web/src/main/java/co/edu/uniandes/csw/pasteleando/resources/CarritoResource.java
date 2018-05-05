@@ -45,8 +45,9 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class CarritoResource {
+    
  @Inject
-    private CarritoLogic carritoLogic;
+ private CarritoLogic carritoLogic;
             
       /**
      * <h1>POST /api/carritos : Crear un carrito.</h1>

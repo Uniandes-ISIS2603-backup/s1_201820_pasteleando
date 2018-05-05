@@ -46,7 +46,7 @@ public class DecoracionCatalogoResource
 {
     
     @Inject
-            DecoracionCatalogoLogic decoracionCatalogoLogic;
+    private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     /**
      * <h1>GET /api/catalogo : Obtener todas las entidades de decoración del catálogo.</h1>
