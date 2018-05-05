@@ -6,6 +6,7 @@
 
 package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Id;
 
@@ -42,7 +43,7 @@ import javax.persistence.Id;
  * 
  * @author MIGUELHOYOS
  */
-public class CarritoDTO 
+public class CarritoDTO implements Serializable
 {
 
   private Long id;
@@ -67,10 +68,13 @@ public class CarritoDTO
 	 */
   public CarritoDTO(CarritoEntity carritoEntity)
   {
-      this.id = carritoEntity.getId();
-      this.cantidad = carritoEntity.getCantidad();
-      this.precio = carritoEntity.getPrecio();
-      this.pasteles = carritoEntity.getPasteles();
+      if( carritoEntity != null)
+      {
+        this.id = carritoEntity.getId();
+        this.cantidad = carritoEntity.getCantidad();
+        this.precio = carritoEntity.getPrecio();
+        this.pasteles = carritoEntity.getPasteles();
+      }
   }
  
   /**
