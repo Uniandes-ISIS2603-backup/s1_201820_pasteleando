@@ -13,8 +13,6 @@ import co.edu.uniandes.csw.pasteleando.persistence.CalificacionPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,7 +47,6 @@ public class CalificacionLogicTest {
     
     private List<CalificacionEntity> data = new ArrayList<>();
     
-    private List<CalificacionEntity> dataBook = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment() {
@@ -111,16 +108,17 @@ public class CalificacionLogicTest {
      * Prueba para crear una Calificacion
      *
      * 
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
     @Test
-    public void createClienteTest() throws BusinessLogicException {
+    public void createCalificacionTest() throws BusinessLogicException {
         CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
         CalificacionEntity result = calificacion.create(newEntity);
         Assert.assertNotNull(result);
         CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
     }
 
     /**

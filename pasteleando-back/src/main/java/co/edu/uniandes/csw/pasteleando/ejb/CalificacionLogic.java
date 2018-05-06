@@ -49,7 +49,7 @@ public class CalificacionLogic
 	{
 		LOGGER.info( "Inicia proceso de creación de una entidad de Calificacion" );
 		// Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
-		if( persistence.findByName( entity.getComentario() ) != null )
+		if( persistence.findByName( entity.getName() ) != null )
 		{
 			throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
 		}
@@ -75,7 +75,11 @@ public class CalificacionLogic
 
 	public CalificacionEntity update( CalificacionEntity entity ) throws BusinessLogicException
 	{
-		if( persistence.findByName( entity.getName( ) ) != null )
+		if( persistence.find(entity.getId() ) == null )
+		{
+			throw new BusinessLogicException( "No existe una Calificación con el id \"" + entity.getId() + "\"" );
+		}
+                if( persistence.findByName( entity.getName( ) ) != null )
 		{
 			throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
 		}
