@@ -12,7 +12,7 @@
      mod.constant("pqrsContext", "api/pqrs");
      mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
          {
-             var basePath = 'src/modules/pqrs/';
+             var basePath = 'src/modules/Pqrs/';
              
              $stateProvider.state('pqrsList',
              {
@@ -26,7 +26,20 @@
                                  controllerAs:'ctrl'
                              }
                            }
-             });
+             })
+                     .state('pqrsCreate',
+             {
+                url:'/pqrs/create',
+                views:
+                        {
+                            createPqrs:
+                            {
+                                templateUrl:basePath + 'new/pqrs.new.html',
+                                controller:'pqrsNewCtrl',
+                                controllerAs:'ctrl'
+                            }
+                        }
+             })
          }]);
      
  })

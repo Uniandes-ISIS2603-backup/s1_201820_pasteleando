@@ -16,12 +16,43 @@
             $scope.data = {};
            
             $scope.createFactura = function () {
-                $scope.data.fecha = $scope.data.fecha + "T00:00:00-05:00";
-                $http.post(facturasContext, $scope.data).then(function (response) {
+                $scope.data.fecha = new Date();
+                $scope.data.hora = $scope.data.horas + ":" + $scope.data.minutos;
+                $http.post(facturasContext, $scope.data).then(function (response) {                   
                 $state.go('facturas', {facturaId: response.data.id}, {reload: true});
                 });
             };
+            
+            $scope.minutos = [];
+            
+            for (var i = 0; i < 60; i++) {
+               if(i < 10)
+               {
+                    $scope.minutos.push("0"+i);
+               }
+               else
+               {
+                    $scope.minutos.push(i);
+               }
+            }
+            
+            $scope.horas = [];
+            
+            for (var i = 0; i < 24; i++) {
+               if(i < 10)
+               {
+                    $scope.horas.push("0"+i);
+               }
+               else
+               {
+                    $scope.horas.push(i);
+               }
+            }
            
+           
+            
+            
+            
         }
     ]);
 }

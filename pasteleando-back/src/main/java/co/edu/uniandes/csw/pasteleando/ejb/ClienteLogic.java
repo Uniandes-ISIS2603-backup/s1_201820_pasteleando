@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
 import co.edu.uniandes.csw.pasteleando.persistence.ClientePersistence;
 
 
@@ -47,6 +48,8 @@ public class ClienteLogic
 	@Inject
 	private ClientePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
+        private CarritoPersistence carritoPersistence;
+        
 	public ClienteEntity create( ClienteEntity entity ) throws BusinessLogicException
 	{
 		LOGGER.info( "Inicia proceso de creación de una entidad de Pasteleando" );
@@ -59,6 +62,8 @@ public class ClienteLogic
 		// Invoca la persistencia para crear la entidad de Pasteleando
                 //TODO: Por qué todos los clientes deben llamrse distinto?
 		persistence.create( entity );
+                //carritoPersistence.create(entity.getCarrito());
+                
 		LOGGER.info( "Termina proceso de creación de entidad de Cliente" );
 		return entity;
 	}
@@ -72,9 +77,14 @@ public class ClienteLogic
 		return entities;
 	}
 
-	public ClienteEntity getById( Long id )
+	public ClienteEntity getById( Long id ) throws BusinessLogicException
 	{
-		return persistence.find( id );
+		ClienteEntity ent =  persistence.find( id );
+                if(ent == null)
+                {
+                    throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + ent.getId() + "\"" );
+                }
+                return ent;
 	}
 
 	public ClienteEntity update( ClienteEntity entity ) throws BusinessLogicException
@@ -84,7 +94,7 @@ public class ClienteLogic
 			throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + entity.getId() + "\"" );
 		}
                 
-		return persistence.update( entity );
+                return persistence.update( entity );
 	}
 
 	public void delete( ClienteEntity entity ) throws BusinessLogicException
@@ -95,6 +105,7 @@ public class ClienteLogic
 		{
 			throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + entity.getId() + "\"" );
 		}
+                //carritoPersistence.delete(entity.getCarrito().getId());
                 persistence.delete( entity.getId() );
 		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Cliente con id={0}", entity.getId( ) );
 	}

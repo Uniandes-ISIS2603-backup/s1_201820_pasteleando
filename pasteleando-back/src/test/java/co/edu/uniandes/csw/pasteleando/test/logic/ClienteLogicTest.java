@@ -13,8 +13,6 @@ import co.edu.uniandes.csw.pasteleando.persistence.ClientePersistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,7 +47,7 @@ public class ClienteLogicTest {
     
     private List<ClienteEntity> data = new ArrayList<>();
     
-    private List<ClienteEntity> dataBook = new ArrayList<>();
+    //private List<ClienteEntity> dataBook = new ArrayList<>();
     
      @Deployment
     public static JavaArchive createDeployment() {
@@ -151,7 +149,7 @@ public class ClienteLogicTest {
      */
     
     @Test
-    public void getClienteTest() {
+    public void getClienteTest() throws BusinessLogicException {
         ClienteEntity entity = data.get(0);
         ClienteEntity resultEntity = cliente.getById(entity.getId());
         Assert.assertNotNull(resultEntity);
@@ -198,8 +196,7 @@ public class ClienteLogicTest {
 
         ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
 
-        Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
-       Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(pojoEntity.getCarrito(), resp.getCarrito());
     }
 }

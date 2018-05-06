@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.pasteleando.persistence;
 
-import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import java.util.ArrayList;
 import java.util.List;

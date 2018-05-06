@@ -5,41 +5,17 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<html>
 
-  <head>
-    <link data-require="bootstrap@*" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-    <script data-require="bootstrap@*" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
-  </head>
-
-  <body>
     <div class="container-fluid">
-      <div ng-if="isAuthenticated() && hasPermissions()" class="panel-group">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <label ng-if="!edit" id="createPqrs">Crear una nueva Pqrs</label>
           </div>
           <div class="panel-body">
             <form name="pqrs">
-              <div class="form-group row">
-                <div class="form-group col-md-6">
-                  <label for="nombreCliente" class="col-sm-2">Nombre:</label>
-                  <input id="nombreCliente" required="" ng-model="data.name" class="col-sm-6" />
-                </div>
+              
               </div>
-               <div class="form-group row">
-                <div class="form-group col-md-6">
-                  <label for="idCliente" class="col-sm-2">Cedula:</label>
-                  <input id="idCliente" required="" ng-model="data.name" class="col-sm-6" />
-                </div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="form-group col-md-6">
-                  <label for="fechaPqrs" class="col-sm-2">Fecha de realizacion de la pqrs:</label>
-                  <input type="date" id="fechaPqrs" placeholder="DD/MM/YYYY" required="" ng-model="data.fechaPedido" class="col-sm-6" />
-                </div>
-              </div>
+             
               <div class="form-group row">
               <div class="form-group col-md-6">
               <label for="Tipo" class="col-sm-2">Tipo de solicitud:</label>
@@ -74,12 +50,8 @@ and open the template in the editor.
               </div>
             </form>
           </div>
-        </div>
       </div>
-    </div>
-  </body>
 
-</html>
 
 
 
