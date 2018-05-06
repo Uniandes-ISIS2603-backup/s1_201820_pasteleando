@@ -208,5 +208,16 @@ public class DecoracionPersonalizadaPersistenceTest {
         DecoracionPersonalizadaEntity deleted = em.find(DecoracionPersonalizadaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
+    
+    /**
+     * Prueba para encontar una decoracion personalizada por el nombre
+     */
+    @Test
+    public void findByNameTest()
+    {
+        DecoracionPersonalizadaEntity ent = data.get(0);
+        DecoracionPersonalizadaEntity entEnc = decoracionPersonalizadaPersistence.findByName(ent.getName());
+        Assert.assertEquals(ent, entEnc);
+    }
 
     }
