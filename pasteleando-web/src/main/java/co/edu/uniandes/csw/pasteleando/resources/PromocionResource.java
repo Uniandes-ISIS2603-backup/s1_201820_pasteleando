@@ -47,10 +47,10 @@ public class PromocionResource
 {
     
     @Inject
-            PromocionLogic promocionLogic;
+            private PromocionLogic promocionLogic;
     
     @Inject
-            DecoracionCatalogoLogic catalogoLogic;
+            private DecoracionCatalogoLogic catalogoLogic;
     
     /**
      * <h1>GET /api/promocion : Obtener todas las entidades de promoción.</h1>

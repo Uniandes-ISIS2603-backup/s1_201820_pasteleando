@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
+import java.io.Serializable;
 
 /**
  * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -34,7 +35,7 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
  *
  * @author jf.garcia
  */
-public class DecoracionCatalogoDTO {
+public class DecoracionCatalogoDTO implements Serializable {
     
     /**
      * Atributo que modela la categoria de la DecoracionCatalogo
@@ -47,10 +48,11 @@ public class DecoracionCatalogoDTO {
     private Long id;
     
     /**
-     * Constructor por defecto
+     * Constructor vacio
      */
     public DecoracionCatalogoDTO( )
     {
+        
     }
     
     /**
@@ -61,7 +63,8 @@ public class DecoracionCatalogoDTO {
      */
     public DecoracionCatalogoDTO( DecoracionCatalogoEntity decoracionCatalogoEntity )
     {
-        if (decoracionCatalogoEntity != null) {
+        if (decoracionCatalogoEntity != null) 
+        {
             this.categoria = decoracionCatalogoEntity.getCategoria();
             this.id = decoracionCatalogoEntity.getId();
         }

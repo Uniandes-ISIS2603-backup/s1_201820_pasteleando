@@ -40,16 +40,6 @@ public class DecoracionDetailDTO extends DecoracionDTO
                      this.pastel=new PastelDTO(entity.getPastel());
                  }
 	}
-        
-    public PastelDTO getPastel() {
-        return pastel;
-    }
-
-    public void setPastel(PastelDTO pastel) {
-        this.pastel = pastel;
-    }
-        
-
         /**
          
 	/**
@@ -66,5 +56,19 @@ public class DecoracionDetailDTO extends DecoracionDTO
         }
 		return decoracionEntity;
 	}
+
+        /**
+     * @return pastel
+     */
+    public PastelDTO getPastel() {
+        return pastel;
+    }
+ /**
+     * @param pastel the atribute to set
+     */
+    public void setPastel(PastelDTO pastel) {
+        this.pastel = pastel;
+    }
+        
 
 }

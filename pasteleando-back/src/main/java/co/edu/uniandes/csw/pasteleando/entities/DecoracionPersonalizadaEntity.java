@@ -24,13 +24,19 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
      */
     private String estado;
     
-    private int peso;
+    private Integer peso;
 
-    public int getPeso() {
+    /**
+     * @return peso
+     */
+    public Integer getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+     /**
+     * @param peso the atribute to set
+     */
+    public void setPeso(Integer peso) {
         this.peso = peso;
     }
     

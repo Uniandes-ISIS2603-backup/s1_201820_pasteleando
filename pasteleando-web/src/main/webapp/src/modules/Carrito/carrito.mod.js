@@ -4,27 +4,41 @@
      mod.constant("carritoContext", "api/carritos");
     mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
         {
-            var basePath = '/carritoDetail';
+            var basePath = 'src/modules/Carrito/';
             
-            $stateProvider.state('carritos',
+             $urlRouterProvider.otherwise("/home");
+
+            $stateProvider.state('carrito', {
+                url: '/carrito',
+                abstract: true,
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'carrito.html',
+                        controller: 'carritoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('carritoList',
             {
-                url:'/carritos',
+                url:'/list',
+                parent:'Carrito',
                   views:
                           {
-                              mainView:
+                              listView:
                             {
-                                templateUrl:basePath+'carrito.html',
-                                controller:'carritoCtrl',
-                                controllerAs:'ctrl'
+                                templateUrl:basePath+'carrito.list.html'
+                                
                             }
                           }
             }).state('carritoDetail', {
-                url: '{carritoId: int}/detail',
-                parent:'',
+                url: '/{carritoId: int}/detail',
+                parent:'Carrito',
                 param:{carritoId : null},
                 views: {
                    'listView': {
-                        templateUrl: basePath + 'carrito.list.html'
+                        templateUrl: basePath + 'carrito.list.html',
+                        controller: 'carritoDetailCtrl',
+                        controllerAs: 'ctrl'
                     },
                     'detailView': {
                         templateUrl: basePath + 'carrito.detail.html',

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
+import java.io.Serializable;
 
 
 /**
@@ -33,7 +34,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
  * 
  * @author MIGUELHOYOS
  */
-public class PastelDTO 
+public class PastelDTO implements Serializable
 {
   private Integer peso;
   private Double precio;
@@ -54,8 +55,11 @@ public class PastelDTO
 	 */
   public PastelDTO(PastelEntity pastelEntity)
   {
-      this.peso = pastelEntity.getPeso();
-      this.precio = pastelEntity.getPrecio();
+      if( pastelEntity != null)
+      {
+        this.peso = pastelEntity.getPeso();
+        this.precio = pastelEntity.getPrecio();
+      }
   }
   
   /**
@@ -63,7 +67,7 @@ public class PastelDTO
    * @return peso Peso del pastel
    */
 
-  public int getPeso()
+  public Integer getPeso()
   {
       return peso;
   }
@@ -72,7 +76,7 @@ public class PastelDTO
    * @param pPeso Nuevo Peso del Pastel
    */
 
-  public void setPeso(int pPeso)
+  public void setPeso(Integer pPeso)
   {
       this.peso = pPeso;
   }

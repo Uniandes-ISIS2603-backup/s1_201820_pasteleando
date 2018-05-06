@@ -48,7 +48,7 @@ public class PastelResource
 {    
     
     @Inject
-    PastelLogic pastelLogic;
+    private PastelLogic pastelLogic;
     
     /**
      *  <h1>POST /api/pasteles : Crear un pastel.</h1>

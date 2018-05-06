@@ -19,8 +19,6 @@ import javax.persistence.OneToMany;
  */
 public class CarritoDetailDTO extends CarritoDTO
 {
- 
-    
     private List pasteles;
     
     private ClienteDTO cliente;
@@ -32,9 +30,8 @@ public class CarritoDetailDTO extends CarritoDTO
      */
     public CarritoDetailDTO()
     { 
+        super();
     }
-    
-
     
     /**
      * Constructor para transformar un Entity a un DTO
@@ -51,7 +48,57 @@ public class CarritoDetailDTO extends CarritoDTO
     public CarritoEntity toEntity()
     {
         CarritoEntity entity = super.toEntity();
+        
+        if(this.getPedido() != null)
+            {
+                entity.setPedido(this.getPedido().toEntity());
+            }
+            if(this.getCliente() != null)
+            {
+                entity.setCliente(this.getCliente().toEntity());
+            }
         return entity;
     }
+    
+     /**
+      * Obtiene el pedido
+      * @return El pedido
+      */
+      public PedidoDTO getPedido() {
+          return pedido;
+      }
+           
+     /**
+      * Define un pedido
+      * @return El pedido
+      */ 
+      public void setPedido(PedidoDTO pedido) {
+          this.pedido = pedido;
+      }
+      
+     /**
+      * Obtiene el cliente
+      * @return El cliente
+      */
+      public ClienteDTO getCliente() {
+          return cliente;
+      }
+    
+     /**
+      * Define un cliente
+      * @return El cliente
+      */
+      public void setCliente(ClienteDTO cliente) {
+          this.cliente = cliente;
+      }
+
+     /**
+      * Obtiene la lista de pasteles
+      * @return Pasteles
+      */
+      public List getPasteles() {
+          return pasteles;
+      }
+       
     
 }

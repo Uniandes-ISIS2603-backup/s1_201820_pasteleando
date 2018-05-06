@@ -23,6 +23,7 @@ import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 * 
  * @author m.leona
  */
+
 public class FacturaDetailDTO extends FacturaDTO {
   
         
@@ -68,6 +69,11 @@ public class FacturaDetailDTO extends FacturaDTO {
             
         }
         
+        /**
+	 * Convertir DTO a Entity
+	 * @return Un Entity con los valores del DTO
+	 */
+        
         @Override
         public FacturaEntity toEntity()
         {
@@ -85,24 +91,37 @@ public class FacturaDetailDTO extends FacturaDTO {
         }
 
 
+        /**
+         * Obtiene el pedido
+         * @return El pedido
+         */
+         public PedidoDTO getPedido() {
+             return pedido;
+         }
+         
+        /**
+         * Define un cliente
+         * @return El cliente
+         */
+        public void setCliente(ClienteDTO cliente) {
+            this.cliente = cliente;
+        }
 
-    public PedidoDTO getPedido() {
-        return pedido;
-    }
+        /**
+         * Obtiene el cliente
+         * @return El cliente
+         */
+        public ClienteDTO getCliente() {
+            return cliente;
+        }
 
-    public void setCliente(ClienteDTO cliente) {
-        this.cliente = cliente;
-    }
-
-    public ClienteDTO getCliente() {
-        return cliente;
-    }
-
- 
-
-    public void setPedido(PedidoDTO pedido) {
-        this.pedido = pedido;
-    }
+        /**
+         * Define un pedido
+         * @return El pedido
+         */ 
+        public void setPedido(PedidoDTO pedido) {
+            this.pedido = pedido;
+        }
         
        
         

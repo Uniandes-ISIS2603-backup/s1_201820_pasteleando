@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CarritoEntity extends BaseEntity implements Serializable
 {
-  private int cantidad;
+  private Integer cantidad;
   private double precio;
   
   @PodamExclude
@@ -40,7 +40,7 @@ public class CarritoEntity extends BaseEntity implements Serializable
    * @return cantidad
    */
 
-  public int getCantidad()
+  public Integer getCantidad()
   {
       return this.cantidad;
   }
@@ -49,7 +49,7 @@ public class CarritoEntity extends BaseEntity implements Serializable
    * @param pCantidad 
    */
 
-  public void setCantidad(int pCantidad)
+  public void setCantidad(Integer pCantidad)
   {
       this.cantidad = pCantidad;
   }

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
+import java.io.Serializable;
 
 /**
  * * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -33,7 +34,7 @@ import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
  *
  * @author jf.garcia
  */
-public class PromocionDTO {
+public class PromocionDTO implements Serializable {
     
     /**
      * Atributo que modela el porcentaje de la promocion.
@@ -43,13 +44,14 @@ public class PromocionDTO {
     /**
      * Atributo que modela el porcentaje de la promocion.
      */
-    private int cantidad;
+    private Integer cantidad;
     
     /**
-     * Constructor por defecto
+     * Constructor vacio
      */
     public PromocionDTO( )
     {
+        
     }
     
     /**
@@ -60,7 +62,8 @@ public class PromocionDTO {
      */
     public PromocionDTO( PromocionEntity entity )
     {
-        if (entity != null) {
+        if (entity != null) 
+        {
             this.cantidad = entity.getCantidad();
             this.id = entity.getId();
         }
@@ -87,7 +90,7 @@ public class PromocionDTO {
      * Devuelve la cantidad de la promoción.
      * @return la cantidad.
      */
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
     
@@ -95,7 +98,7 @@ public class PromocionDTO {
      * Modifica la cantidad de la promoción.
      * @param cantidad La cantidad nueva.
      */
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
     

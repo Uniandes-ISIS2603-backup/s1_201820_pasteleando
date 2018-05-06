@@ -28,30 +28,43 @@ public class PastelDetailDTO extends PastelDTO
         
       public PastelDetailDTO()
       {    
-          
+          super();
       }
   
-  /**
+        /**
 	 * Constructor para transformar un Entity a un DTO
 	 *
 	 * @param pastelEntity La entidad de Pasteleando a partir de la cual se construye el objeto
 	 */
-  public PastelDetailDTO(PastelEntity pastelEntity) {
-        super(pastelEntity);
-        if (pastelEntity.getDecoracion() != null) {
-            this.decoracion = new DecoracionDTO(pastelEntity.getDecoracion());
-        } else {
-            pastelEntity.setDecoracion(null);
+        public PastelDetailDTO(PastelEntity pastelEntity) 
+        {
+            super(pastelEntity);
+            if (pastelEntity.getDecoracion() != null) 
+            {
+                this.decoracion = new DecoracionDTO(pastelEntity.getDecoracion());
+            } 
+            else 
+            {
+                pastelEntity.setDecoracion(null);
+            }
         }
-    }
   
-    public DecoracionDTO getDecoracion() {
-        return decoracion;
-    }
+        /**
+         * Obtiene la decoracion
+         * @return La decoracion
+         */
+        public DecoracionDTO getDecoracion() {
+            return decoracion;
+        }
 
-    public void setDecoracion(DecoracionDTO decoracion) {
-        this.decoracion = decoracion;
-    }
+         /**
+         * Define una decoracion
+         * @return La decoracion
+         */
+        public void setDecoracion(DecoracionDTO decoracion) {
+            this.decoracion = decoracion;
+        }
+        
    /**
      * transforma un DTO a un entity
      * @return la entidad construida a partir del DTO

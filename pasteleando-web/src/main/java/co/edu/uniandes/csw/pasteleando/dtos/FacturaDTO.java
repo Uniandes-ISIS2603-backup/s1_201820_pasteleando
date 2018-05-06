@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import java.util.Date;
+import java.io.Serializable;
 
 
 
@@ -24,7 +25,7 @@ import java.util.Date;
 *</pre>
  * @author m.leona
  */
-public class FacturaDTO {
+public class FacturaDTO implements Serializable {
     
     //Atributos
     
@@ -73,11 +74,14 @@ public class FacturaDTO {
 	 */
 	public FacturaDTO( FacturaEntity facturaEntity )
 	{
+            if( facturaEntity != null)
+            {
 		this.direccion = facturaEntity.getDireccion();
 		this.fecha=facturaEntity.getFecha();
                 this.hora=facturaEntity.getHora();
                 this.id=facturaEntity.getId();
                 this.precio=facturaEntity.getPrecio();
+            }
 	}
     
     //Metodos

@@ -61,6 +61,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO
      */
     public DecoracionCatalogoDetailDTO( )
     {
+        super();
     }
     
     /**

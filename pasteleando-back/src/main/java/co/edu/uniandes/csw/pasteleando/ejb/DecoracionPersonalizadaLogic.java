@@ -102,7 +102,7 @@ public class DecoracionPersonalizadaLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
-    private boolean validatePeso(int peso) {
+    private boolean validatePeso(Integer peso) {
         if(peso <=0)
             return false;
         else
