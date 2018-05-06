@@ -187,7 +187,7 @@ public class PqrsLogicTest
      */
     
     @Test
-    public void updatePedidoTest()  throws BusinessLogicException 
+    public void updatePqrsTest()  throws BusinessLogicException 
     {
         PqrsEntity entity = pqrsData.get(0);
         PqrsEntity pojoEntity = factory.manufacturePojo(PqrsEntity.class);

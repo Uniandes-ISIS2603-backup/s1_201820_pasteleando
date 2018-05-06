@@ -207,4 +207,15 @@ public class PqrsPersistenceTest
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo()); 
     }
     
+    /**
+     * prueba para encontrar un pqrs con el nombre
+     */
+    @Test
+    public void getPQRSByNameTest()
+    {
+        PqrsEntity ent = data.get(0);
+        PqrsEntity entEnc = pqrsPersistence.findByName(ent.getName());
+        Assert.assertEquals(entEnc, ent);
+    }
+    
 }
