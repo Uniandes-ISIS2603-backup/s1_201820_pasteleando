@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.PedidoPersistence;
 import java.util.List;
@@ -66,6 +65,7 @@ public class PedidoLogic
     {  
         LOGGER.info( "Inicia proceso de creación de una entidad de Pedido" );
         
+        //TODO: revisar esta regla de negocio
         if( persistence.findAll() != null )
         {
             throw new BusinessLogicException( "Ya existe un pedido en curso" );
