@@ -129,7 +129,7 @@ public class DecoracionLogic {
      * Eliminar una decoración personalizada por ID
      * @param id El ID de la decoración personalizada a eliminar
      */
-    public void deleteDecoracionPersonalizada(Long id) throws BusinessLogicException {
+    public void deleteDecoracion(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración  con id={0}", id);
         if(persistence.find(id)==null)
         {

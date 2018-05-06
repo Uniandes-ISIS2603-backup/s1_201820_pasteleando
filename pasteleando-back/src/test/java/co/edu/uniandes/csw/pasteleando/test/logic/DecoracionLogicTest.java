@@ -148,6 +148,8 @@ public class DecoracionLogicTest {
      * Prueba para eliminar un Decoracion
      *
      *
+     *  
+     */
      
     
     @Test
@@ -157,5 +159,5 @@ public class DecoracionLogicTest {
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    */
+   
 }
