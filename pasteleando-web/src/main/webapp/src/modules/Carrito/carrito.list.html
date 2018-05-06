@@ -20,7 +20,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="carrito in carritoRecords">
-                                <td id="{{$index}}-id"><a ui-sref="carritoDetail({authorId: author.id})">{{carrito.id}}</a></td>
+                                <td id="{{$index}}-id"><a ui-sref="carritoDetail({clienteId: cliente.id})">{{carrito.id}}</a></td>
                                 <td id="{{$index}}-cantidad">{{carrito.cantidad}}</td>
                                  <td id="{{$index}}-precio">{{carrito.precio}}</td>
                                 <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">

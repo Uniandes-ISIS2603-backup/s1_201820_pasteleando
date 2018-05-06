@@ -26,10 +26,16 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     
     private Integer peso;
 
+    /**
+     * @return peso
+     */
     public Integer getPeso() {
         return peso;
     }
 
+     /**
+     * @param peso the atribute to set
+     */
     public void setPeso(Integer peso) {
         this.peso = peso;
     }

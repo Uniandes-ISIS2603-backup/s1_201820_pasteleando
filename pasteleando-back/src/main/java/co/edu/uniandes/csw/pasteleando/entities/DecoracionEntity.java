@@ -7,13 +7,10 @@ package co.edu.uniandes.csw.pasteleando.entities;
 
 import co.edu.uniandes.csw.pasteleando.podam.DateStrategy;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -43,22 +40,27 @@ public class DecoracionEntity extends BaseEntity implements Serializable
      * Atributo que modela la foto de la DecoracionEntity
      */
     private String foto;
-    
+     /**
+     * Atributo que modela si es o no una decoracion personalizada de la DecoracionEntity
+     */
     private Integer esPersonalizada;
     
     public DecoracionEntity()
     {
         
     }
-
+ /**
+     * @return esPersonalizada
+     */
     public Integer getEsPersonalizada() {
         return esPersonalizada;
     }
-
+/**
+     * @param esPersonalizada the atribute to set
+     */
     public void setEsPersonalizada(Integer esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
-    
     /**
      * @return foto
      */

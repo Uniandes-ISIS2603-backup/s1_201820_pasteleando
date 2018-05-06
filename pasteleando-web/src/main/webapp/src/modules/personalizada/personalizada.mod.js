@@ -27,12 +27,12 @@
                     }
                 }
             }).state('personalizadaCreate', {
-                url: '/personalizada/create',
+                url: '/create',
                 views: {
-                    'mainView': {
+                    'createView': {
                         controller: 'personalizadaCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'personalizada.create.html'
+                        templateUrl: basePath + 'create/personalizada.create.html'
                     }
                 }
 

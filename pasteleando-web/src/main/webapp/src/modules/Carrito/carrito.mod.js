@@ -4,22 +4,35 @@
      mod.constant("carritoContext", "api/carritos");
     mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
         {
-            var basePath = 'src/modules/carrito/';
+            var basePath = 'src/modules/Carrito/';
             
-            $stateProvider.state('carritoList',
+             $urlRouterProvider.otherwise("/home");
+
+            $stateProvider.state('carrito', {
+                url: '/carrito',
+                abstract: true,
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'carrito.html',
+                        controller: 'carritoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('carritoList',
             {
-                url:'/carritos',
+                url:'/list',
+                parent:'Carrito',
                   views:
                           {
-                              mainView:
+                              listView:
                             {
-                                templateUrl:basePath+'carrito.html',
+                                templateUrl:basePath+'carrito.list.html'
                                 
                             }
                           }
             }).state('carritoDetail', {
-                url: '{carritoId: int}/detail',
-                parent:'carritos',
+                url: '/{carritoId: int}/detail',
+                parent:'Carrito',
                 param:{carritoId : null},
                 views: {
                    'listView': {
