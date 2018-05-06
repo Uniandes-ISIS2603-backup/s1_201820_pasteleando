@@ -211,4 +211,12 @@ public class DecoracionPersistenceTest {
         DecoracionEntity deleted = em.find(DecoracionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
+    
+    @Test
+    public void getDecoracionByNameTest()
+    {
+        DecoracionEntity ent = data.get(0);
+        DecoracionEntity entEnc = decoracionPersistence.findByName(ent.getName());
+        Assert.assertEquals(ent.getId(), entEnc.getId());
     }
+ }
