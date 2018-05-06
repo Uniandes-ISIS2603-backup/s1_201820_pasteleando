@@ -92,12 +92,14 @@ public class ClienteResource
 	@POST
 	public ClienteDetailDTO createCliente( ClienteDetailDTO dto ) throws BusinessLogicException
 	{
+            ClienteDetailDTO dto1 = dto;
+            dto1.setId(Long.MIN_VALUE);
                 List<ClienteEntity> entity = cliente.getAll();
                 
                 for(int i =0 ; i< entity.size(); i++)
                 {
                     ClienteEntity actual = entity.get(i);
-                    if(actual.getId() == dto.getId())
+                    if(actual.getId() == dto1.getId())
                     {
                         throw new BusinessLogicException( "Ya existe una entidad de Cliente con el id dado" );
                     }
