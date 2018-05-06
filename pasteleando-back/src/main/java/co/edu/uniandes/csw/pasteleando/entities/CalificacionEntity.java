@@ -14,8 +14,6 @@ public class CalificacionEntity extends BaseEntity implements Serializable
 {
     private Integer puntaje;
     
-    
-
     private String comentario;
     
     @PodamExclude
@@ -26,35 +24,10 @@ public class CalificacionEntity extends BaseEntity implements Serializable
     @ManyToOne
     private DecoracionEntity decoracion;
 
-    public PedidoEntity getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(PedidoEntity pedido) {
-        this.pedido = pedido;
-    }
-    
     @PodamExclude
     @ManyToOne
     private PedidoEntity pedido;
-
-    public DecoracionEntity getDecoracion() {
-        return decoracion;
-    }
-
-    public void setDecoracion(DecoracionEntity decoracion) {
-        this.decoracion = decoracion;
-    }
-
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
-    
-    
+ 
 
     /**
      * @return puntaje
@@ -82,5 +55,29 @@ public class CalificacionEntity extends BaseEntity implements Serializable
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+    
+     public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+    public DecoracionEntity getDecoracion() {
+        return decoracion;
+    }
+
+    public void setDecoracion(DecoracionEntity decoracion) {
+        this.decoracion = decoracion;
+    }
+    
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
 }

@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.pasteleando.persistence;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -22,13 +21,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -172,6 +167,15 @@ public class CalificacionPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
       
+    }
+    
+    @Test
+    public void findByNameTest()
+    {
+        CalificacionEntity ent = data.get(0);
+        CalificacionEntity newEnt = calificacionPersistence.findByName(ent.getName());
+        Assert.assertNotNull(newEnt);
+        Assert.assertEquals(newEnt.getId(), ent.getId());
     }
     
     
