@@ -26,7 +26,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private String estado;
     
     @PodamExclude
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.PERSIST)
     private List<PqrsEntity> pqrs = new ArrayList<>( );
     
     
@@ -34,11 +34,11 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private CarritoEntity carrito = new CarritoEntity( );
     
     @PodamExclude
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.PERSIST)
     private List<CalificacionEntity> calificaciones = new ArrayList<>( );
     
     @PodamExclude
-    @OneToOne
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.PERSIST)
     private FacturaEntity factura;
     
     /**

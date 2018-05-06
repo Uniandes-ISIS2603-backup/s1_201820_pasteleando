@@ -204,6 +204,17 @@ public class PedidoPersistenceTest
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getEstado(), newEntity.getEstado()); 
     }
+    
+    /**
+     *prueba para encontrar un pedido por el nombre 
+     */
+    @Test
+    public void findByNameTest()
+    {
+        PedidoEntity ent = data.get(0);
+        PedidoEntity entEnc = pedidoPersistence.findByName(ent.getName());
+        Assert.assertEquals(entEnc, ent);
+    }
 
 
     
