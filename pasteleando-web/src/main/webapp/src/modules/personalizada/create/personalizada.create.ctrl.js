@@ -6,12 +6,13 @@
             $rootScope.edit = false;
             $scope.createDecoracionPersonalizada = function () {
                 $http.post('api/personalizada', {
-                    peso: $scope.personalizadaPeso,
-                    color: $scope.personalizadaColor
+                    color: $scope.color,
+                    peso: $scope.peso
                 }).then(function (response) {
-                   
-                        $state.go('personalizadaDetail', {personalizadaId: response.data.id}, {reload: true});
-
+                    
+                    {
+                        $state.go('personalizadaList', {personalizadaId: response.data.id}, {reload: true});
+                    };
                     
                      
                 });
@@ -20,4 +21,3 @@
     ]);
 }
 )(angular);
-
