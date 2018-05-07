@@ -27,6 +27,9 @@
 
             var idcliente = $state.params.clienteId;
 
+
+            $scope.opcionesPago = ["Efectivo"];
+
             /**
              * @ngdoc function
              * @name getEditorialID

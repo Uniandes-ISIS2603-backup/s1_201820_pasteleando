@@ -6,13 +6,7 @@
             <div class="panel-body">
                 <form name="cliente">
                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            
-                             <label for="clienteId" class="col-sm-2">Id:</label>
-                            <input id="clienteId" required ng-model="data.id" class="col-sm-6"/>
-                            
-                           
-                        </div>
+                      
                         
                         <div class="form-group col-md-6">
                             
@@ -21,7 +15,10 @@
                            
                         </div>
                         
-                       
+                        <label>Forma de pago: </label>
+                       <select class="selectpicker" ng-init="opcionesPago[0]" ng-model="data.formaPagoActual" ng-options="x for x in opcionesPago" style="width: 100px; height: 30px; margin-left: 10px">
+    </select>
+                        
                        
                     </div>
 

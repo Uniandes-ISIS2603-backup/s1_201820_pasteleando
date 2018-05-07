@@ -32,6 +32,11 @@
              * Esta función utiliza el protocolo HTTP para crear la editorial.
              * @param {Object} editorial Objeto con la nueva de la editorial.
              */
+            
+            $scope.opcionesPago = ["Efectivo"];
+            
+            
+            
             $scope.createcliente = function () {
                 $http.post(clienteContext, $scope.data).then(function (response) {
                     $state.go('clienteList', {clienteId: response.data.id}, {reload: true});

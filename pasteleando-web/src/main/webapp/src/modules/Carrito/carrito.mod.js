@@ -10,7 +10,7 @@
 
             $stateProvider.state('carrito', {
                 url: '/carrito',
-                abstract: true,
+               
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'carrito.html',
@@ -21,7 +21,7 @@
             }).state('carritoList',
             {
                 url:'/list',
-                parent:'Carrito',
+                parent:'',
                   views:
                           {
                               listView:
