@@ -16,9 +16,9 @@ public class DecoracionDetailDTO extends DecoracionDTO
 {
          /**
      * Atributo que modela la coleccion de pasteles 
-     */
+     
         private PastelDTO pastel;
-
+*/
 	/**
 	 * Constructor por defecto
 	 */
@@ -37,7 +37,7 @@ public class DecoracionDetailDTO extends DecoracionDTO
 		super( entity );
                  if (entity != null)
                  {
-                     this.pastel=new PastelDTO(entity.getPastel());
+                    // this.pastel=new PastelDTO(entity.getPastel());
                  }
 	}
         /**
@@ -46,29 +46,31 @@ public class DecoracionDetailDTO extends DecoracionDTO
 	 * Transformar un DTO a un Entity
 	 *
 	 * @return La entidad construida a partir del DTO.
-	 */
-	@Override
+	 
+	@Override*/
+        /**
 	public DecoracionEntity toEntity( )
 	{
 		DecoracionEntity decoracionEntity = super.toEntity( );
-                if (pastel != null) {
-                decoracionEntity.setPastel(pastel.toEntity());
+                decoracionEntity.
+              /**  if (pastel != null) {
+                decoracionEntity.setPastel(pastel.toEntity();
         }
 		return decoracionEntity;
-	}
+	}*/
 
         /**
      * @return pastel
-     */
+     
     public PastelDTO getPastel() {
         return pastel;
-    }
+    }*/
  /**
      * @param pastel the atribute to set
-     */
+     
     public void setPastel(PastelDTO pastel) {
         this.pastel = pastel;
-    }
+    }*/
         
 
 }

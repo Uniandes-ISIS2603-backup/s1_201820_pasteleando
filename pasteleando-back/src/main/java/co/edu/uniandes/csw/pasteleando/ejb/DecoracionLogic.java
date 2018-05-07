@@ -40,7 +40,7 @@ public class DecoracionLogic {
      * @param entityP La entidad que representa la decoracion personalizada a persistir.
      * @param entityC La entidad que representa la decoracion catalogo a persistir.
      * @throws BusinessLogicException Si la decoracion a persistir ya existe.
-     */
+     
     public void createDecoracion(DecoracionPersonalizadaEntity entityP, DecoracionCatalogoEntity entityC, DecoracionEntity entity) throws BusinessLogicException {
        
         LOGGER.info("Inicia proceso de creación de decoracion");
@@ -64,7 +64,7 @@ public class DecoracionLogic {
         
         LOGGER.info("Termina proceso de creación de decoracion");
     }
-
+*/
     /**
      *
      * Obtener todas las decoraciones existentes en la base de datos.
@@ -102,7 +102,7 @@ public class DecoracionLogic {
      * ejemplo el nombre.
      * @param entityP La entidad que representa la decoracion personalizada a persistir.
      * @param entityC La entidad que representa la decoracion catalogo a persistir.
-     */
+     
     public void updateDecoracion( DecoracionEntity entity,DecoracionPersonalizadaEntity entityP, DecoracionCatalogoEntity entityC) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar decoracion con id={0}", entity.getId());
@@ -124,7 +124,7 @@ public class DecoracionLogic {
         LOGGER.log(Level.INFO, "Termina proceso de actualizar decoracion con id={0}", entity.getId());
        
     }
-
+*/
     /**
      * Eliminar una decoración personalizada por ID
      * @param id El ID de la decoración personalizada a eliminar
