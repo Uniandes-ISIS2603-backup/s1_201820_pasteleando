@@ -25,11 +25,11 @@ public class DecoracionEntity extends BaseEntity implements Serializable
 {
     /**
      * Atributo que modela los pasteles de la DecoracionEntity
-     
+     */
     @PodamExclude
     @OneToOne( fetch=FetchType.EAGER,  targetEntity = PastelEntity.class,cascade = CascadeType.PERSIST)
     private PastelEntity pastel; 
-    */
+    
     /**
      * Atributo que modela la fecha de la DecoracionEntity
      */
@@ -42,27 +42,25 @@ public class DecoracionEntity extends BaseEntity implements Serializable
     private String foto;
      /**
      * Atributo que modela si es o no una decoracion personalizada de la DecoracionEntity
-     
+     */
     private Integer esPersonalizada;
-    */
+    
     public DecoracionEntity()
     {
         
     }
  /**
      * @return esPersonalizada
-     
+     */
     public Integer getEsPersonalizada() {
         return esPersonalizada;
     }
-    * */
 /**
      * @param esPersonalizada the atribute to set
-     
+     */
     public void setEsPersonalizada(Integer esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
-    * */
     /**
      * @return foto
      */
@@ -93,7 +91,7 @@ public class DecoracionEntity extends BaseEntity implements Serializable
     {
         this.fechaAgregado = fechaAgregado;
     }
-/**
+
     public PastelEntity getPastel() {
         return pastel;
     }
@@ -101,6 +99,5 @@ public class DecoracionEntity extends BaseEntity implements Serializable
     public void setPastel(PastelEntity pastel) {
         this.pastel = pastel;
     }
-    */
+    
 }
-

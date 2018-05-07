@@ -4,7 +4,7 @@
     mod.controller('personalizadaCreateCtrl', ['$scope', '$http', 'personalizadaContext', '$state', 'personalizadaContext', '$rootScope',
         function ($scope, $http, personalizadaContext, $state, $rootScope) {
             $rootScope.edit = false;
-            $scope.createPersonalizada = function () {
+            $scope.createDecoracionPersonalizada = function () {
                 $http.post('api/personalizada', {
                     peso: $scope.personalizadaPeso,
                     color: $scope.personalizadaColor
