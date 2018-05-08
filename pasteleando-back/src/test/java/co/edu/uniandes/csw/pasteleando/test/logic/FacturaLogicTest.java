@@ -214,5 +214,5 @@ public class FacturaLogicTest {
             Assert.assertTrue(false);
         }
     }
-    
 }
+

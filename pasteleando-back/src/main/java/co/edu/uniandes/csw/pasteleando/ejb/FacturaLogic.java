@@ -56,7 +56,15 @@ public class FacturaLogic {
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      */
     public FacturaEntity createFactura(FacturaEntity entity) throws BusinessLogicException {
+        
+        if( !validatePrecio(entity.getPrecio()) )
+        {
+            throw new BusinessLogicException("El precio de la factura no puede ser menor a  0");
+        }
+        else
+        {
           return persistence.create(entity);
+        }
     }
 
     /**
