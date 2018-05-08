@@ -30,7 +30,7 @@
                 url: '/create',
                 views: {
                     'createView': {
-                        controller: 'personalizadaCtrl',
+                        controller: 'personalizadaCreateCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'create/personalizada.create.html'
                     }

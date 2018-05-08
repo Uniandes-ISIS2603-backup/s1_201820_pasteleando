@@ -13,7 +13,7 @@
          
          function ($scope, $http, context) 
          {
-             $http.get(context).then(function(response)
+             $http.get("data/pqrs.json").then(function(response)
              {
                   $scope.pqrsRecords = response.data;
              })

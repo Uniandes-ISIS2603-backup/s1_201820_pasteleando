@@ -5,34 +5,36 @@
          
                
             <div class="panel-body">
-                <form ng-submit="ctrl.saveRecord(currentRecord.id)" name="personalizada">
+                <form ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)" name="personalizada">
                     
                     
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="personalizadaPeso" class="col-sm-2">Peso:</label>
-                            <textarea id="personalizadaPeso" required ng-model="currentRecord.peso" class="col-sm-6"></textarea>
+                            <textarea id="personalizadaPeso" required ng-model="peso" class="col-sm-6"></textarea>
                         </div>
                     </div>          
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="personalizadaColor" class="col-sm-2">Color: </label>
-                            <textarea id="personalizadaColor" required ng-model="currentRecord.color" class="col-sm-6"></textarea>
+                            <textarea id="personalizadaColor" required ng-model="color" class="col-sm-6"></textarea>
                         </div>
                     </div>   
 
                     <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!color.$valid">
+                        <div class="form-group col-sm-4" ng-if="!peso.$valid">
 
                             <div class="alert alert-warning" >
-                                <strong>Warning!</strong><p>All inputs are required*</p>
+                                <strong>Advertencia!</strong><p>Todos los campos son necesarios</p>
                             </div> 
                         </div> 
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-show="color.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="personalizadaList">Cancel</a>
+                            <input ng-show="peso.$valid" type="submit" value="Save" class="btn btn-success"/>
+                             <button class="btn btn-success"   ng-click="createDecoracionPersonalizada()"  value="Save">¡Crear!</button>
+    
+                            <a class="btn btn-info" ui-sref="personalizadaList">Cancelar</a>
                         </div>
                     </div>
                 </form>

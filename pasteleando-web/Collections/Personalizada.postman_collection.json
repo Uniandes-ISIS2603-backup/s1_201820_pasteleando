@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Personalizada",
+		"_postman_id": "917e61c5-ef5b-ae66-e6c2-23d018cebbb3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:1010/pasteleando-web/api/personalizada",
+			"request": {
+				"url": "http://localhost:1010/pasteleando-web/api/personalizada",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"peso\":145,\n\t\"color\":\"Azul\"\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1010/pasteleando-web/api/personalizada",
+			"request": {
+				"url": "http://localhost:1010/pasteleando-web/api/personalizada/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"color\":\"Verde\",\n  \"peso\":200\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1010/pasteleando-web/api/personalizada/1",
+			"request": {
+				"url": "http://localhost:1010/pasteleando-web/api/personalizada/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1010/pasteleando-web/api/personalizada",
+			"request": {
+				"url": "http://localhost:1010/pasteleando-web/api/personalizada",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
