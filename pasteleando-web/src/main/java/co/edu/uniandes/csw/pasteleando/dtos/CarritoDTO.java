@@ -8,8 +8,6 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Id;
-
 
 /**
  *
@@ -26,7 +24,7 @@ import javax.persistence.Id;
  *      "id": number,
  *      "cantidad": number,
  *      "precio" : number,
- *      "articulos" : list
+ *      "pasteles" : list
  *   }
  * </pre>
  * 
@@ -36,7 +34,7 @@ import javax.persistence.Id;
  *      "id": 26748957,
  *      "cantidad" : 4,
  *      "precio": 280,9,
- *      "articulos : [ {PastelDTO},...]
+ *      "pasteles" : [ {PastelDTO},...]
  *   }
  
  * 

@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 import co.edu.uniandes.csw.pasteleando.entities.CarritoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PedidoEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.CarritoPersistence;
 import java.util.ArrayList;
@@ -31,16 +30,9 @@ public class CarritoLogic {
      * @param entity Objeto de CarritoEntity con los datos nuevos
      * @return Objeto de CarritoEntity con los datos nuevos y su ID.
      */
-    public CarritoEntity createCarrito(CarritoEntity entity) throws BusinessLogicException
+    public CarritoEntity createCarrito(CarritoEntity entity)
     {
-        if(entity.getCliente() == null)
-        {
-             throw new BusinessLogicException("el carrito no se puede agregar porque no tiene un cliente asociado");
-        }
-        if(entity.getPedido() == null)
-        {
-            throw new BusinessLogicException("el carrito no tiene un pedido asociado");
-        }
+ 
         return persistence.create(entity);
     }
     
