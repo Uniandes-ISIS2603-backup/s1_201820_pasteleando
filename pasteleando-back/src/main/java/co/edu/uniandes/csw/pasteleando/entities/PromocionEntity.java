@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -30,12 +30,8 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private DecoracionCatalogoEntity decoracionCatalogo;
     
-    /**
-     * Atributo que modela la decoración de la PromocionEntity
-     */
-    @PodamExclude
-    @OneToOne
-    public DecoracionCatalogoEntity decoracion;
+    
+   
     
     /**
      * @return cantidad

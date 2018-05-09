@@ -19,7 +19,7 @@ public class PastelDetailDTO extends PastelDTO
 {
     
     
-    private DecoracionDTO decoracion;
+    private DecoracionCatalogoDTO decoracionCatalogo;
 
     
       /**
@@ -39,9 +39,10 @@ public class PastelDetailDTO extends PastelDTO
         public PastelDetailDTO(PastelEntity pastelEntity) 
         {
             super(pastelEntity);
-            if (pastelEntity.getDecoracion() != null) 
+            // TODO: Personalizada
+            if (pastelEntity.getDecoracionCatalogo() != null) 
             {
-                this.decoracion = new DecoracionDTO(pastelEntity.getDecoracion());
+                this.decoracionCatalogo = new DecoracionCatalogoDTO(pastelEntity.getDecoracionCatalogo());
             } 
             else 
             {
@@ -53,16 +54,16 @@ public class PastelDetailDTO extends PastelDTO
          * Obtiene la decoracion
          * @return La decoracion
          */
-        public DecoracionDTO getDecoracion() {
-            return decoracion;
+        public DecoracionCatalogoDTO getDecoracionCatalogo() {
+            return decoracionCatalogo;
         }
 
          /**
          * Define una decoracion
          * @return La decoracion
          */
-        public void setDecoracion(DecoracionDTO decoracion) {
-            this.decoracion = decoracion;
+        public void setDecoracion(DecoracionCatalogoDTO decoracion) {
+            this.decoracionCatalogo = decoracion;
         }
         
    /**
@@ -72,9 +73,7 @@ public class PastelDetailDTO extends PastelDTO
   public PastelEntity toEntity()
   {
       PastelEntity entity = super.toEntity();
-       if (this.getDecoracion() != null) {
-            entity.setDecoracion(this.getDecoracion().toEntity());
-        }
+  //TODO: Convertir las decoraciones
       return entity;
   }
     

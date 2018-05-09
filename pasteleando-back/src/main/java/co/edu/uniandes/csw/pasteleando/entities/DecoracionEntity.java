@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -21,14 +23,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  * @author dc.cepeda
  */
 @Entity
-public class DecoracionEntity extends BaseEntity implements Serializable
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class DecoracionEntity extends BaseEntity implements Serializable
 {
-    /**
-     * Atributo que modela los pasteles de la DecoracionEntity
-     */
-    @PodamExclude
-    @OneToOne( fetch=FetchType.EAGER,  targetEntity = PastelEntity.class,cascade = CascadeType.PERSIST)
-    private PastelEntity pastel; 
     
     /**
      * Atributo que modela la fecha de la DecoracionEntity
@@ -92,12 +89,6 @@ public class DecoracionEntity extends BaseEntity implements Serializable
         this.fechaAgregado = fechaAgregado;
     }
 
-    public PastelEntity getPastel() {
-        return pastel;
-    }
-
-    public void setPastel(PastelEntity pastel) {
-        this.pastel = pastel;
-    }
+ 
     
 }

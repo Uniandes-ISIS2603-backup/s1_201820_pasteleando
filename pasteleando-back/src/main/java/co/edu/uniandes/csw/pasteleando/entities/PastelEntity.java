@@ -6,10 +6,9 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -23,8 +22,12 @@ public class PastelEntity extends BaseEntity implements Serializable
     private double precio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pastel", cascade = CascadeType.PERSIST)
-    private DecoracionEntity decoracion;
+    @ManyToOne
+    private DecoracionCatalogoEntity decoracionCatalogo;
+    
+    @PodamExclude
+    @ManyToOne
+    private DecoracionPersonalizadaEntity decoracionPersonalizada;
     /**
      * retorna el peso del pastel
      * @return peso
@@ -61,21 +64,34 @@ public class PastelEntity extends BaseEntity implements Serializable
     {
         this.precio = pPrecio;
     }
-    
+
     /**
-     * Devuelve la decoración asociada a este pastel
-     * @return Entidad de tipo Decoracion
+     * @return the decoracion
      */
-    public DecoracionEntity getDecoracion() {
-        return decoracion;
+    public DecoracionCatalogoEntity getDecoracionCatalogo() {
+        return decoracionCatalogo;
+    }
+
+    /**
+     * @param decoracion the decoracion to set
+     */
+    public void setDecoracion(DecoracionCatalogoEntity decoracion) {
+        this.decoracionCatalogo = decoracion;
+    }
+
+    /**
+     * @return the decoracionPersonalizada
+     */
+    public DecoracionPersonalizadaEntity getDecoracionPersonalizada() {
+        return decoracionPersonalizada;
+    }
+
+    /**
+     * @param decoracionPersonalizada the decoracionPersonalizada to set
+     */
+    public void setDecoracionPersonalizada(DecoracionPersonalizadaEntity decoracionPersonalizada) {
+        this.decoracionPersonalizada = decoracionPersonalizada;
     }
     
-    /**
-     * Modifica la decoración asociada a este pastel
-     * @param decoracion La nueva decoracion
-     */
-    public void setDecoracion(DecoracionEntity decoracion) {
-        this.decoracion = decoracion;
-    }
-    
+   
 }

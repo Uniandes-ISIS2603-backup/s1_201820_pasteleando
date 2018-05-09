@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class DecoracionPersonalizadaPersistence
-{private static final Logger LOGGER = Logger.getLogger( DecoracionPersistence.class.getName( ) );
+{private static final Logger LOGGER = Logger.getLogger( DecoracionPersonalizadaPersistence.class.getName( ) );
 
 @PersistenceContext( unitName = "PasteleandoPU" )
 

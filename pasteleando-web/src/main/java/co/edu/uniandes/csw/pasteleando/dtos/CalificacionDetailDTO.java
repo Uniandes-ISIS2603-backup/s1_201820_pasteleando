@@ -131,10 +131,7 @@ public class CalificacionDetailDTO extends CalificacionDTO
         {
             entity.setCliente(this.cliente.toEntity());
         }
-        if(this.decoracion != null)
-        {
-            entity.setDecoracion(this.decoracion.toEntity());
-        }
+ 
         if(this.pedido != null)
         {
             entity.setPedido(this.pedido.toEntity());

@@ -8,8 +8,12 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -20,6 +24,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class DecoracionCatalogoEntity extends DecoracionEntity implements Serializable
 {
     /**
+     * Atributo que modela los pasteles de la DecoracionEntity
+     */
+    @PodamExclude
+    @OneToMany(mappedBy = "decoracionCatalogo")
+    private List<PastelEntity> pasteles = new ArrayList<>();
+    
+    /**
      * Atributo que modela la categoria de la DecoracionCatalogoEntiry
      */
     private String categoria;
@@ -28,7 +39,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      * Atributo que modela las promociones asociadas de la DecoracionCatalogoEntity
      */
     @PodamExclude
-    @OneToMany(mappedBy = "DecoracionCatalogo")
+    @OneToMany(mappedBy = "decoracionCatalogo")
     private List<PromocionEntity> promociones = new ArrayList<>();
     
     /**
@@ -62,5 +73,21 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
     public void setPromociones(List<PromocionEntity> promociones) {
         this.promociones = promociones;
     }
+
+    /**
+     * @return the pasteles
+     */
+    public List<PastelEntity> getPasteles() {
+        return pasteles;
+    }
+
+    /**
+     * @param pasteles the pasteles to set
+     */
+    public void setPasteles(List<PastelEntity> pasteles) {
+        this.pasteles = pasteles;
+    }
+
+   
     
 }
