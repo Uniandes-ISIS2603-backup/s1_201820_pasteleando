@@ -33,6 +33,7 @@ public class CarritoLogic {
     public CarritoEntity createCarrito(CarritoEntity entity)
     {
  
+        //TODO: revisar reglas de negocio
         return persistence.create(entity);
     }
     
