@@ -67,7 +67,7 @@ public class PromocionLogic {
     public PromocionEntity createPromocion(Long decoracionCatalogoId, PromocionEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de crear promocion");
         if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
-            throw  new BusinessLogicException("El catalogo asociado no existe");
+            throw new BusinessLogicException("El catalogo asociado no existe");
         }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
