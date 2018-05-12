@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.pasteleando.persistence.DecoracionCatalogoPersistence;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,6 +24,9 @@ public class PastelLogic {
 
     @Inject
     private PastelPersistence persistence;
+    
+    @Inject
+    private DecoracionCatalogoLogic decoracionCatalogo;
 
     /**
      * Se encarga de crear un PASTEL en la base de datos.
@@ -40,13 +44,13 @@ public class PastelLogic {
      */
     public void deletePastel(Long id) throws BusinessLogicException {
 
-          //DecoracionEntity decoracion = getDecoracion(id);
-         // if (decoracion == null) {
-         //     persistence.delete(id);
-         // } else {
-        //      persistence.delete(id);
-            //decoracionLogic.removePastel(id, decoracion.getId());
-        //  }
+          DecoracionCatalogoEntity decoracion = getDecoracionCatalogo(id); 
+          if (decoracion == null) {
+             persistence.delete(id);
+          } else {
+             persistence.delete(id);
+             decoracionCatalogo.removePastel(id, decoracion.getId());
+          }
     }
 
     /**
