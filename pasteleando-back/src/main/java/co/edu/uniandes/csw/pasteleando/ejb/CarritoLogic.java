@@ -25,7 +25,7 @@ public class CarritoLogic {
     @Inject
     private CarritoPersistence persistence;
     
-    public double precioPasteles( CarritoEntity entity)
+    public double precioPasteles( CarritoEntity entity )
     {
         List pasteles = entity.getPasteles(); 
         double cantidad = 0; 
@@ -33,10 +33,8 @@ public class CarritoLogic {
         for( int i = 0; i < pasteles.size(); i++)
         {
             PastelEntity pastel = (PastelEntity) pasteles.get(i); 
-            
             cantidad = cantidad + pastel.getPrecio(); 
         }
-        
         return cantidad; 
     }
 
@@ -47,10 +45,6 @@ public class CarritoLogic {
      */
     public CarritoEntity createCarrito(CarritoEntity entity)throws BusinessLogicException
     {
-        if( entity.getPrecio() != precioPasteles(entity))
-        {
-            throw new BusinessLogicException("El precio del carrito no corresponde");
-        }
         return persistence.create(entity);
     }
     
