@@ -7,6 +7,9 @@ var mod = ng.module("loginModule", ['ui.router']);
 
             $stateProvider.state('login', {
                 url: '/login',
+                data: {
+                    requireLogin: false
+                },
                 views: {
                     'mainView': {
                         controller: 'loginCtrl',

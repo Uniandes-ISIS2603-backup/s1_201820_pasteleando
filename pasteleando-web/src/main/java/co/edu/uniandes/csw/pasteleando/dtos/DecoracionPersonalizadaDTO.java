@@ -63,7 +63,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
         this.color = decoracionPersonalizadaEntity.getColor();
         this.estado = decoracionPersonalizadaEntity.getEstado();
         this.peso = decoracionPersonalizadaEntity.getPeso();
-
+    
     }
 
     /**

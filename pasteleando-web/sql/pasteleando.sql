@@ -34,16 +34,16 @@ insert into CarritoEntity (id, cantidad, precio) values (3, 4, 600);
 insert into CarritoEntity (id, cantidad, precio) values (4, 5, 700);
 insert into CarritoEntity (id, cantidad, precio) values (5, 6, 800);
 
-insert into ClienteEntity(id, carrito_id, tipoUsuario, formaPagoActual,numeroPuntos) values(50, 1, 1, 'tarjetaCredito',123);
-insert into ClienteEntity(id, carrito_id, tipoUsuario, formaPagoActual,numeroPuntos) values(51, 2, 1, 'tarjetaCredito',124);
-insert into ClienteEntity(id, carrito_id, tipoUsuario, formaPagoActual,numeroPuntos) values(52, 3, 1, 'tarjetaCredito',125);
-insert into ClienteEntity(id, carrito_id, tipoUsuario, formaPagoActual,numeroPuntos) values(53, 4, 1, 'tarjetaCredito',126);
-insert into ClienteEntity(id, carrito_id, tipoUsuario, formaPagoActual,numeroPuntos) values(54, 5, 1, 'tarjetaCredito',127);
+insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(50,'admin1' , 1, 'tarjetaCredito',123);
+insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(51,'admin2' , 1, 'tarjetaCredito',124);
+insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(52,'admin3' , 1, 'tarjetaCredito',125);
+insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(53,'admin4' , 1, 'tarjetaCredito',126);
+insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(54,'admin5' , 1, 'tarjetaCredito',127);
 
-insert into FacturaEntity(id, direccion, fecha, hora, precio, pedido_id) values (4040, 'calle 100', '2014-08-23','22:00',250,099);
-insert into FacturaEntity(id, direccion, fecha, hora, precio, pedido_id) values (4141, 'calle 101', '2015-04-24','23:00',260,100);
-insert into FacturaEntity(id, direccion, fecha, hora, precio, pedido_id) values (4242, 'calle 102', '2016-01-25','21:00',270,101);
-insert into FacturaEntity(id, direccion, fecha, hora, precio, pedido_id) values (4343, 'calle 103', '2017-02-26','20:00',280,102);
-insert into FacturaEntity(id, direccion, fecha, hora, precio, pedido_id) values (4444, 'calle 104', '2018-03-27','19:00',290,103);
+insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4040, 'calle 100', '2014-08-23','22:00',250);
+insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4141, 'calle 101', '2015-04-24','23:00',260);
+insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4242, 'calle 102', '2016-01-25','21:00',270);
+insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4343, 'calle 103', '2017-02-26','20:00',280);
+insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4444, 'calle 104', '2018-03-27','19:00',290);
 
 insert into PastelEntity(id, peso, precio,decoracioncatalogo_id) values (2000, 2,3.0,1000 );
