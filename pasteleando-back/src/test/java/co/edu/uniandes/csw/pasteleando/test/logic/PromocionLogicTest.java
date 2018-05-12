@@ -200,4 +200,20 @@ public class PromocionLogicTest {
         Assert.assertNull(deleted);
     }
     
+    @Test
+    public void validateCantidad()
+    {
+        PromocionEntity entity = data.get(0);
+        Integer cantidad = entity.getCantidad(); 
+        
+        if(cantidad > 90)
+        {
+            Assert.assertTrue(true);
+        }
+         else
+        {
+            Assert.assertTrue(false);
+        }
+    }
+    
 }
