@@ -33,7 +33,7 @@
                 }
             }).state('facturas-create',{
                 parent:'',
-                url:'/create',      
+                url:'/createFactura',      
                     views:
                             {
                                'createView':

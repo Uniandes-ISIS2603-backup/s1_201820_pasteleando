@@ -17,6 +17,11 @@
              $stateProvider.state('pedido',
              {
                  url:'/pedido',
+                 data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                    views:
                            {
                                mainView:
@@ -29,6 +34,11 @@
              }).state('pedidoList', {
                 url: '/list',
                 parent: 'pedido',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'pedido.list.html'
@@ -37,6 +47,11 @@
             }).state('createPedido', {
                 url: '/new',
                 parent:'',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'new/pedido.new.html',
@@ -50,6 +65,11 @@
                 url: '/{pedidoId:int}/detail',
                 parent: 'pedido',
                 param: {pedidoId: null},
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'pedido.list.html'

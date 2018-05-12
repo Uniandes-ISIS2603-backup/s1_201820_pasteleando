@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
+import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.DecoracionCatalogoPersistence;
@@ -182,5 +183,13 @@ public class DecoracionCatalogoLogic {
         PromocionEntity PromocionEntity = new PromocionEntity();
         PromocionEntity.setId(PromocionId);
         entity.getPromociones().remove(PromocionEntity);
+    }
+    
+     public void removePastel(Long DecoracionCatalogoId, Long Pastelid) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un pastel de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
+        DecoracionCatalogoEntity entity = getDecoracionCatalogo(DecoracionCatalogoId);
+        PastelEntity pastEntity = new PastelEntity(); 
+        pastEntity.setId(Pastelid);
+        entity.getPasteles().remove(pastEntity); 
     }
 }

@@ -10,7 +10,11 @@
 
             $stateProvider.state('carrito', {
                 url: '/carrito',
-               
+               data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'carrito.html',
@@ -22,6 +26,11 @@
             {
                 url:'/list',
                 parent:'',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                   views:
                           {
                               listView:
@@ -34,6 +43,11 @@
                 url: '/{carritoId: int}/detail',
                 parent:'Carrito',
                 param:{carritoId : null},
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                    'listView': {
                         templateUrl: basePath + 'carrito.list.html',

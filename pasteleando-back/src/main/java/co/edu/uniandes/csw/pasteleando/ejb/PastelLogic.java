@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.pasteleando.ejb;
 
+import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.pasteleando.persistence.DecoracionCatalogoPersistence;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,6 +24,9 @@ public class PastelLogic {
 
     @Inject
     private PastelPersistence persistence;
+    
+    @Inject
+    private DecoracionCatalogoLogic decoracionCatalogo;
 
     /**
      * Se encarga de crear un PASTEL en la base de datos.
@@ -39,13 +44,7 @@ public class PastelLogic {
      */
     public void deletePastel(Long id) throws BusinessLogicException {
 
-        DecoracionEntity decoracion = getDecoracion(id);
-        if (decoracion == null) {
-            persistence.delete(id);
-        } else {
-            persistence.delete(id);
-            //decoracionLogic.removePastel(id, decoracion.getId());
-        }
+             persistence.delete(id);
     }
 
     /**
@@ -80,11 +79,11 @@ public class PastelLogic {
         return persistence.update(entity);
     }
 
-    public DecoracionEntity getDecoracion(Long pastelId) throws BusinessLogicException {
-        return findPastel(pastelId).getDecoracion();
+    public DecoracionCatalogoEntity getDecoracionCatalogo(Long pastelId) throws BusinessLogicException {
+        return findPastel(pastelId).getDecoracionCatalogo();
     }
 
-    public void replaceDecoracion(Long idPastel, DecoracionEntity decoracion) throws BusinessLogicException {
+    public void replaceDecoracionCatalogo(Long idPastel, DecoracionCatalogoEntity decoracion) throws BusinessLogicException {
         if (persistence.find(idPastel) == null) {
             throw new BusinessLogicException("el pastel no existe");
         }

@@ -57,7 +57,7 @@ public class FacturaPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(FacturaEntity.class.getPackage())
-                .addPackage(DecoracionPersistence.class.getPackage())
+                .addPackage(FacturaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }

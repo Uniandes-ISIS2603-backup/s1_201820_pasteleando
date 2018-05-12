@@ -24,7 +24,7 @@
             $scope.user = {};
             $scope.data = {};
             
-            $http.get('data/users.json').then(function (response) {
+            $http.get('data/clientes.json').then(function (response) {
                 $scope.users = response.data;
             });
 

@@ -17,7 +17,8 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="personalizadaColor" class="col-sm-2">Color: </label>
-                            <textarea id="personalizadaColor" required ng-model="color" class="col-sm-6"></textarea>
+                             <select class="selectpicker" ng-init="Blanco" ng-model="data.colores" ng-options="x for x in colores" style="width: 60%px; height: 30px">
+    </select>
                         </div>
                     </div>   
 
@@ -34,7 +35,7 @@
                             <input ng-show="peso.$valid" type="submit" value="Save" class="btn btn-success"/>
                              <button class="btn btn-success"   ng-click="createDecoracionPersonalizada()"  value="Save">¡Crear!</button>
     
-                            <a class="btn btn-info" ui-sref="personalizadaList">Cancelar</a>
+                            <a class="btn btn-info" ui-sref="catalogoList">Cancelar</a>
                         </div>
                     </div>
                 </form>

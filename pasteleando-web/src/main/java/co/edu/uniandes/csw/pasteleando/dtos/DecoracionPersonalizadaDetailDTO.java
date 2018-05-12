@@ -13,8 +13,8 @@ import java.util.List;
 /**
  ** *Un ejemplo de este DTO es:
  * <br>
-*<pre>
-*{
+ * <pre>
+ *{
  *"color":"Azul",
  *  "imagen": "C:\Users\dc.cepeda\Desktop\cake.jpg",
  *  "estado": "aprobado",
@@ -23,36 +23,63 @@ import java.util.List;
  * }]
  * @author dc.cepeda
  */
-public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
-{
-    
-	/**
-	 * Constructor por defecto
-	 */
-	public DecoracionPersonalizadaDetailDTO( )
-	{
-	}
+public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO {
 
-	/**
-	 * Constructor para transformar un Entity a un DTO
-	 *
-	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
-	 */
-	public DecoracionPersonalizadaDetailDTO( DecoracionPersonalizadaEntity entity )
-	{
-		super( entity );
-	}
+    private List<PastelDTO> pasteles;
 
-	/**
-	 * Transformar un DTO a un Entity
-	 *
-	 * @return La entidad construida a partir del DTO.
-	 */
-	public DecoracionPersonalizadaEntity toEntity( )
-	{
-		DecoracionPersonalizadaEntity entity = super.toEntity();
-              
+    /**
+     * Constructor por defecto
+     */
+    public DecoracionPersonalizadaDetailDTO() {
+    }
+
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de Pasteleando a partir de la cual se construye
+     * el objeto
+     */
+    public DecoracionPersonalizadaDetailDTO(DecoracionPersonalizadaEntity entity) {
+        super(entity);
+         if (entity.getPasteles() != null) {
+            pasteles = new ArrayList<>();
+            entity.getPasteles().forEach((PastelEntity entityPastel) -> {
+                pasteles.add(new PastelDTO(entityPastel));
+            });
+        }
+    }
+
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return La entidad construida a partir del DTO.
+     */
+    public DecoracionPersonalizadaEntity toEntity() {
+        DecoracionPersonalizadaEntity entity = new DecoracionPersonalizadaEntity();
+        super.toEntity(entity);
+        if (getPasteles() != null) {
+            List<PastelEntity> pastelesEntity = new ArrayList<>();
+            getPasteles().forEach((dtoPastel) -> {
+                pastelesEntity.add(dtoPastel.toEntity());
+            });
+            entity.setPasteles(pastelesEntity);
+        }
         return entity;
-	}
+    }
 
+    /**
+     * @return the pasteles
+     */
+    public List<PastelDTO> getPasteles() {
+        return pasteles;
+    }
+
+    /**
+     * @param pasteles the pasteles to set
+     */
+    public void setPasteles(List<PastelDTO> pasteles) {
+        this.pasteles = pasteles;
+    }
+
+    
 }

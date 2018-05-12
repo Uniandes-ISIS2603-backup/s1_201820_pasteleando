@@ -24,6 +24,14 @@ public class PromocionLogic {
     @Inject
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
+    public boolean validateCantidad(Integer cantidad) {
+        if (cantidad > 90) 
+        {
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * Obtiene la lista de los registros de Promocion que pertenecen a una decoracion del catalogo.
      *
@@ -68,6 +76,9 @@ public class PromocionLogic {
         LOGGER.info("Inicia proceso de crear promocion");
         if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
             throw new BusinessLogicException("El catalogo asociado no existe");
+        }
+        else if( !validateCantidad(entity.getCantidad())){
+            throw new BusinessLogicException("La promocion no puede ser mayor a 90");
         }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);

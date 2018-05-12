@@ -1,18 +1,68 @@
-<div ng-if="!isAuthenticated()" class="container">
-    <form class="form-signin">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-        <h1 class="form-signin-heading text-muted">Iniciar sesion</h1>
-        <input type="text" class="form-control" placeholder="Usuario" required="" autofocus="" ng-model="data.username">
-        <input type="password" class="form-control" placeholder="Contraseña" required="" ng-model="data.password">
-        <select class="form-control" name="singleSelect" id="singleSelect" ng-model="data.rol" required="true">
-            <option value="">--- Selecciona tu tipo de usuario ---</option> <!-- not selected / blank option -->
-            <option value="admin">Administrador</option>
-           <option value="assistant">Cliente</option>
-        </select>
-        <br>
-        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="autenticar()">
-            Iniciar sesion
-        </button>
-        <a class="btn btn-lg btn-primary btn-block" ui-sref="booksList">Cancelar</a>
-    </form>
+
+<div class="panel panel-default plantillaUsu" >
+    
+    <div class="panel-body">
+
+        <div class="row">
+
+            <h2 id="loginID9">Iniciar Sesión <br></h2>
+
+            <p id="loginID10">
+                
+                Ingresa tus datos de acceso a nuestro sistema. <br>
+           </p>
+            <div class="row">
+                <p id="errorLogin" class="text-center">
+                    
+                </p>
+            </div>
+            <hr>
+
+            <div class=" text-center plantillaUsu" >
+
+                <form id="loginID11" name="formaLogin"  novalidate ng-submit="login()">
+                    
+                    <div class=" col-md-3">
+                        
+                    </div>
+                        
+                    <div id="loginID1" class=" thumbnail col-md-5">
+                        <h2 id="loginID2">Informacion de Cuenta</h2>
+                        <br>
+                        
+                        <div id="radioLogin" class="text-center">
+                            
+                            <input type="radio" name="saberCliente" ng-model='cliente.tipo' value="1"> Cliente
+                            <input type="radio" name="saberAdmin" ng-model='cliente.tipo' value="2"> Administrador
+                            
+                        </div>
+                        
+                        <br>
+                        <div id="loginID3" class="input-group">
+                            <span id="loginID4" class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="emailLogin" type="email" class="form-control usuariosLogin" name="email" placeholder="Nombre" ng-model='cliente.name' required>
+                        </div>
+                        
+                        <br>
+                        
+                        <div id="loginID5" class="input-group">
+                            <span id="loginID6" class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="passwordLogin" type="password" class="form-control usuariosLogin" name="password" placeholder="Contraseña" ng-model='cliente.contrasenia' required>
+                        </div>
+                        
+                        <br>
+                        
+                        <input id="loginID8" type="submit" value="Ingresar">
+
+                        <br>
+                        
+                    </div>
+
+                </form>
+
+            </div>
+            
+        </div>
+        
+    </div>
 </div>
