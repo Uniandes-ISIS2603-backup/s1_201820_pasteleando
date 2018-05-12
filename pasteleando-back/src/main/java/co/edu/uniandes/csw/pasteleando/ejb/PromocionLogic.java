@@ -69,6 +69,9 @@ public class PromocionLogic {
         if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
             throw new BusinessLogicException("El catalogo asociado no existe");
         }
+        else if( entity.getCantidad() > 90){
+            throw new BusinessLogicException("La promocion no puede ser mayor a 90");
+        }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
         //TODO: No hay ninguna regla de negocio?
