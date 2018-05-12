@@ -44,13 +44,7 @@ public class PastelLogic {
      */
     public void deletePastel(Long id) throws BusinessLogicException {
 
-          DecoracionCatalogoEntity decoracion = getDecoracionCatalogo(id); 
-          if (decoracion == null) {
              persistence.delete(id);
-          } else {
-             persistence.delete(id);
-             decoracionCatalogo.removePastel(id, decoracion.getId());
-          }
     }
 
     /**
