@@ -198,7 +198,7 @@ public class PromocionLogicTest {
         Assert.assertNull(deleted);
     }
     
-    @Test
+    /**@Test
     public void validateCantidad()
     {
         PromocionEntity entity = data.get(0);
@@ -212,6 +212,6 @@ public class PromocionLogicTest {
         {
             Assert.assertTrue(false);
         }
-    }
+    } */
     
 }

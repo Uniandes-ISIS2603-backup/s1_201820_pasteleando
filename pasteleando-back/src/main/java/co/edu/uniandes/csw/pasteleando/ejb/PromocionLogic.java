@@ -25,7 +25,7 @@ public class PromocionLogic {
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     public boolean validateCantidad(Integer cantidad) {
-        if (cantidad > 90) 
+        if (cantidad >= 90) 
         {
             return false;
         }
@@ -77,9 +77,10 @@ public class PromocionLogic {
         if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
             throw new BusinessLogicException("El catalogo asociado no existe");
         }
-        else if( !validateCantidad(entity.getCantidad())){
-            throw new BusinessLogicException("La promocion no puede ser mayor a 90");
-        }
+        //else if( !validateCantidad(entity.getCantidad()))
+        //{
+        //  throw new BusinessLogicException("La promocion no puede ser mayor a 90");
+        //}
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
         //TODO: No hay ninguna regla de negocio?
