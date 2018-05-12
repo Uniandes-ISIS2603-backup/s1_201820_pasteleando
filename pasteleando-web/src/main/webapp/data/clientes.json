@@ -1,0 +1,62 @@
+[
+    {
+        "type": "clienteDetailDTO",
+        "formaPagoActual": "tarjetaCredito",
+        "id": 50,
+        "name": "admin1",
+        "numeroPuntos": 123,
+        "tipoUsuario": true,
+        "tiposPagos": [],
+        "calificaciones": [],
+        "facturas": [],
+        "pqrs": []
+    },
+    {
+        "type": "clienteDetailDTO",
+        "formaPagoActual": "tarjetaCredito",
+        "id": 51,
+        "name": "admin2",
+        "numeroPuntos": 124,
+        "tipoUsuario": true,
+        "tiposPagos": [],
+        "calificaciones": [],
+        "facturas": [],
+        "pqrs": []
+    },
+    {
+        "type": "clienteDetailDTO",
+        "formaPagoActual": "tarjetaCredito",
+        "id": 52,
+        "name": "admin3",
+        "numeroPuntos": 125,
+        "tipoUsuario": true,
+        "tiposPagos": [],
+        "calificaciones": [],
+        "facturas": [],
+        "pqrs": []
+    },
+    {
+        "type": "clienteDetailDTO",
+        "formaPagoActual": "tarjetaCredito",
+        "id": 53,
+        "name": "admin4",
+        "numeroPuntos": 126,
+        "tipoUsuario": true,
+        "tiposPagos": [],
+        "calificaciones": [],
+        "facturas": [],
+        "pqrs": []
+    },
+    {
+        "type": "clienteDetailDTO",
+        "formaPagoActual": "tarjetaCredito",
+        "id": 54,
+        "name": "admin5",
+        "numeroPuntos": 127,
+        "tipoUsuario": true,
+        "tiposPagos": [],
+        "calificaciones": [],
+        "facturas": [],
+        "pqrs": []
+    }
+]

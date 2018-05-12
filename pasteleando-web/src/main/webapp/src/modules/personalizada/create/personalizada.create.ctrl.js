@@ -4,6 +4,9 @@
     mod.controller('personalizadaCreateCtrl', ['$scope', '$http', 'personalizadaContext', '$state', 'personalizadaContext', '$rootScope',
         function ($scope, $http, personalizadaContext, $state, $rootScope) {
             $rootScope.edit = false;
+            
+            $scope.colores = ["Blanco","Azul", "Amarillo","Verde", "Rosado", "Negro", "Morado"];
+            
             $scope.createDecoracionPersonalizada = function () {
                 $http.post('api/personalizada', {
                     color: $scope.color,
