@@ -10,7 +10,8 @@
             $scope.createDecoracionPersonalizada = function () {
                 $http.post('api/personalizada', {
                     color: $scope.color,
-                    peso: $scope.peso
+                    peso: $scope.peso,
+                    imagen: $scope.foto
                 }).then(function (response) {
                     
                     {

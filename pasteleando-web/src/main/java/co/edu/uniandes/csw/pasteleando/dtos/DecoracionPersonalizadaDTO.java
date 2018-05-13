@@ -36,6 +36,19 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
     private String estado;
 
     private Integer peso;
+    
+     /**
+     * Atributo que modela una foto
+     */
+    private String foto;
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public Integer getPeso() {
         return peso;
@@ -60,6 +73,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
      */
     public DecoracionPersonalizadaDTO(DecoracionPersonalizadaEntity decoracionPersonalizadaEntity) {
         super(decoracionPersonalizadaEntity);
+        this.foto=decoracionPersonalizadaEntity.getFoto();
         this.color = decoracionPersonalizadaEntity.getColor();
         this.estado = decoracionPersonalizadaEntity.getEstado();
         this.peso = decoracionPersonalizadaEntity.getPeso();
@@ -103,6 +117,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
         
         super.toEntity(entity);
         entity.setColor(this.color);
+        entity.setFoto(this.foto);
         entity.setEstado(this.estado);
         entity.setPeso(this.peso);
         return entity;

@@ -33,10 +33,6 @@ public abstract class DecoracionEntity extends BaseEntity implements Serializabl
     @Temporal(javax.persistence.TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaAgregado;
-    /**
-     * Atributo que modela la foto de la DecoracionEntity
-     */
-    private String foto;
      /**
      * Atributo que modela si es o no una decoracion personalizada de la DecoracionEntity
      */
@@ -58,21 +54,7 @@ public abstract class DecoracionEntity extends BaseEntity implements Serializabl
     public void setEsPersonalizada(Integer esPersonalizada) {
         this.esPersonalizada = esPersonalizada;
     }
-    /**
-     * @return foto
-     */
-    public String getFoto( )
-    {
-        return foto;
-    }
-    
-    /**
-     * @param foto the atribute to set
-     */
-    public void setFoto( String foto )
-    {
-        this.foto = foto;
-    }
+   
     /**
      * @return the fechaAgregado
      */

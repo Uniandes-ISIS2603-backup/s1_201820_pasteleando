@@ -41,6 +41,11 @@
             $stateProvider.state('calificacion', {
                 url: '/calificacion',
                 abstract: true,
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'calificacion.html',
@@ -52,6 +57,11 @@
             }).state('calificacionList', {
                 url: '/list',
                 parent: 'calificacion',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'calificacion.list.html'
@@ -60,6 +70,11 @@
             }).state('calificacionDetail', {
                 url: '/{calificacionId:int}/detail',
                 parent: 'calificacion',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 param: {
                     calificacionId: null
                 },
@@ -78,6 +93,11 @@
             }).state('calificacionCreate', {
                 url: '/create',
                 parent: 'calificacion',
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/calificacion.new.html',
