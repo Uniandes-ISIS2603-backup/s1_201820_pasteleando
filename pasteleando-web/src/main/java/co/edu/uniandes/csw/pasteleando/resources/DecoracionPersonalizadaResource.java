@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.pasteleando.resources;
 
-import co.edu.uniandes.csw.pasteleando.dtos.DecoracionPersonalizadaDTO;
 import co.edu.uniandes.csw.pasteleando.dtos.DecoracionPersonalizadaDetailDTO;
 import co.edu.uniandes.csw.pasteleando.ejb.DecoracionPersonalizadaLogic;
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;

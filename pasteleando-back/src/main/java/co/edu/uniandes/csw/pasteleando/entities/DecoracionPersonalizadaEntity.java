@@ -8,12 +8,9 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -30,6 +27,10 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     @OneToMany(mappedBy = "decoracionPersonalizada")
     private List<PastelEntity> pasteles = new ArrayList<>(); 
     
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+
     /**
      * Atributo que modela el color de la DecoracionPersonalizada
      */
@@ -47,7 +48,18 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     public Integer getPeso() {
         return peso;
     }
-
+    /**
+     * @return cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+/**
+     * @param cliente the atribute to set Cliente
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
      /**
      * @param peso the atribute to set
      */
