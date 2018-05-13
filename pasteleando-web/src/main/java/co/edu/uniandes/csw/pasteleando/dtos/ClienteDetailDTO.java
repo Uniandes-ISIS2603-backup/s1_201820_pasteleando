@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
+import co.edu.uniandes.csw.pasteleando.entities.DecoracionPersonalizadaEntity;
 import co.edu.uniandes.csw.pasteleando.entities.FacturaEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PqrsEntity;
 import java.util.ArrayList;
@@ -120,6 +121,16 @@ public class ClienteDetailDTO extends ClienteDTO{
     private List<PqrsDTO> pqrs;
     private List<CalificacionDTO> calificaciones;
     private List<FacturaDTO> facturas;
+    
+    private List<DecoracionPersonalizadaDTO> decoraciones;
+
+    public List<DecoracionPersonalizadaDTO> getDecoraciones() {
+        return decoraciones;
+    }
+
+    public void setDecoraciones(List<DecoracionPersonalizadaDTO> decoraciones) {
+        this.decoraciones = decoraciones;
+    }
 
     public void setFacturas(List<FacturaDTO> facturas) {
         this.facturas = facturas;
@@ -175,6 +186,21 @@ public class ClienteDetailDTO extends ClienteDTO{
             this.pqrs = null;
         }
         
+        if(entity.getDecoraciones() != null)
+        {
+           this.decoraciones = new ArrayList<DecoracionPersonalizadaDTO>();
+           for(int i = 0 ; i < entity.getPqrs().size(); i++)
+           {
+               DecoracionPersonalizadaDTO nuevo = new DecoracionPersonalizadaDTO(entity.getDecoraciones().get(i));
+               this.decoraciones.add(nuevo);
+           }
+            
+        }
+        
+        else
+        {
+            this.pqrs = null;
+        }
         if(entity.getCarrito() != null)
         {
             this.carrito = new CarritoDTO(entity.getCarrito());
@@ -258,6 +284,27 @@ public class ClienteDetailDTO extends ClienteDTO{
            {
                FacturaEntity nuevo = this.facturas.get(i).toEntity();
                entity.getFacturas().add(nuevo);
+           }
+            
+        }
+        
+        else
+        {
+             entity.setPqrs(null);
+        }
+        
+         if(this.decoraciones != null)
+        {
+           entity.setDecoraciones(new ArrayList<DecoracionPersonalizadaEntity>());
+           for(int i = 0 ; i < this.decoraciones.size(); i++)
+           {
+               
+               DecoracionPersonalizadaEntity y = new DecoracionPersonalizadaEntity();
+               DecoracionPersonalizadaEntity b = new DecoracionPersonalizadaEntity();
+               y = this.decoraciones.get(i).toEntity(b);
+               
+               
+               entity.getDecoraciones().add(y);
            }
             
         }
