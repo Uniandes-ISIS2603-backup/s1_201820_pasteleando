@@ -38,13 +38,13 @@
              */
             $scope.autenticar = function () {
                 var flag = false;
-                $http.post('api/login',$scope.data).then(function(response){
+                $http.post('api/clientes',$scope.data).then(function(response){
 
                 for (var item in $scope.users) {
-                    if ($scope.users[item].user === response.data.username && $scope.users[item].password === response.data.password && $scope.users[item].rol === response.data.rol) {
+                    if ($scope.users[item].user === response.data.username && $scope.users[item].clave === response.data.clave && $scope.users[item].tipousuario === response.data.tipousuario) {
                         flag = true;
                         $scope.user = $scope.users[item];
-                        $state.go('booksList', {}, {reload: true});
+                        $state.go('home', {}, {reload: true});
                         break;
                     }
                 }
@@ -52,8 +52,8 @@
                     $rootScope.alerts.push({type: "danger", msg: "Incorrect username or password."});
                 } else {
                     sessionStorage.token = $scope.user.token;
-                    sessionStorage.setItem("username", $scope.user.user);
                     sessionStorage.setItem("name", $scope.user.name);
+                    sessionStorage.setItem("id",$scope.user.id);
                     sessionStorage.setItem("rol", $scope.user.rol);
                     $rootScope.currentUser = $scope.user.name; 
                 }
