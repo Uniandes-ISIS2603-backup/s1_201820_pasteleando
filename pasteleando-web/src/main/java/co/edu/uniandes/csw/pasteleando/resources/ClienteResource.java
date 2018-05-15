@@ -34,10 +34,7 @@ import co.edu.uniandes.csw.pasteleando.mappers.BusinessLogicExceptionMapper;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 
 /**

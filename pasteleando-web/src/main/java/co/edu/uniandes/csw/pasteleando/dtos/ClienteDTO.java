@@ -59,10 +59,28 @@ public class ClienteDTO
 {
 	private Long id;
 	private Integer idCarrito;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 	private Boolean tipoUsuario;
 	private String formaPagoActual;
         private Integer numeroPuntos;
         private String name;
+        private String correo;
+        private String clave;
 
     public void setNumeroPuntos(Integer numeroPuntos) {
         this.numeroPuntos = numeroPuntos;
@@ -105,6 +123,8 @@ public class ClienteDTO
 		this.formaPagoActual = clienteEntity.getFormaPagoActual();
 		this.tiposPagos = clienteEntity.getTiposPagos();
                 this.numeroPuntos = clienteEntity.getNumeroPuntos();
+                this.clave = clienteEntity.getClave();
+                this.correo = clienteEntity.getCorreo();
 
 
 	}
@@ -197,6 +217,8 @@ public class ClienteDTO
 		entity.setTipoUsuario(this.tipoUsuario);
 		entity.setTiposPagos(this.tiposPagos);
                 entity.setNumeroPuntos(this.numeroPuntos);
+                entity.setClave(this.clave);
+                entity.setCorreo(this.correo);
 
 		return entity;
 	}

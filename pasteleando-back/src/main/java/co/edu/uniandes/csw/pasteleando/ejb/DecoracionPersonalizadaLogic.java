@@ -91,6 +91,7 @@ public class DecoracionPersonalizadaLogic
     /**
      * Eliminar una decoración personalizada por ID
      * @param id El ID de la decoración personalizada a eliminar
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
     public void deleteDecoracionPersonalizada(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración personalizada con id={0}", id);

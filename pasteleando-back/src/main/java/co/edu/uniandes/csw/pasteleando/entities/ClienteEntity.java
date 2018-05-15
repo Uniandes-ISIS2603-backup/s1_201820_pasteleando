@@ -23,6 +23,24 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private String formaPagoActual;
     private Integer numeroPuntos;
     private String name;
+    private String correo;
+    private String clave;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
     @ElementCollection
     private List<String> tiposPagos;
@@ -34,6 +52,10 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<CalificacionEntity> calificaciones = new ArrayList<>( );
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<DecoracionPersonalizadaEntity> decoraciones = new ArrayList<>( );
     
     @PodamExclude
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -56,6 +78,14 @@ public class ClienteEntity extends BaseEntity implements Serializable
      */
     public void setTipoUsuario(Boolean tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public List<DecoracionPersonalizadaEntity> getDecoraciones() {
+        return decoraciones;
+    }
+
+    public void setDecoraciones(List<DecoracionPersonalizadaEntity> decoraciones) {
+        this.decoraciones = decoraciones;
     }
 
     /**

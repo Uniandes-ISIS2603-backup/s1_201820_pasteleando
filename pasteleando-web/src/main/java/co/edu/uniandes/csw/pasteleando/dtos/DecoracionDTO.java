@@ -99,6 +99,23 @@ public class DecoracionDTO implements Serializable {
     public void setFechaAgregado(Date fecha) {
         this.fechaAgregado = fecha;
     }
+
+    /**
+     * @return La foto de la entidad Decoracion
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto La nueva foto de la entidad decoracion
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+/**
+     * @return El id de la entidad Decoracion
+     */
     public Long getId() {
         return id;
     }

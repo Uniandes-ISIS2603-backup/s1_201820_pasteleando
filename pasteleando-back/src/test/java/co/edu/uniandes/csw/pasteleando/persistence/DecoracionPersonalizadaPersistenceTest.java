@@ -102,7 +102,6 @@ public class DecoracionPersonalizadaPersistenceTest {
      */
     private void clearData() {
         em.createQuery("delete from DecoracionPersonalizadaEntity").executeUpdate();
-        em.createQuery("delete from DecoracionEntity").executeUpdate();
     }
     
     /**

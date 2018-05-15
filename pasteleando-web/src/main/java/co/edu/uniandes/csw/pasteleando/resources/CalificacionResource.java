@@ -203,7 +203,7 @@ public class CalificacionResource
 	{
 		CalificacionEntity entity = logic.getById(id);
 		 if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /calificacion/" + id + " no existe.", 404);
             
         }
             
