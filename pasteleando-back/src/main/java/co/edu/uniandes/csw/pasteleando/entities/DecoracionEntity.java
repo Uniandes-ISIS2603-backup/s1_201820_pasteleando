@@ -34,6 +34,8 @@ public abstract class DecoracionEntity extends BaseEntity implements Serializabl
      */
     private Integer esPersonalizada;
     
+    private String foto;
+    
     /**
      * @return esPersonalizada
      */
