@@ -59,7 +59,7 @@ public class ClienteLogic
 	{
             LOGGER.info( "Inicia proceso de creación de una entidad de Pasteleando" );
             // Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
-            if( persistence.find(entity.getId())  != null )
+            if( persistence.findByName(entity.getName())  != null )
 		{
 		  throw new BusinessLogicException( "Ya existe una entidad de Pasteleando con el id \"" + entity.getId() + "\"" );
 		}
