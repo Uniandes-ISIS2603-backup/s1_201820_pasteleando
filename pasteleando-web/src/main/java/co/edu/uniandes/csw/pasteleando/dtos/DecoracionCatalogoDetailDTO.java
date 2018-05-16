@@ -97,8 +97,7 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO {
      */
     
     public DecoracionCatalogoEntity toEntity() {
-        DecoracionCatalogoEntity entity = new DecoracionCatalogoEntity();
-        super.toEntity(entity);
+        DecoracionCatalogoEntity entity = super.toEntity();
         if (getPasteles() != null) {
             List<PastelEntity> pastelesEntity = new ArrayList<>();
             getPasteles().forEach((dtoPastel) -> {

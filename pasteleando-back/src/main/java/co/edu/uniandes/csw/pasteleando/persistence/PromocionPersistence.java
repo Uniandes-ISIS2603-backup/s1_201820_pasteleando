@@ -15,7 +15,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ *Clase que maneja la persistencia para Promocion.
+ * Se conecta a través del Entity Manager de javax.persistance con la base de datos
+ * SQL.
  * @author jf.garcia
  */
 @Stateless
@@ -45,6 +47,12 @@ public class PromocionPersistence
         return em.find(PromocionEntity.class, promocionId);
     }
     
+    /**
+     * Devuelve todas las promociones de la base de datos.
+     *
+     * @return una lista con todas las editoriales que encuentre en la base de
+     * datos..
+     */
     public List<PromocionEntity> findAll( )
     {
         LOGGER.info( "Consultando todas las entidades de promoción" );
@@ -64,6 +72,12 @@ public class PromocionPersistence
         return entity;
     }
     
+    /**
+     * Actualiza una promocion.
+     *
+     * @param entity: la promocion que viene con los nuevos cambios..
+     * @return una promocion con los cambios aplicados.
+     */
     public PromocionEntity update( PromocionEntity entity )
     {
         return em.merge( entity );

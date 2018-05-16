@@ -14,15 +14,17 @@ import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * clase que representa una decoracion personalizada en la base de datos y permite su serializacion
  * @author dc.cepeda
  */
 @Entity
 public class DecoracionPersonalizadaEntity extends DecoracionEntity implements Serializable
 {
-     /**
-     * Atributo que modela los pasteles de la DecoracionEntity
-     */
+    
+    private String color;
+    private String estado;
+    private Integer peso;
+    
     @PodamExclude
     @OneToMany(mappedBy = "decoracionPersonalizada")
     private List<PastelEntity> pasteles = new ArrayList<>(); 
@@ -31,59 +33,10 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     @ManyToOne
     private ClienteEntity cliente;
 
-    /**
-     * Atributo que modela el color de la DecoracionPersonalizada
-     */
-    private String color;
-    /**
-     * Atributo que modela el estado de la DecoracionPersonalizada
-     */
-    private String estado;
-    
-    private Integer peso;
-      /**
-     * Atributo que modela la foto de la DecoracionEntity
-     */
-    private String foto;
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-    
-
-    /**
-     * @return peso
-     */
-    public Integer getPeso() {
-        return peso;
-    }
-    /**
-     * @return cliente
-     */
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-/**
-     * @param cliente the atribute to set Cliente
-     */
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
-     /**
-     * @param peso the atribute to set
-     */
-    public void setPeso(Integer peso) {
-        this.peso = peso;
-    }
-    
-    
     
     /**
-     * @return foto
+     * retorna el color
+     * @return color
      */
     public String getColor( )
     {
@@ -98,6 +51,7 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
         this.color = color;
     }
     /**
+     * retorna el estado
      * @return the Estado
      */
     public String getEstado( )
@@ -106,14 +60,32 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     }
     
     /**
+     * establece el estado
      * @param estado the atribute to set
      */
     public void setEstado( String estado )
     {
         this.estado = estado;
     }
+    
+    /**
+     * retorna el peso
+     * @return peso
+     */
+    public Integer getPeso() {
+        return peso;
+    }
+    
+     /**
+      * establece el peso
+     * @param peso the atribute to set
+     */
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
 
     /**
+     * retorna los psteles
      * @return the pasteles
      */
     public List<PastelEntity> getPasteles() {
@@ -121,14 +93,27 @@ public class DecoracionPersonalizadaEntity extends DecoracionEntity implements S
     }
 
     /**
+     * establece la lista de pasteles
      * @param pasteles the pasteles to set
      */
     public void setPasteles(List<PastelEntity> pasteles) {
         this.pasteles = pasteles;
     }
-
-   
-
-   
     
+    /**
+     * retorna el cliente
+     * @return cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+    
+    /**
+     * establece el cliente
+     * @param cliente the atribute to set Cliente
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+ 
 }

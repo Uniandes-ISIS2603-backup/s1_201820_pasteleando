@@ -76,4 +76,3 @@
     ]);
 }
 )(window.angular);
-

@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ *Clase que representa el cliente y la base de datos y permite su serializacion
  * @author mp.bayonal
  */
 @Entity
@@ -25,22 +25,6 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private String name;
     private String correo;
     private String clave;
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 
     @ElementCollection
     private List<String> tiposPagos;
@@ -67,6 +51,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
 
 
     /**
+     * retorna el tipo de usuario
      * @return tipoUsuario
      */
     public Boolean getTipoUsuario() {
@@ -74,21 +59,15 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     /**
+     * actualiza el tipo de usuario
      * @param tipoUsuario the atribute to set
      */
     public void setTipoUsuario(Boolean tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public List<DecoracionPersonalizadaEntity> getDecoraciones() {
-        return decoraciones;
-    }
-
-    public void setDecoraciones(List<DecoracionPersonalizadaEntity> decoraciones) {
-        this.decoraciones = decoraciones;
-    }
-
     /**
+     * retorna la forma de pago actual
      * @return formaPagoActual
      */
     public String getFormaPagoActual() {
@@ -96,31 +75,80 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     /**
+     * actualiza la forma de pago
      * @param formaPagoActual the atribute to set
      */
     public void setFormaPagoActual(String formaPagoActual) {
         this.formaPagoActual = formaPagoActual;
     }
     
+    /**
+     * retona el numero de puntos
+     * @return numeroPuntos atribute to set
+     */
     public Integer getNumeroPuntos()
     {
         return this.numeroPuntos;
     }
     
+    /**
+     * actualiza el numero de puntos
+     * @param numeroPuntos atribute to set
+     */
     public void setNumeroPuntos(Integer numeroPuntos) {
         this.numeroPuntos = numeroPuntos;
     }
 
-  
+    /**
+     * retorna el nombre
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * actualiza el nombre
+     * @param name the atribute to set
+     */
     public void setName(String name) {
         this.name = name;
     }
     
-      /**
+    /**
+     * retorna el correo
+     * @return correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * actualiza el correo
+     * @param correo
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * retorna la clave
+     * @return clave
+     */
+    public String getClave() {
+        return clave;
+    }
+
+    /**
+     * actualiza la clave
+     * @param clave
+     */
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+    
+    /**
+     * retorna tipos de pago
      * @return tiposPagos
      */
     public List<String> getTiposPagos() {
@@ -128,42 +156,91 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     /**
+     * actualiza tiposDePago
      * @param tiposPagos the atribute to set
      */
     public void setTiposPagos(List<String> tiposPagos) {
         this.tiposPagos = tiposPagos;
     }
     
+    /**
+     * retorna los PQRS
+     * @return pqrs
+     */
     public List<PqrsEntity> getPqrs() {
         return this.pqrs;
     }
 
+    /**
+     * actualiza la lista de PQRS
+     * @param pqrs atribute to set
+     */
     public void setPqrs(List<PqrsEntity> pqrs) {
         this.pqrs = pqrs;
     }
 
+    /**
+     * retorna las calificaciones
+     * @return calificaciones
+     */
     public List<CalificacionEntity> getCalificaciones() {
         return this.calificaciones;
     }
 
+    /**
+     * actualiza la lista de calificaciones
+     * @param calificaciones atribute to ste
+     */
     public void setCalificaciones(List<CalificacionEntity> calificaciones) {
         this.calificaciones = calificaciones;
     }
+    
+     /**
+     * retornla la lista de decoraciones
+     * @return decoraciones
+     */
+    public List<DecoracionPersonalizadaEntity> getDecoraciones() {
+        return decoraciones;
+    }
 
+    /**
+     * actualiza la lista de decoraciones
+     * @param  atribute to set decoraciones 
+     */
+    public void setDecoraciones(List<DecoracionPersonalizadaEntity> decoraciones) {
+        this.decoraciones = decoraciones;
+    }
+
+    /**
+     * retorna el carrito
+     * @return carrito
+     */
     public CarritoEntity getCarrito() {
         return this.carrito;
     }
 
+    /**
+     * actualiza el carrito
+     * @param carrito atribute to set
+     */ 
     public void setCarrito(CarritoEntity carrito) {
         this.carrito = carrito;
     }
     
-    public void setFacturas(List<FacturaEntity> facturas) {
-        this.facturas = facturas;
-    }
-
+   /**
+     * retorna la lista de facturas
+     * @return 
+     */
     public List<FacturaEntity> getFacturas() {
         return this.facturas;
+    }
+    
+    /**
+     * actualiza las facturas
+     * @param facturas atribute to set
+     */
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
     }
 
 }

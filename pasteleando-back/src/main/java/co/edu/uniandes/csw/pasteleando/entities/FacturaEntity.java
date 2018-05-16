@@ -10,14 +10,13 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamIntValue;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
- *
+ * clase que representa una factura en la base de datos y permite su serializacion
  * @author m.leona
  */
 @Entity
@@ -34,16 +33,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     
     @PodamIntValue(minValue = 1)
     private Integer precio;
-
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
-
-    
+ 
     @PodamExclude
     @OneToOne
     private PedidoEntity pedido;
@@ -52,20 +42,10 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private ClienteEntity cliente;
    
-    public PedidoEntity getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(PedidoEntity pedido) {
-        this.pedido = pedido;
-    }
-
- 
     
-    
-
     /**
-    @return Dirección de la factura
+     * retorna la direccion de la factura
+    *@return direccion
     */
     public String getDireccion()
     {
@@ -73,7 +53,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
   /**
-   * 
+   * establece la direccion de la factura
    * @param pDireccion Dirección nueva de la factura
    */
     public void setDireccion(String pDireccion)
@@ -82,7 +62,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
  /**
-  * 
+  * retorna la fecha de la factura
   * @return fecha de factura
   */
     public Date getFecha()
@@ -91,7 +71,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
    /**
-    * 
+    * establece la fecha de la factura
     * @param pFecha Fecha nueva para la factura
     */
     public void setFecha(Date pFecha)
@@ -100,7 +80,7 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
    /**
-    * 
+    * retorna la hora de la factura
     * @return Hora de la factura
     */
     public String getHora()
@@ -109,7 +89,8 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
     /**
-    @param pHora Nueva hora de la factura
+     * estblece la hora de la factura
+    *@param pHora Nueva hora de la factura
     */
     public void setHora(String pHora)
     {
@@ -117,7 +98,8 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
     /**
-    @return precio total de la compra
+     * retorna el precio
+    *@return precio total de la compra
     */
     public Integer getPrecio()
     {
@@ -125,11 +107,44 @@ public class FacturaEntity extends BaseEntity implements Serializable {
     }
     
     /**
-     * 
+     * establece el pecio de la factura
      * @param pPrecio Precio nuevo de la factura
      */
     public void setPrecio(Integer pPrecio)
     {
         this.precio = pPrecio;
     }
+    
+    /**
+     * retorna el pedido asociado a la factura
+     * @return pedido
+     */
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    /**
+     * establece el pedido asociado a la factura
+     * @param pedido 
+     */
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
+    }
+    
+    /**
+     * retorna el cliente asociado a la factura
+     * @return cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * establece el cliente asociado a la factura
+     * @param cliente 
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
 }

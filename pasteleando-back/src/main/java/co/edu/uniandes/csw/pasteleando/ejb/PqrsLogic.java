@@ -31,7 +31,6 @@ public class PqrsLogic
      * Devuelve la lista de pqrs
      * @return Colección de objetos de PqrsEntity
      */
-    
     public List<PqrsEntity> getPqrs()
     {
         LOGGER.info("Inicia proceso de consultar todas las pqrs");
@@ -45,7 +44,6 @@ public class PqrsLogic
      * @param id Identificador de la instancia a consultar
      * @return Instancia de PqrsEntity con los datos del pqrs consultado.
      */
-    
     public PqrsEntity getPqrs(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un pqrs con id = {0}", id);
@@ -63,7 +61,6 @@ public class PqrsLogic
      * @return La entidad luego de persistirla
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
-    
     public PqrsEntity createPqrs(PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de la pqrs");
@@ -86,7 +83,6 @@ public class PqrsLogic
      * @return La entidad de pqrs luego de actualizarla
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
-    
     public PqrsEntity updatePqrs(Long id, PqrsEntity entity) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la pqrs con id ={0}", id);
@@ -106,7 +102,6 @@ public class PqrsLogic
      * Eliminar una pqrs a partir del identificador (id)
      * @param id El ID de la pqrs a eliminar
      */
-    
     public void deletPqrs(Long id) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la pqrs con id ={0}", id);
@@ -119,6 +114,5 @@ public class PqrsLogic
         
         LOGGER.log(Level.INFO, "Termina proceso de borrar la pqrs con id ={0}", id);
     }
-    
-    
+  
 }

@@ -10,14 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * clase que representa una decoracion del catalogo y permite su serializacion
  * @author jf.garcia
  */
 @Entity
@@ -27,7 +24,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      * Atributo que modela los pasteles de la DecoracionEntity
      */
     @PodamExclude
-    @OneToMany(mappedBy = "decoracionCatalogo")
+    @OneToMany(mappedBy = "decoracionCatalogo", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<PastelEntity> pasteles = new ArrayList<>();
     
     /**
@@ -39,7 +36,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      * Atributo que modela las promociones asociadas de la DecoracionCatalogoEntity
      */
     @PodamExclude
-    @OneToMany(mappedBy = "decoracionCatalogo")
+    @OneToMany(mappedBy = "decoracionCatalogo", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<PromocionEntity> promociones = new ArrayList<>();
     
     /**

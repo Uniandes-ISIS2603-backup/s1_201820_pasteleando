@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- *
+ * clase que implementa la conexion de la entidad DecoracionPersonalizada
  * @author dc.cepeda
  */
 @Stateless
@@ -35,10 +35,10 @@ public class DecoracionPersonalizadaLogic
      */
     public List<DecoracionPersonalizadaEntity> getDecoracionesPersonalizadas() {
         LOGGER.info( "Inicia proceso de consultar todas las entidades de Decoracion Personalizada" );
-		// Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-		List<DecoracionPersonalizadaEntity> entities = persistence.findAll( );
-		LOGGER.info( "Termina proceso de consultar todas las entidades de Decoracion Personalizada" );
-		return entities;
+	// Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
+	List<DecoracionPersonalizadaEntity> entities = persistence.findAll( );
+	LOGGER.info( "Termina proceso de consultar todas las entidades de Decoracion Personalizada" );
+	return entities;
     }
     /**
      * Busca una decoración personalizada por ID
@@ -103,6 +103,11 @@ public class DecoracionPersonalizadaLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración personalizada con id={0}", id);
     }
 
+    /**
+     * metodo que se encarga de validar el peso
+     * @param peso peso a validar
+     * @return false si no es valido, true si es valido
+     */
     private boolean validatePeso(Integer peso) {
         if(peso <=0)
             return false;

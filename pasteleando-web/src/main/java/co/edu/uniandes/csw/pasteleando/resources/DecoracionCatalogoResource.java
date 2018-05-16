@@ -181,7 +181,7 @@ public class DecoracionCatalogoResource
      * @param catalogoId El ID de la decoración del catálogo con respecto al cual se accede al servicio.
      * @return El servicio de promociones para la decoración del catálogo en paricular.
      */
-    @Path("{id: \\d+}/reviews")
+    @Path("{id: \\d+}/promociones")
     public Class<PromocionResource> getPromocionResource(@PathParam("id") Long catalogoId) {
         DecoracionCatalogoEntity entity = decoracionCatalogoLogic.getDecoracionCatalogo(catalogoId);
         if (entity == null) {

@@ -6,17 +6,15 @@
 package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
-import co.edu.uniandes.csw.pasteleando.entities.DecoracionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.pasteleando.persistence.DecoracionCatalogoPersistence;
 import co.edu.uniandes.csw.pasteleando.persistence.PastelPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- *
+ * clase que implementa la conexion de la entidad Pastel
  * @author MIGUELHOYOS
  */
 @Stateless
@@ -44,7 +42,7 @@ public class PastelLogic {
      */
     public void deletePastel(Long id) throws BusinessLogicException {
 
-             persistence.delete(id);
+        persistence.delete(id);
     }
 
     /**
@@ -83,6 +81,12 @@ public class PastelLogic {
         return findPastel(pastelId).getDecoracionCatalogo();
     }
 
+    /**
+     * reemplaza la decoracionCatalogo de una entidad Pastel
+     * @param idPastel id de la entidad Pastel
+     * @param decoracion entidad de la decoracion a reemplazar
+     * @throws BusinessLogicException si no hay un pastel con el ID dado
+     */
     public void replaceDecoracionCatalogo(Long idPastel, DecoracionCatalogoEntity decoracion) throws BusinessLogicException {
         if (persistence.find(idPastel) == null) {
             throw new BusinessLogicException("el pastel no existe");

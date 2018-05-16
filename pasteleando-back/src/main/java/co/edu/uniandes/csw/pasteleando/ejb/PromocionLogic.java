@@ -25,7 +25,7 @@ public class PromocionLogic {
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     public boolean validateCantidad(Integer cantidad) {
-        if (cantidad >= 90) 
+        if (cantidad > 90) 
         {
             return false;
         }
@@ -77,13 +77,12 @@ public class PromocionLogic {
         if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
             throw new BusinessLogicException("El catalogo asociado no existe");
         }
-        //else if( !validateCantidad(entity.getCantidad()))
-        //{
-        //  throw new BusinessLogicException("La promocion no puede ser mayor a 90");
-        //}
+        else if( !validateCantidad(entity.getCantidad()))
+        {
+         throw new BusinessLogicException("La promocion no puede ser mayor a 90");
+        }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
-        //TODO: No hay ninguna regla de negocio?
         return persistence.create(entity);
     }
     
@@ -97,12 +96,11 @@ public class PromocionLogic {
      */
     public PromocionEntity updatePromocion(Long decoracionCatalogoId, PromocionEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar promoción");
-        if (decoracionCatalogoLogic.getPromocion(decoracionCatalogoId, entity.getId()) == null) {
+        if (persistence.find(decoracionCatalogoId, entity.getId()) == null) {
             throw  new BusinessLogicException("La promoción a actualizar no existe");
         }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
-        //TODO: No hay ninguna regla de negocio?
         return persistence.update(entity);
     }
     

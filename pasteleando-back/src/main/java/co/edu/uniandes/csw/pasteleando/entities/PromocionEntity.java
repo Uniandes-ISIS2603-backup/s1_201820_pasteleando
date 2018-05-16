@@ -6,13 +6,13 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * clase que representa una promocion en la base de datos y permite su serializacion
  * @author jf.garcia
  */
 @Entity
@@ -27,7 +27,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
      * Atributo que modela la decoración del catálogo asociada.
      */
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private DecoracionCatalogoEntity decoracionCatalogo;
     
     

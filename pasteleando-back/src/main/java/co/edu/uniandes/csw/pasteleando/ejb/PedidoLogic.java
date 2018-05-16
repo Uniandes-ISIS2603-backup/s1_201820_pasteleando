@@ -32,7 +32,6 @@ public class PedidoLogic
      * Devuelve la lista de pedidos
      * @return Colección de objetos de PedidoEntity
      */
-    
     public List<PedidoEntity> getPedidos( )
     {
         LOGGER.info("Inicia proceso de consultar todas los pedidos");
@@ -46,11 +45,9 @@ public class PedidoLogic
      * @param id Identificador de la instancia a consultar
      * @return Instancia de PedidoEntity con los datos del pedido consultado.
      */
-    
     public PedidoEntity getPedido(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un pedido con id = {0}", id);
-        
         return persistence.find(id);
     }
     
@@ -60,7 +57,6 @@ public class PedidoLogic
      * @return La entidad luego de persistirla
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
-    
     public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException
     {  
         LOGGER.info( "Inicia proceso de creación de una entidad de Pedido" );
@@ -82,7 +78,6 @@ public class PedidoLogic
      * @return La entidad de pedido luego de actualizarla
      * @throws BusinessLogicException Si el identificador ya existe en la persitencia.
      */
-    
     public PedidoEntity updatePedido(Long id, PedidoEntity entity) throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el pedido con id ={0}", id);
@@ -101,7 +96,6 @@ public class PedidoLogic
      * Eliminar un pedido a partir del identificador (id)
      * @param id El ID del pedido a eliminar
      */
-    
     public void deletePedido(Long id) throws BusinessLogicException
     {
        LOGGER.log(Level.INFO, "Inicia proceso de borrar el pedido con id ={0}", id);
@@ -118,7 +112,6 @@ public class PedidoLogic
      * @param pedidoId Identificador del pedido
      * @return Lista de calificaciones asociadas a un pedido
      */
-    
     public List<CalificacionEntity> listCalificaciones(Long pedidoId)
     {
         return getPedido(pedidoId).getCalificaciones();

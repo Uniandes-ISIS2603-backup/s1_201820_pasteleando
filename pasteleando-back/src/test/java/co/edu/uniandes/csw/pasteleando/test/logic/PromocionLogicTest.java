@@ -127,7 +127,12 @@ public class PromocionLogicTest {
         Assert.assertNotNull(result);
         PromocionEntity entity = em.find(PromocionEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getCantidad(), entity.getCantidad());
+        if (entity.getCantidad() > 90) {
+            throw new BusinessLogicException("La cantidad de la promoción no puede ser mayor al 90%");
+        }
+        else{
+            Assert.assertEquals(newEntity.getCantidad(), entity.getCantidad());
+        }
     }
     
     /**
@@ -197,21 +202,5 @@ public class PromocionLogicTest {
         PromocionEntity deleted = em.find(PromocionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    
-    /**@Test
-    public void validateCantidad()
-    {
-        PromocionEntity entity = data.get(0);
-        Integer cantidad = entity.getCantidad(); 
-        
-        if(cantidad > 90)
-        {
-            Assert.assertTrue(true);
-        }
-         else
-        {
-            Assert.assertTrue(false);
-        }
-    } */
     
 }

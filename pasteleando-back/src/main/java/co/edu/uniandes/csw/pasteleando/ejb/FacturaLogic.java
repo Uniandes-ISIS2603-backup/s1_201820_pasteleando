@@ -13,7 +13,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- *
+ * clase que implementa la conexion de la entidad Factura
  * @Factura m.leona
  */
 @Stateless
@@ -40,13 +40,6 @@ public class FacturaLogic {
      */
     public FacturaEntity getFactura(Long id) {
         return persistence.find(id);
-    }
-
-    public boolean validatePrecio(Integer precio) {
-        if (precio <= 0) {
-            return false;
-                         }
-        return true;
     }
 
     /**
@@ -91,6 +84,15 @@ public class FacturaLogic {
         {
             throw new BusinessLogicException("No existe una entidad con el id: "+id);
         }
+    }
+    
+    /**
+     * valida el precio de la factura
+     * @param precio el precio a validar
+     * @return falso en el caso que no sea valido
+     */
+    public boolean validatePrecio(Integer precio) {
+        return precio > 0;
     }
 
 }

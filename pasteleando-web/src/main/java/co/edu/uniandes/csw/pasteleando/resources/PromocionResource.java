@@ -39,7 +39,7 @@ import javax.ws.rs.WebApplicationException;
  * @author ISIS2603
  * @version 1.0
  */
-@Path( "/catalogo/{idCatalogo: \\d+}/promocion" )
+@Path( "/catalogo/{idCatalogo: \\d+}/promociones" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
@@ -65,7 +65,6 @@ public class PromocionResource
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando no se encuentra el catálogo.
      */
     @GET
-    @Path("/all")
     public List<PromocionDTO> getPromociones(@PathParam("catalogoId") Long catalogoId) throws BusinessLogicException {
         return listEntity2DTO(promocionLogic.getPromociones(catalogoId));
     }
@@ -122,10 +121,6 @@ public class PromocionResource
     @POST
     public PromocionDTO createPromocion(@PathParam("catalogoId") Long catalogoId, PromocionDTO promocion) throws BusinessLogicException
     {
-        if (catalogoLogic.getDecoracionCatalogo(catalogoId) == null)
-        {
-            throw new WebApplicationException("El catálogo no existe");
-        }
         return new PromocionDTO(promocionLogic.createPromocion(catalogoId, promocion.toEntity()));
     }
     
@@ -151,20 +146,12 @@ public class PromocionResource
     @PUT
     @Path("{id: \\d+}")
     public PromocionDTO updatePromocion(@PathParam("catalogoId") Long catalogoId, @PathParam("id") Long id, PromocionDTO promocion) throws BusinessLogicException {
-        if(catalogoLogic.getDecoracionCatalogo(catalogoId) == null)
-        {
-            throw new WebApplicationException("404, No se encontró el catálogo");
-        }
-        
-        if(promocionLogic.getPromocion(catalogoId,id) == null)
-        {
-            throw new WebApplicationException("404, No se encontró la promoción");
-        }
-        
         promocion.setId(id);
-        PromocionEntity entity = promocion.toEntity();
-        entity.setId(id);
-        return new PromocionDTO(promocionLogic.updatePromocion(catalogoId, entity));
+        PromocionEntity entity = promocionLogic.getPromocion(catalogoId, id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promociones/" + id + " no existe.", 404);
+        }
+        return new PromocionDTO(promocionLogic.updatePromocion(catalogoId, promocion.toEntity()));
     }
     
     /**
@@ -188,10 +175,9 @@ public class PromocionResource
     @Path("{id: \\d+}")
     public void deletePromocion(@PathParam("catalogoId") Long catalogoId, @PathParam("id") Long id) throws BusinessLogicException
     {
-        
-        if(catalogoLogic.getDecoracionCatalogo(catalogoId) == null)
-        {
-            throw new WebApplicationException("404, No se encontró el catálogo");
+        PromocionEntity entity = promocionLogic.getPromocion(catalogoId, id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promociones/" + id + " no existe.", 404);
         }
         promocionLogic.deletePromocion(catalogoId, id);
     }

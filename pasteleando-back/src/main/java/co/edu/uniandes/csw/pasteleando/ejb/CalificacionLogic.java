@@ -34,6 +34,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
+ * Clase que implementa la conexion para la entidad Calificacion
  * @author ISIS2603
  */
 @Stateless
@@ -45,58 +46,85 @@ public class CalificacionLogic
 	@Inject
 	private CalificacionPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
-	public CalificacionEntity create( CalificacionEntity entity ) throws BusinessLogicException
+	/**
+         * Crea una entidad en la base de datos
+         * 
+         * @param entity la entidad a agregar a la base de datos
+         * @return la entidad creada
+         * @throws BusinessLogicException 
+         */
+        public CalificacionEntity create( CalificacionEntity entity ) throws BusinessLogicException
 	{
-		LOGGER.info( "Inicia proceso de creación de una entidad de Calificacion" );
-		// Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
-		if( persistence.findByName( entity.getName() ) != null )
-		{
-			throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
-		}
-		// Invoca la persistencia para crear la entidad de Pasteleando
-		persistence.create( entity );
-		LOGGER.info( "Termina proceso de creación de entidad de Calificacion" );
-		return entity;
+            LOGGER.info( "Inicia proceso de creación de una entidad de Calificacion" );
+            // Verifica la regla de negocio que dice que no puede haber dos entidades de Pasteleandos con el mismo nombre
+            if( persistence.findByName( entity.getName() ) != null )
+            {
+		throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
+            }
+            // Invoca la persistencia para crear la entidad de Pasteleando
+            persistence.create( entity );
+            LOGGER.info( "Termina proceso de creación de entidad de Calificacion" );
+            return entity;
 	}
 
-	public List<CalificacionEntity> getAll( )
+	/**
+         * retorna todas las entidades Calificacion en la base de datos
+         * @return todas las entidades Calificacion
+         */
+        public List<CalificacionEntity> getAll( )
 	{
-		LOGGER.info( "Inicia proceso de consultar todas las entidades de Calificacion" );
-		// Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-		List<CalificacionEntity> entities = persistence.findAll( );
-		LOGGER.info( "Termina proceso de consultar todas las entidades de Calificacion" );
-		return entities;
+            LOGGER.info( "Inicia proceso de consultar todas las entidades de Calificacion" );
+            // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
+            List<CalificacionEntity> entities = persistence.findAll( );
+            LOGGER.info( "Termina proceso de consultar todas las entidades de Calificacion" );
+            return entities;
 	}
 
-	public CalificacionEntity getById( Long id )
+	/**
+         * retorna la informacion de la entidad Calificacion con el id dado por parametro
+         * @param id el ID de la entidad buscada
+         * @return la informacion de esta entidad
+         */
+        public CalificacionEntity getById( Long id )
 	{
-		return persistence.find( id );
+            return persistence.find( id );
 	}
 
-	public CalificacionEntity update( CalificacionEntity entity ) throws BusinessLogicException
+	/**
+         * actualiza la entidad en la base de datos que llega por parametro
+         * @param entity la entidad a actualizar
+         * @return la entidad actualizada
+         * @throws BusinessLogicException si no existe la entidad en la base de datos
+         */
+        public CalificacionEntity update( CalificacionEntity entity ) throws BusinessLogicException
 	{
-		if( persistence.find(entity.getId() ) == null )
-		{
-			throw new BusinessLogicException( "No existe una Calificación con el id \"" + entity.getId() + "\"" );
-		}
-                if( persistence.findByName( entity.getName( ) ) != null )
-		{
-			throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
-		}
-		return persistence.update( entity );
+            if( persistence.find(entity.getId() ) == null )
+            {
+		throw new BusinessLogicException( "No existe una Calificación con el id \"" + entity.getId() + "\"" );
+            }
+            if( persistence.findByName( entity.getName( ) ) != null )
+            {
+		throw new BusinessLogicException( "Ya existe una entidad de Calificacion con el nombre \"" + entity.getName( ) + "\"" );
+            }
+            return persistence.update( entity );
 	}
 
-	public void delete( CalificacionEntity entity ) throws BusinessLogicException
+	/**
+         * borra la entidad que llega por parametro de la base de datos
+         * @param entity la entidad a eliminar
+         * @throws BusinessLogicException 
+         */
+        public void delete( CalificacionEntity entity ) throws BusinessLogicException
 	{
-           //TODO: este método debe recibir un id y hay que validar que existe un Calificacion con ese id 
-		LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
+            //TODO: este método debe recibir un id y hay que validar que existe un Calificacion con ese id 
+            LOGGER.log( Level.INFO, "Inicia proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
 		
                 
-                if( persistence.find(entity.getId()) == null )
-		{
-			throw new BusinessLogicException( "NO existe una entidad de Calificacion con el id \"" + entity.getId() + "\"" );
-		}
-                persistence.delete( entity.getId() );
-		LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
+            if( persistence.find(entity.getId()) == null )
+            {
+		throw new BusinessLogicException( "NO existe una entidad de Calificacion con el id \"" + entity.getId() + "\"" );
+            }
+            persistence.delete( entity.getId() );
+            LOGGER.log( Level.INFO, "Termina proceso de borrar la entidad de Calificacion con id={0}", entity.getId( ) );
 	}
 }

@@ -52,6 +52,10 @@ public class DecoracionDTO implements Serializable {
      * Atributo que modela si la decoracion es Personalizada
      */
     private Integer esPersonalizada = 0;
+   /**
+     * Atributo que modela la foto de la decoracion Personalizada
+     */
+    private String foto;
 
     private Long id;
 

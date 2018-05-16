@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * clase que representa los pedidos en la base de datos y permite su serializacion
  * @author ni.ramirez10
  */
 @Entity
@@ -78,7 +78,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      *
      * @return lista de pqrs.
      */
-    
     public List<PqrsEntity> getPqrs()
     {
         return pqrs;
@@ -89,7 +88,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      *
      * @param pPqrs nuevo valor de la lista.
      */
-    
     public void setPqrs(List<PqrsEntity> pPqrs)
     {
         this.pqrs = pPqrs;
@@ -99,7 +97,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Obtiene el carrito
      * @return elemento de tipo carrito.
      */
-    
     public CarritoEntity getCarrito()
     {
         return carrito;
@@ -109,7 +106,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Establece un valor al carrito
      * @param pCarrito nuevo valor del elemento
      */
-    
     public void setCarrito( CarritoEntity pCarrito)
     {
         this.carrito = pCarrito;
@@ -119,7 +115,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Obtiene la lista de calificaciones
      * @return lista de calificaciones.
      */
-    
     public List<CalificacionEntity> getCalificaciones()
     {
         return calificaciones;
@@ -129,7 +124,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Establece el valor de la lista de calificaciones.
      * @param pCalificacion nuevo valor de la lista.
      */
-    
     public void setCalificacion(List<CalificacionEntity> pCalificacion)
     {
         this.calificaciones = pCalificacion;
@@ -139,7 +133,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Obtiene la factura
      * @return elemento de tipo factura.
      */
-    
     public FacturaEntity getFactura()
     {
         return factura;
@@ -149,7 +142,6 @@ public class PedidoEntity extends BaseEntity implements Serializable
      * Establece un valor al a factura
      * @param pFactura nuevo valor del elemento
      */
-    
     public void setFactura( FacturaEntity pFactura)
     {
         this.factura = pFactura;
