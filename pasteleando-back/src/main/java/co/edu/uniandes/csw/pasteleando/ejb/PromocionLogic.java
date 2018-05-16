@@ -25,7 +25,7 @@ public class PromocionLogic {
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     public boolean validateCantidad(Integer cantidad) {
-        if (cantidad >= 90) 
+        if (cantidad > 90) 
         {
             return false;
         }
