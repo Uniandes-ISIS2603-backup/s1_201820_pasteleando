@@ -28,7 +28,7 @@
             var idcliente = $state.params.clienteId;
 
 
-            $scope.opcionesPago = ["Efectivo"];
+            $scope.opcionesPago = ["Efectivo", "Tarjeta de Credito"];
 
             /**
              * @ngdoc function

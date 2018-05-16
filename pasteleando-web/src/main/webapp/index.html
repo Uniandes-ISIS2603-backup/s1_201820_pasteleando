@@ -124,22 +124,22 @@
                         
                      
                         
-                        <li><a ui-sref="pedidoList">Pedidos</a></li>
-                        <li><a ui-sref="facturas">Facturas</a></li>
-                        <li><a ui-sref="personalizadaList">Pasteles Personalizados</a></li>
-                        <li><a ui-sref="catalogoList">Catálogo</a></li>
-                        <li><a ui-sref="carritoList">Carrito</a></li>
-                        <li><a ui-sref="promocionList">Promociones</a></li>
-                        <li><a ui-sref="clienteList">Cliente</a></li>
+                        <li><a ui-sref="catalogoList">Nuestros Pasteles</a></li>
+                        <li><a ui-sref="promocionList">NuestrasPromociones</a></li>
+                        <li ng-if="isAuthenticated()"><a ui-sref="pedidoList">Pedidos</a></li>
+                        <li ng-if="isAuthenticated()"><a ui-sref="facturas">Facturas</a></li>
+                        <li ng-if="isAuthenticated()"><a ui-sref="carritoList">Carrito</a></li>
+                        
                         <li><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li><a ui-sref="pqrsList">Pqrs</a></li>
+                        <li ng-if="isAuthenticated()"><a ui-sref="clienteList">Cliente</a></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
 
                     <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="miInfo"><span class="glyphicon glyphicon-user"></span></a></li>
                     <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><a ui-sref="clienteCreate"> Sign Up Cliente</a></li>
-                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="logout"><span class="glyphicon glyphicon-apple"></span></a></li>
+                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
 
 
                 </ul>
