@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <a class="btn btn-info" ui-sref="catalogoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Crear nueva decoración del catálogo</a>
+            <a ng-if="isAuthenticated() && !hasPermissions()" class="btn btn-info" ui-sref="catalogoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Crear nueva decoración del catálogo</a>
         </div>
     </div>
             </div>

@@ -59,7 +59,7 @@
                 parent: 'cliente',
                 data: {
                     requireLogin: true,
-                    roles: ["admin"]
+                    roles: ["cliente"]
                 }
                 ,
                 views: {
@@ -141,6 +141,19 @@
                     }
                 }
                
+            }).state('admin', {
+                url: '/admin',
+                parent: 'cliente',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'admin.list.html'
+                    }
+                }
             });
         }]);
 })(window.angular);
