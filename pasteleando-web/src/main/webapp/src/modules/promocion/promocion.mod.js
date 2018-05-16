@@ -41,6 +41,11 @@
             $stateProvider.state('promocion', {
                 url: '/promocion',
                 abstract: true,
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'promocion.html',
@@ -52,6 +57,11 @@
             }).state('promocionList', {
                 url: '/list',
                 parent: 'promocion',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'promocion.list.html'
@@ -63,6 +73,11 @@
                 param: {
                     calificacionId: null
                 },
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'promocion.list.html',
@@ -78,6 +93,11 @@
             }).state('promocionCreate', {
                 url: '/create',
                 parent: 'promocion',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/promocion.new.html',
@@ -88,6 +108,11 @@
             }).state('promocionUpdate', {
                 url: '/update/{promocionId:int}',
                 parent: 'promocion',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 param: {
                     promocionId: null
                 },
@@ -101,6 +126,11 @@
             }).state('promocionDelete', {
                 url: '/delete/{promocionId:int}',
                 parent: 'promocion',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 param: {
                     editorialId: null
                 },

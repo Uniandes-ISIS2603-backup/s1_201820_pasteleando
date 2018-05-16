@@ -43,15 +43,12 @@ public class DecoracionDTO implements Serializable {
      * Atributo que modela la fecha de la Decoracion
      */
     private Date fechaAgregado;
-
-    /**
-     * Atributo que modela la foto de la Decoracion
-     */
-    private String foto;
     /**
      * Atributo que modela si la decoracion es Personalizada
      */
     private Integer esPersonalizada = 0;
+   
+
 
     private Long id;
 
@@ -70,7 +67,6 @@ public class DecoracionDTO implements Serializable {
     public DecoracionDTO(DecoracionEntity decoracionEntity) {
         if (decoracionEntity != null) {
             this.fechaAgregado = decoracionEntity.getFechaAgregado();
-            this.foto = decoracionEntity.getFoto();
             this.esPersonalizada = decoracionEntity.getEsPersonalizada();
             this.id = decoracionEntity.getId();
         }
@@ -130,6 +126,7 @@ public class DecoracionDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
 
     /**
      * Convertir DTO a Entity
@@ -139,7 +136,6 @@ public class DecoracionDTO implements Serializable {
      */
     public DecoracionEntity toEntity(DecoracionEntity entity) {
 
-        entity.setFoto(this.foto);
         entity.setFechaAgregado(this.fechaAgregado);
         entity.setEsPersonalizada(this.esPersonalizada);
         entity.setId(this.getId());

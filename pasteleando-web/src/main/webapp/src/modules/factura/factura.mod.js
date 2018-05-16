@@ -10,6 +10,11 @@
             {
                 parent:'',
                 url:'/facturas',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                   views:
                           {
                               'mainView':
@@ -26,6 +31,11 @@
             }).state('home',{
                 url:'/home',
                 parent: '',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views:{
                     'homeView':{
                         templateUrl: 'src/home.html'
@@ -33,7 +43,12 @@
                 }
             }).state('facturas-create',{
                 parent:'',
-                url:'/createFactura',      
+                url:'/createFactura',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                     views:
                             {
                                'createView':
@@ -49,6 +64,11 @@
                 param:{
                     facturaId:null
                 },
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                     views:
                             {
                                 'updateView':

@@ -11,6 +11,11 @@
             $stateProvider.state('personalizada', {
                 url: '/personalizada',
                 abstract: true,
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'personalizada.html',
@@ -21,6 +26,11 @@
             }).state('personalizadaList', {
                 url: '/list',
                 parent: 'personalizada',
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'personalizada.list.html'
@@ -28,6 +38,11 @@
                 }
             }).state('personalizadaCreate', {
                 url: '/create',
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views: {
                     'createView': {
                         controller: 'personalizadaCreateCtrl',
@@ -40,6 +55,11 @@
                 url: '/{personalizadaId:int}/detail',
                 parent: 'personalizada',
                 param: {personalizadaId: null},
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'personalizada.list.html'

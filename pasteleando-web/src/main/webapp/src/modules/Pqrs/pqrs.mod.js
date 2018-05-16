@@ -17,6 +17,11 @@
              $stateProvider.state('pqrsList',
              {
                  url:'/pqrs/list',
+                 data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                    views:
                            {
                                mainView:
@@ -30,6 +35,11 @@
                      .state('pqrsCreate',
              {
                 url:'/pqrs/create',
+                data: {
+                    requireLogin: true,
+                    roles: ["cliente"]
+                }
+                ,
                 views:
                         {
                             createPqrs:

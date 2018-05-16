@@ -41,6 +41,11 @@
             $stateProvider.state('cliente', {
                 url: '/cliente',
                 abstract: true,
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'cliente.html',
@@ -52,6 +57,11 @@
             }).state('clienteList', {
                 url: '/list',
                 parent: 'cliente',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'cliente.list.html'
@@ -63,6 +73,11 @@
                 param: {
                     calificacionId: null
                 },
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'cliente.list.html',
@@ -78,6 +93,11 @@
             }).state('clienteCreate', {
                 url: '/create',
                 parent: 'cliente',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/cliente.new.html',
@@ -91,6 +111,11 @@
                 param: {
                     clienteId: null
                 },
+                data: {
+                    requireLogin: true,
+                    roles: ["admin", "cliente"]
+                }
+                ,
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/cliente.new.html',
@@ -104,6 +129,11 @@
                 param: {
                     editorialId: null
                 },
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/delete/cliente.delete.html',

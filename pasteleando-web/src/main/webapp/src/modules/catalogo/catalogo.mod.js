@@ -44,6 +44,11 @@
             $stateProvider.state('catalogo', {
                 url: '/catalogo',
                 abstract: true,
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'catalogo.html',
@@ -54,6 +59,11 @@
             }).state('catalogoList', {
                 url: '/list',
                 parent: 'catalogo',
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'catalogo.list.html'
@@ -61,6 +71,11 @@
                 }
             }).state('catalogoCreate', {
                 url: '/catalogo/create',
+                data: {
+                    requireLogin: true,
+                    roles: ["admin"]
+                }
+                ,
                 views: {
                     'mainView': {
                         controller: 'catalogoCtrl',
@@ -73,6 +88,11 @@
                 url: '/{catalogoId:int}/detail',
                 parent: 'catalogo',
                 param: {catalogoId: null},
+                data: {
+                    requireLogin: false,
+                    roles: []
+                }
+                ,
                 views: {
                     'listView': {
                         templateUrl: basePath + 'catalogo.list.html'
