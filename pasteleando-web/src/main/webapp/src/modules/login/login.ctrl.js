@@ -24,7 +24,7 @@
             $scope.user = {};
             $scope.data = {};
             
-            $http.get('data/clientes.json').then(function (response) {
+            $http.get('api/clientes').then(function (response) {
                 $scope.users = response.data;
             });
 
@@ -63,4 +63,3 @@
     ]);
 }
 )(window.angular);
-
