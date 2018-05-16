@@ -121,7 +121,6 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
         super.toEntity(entity);
         entity.setId(this.id);
         entity.setColor(this.color);
-        entity.setFoto(this.foto);
         entity.setEstado(this.estado);
         entity.setPeso(this.peso);
         return entity;
