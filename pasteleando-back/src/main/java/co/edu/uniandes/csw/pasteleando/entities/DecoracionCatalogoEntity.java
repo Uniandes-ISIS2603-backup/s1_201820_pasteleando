@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.pasteleando.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -35,7 +36,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      * Atributo que modela las promociones asociadas de la DecoracionCatalogoEntity
      */
     @PodamExclude
-    @OneToMany(mappedBy = "decoracionCatalogo")
+    @OneToMany(mappedBy = "decoracionCatalogo", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<PromocionEntity> promociones = new ArrayList<>();
     
     /**

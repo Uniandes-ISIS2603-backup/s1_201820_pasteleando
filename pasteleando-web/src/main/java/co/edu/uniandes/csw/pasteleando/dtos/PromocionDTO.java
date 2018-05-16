@@ -62,11 +62,8 @@ public class PromocionDTO implements Serializable {
      */
     public PromocionDTO( PromocionEntity entity )
     {
-        if (entity != null) 
-        {
             this.cantidad = entity.getCantidad();
             this.id = entity.getId();
-        }
         
     }
     

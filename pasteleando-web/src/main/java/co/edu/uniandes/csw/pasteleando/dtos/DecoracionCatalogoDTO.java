@@ -108,9 +108,9 @@ public class DecoracionCatalogoDTO implements Serializable {
      *
      * @return Un Entity con los valores del DTO
      */
-    public DecoracionCatalogoEntity toEntity(DecoracionCatalogoEntity entity )
+    public DecoracionCatalogoEntity toEntity()
     {
-     
+        DecoracionCatalogoEntity entity = new DecoracionCatalogoEntity();
         entity.setCategoria( this.categoria );
         entity.setId( this.id );
         return entity;
