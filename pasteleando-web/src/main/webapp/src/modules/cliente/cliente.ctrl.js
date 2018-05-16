@@ -35,7 +35,19 @@
              * de las editoriales o API donde se puede consultar.
              */
             $http.get(clienteContext).then(function (response) {
+               console.log(sessionStorage);
+               console.log(sessionStorage.name);
+               document.getElementById("nombreCliente").innerHTML = sessionStorage.name;
                 $scope.clienteRecords = response.data;
+                $http.get(clienteContext+ "/" +sessionStorage.id).then(function(response2){
+                   var puntos = response2.numeroPuntos;
+                   if(puntos === undefined)
+                   {
+                       puntos=0;
+                   }
+                   document.getElementById("puntos").innerHTML=puntos;
+        });
+             
             });
         }
     ]);
