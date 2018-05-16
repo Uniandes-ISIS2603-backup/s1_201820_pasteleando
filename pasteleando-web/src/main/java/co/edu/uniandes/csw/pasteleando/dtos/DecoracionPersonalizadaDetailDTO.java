@@ -26,7 +26,7 @@ import java.util.List;
 public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO {
 
     private List<PastelDTO> pasteles;
-    private ClienteDTO cliente;
+    private transient ClienteDTO cliente;
 
     /**
      * Constructor por defecto

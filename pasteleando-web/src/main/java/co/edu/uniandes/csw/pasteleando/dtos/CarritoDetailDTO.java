@@ -19,9 +19,9 @@ import javax.persistence.OneToMany;
  */
 public class CarritoDetailDTO extends CarritoDTO
 {
-    private List pasteles;
+    private transient List pasteles;
     
-    private ClienteDTO cliente;
+    private transient ClienteDTO cliente;
     
     private PedidoDTO pedido;
     

@@ -29,7 +29,7 @@ public class FacturaDetailDTO extends FacturaDTO {
         
         PedidoDTO pedido;
         
-        ClienteDTO cliente;
+        transient ClienteDTO cliente;
         
 	/**
 	 * Constructor por defecto

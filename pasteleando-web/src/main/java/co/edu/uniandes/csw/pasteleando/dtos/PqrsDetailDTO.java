@@ -21,7 +21,7 @@ public class PqrsDetailDTO extends PqrsDTO
     
         private List<PqrsDTO> pqrs; 
             
-        private ClienteDTO cliente;
+        private transient ClienteDTO cliente;
         
         private PedidoDTO pedido;
         

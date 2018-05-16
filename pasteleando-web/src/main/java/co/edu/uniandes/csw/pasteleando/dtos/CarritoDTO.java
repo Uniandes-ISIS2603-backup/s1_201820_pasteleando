@@ -47,7 +47,7 @@ public class CarritoDTO implements Serializable
   private Long id;
   private Integer cantidad;
   private Double precio;
-  private List pasteles;
+  private transient List pasteles;
   
   /**
    * constructor vacio

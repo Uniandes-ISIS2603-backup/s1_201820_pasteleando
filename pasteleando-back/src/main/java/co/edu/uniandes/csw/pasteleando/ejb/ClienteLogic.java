@@ -95,7 +95,7 @@ public class ClienteLogic
             ClienteEntity ent =  persistence.find( id );
             if(ent == null)
             {
-                throw new BusinessLogicException( "NO existe una entidad de Cliente con el id \"" + ent.getId() + "\"" );
+                throw new BusinessLogicException( "NO existe una entidad de Cliente con el id ingresado" );
             }
             return ent;
 	}
