@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- *
+ * clase que implementa la conexion para la entidad Carrito
  * @author MIGUELHOYOS
  */
 @Stateless
@@ -89,7 +89,7 @@ public class CarritoLogic {
     {
         if(persistence.find(id) == null)
         {
-            throw new BusinessLogicException("el carrito con el id:" + id + "no existe");
+          throw new BusinessLogicException("el carrito con el id:" + id + "no existe");
         }
         return persistence.find(id);
     }
@@ -109,6 +109,12 @@ public class CarritoLogic {
         return persistence.update(entity);
     }
     
+    /**
+     * reemplaza el cliente de la entidad con el ID dado
+     * @param id Id de la entidad a la cual se le desea reemplazar el cliente
+     * @param cliente entidad del cliente que se quiere reemplazar
+     * @throws BusinessLogicException si no existe el Carrito con el ID dado
+     */
     public void replaceCliente(Long id, ClienteEntity cliente) throws BusinessLogicException
     {
         CarritoEntity ent = persistence.find(id);
@@ -120,6 +126,12 @@ public class CarritoLogic {
         updateCarrito(ent);
     }
     
+    /**
+     * retorna los pasteles en la entidad Carrito con el ID dado por parametro
+     * @param id Id de la entidad Carrito
+     * @return lista de pasteles en la entidad Carrito
+     * @throws BusinessLogicException si no existe un Carrito con el ID dado
+     */
     public List<PastelEntity> getPastelesList(Long id) throws BusinessLogicException
     {
         CarritoEntity ent = persistence.find(id);
@@ -131,6 +143,12 @@ public class CarritoLogic {
         return ent.getPasteles();
     }
     
+    /**
+     * se agrega una entidad de Pastel a la lista de pasteles del Carrito con el ID dado por parametro
+     * @param id ID de la entidad Carrito
+     * @param pastel entidad Pastel que se desea agregar al Carrito
+     * @throws BusinessLogicException si no existe un Carrito con el ID dado por parametro
+     */
     public void addPastel(Long id, PastelEntity pastel) throws BusinessLogicException
     {
         CarritoEntity ent = persistence.find(id);
@@ -150,23 +168,30 @@ public class CarritoLogic {
         updateCarrito(ent);
     }
     
-  public void deletePastel(Long id, Long pastelId) throws BusinessLogicException
+  /**
+   * elimina un pastel de la entidad Carrito
+   * @param id ID de la entidad Carrito
+   * @param pastelId ID de la entidad Pastel que se desea eliminar
+   * @throws BusinessLogicException si no existe un carrito con el ID dado
+   * @throws BusinessLogicException si no existe un pastel con el ID dado dentro del carrito
+   */
+    public void deletePastel(Long id, Long pastelId) throws BusinessLogicException
   {
       CarritoEntity ent = persistence.find(id);
-        if(ent == null)
-        {
-            throw new BusinessLogicException("el carrito con el id: " + id + "no existe");
-        }
+      if(ent == null)
+      {
+       throw new BusinessLogicException("el carrito con el id: " + id + "no existe");
+      }
         
-        PastelEntity pastel = persistence.findPastelByCarrito(pastelId, id);
+      PastelEntity pastel = persistence.findPastelByCarrito(pastelId, id);
         
-        if(pastel == null)
-        {
-            throw new BusinessLogicException("el pastel con el id: " + pastelId + "no se encuentra en el carrito con el id: " + id);
-        }
-        ent.setPrecio(ent.getPrecio() - pastel.getPrecio());
-        ent.setCantidad(ent.getCantidad()-1);
-        updateCarrito(ent);
+      if(pastel == null)
+      {
+        throw new BusinessLogicException("el pastel con el id: " + pastelId + "no se encuentra en el carrito con el id: " + id);
+      }
+      ent.setPrecio(ent.getPrecio() - pastel.getPrecio());
+      ent.setCantidad(ent.getCantidad()-1);
+      updateCarrito(ent);
   }
 
 }

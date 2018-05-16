@@ -16,7 +16,9 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ *Clase que maneja la persistencia para decoracionCatalogo.
+ * Se conecta a través del Entity Manager de javax.persistance con la base de datos
+ * SQL.
  * @author jf.garcia
  */
 @Stateless

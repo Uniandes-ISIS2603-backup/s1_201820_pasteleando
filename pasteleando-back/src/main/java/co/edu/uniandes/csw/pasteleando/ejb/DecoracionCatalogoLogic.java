@@ -185,7 +185,12 @@ public class DecoracionCatalogoLogic {
         entity.getPromociones().remove(PromocionEntity);
     }
     
-     public void removePastel(Long DecoracionCatalogoId, Long Pastelid) {
+    /**
+     * elimina un pastel de una  entidad decoración catalogo
+     * @param DecoracionCatalogoId ID de la decoracionCatalogo
+     * @param Pastelid ID del pastel que se desea eliminar
+     */
+    public void removePastel(Long DecoracionCatalogoId, Long Pastelid) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar un pastel de la decoración del catálogo con id = {0}", DecoracionCatalogoId);
         DecoracionCatalogoEntity entity = getDecoracionCatalogo(DecoracionCatalogoId);
         PastelEntity pastEntity = new PastelEntity(); 

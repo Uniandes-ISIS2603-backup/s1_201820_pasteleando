@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ *Clase que representa el Carrito en la base de datos y permite su serializacion
  * @author MIGUELHOYOS
  */
 @Entity
@@ -39,34 +39,33 @@ public class CarritoEntity extends BaseEntity implements Serializable
    * retorna la cantidad de productos en el carrito
    * @return cantidad
    */
-
   public Integer getCantidad()
   {
       return this.cantidad;
   }
+  
   /**
   * actualiza la cantidad de prductos en el carrito
    * @param pCantidad 
    */
-
   public void setCantidad(Integer pCantidad)
   {
       this.cantidad = pCantidad;
   }
+  
   /**
    * retorna el precio total del carrito
    * @return precio
    */
-
   public double getPrecio()
   {
       return this.precio;
   }
+  
   /**
    * actualiza el precio total del carrito
    * @param pPrecio 
    */
-
   public void setPrecio(double pPrecio)
   {
       this.precio = pPrecio;
@@ -80,38 +79,38 @@ public class CarritoEntity extends BaseEntity implements Serializable
   {
       return this.pasteles;
   }
-  /**
+  
+/**
  * actualiza la lista de articulos en el carrito
  * @param lista 
  */
-
-    public void setPasteles(List lista)
-    {
-        this.pasteles= lista;
-    }
+  public void setPasteles(List lista)
+  {
+    this.pasteles= lista;
+  }
     
-    /**
-     * retorna el cliente
-     * @return cliente
-     */
-    public ClienteEntity getCliente()
-    {
-        return this.cliente;
-    }
+  /**
+   * retorna el cliente
+   * @return cliente
+   */
+  public ClienteEntity getCliente()
+  {
+    return this.cliente;
+  }
     
-    /**
-     * actualiza el clliente
-     * @param entity 
-     */
-    public void setCliente(ClienteEntity entity)
-    {
-        this.cliente = entity;
-    }
+  /**
+   * actualiza el clliente
+   * @param entity 
+   */
+   public void setCliente(ClienteEntity entity)
+   {
+     this.cliente = entity;
+   }
     
-    /**
-     * retorna el pedido
-     * @return pedido
-     */
+   /**
+    * retorna el pedido
+    * @return pedido
+    */
     public PedidoEntity getPedido()
     {
         return this.pedido;
