@@ -24,7 +24,7 @@ public class DecoracionCatalogoEntity extends DecoracionEntity implements Serial
      * Atributo que modela los pasteles de la DecoracionEntity
      */
     @PodamExclude
-    @OneToMany(mappedBy = "decoracionCatalogo")
+    @OneToMany(mappedBy = "decoracionCatalogo", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<PastelEntity> pasteles = new ArrayList<>();
     
     /**

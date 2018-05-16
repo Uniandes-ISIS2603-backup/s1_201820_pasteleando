@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.pasteleando.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -26,7 +27,7 @@ public class PastelEntity extends BaseEntity implements Serializable
     private DecoracionCatalogoEntity decoracionCatalogo;
     
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private DecoracionPersonalizadaEntity decoracionPersonalizada;
     
     /**
