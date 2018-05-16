@@ -41,6 +41,8 @@
         <script src="src/modules/login/login.mod.js" type="text/javascript"></script>
         <script src="src/modules/login/login.ctrl.js" type="text/javascript"></script>
         
+       <script src="src/modules/login/logout.ctrl.js" type="text/javascript"></script>
+
         
         <!-- Facturas -->
         <script src="src/modules/factura/factura.mod.js"></script>
@@ -134,8 +136,11 @@
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
 
+                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="miInfo"><span class="glyphicon glyphicon-user"></span></a></li>
                     <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><a ui-sref="clienteCreate"> Sign Up Cliente</a></li>
+                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="logout"><span class="glyphicon glyphicon-apple"></span></a></li>
+
 
                 </ul>
                     
@@ -161,7 +166,7 @@
             <div ui-view="createView"></div>
             <div ui-view="updateView"></div>
             <div ui-view="createPqrs"></div>
-
+            <div ui-view="logout"></div>
             
             
             

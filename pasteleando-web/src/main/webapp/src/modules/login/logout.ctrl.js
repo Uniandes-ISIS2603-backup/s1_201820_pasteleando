@@ -14,10 +14,10 @@
          * estado actual de la navegación definida en el módulo.
          */
         function ($rootScope, $state) {
-            if (sessionStorage.getItem("username")) {
+            if (sessionStorage.getItem("name")) {
                 sessionStorage.clear();
             } else {
-                $state.go('booksList', {}, {reload: true});
+                $state.go('home', {}, {reload: true});
             }
         }
     ]);

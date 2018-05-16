@@ -39,8 +39,8 @@
                  * @returns {Boolean} Verdadero si está dentro de su cuenta.
                  */
                 $rootScope.isAuthenticated = function () {
-                    
-                    if (sessionStorage.getItem("username") != null) {
+                    if (sessionStorage.getItem("name") != null && sessionStorage.getItem("name") != "undefined") {
+                        console.log(sessionStorage);
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         $rootScope.idUser = sessionStorage.getItem("id");
                         return true;
@@ -58,7 +58,7 @@
                  * @returns {Boolean} Verdadero si el usuario tiene permisos.
                  */
                 $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
+                    if (($rootScope.isAuthenticated) && (sessionStorage.getItem("rol") == "false")) {
                         return true;
                     } else {
                         return false;

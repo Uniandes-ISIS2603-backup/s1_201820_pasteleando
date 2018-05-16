@@ -38,6 +38,7 @@
             
             
             $scope.createcliente = function () {
+                $scope.data.tipoUsuario = 'false';
                 $http.post(clienteContext, $scope.data).then(function (response) {
                     $state.go('clienteList', {clienteId: response.data.id}, {reload: true});
                 });

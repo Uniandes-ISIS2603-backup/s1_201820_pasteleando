@@ -24,7 +24,7 @@
             $scope.user = {};
             $scope.data = {};
             
-            $http.get('data/clientes.json').then(function (response) {
+            $http.get('api/clientes').then(function (response) {
                 $scope.users = response.data;
             });
 
@@ -38,26 +38,39 @@
              */
             $scope.autenticar = function () {
                 var flag = false;
-                $http.post('api/clientes',$scope.data).then(function(response){
-
+                $rootScope.loginResponse = {};
+                $rootScope.loginResponse.name = $scope.name;
+                $rootScope.loginResponse.clave = $scope.clave;
+                $scope.idUsuario = "";
+                 if($scope.tipoUsuario == "false")
+                {
+                    $scope.tipoUsuario = false;
+                }
+                else
+                {
+                    $scope.tipoUsuario = true;
+                }
+                $rootScope.loginResponse.tipoUsuario = $scope.tipoUsuario;
+               
                 for (var item in $scope.users) {
-                    if ($scope.users[item].user === response.data.username && $scope.users[item].clave === response.data.clave && $scope.users[item].tipousuario === response.data.tipousuario) {
+                    if ($scope.users[item].name == $rootScope.loginResponse.name && $scope.users[item].clave == $rootScope.loginResponse.clave) {
                         flag = true;
                         $scope.user = $scope.users[item];
                         $state.go('home', {}, {reload: true});
+                        $scope.idUsuario = $scope.users[item].id;
                         break;
                     }
                 }
                 if (!flag) {
                     $rootScope.alerts.push({type: "danger", msg: "Incorrect username or password."});
                 } else {
-                    sessionStorage.token = $scope.user.token;
-                    sessionStorage.setItem("name", $scope.user.name);
-                    sessionStorage.setItem("id",$scope.user.id);
-                    sessionStorage.setItem("rol", $scope.user.rol);
-                    $rootScope.currentUser = $scope.user.name; 
+                    sessionStorage.setItem("name", $scope.name);
+                    sessionStorage.setItem("id",$scope.idUsuario);
+                    sessionStorage.setItem("rol", $scope.tipoUsuario);
+                    $rootScope.currentUser = $scope.name; 
+                    console.log(sessionStorage);
                 }
-                });
+                
             };
         }
     ]);

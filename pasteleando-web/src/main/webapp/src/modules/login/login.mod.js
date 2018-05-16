@@ -19,14 +19,15 @@ var mod = ng.module("loginModule", ['ui.router']);
             }).state('logout', {
                     url: '/logout',
                     data: {
-                    requireLogin: false,
-                    roles: []
+                    requireLogin: true,
+                    roles: ["admin","cliente"]
                 }
                 ,
                 views: {
-                    'mainView': {
-                    templateUrl: basePath + 'logout.html',
-                        controller: 'logoutCtrl'
+                    'logout': {
+                      controller: 'logoutCtrl',
+                    templateUrl: basePath + 'logout.html'
+                       
                     }
                 }
             });

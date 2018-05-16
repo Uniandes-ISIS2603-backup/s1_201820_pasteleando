@@ -34,11 +34,11 @@ insert into CarritoEntity (id, cantidad, precio) values (3, 4, 600);
 insert into CarritoEntity (id, cantidad, precio) values (4, 5, 700);
 insert into CarritoEntity (id, cantidad, precio) values (5, 6, 800);
 
-insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(50,'admin1' , 1, 'tarjetaCredito',123);
-insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(51,'admin2' , 1, 'tarjetaCredito',124);
-insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(52,'admin3' , 1, 'tarjetaCredito',125);
-insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(53,'admin4' , 1, 'tarjetaCredito',126);
-insert into ClienteEntity(id, name,  tipoUsuario, formaPagoActual,numeroPuntos) values(54,'admin5' , 1, 'tarjetaCredito',127);
+insert into ClienteEntity(id, name, clave ,tipoUsuario, formaPagoActual,numeroPuntos) values(50,'admin1','1' , 1, 'Efectivo',123);
+insert into ClienteEntity(id, name, clave ,tipoUsuario, formaPagoActual,numeroPuntos) values(51,'admin2','12' , 1, 'Efectivo',124);
+insert into ClienteEntity(id, name, clave ,tipoUsuario, formaPagoActual,numeroPuntos) values(52,'admin3','123' , 1, 'Efectivo',125);
+insert into ClienteEntity(id, name, clave ,tipoUsuario, formaPagoActual,numeroPuntos) values(53,'admin4','1234' , 1, 'Efectivo',126);
+insert into ClienteEntity(id, name, clave ,tipoUsuario, formaPagoActual,numeroPuntos) values(54,'admin5','12345' , 1, 'Efectivo',127);
 
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4040, 'calle 100', '2014-08-23','22:00',250);
 insert into FacturaEntity(id, direccion, fecha, hora, precio) values (4141, 'calle 101', '2015-04-24','23:00',260);

@@ -32,22 +32,22 @@
                         
                         <div id="radioLogin" class="text-center">
                             
-                            <input type="radio" name="saberCliente" ng-model='cliente.tipousuario' value="0"> Cliente
-                            <input type="radio" name="saberAdmin" ng-model='cliente.tipousuario' value="1"> Administrador
+                            <input type="radio" name="saberCliente" ng-model='tipoUsuario' value="false"> Cliente
+                            <input type="radio" name="saberAdmin" ng-model='tipoUsuario' value="true"> Administrador
                             
                         </div>
                         
                         <br>
                         <div id="loginID3" class="input-group">
                             <span id="loginID4" class="input-group-addon" ><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="emailLogin" type="email" class="form-control usuariosLogin" name="email" placeholder="Nombre" ng-model='cliente.name' required>
+                            <input id="nameLogin" type="name" class="form-control usuariosLogin" name="name" placeholder="Nombre" ng-model='name' required>
                         </div>
                         
                         <br>
                         
                         <div id="loginID5" class="input-group">
                             <span id="loginID6" class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="passwordLogin" type="password" class="form-control usuariosLogin" name="password" placeholder="Contraseña" ng-model='cliente.contrasenia' required>
+                            <input id="passwordLogin" type="password" class="form-control usuariosLogin" name="password" placeholder="Contraseña" ng-model='clave' required>
                         </div>
                         
                         <br>
