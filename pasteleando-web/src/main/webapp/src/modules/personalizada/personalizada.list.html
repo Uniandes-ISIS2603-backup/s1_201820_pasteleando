@@ -1,12 +1,46 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 col-md-2" ng-repeat="personalizada in personalizadaRecords">
-            <div class="thumbnail">
-                <a ui-sref="personalizadaDetail({personalizadaId: personalizada.id})">       
-                    <img class="img-responsive" ng-src='{{personalizada.imagen}}' alt="{{personalizada.name}}" style="height:300px;width:400px">  
-                </a>
-                <div class="caption text-center">{{personalizada.name}}</div>
-            </div>
-        </div>
+<div class="row" style="margin-top: 10px; margin-left: 10px">
+   
+</div>
+    <div class="col-sm-10">
+    <div class="responsive-table">
+        <table class="table table-bordered" >
+            <thead>
+             
+            <th style="width:250px ">
+                Foto
+            </th>
+            <th >
+                Peso
+            </th>
+            <th >
+                Color
+            </th>
+            
+            </thead>
+            <tbody>
+                <tr ng-repeat="personalizada in personalizadaRecords">
+                    
+                    <td>
+                       <img class="img-responsive" ng-src='{{personalizada.foto}}' alt="{{catalogo.name}}" style="height:200px;width:200px"/>  
+                    </td>
+                    <td>
+                        {{personalizada.peso}}
+                    </td>
+                    <td>
+                        {{personalizada.color}}
+                    </td>
+                
+                </tr>
+            </tbody>
+        </table>
     </div>
+</div>
+
+
+
+
+
+
+
+
 </div>

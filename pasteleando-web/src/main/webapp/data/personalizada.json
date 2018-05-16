@@ -4,7 +4,7 @@
         "color":"Blanco", 
         "estado":"Entregado",
         "peso":"500 gr",
-        "imagen":"https://thestayathomechef.com/wp-content/uploads/2017/05/White-Cake-3-e1497020677316.jpg",
+        "foto":"https://thestayathomechef.com/wp-content/uploads/2017/05/White-Cake-3-e1497020677316.jpg",
         "descripcion":"El siguiente pastel se encuentra recubierta por una fina capa de crema la cual es conveniente para cualquier ocasión."
 },
 {
@@ -13,7 +13,7 @@
     "color":"Negro",
     "estado":"Enviado",
     "peso":"700 gr",
-    "imagen":"http://sweetapolita.com/wp-content/uploads/2016/04/glamrocktray581.jpg",
+    "foto":"http://sweetapolita.com/wp-content/uploads/2016/04/glamrocktray581.jpg",
     "descripcion":"Este pastel se recomienda para una ocasión un poco más formal, pues es un pastel, que por su color, es aún más especial."
 },
 {
@@ -21,7 +21,7 @@
     "name" : "Pastel Multicolor",
     "color" : "Multicolor",
     "peso" :"600 gr",
-    "imagen":"https://data.whicdn.com/images/81276179/large.jpg",
+    "foto":"https://data.whicdn.com/images/81276179/large.jpg",
     "descripcion":"Este pastel cuenta con diferentes colores ya sea de masa de pastel o bolitas de chocolate, es perfecto para una fiesta infantil."
 },
 {
@@ -29,7 +29,7 @@
     "name":"Pastel de Fresa",
     "color":"Rosa",
     "peso": "550 gr",
-    "imagen":"http://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dwcd49c879/images/project/WLPROJ-9084/PiStCa_43176%2005.jpg?sw=502&sh=502&sm=fit",
+    "foto":"http://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dwcd49c879/images/project/WLPROJ-9084/PiStCa_43176%2005.jpg?sw=502&sh=502&sm=fit",
         "descripcion":"Este pastel cuenta con un color muy sobrio que puede funcionar para alguna ocasión especial."
 }
 
