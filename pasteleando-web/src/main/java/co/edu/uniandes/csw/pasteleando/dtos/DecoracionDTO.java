@@ -53,7 +53,7 @@ public class DecoracionDTO implements Serializable {
      */
     private Integer esPersonalizada = 0;
 
-
+    
     private Long id;
 
     /**
