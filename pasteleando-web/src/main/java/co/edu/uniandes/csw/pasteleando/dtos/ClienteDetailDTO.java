@@ -117,6 +117,15 @@ import java.util.List;
 public class ClienteDetailDTO extends ClienteDTO {
 
     private CarritoDTO carrito;
+    private PedidoDTO pedido;
+
+    public PedidoDTO getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
 
     private List<PqrsDTO> pqrs;
     private List<CalificacionDTO> calificaciones;
@@ -154,6 +163,16 @@ public class ClienteDetailDTO extends ClienteDTO {
      */
     public ClienteDetailDTO(ClienteEntity entity) {
         super(entity);
+        
+        if(entity.getPedido() != null)
+        {
+            this.pedido = new PedidoDTO(entity.getPedido());
+        }
+        else{
+            
+            this.pedido = null;
+        }
+         
         if (entity.getCalificaciones() != null) {
             this.calificaciones = new ArrayList<CalificacionDTO>();
             for (int i = 0; i < entity.getCalificaciones().size(); i++) {
@@ -213,7 +232,11 @@ public class ClienteDetailDTO extends ClienteDTO {
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity entity = super.toEntity();
-
+    if (this.getPedido() != null) {
+            entity.setPedido(this.getPedido().toEntity());
+        }
+         else{
+         entity.setPedido(null);}
         if (this.calificaciones != null) {
             entity.setCalificaciones(new ArrayList<CalificacionEntity>());
             for (int i = 0; i < this.calificaciones.size(); i++) {

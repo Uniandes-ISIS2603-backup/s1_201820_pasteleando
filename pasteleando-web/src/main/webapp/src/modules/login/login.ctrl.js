@@ -37,6 +37,8 @@
              * $scope.
              */
             $scope.autenticar = function () {
+                        
+                
                 var flag = false;
                 $rootScope.loginResponse = {};
                 $rootScope.loginResponse.name = $scope.name;
@@ -58,6 +60,17 @@
                         $scope.user = $scope.users[item];
                         $state.go('home', {}, {reload: true});
                         $scope.idUsuario = $scope.users[item].id;
+                        for(var it in $rootScope.todosLosPedidos)
+                        {
+                            console.log($rootScope.todosLosPedidos[it].idCliente);
+                            console.log($scope.idUsuario);
+                            if($rootScope.todosLosPedidos[it].idCliente == $scope.idUsuario)
+                            {
+                                $rootScope.misPedidos.push($rootScope.todosLosPedidos[it]);
+                            }
+                        }
+                        console.log($rootScope.misPedidos);
+                        console.log($rootScope.todosLosPedidos);
                         break;
                     }
                 }

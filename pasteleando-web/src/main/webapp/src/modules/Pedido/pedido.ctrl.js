@@ -9,14 +9,15 @@
      var mod = ng.module('pedidoModule');
      
      mod.constant("pedidoContext", "api/pedido");
-     mod.controller("pedidoCtrl", ['$scope', '$http','pedidoContext',
+     mod.controller("pedidoCtrl", ['$scope', '$http','pedidoContext', '$rootScope',
          
-         function ($scope, $http, context) 
+         function ($scope, $http, context, $rootScope) 
          {
-             $http.get(context).then(function(response)
-             {
-                  $scope.pedidoRecords = response.data;
-             })
+             
+                  $scope.pedidoRecords = $rootScope.misPedidos;
+                  
+             console.log($rootScope.misPedidos);
+             console.log($rootScope.todosLosPedidos);
          }
      ]);
  })

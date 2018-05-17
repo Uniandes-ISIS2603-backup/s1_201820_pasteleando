@@ -41,7 +41,9 @@
                 ,
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'pedido.list.html'
+                        templateUrl: basePath + 'pedido.list.html',
+                        controller:'pedidoCtrl',
+                        controllerAs:'ctrl'
                     }
                 }
             }).state('createPedido', {

@@ -48,6 +48,18 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<FacturaEntity> facturas = new ArrayList<>();
+    
+     @PodamExclude
+    @OneToOne(mappedBy = "cliente")
+    private PedidoEntity pedido;
+
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
+    }
 
 
     /**

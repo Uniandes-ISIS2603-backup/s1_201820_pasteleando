@@ -6,12 +6,13 @@
 
         <div class="col-sm-12"><br></div>
         
-        <div class="col-sm-2">
-            <div class="btsn-group-vertical">
-                
-                <button class="btn btn-secondary" ui-sref="personalizadaCreate"><span class="glyphicon glyphicon-plus"></span>&nbsp;Crea tu Pastel!</button>   
-                <button class="btn btn-secondary" ui-sref="facturas"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ver mis Facturas!</button> 
-                <button class="btn btn-secondary" ui-sref="personalizadaList"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ver todos mis pasteles!</button>   
+        <div class="col-sm-3">
+            <div class="btn-group-vertical">
+       
+                <button class="btn btn-secondary" ui-sref="personalizadaCreate"><span class="glyphicon glyphicon-plus"></span>&nbsp;¡Crea tu Pastel!</button>   
+                <button class="btn btn-secondary" ui-sref="facturas"><span class="glyphicon glyphicon-plus"></span>&nbsp;¡Ver mis Facturas!</button> 
+                <button class="btn btn-secondary" ui-sref="personalizadaList"><span class="glyphicon glyphicon-plus"></span>&nbsp;¡Ver todos mis pasteles!</button>   
+                <button class="btn btn-secondary" ui-sref="pedidoList"><span class="glyphicon glyphicon-plus"></span>&nbsp;¡Ver todos mis pedidos!</button> 
             </div>
         </div>
         
@@ -20,20 +21,38 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-3">
                <div class="features-icons-icon d-flex">
-                    <span class="glyphicon glyphicon-user" style="height:300px;width:400px"></span>
+                    <span class="glyphicon glyphicon-user" style="font-size: 300px"></span>
                </div>
         </div>
         <div class="col-sm-3">
             <a class="list-group-item">
                 <h4 class="list-group-item-heading">Nombre: </h4>
-                <p id="nombreCliente" class="list-group-item-text"></p>
+                <p ng-model="data.name" id="nombreCliente" class="list-group-item-text"></p>
                     
             </a>
             
             <a class="list-group-item">
                 <h4 class="list-group-item-heading">Número puntos: </h4>
-                <p id="puntos" class="list-group-item-text"></p>
+                <p ng-model="data.puntos" id="puntos" class="list-group-item-text"></p>
             </a>
+            
+            <a class="list-group-item">
+                <h4 class="list-group-item-heading">Tipos de pago: </h4>
+                <ol>
+                <li ng-repeat="tiposPago in aIterar">     
+                    
+                </li>
+                </ol>
+            </a>
+            <button class="btn btn-secondary" ng-click="mostrarFormasDePago()">Añadir forma de pago</button> 
+            <div ng-show="isVisible">
+                <label>Escoger nueva forma de pago</label>
+                    <select class="selectpicker"  ng-model="data.tipoPago" ng-options="x for x in tiposPagos" style="width: 200px; height: 30px; margin-left: 10px">
+                    </select>
+                <button class="btn btn-secondary" ng-click="agregarFormaDePago()">Añadir forma de pago</button> 
+                
+            </div>
+            
             
         </div>
         <div class="col-sm-3"></div>

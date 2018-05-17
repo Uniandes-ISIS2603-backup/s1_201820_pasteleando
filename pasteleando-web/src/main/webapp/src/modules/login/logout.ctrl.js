@@ -16,6 +16,7 @@
         function ($rootScope, $state) {
             if (sessionStorage.getItem("name")) {
                 sessionStorage.clear();
+                $rootScope.misPedidos = [];
             } else {
                 $state.go('home', {}, {reload: true});
             }
