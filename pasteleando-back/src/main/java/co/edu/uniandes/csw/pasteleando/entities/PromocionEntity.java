@@ -22,6 +22,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * Atributo que modela el porcentaje de la promocionEntity
      */
+    @PodamIntValue(maxValue = 90)
     private Integer cantidad;
     
     /**
