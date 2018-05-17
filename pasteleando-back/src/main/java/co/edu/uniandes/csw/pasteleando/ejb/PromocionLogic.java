@@ -30,10 +30,18 @@ public class PromocionLogic {
      *
      * @param decoracionCatalogoId id de la decoración del catálogo el cual es padre de las promociones.
      * @return Colección de objetos de PromocionEntity.
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
-    public List<PromocionEntity> getPromociones(Long decoracionCatalogoId){
+    public List<PromocionEntity> getPromociones(Long decoracionCatalogoId) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todas las promociones");
-        return persistence.findAll();
+        DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
+        if (decoracionCatalogo.getPromociones() == null) {
+            throw new BusinessLogicException("Esta decoración no tiene promociones");
+        }
+        if (decoracionCatalogo.getPromociones().isEmpty()) {
+            throw new BusinessLogicException("Esta decoración no tiene promociones");
+        }
+        return decoracionCatalogo.getPromociones();
     }
     
     /**
