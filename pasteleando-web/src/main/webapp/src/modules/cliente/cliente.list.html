@@ -31,10 +31,12 @@
                     
             </a>
             
+            
             <a class="list-group-item">
-                <h4 class="list-group-item-heading">Número puntos: </h4>
+                <h4 class="list-group-item-heading">Número puntos: <button class="btn btn-secondary" ng-disabled="!validacion" ng-click="redimirPuntos()">Redimir tarjeta puntos</button> </h4>
                 <p ng-model="data.puntos" id="puntos" class="list-group-item-text"></p>
             </a>
+            
             
             <a class="list-group-item">
                 <h4 class="list-group-item-heading">Tipos de pago: </h4>

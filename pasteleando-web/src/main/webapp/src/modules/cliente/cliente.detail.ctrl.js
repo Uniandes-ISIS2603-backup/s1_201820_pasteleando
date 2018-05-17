@@ -34,6 +34,7 @@
                 $http.get(clienteContext + '/' + $state.params.clienteId).then(function (response) {
 //                    $scope.clienteRecords = response.data.books;
                     $scope.currentcliente = response.data;
+                    
                 });
             }
         }

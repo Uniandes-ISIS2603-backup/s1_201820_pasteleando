@@ -13,11 +13,7 @@
          
          function ($scope, $http, context, $rootScope) 
          {
-             
                   $scope.pedidoRecords = $rootScope.misPedidos;
-                  
-             console.log($rootScope.misPedidos);
-             console.log($rootScope.todosLosPedidos);
          }
      ]);
  })

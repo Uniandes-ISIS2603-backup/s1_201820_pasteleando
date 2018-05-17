@@ -20,20 +20,17 @@
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http, clienteContext, $state, $rootScope) {  
-            
+        function ($scope, $http, clienteContext, $state, $rootScope) {
+
             $scope.isVisible = false;
-            
-            $scope.mostrarFormasDePago = function()
+
+            $scope.mostrarFormasDePago = function ()
             {
-                $scope.isVisible = true             
-            }
-            
-            $scope.tiposPagos = ["Tarjeta de credito" , "Tarjeta debito" , "PayPal"];
-            
-           
-       
-            
+                $scope.isVisible = true
+            };
+
+            $scope.tiposPagos = ["Tarjeta de credito", "Tarjeta debito", "PayPal"];
+
             /**
              * @ngdoc function
              * @name getEditorials
@@ -48,34 +45,63 @@
              * de las editoriales o API donde se puede consultar.
              */
             $http.get(clienteContext).then(function (response) {
-               document.getElementById("nombreCliente").innerHTML = sessionStorage.name;
-                console.log(response.data);
-                $http.get(clienteContext+ "/" +sessionStorage.id).then(function(response2){
-                   var puntos = response2.numeroPuntos;
+                document.getElementById("nombreCliente").innerHTML = sessionStorage.name;
+                $http.get(clienteContext + "/" + sessionStorage.id).then(function (response2) {
+                    var puntos = response2.numeroPuntos;
+                    if (puntos === undefined)
+                    {
+                        puntos = 0;
+                    }
+                    precioFinal = puntos;
+
+                    for (var nuevo in $rootScope.misPedidos)
+                    {
+                        console.log($rootScope.misPedidos);
+                        precioFinal += $rootScope.misPedidos[nuevo].precio;
+                    }
+
+                    document.getElementById("puntos").innerHTML = precioFinal;
+
+                    console.log(precioFinal);
+                    console.log("hola");
+                    $rootScope.numeroPuntosFinal = precioFinal;
+                      console.log($rootScope.numeroPuntosFinal);
+                    $scope.validacion = $rootScope.numeroPuntosFinal > 30000;
+                    
+                    $scope.data.push({
+                        "puntos": puntos,
+                        "nombre": response2.name
+                    });
+                    
                    
-                   if(puntos === undefined)
-                   {
-                       puntos=0;
-                   }
-                   document.getElementById("puntos").innerHTML=puntos;
-                   
-                   $scope.data.push({
-                      "puntos": puntos,
-                      "nombre": response2.name
-                   });
-                   
-        });
-             
+                });
             });
-            
-             $scope.agregarFormaDePago = function()
+
+            $scope.agregarFormaDePago = function ()
             {
-                console.log($rootScope.data.tipoPago);
-                $http.put(clienteContext+ "/" +sessionStorage.id,$scope.data).then(function(response3){
+                $http.put(clienteContext + "/" + sessionStorage.id, $scope.data).then(function (response3) {
                     $scope.aIterar = response3.data;
                     $state.reload();
                 });
-            }
+            };
+
+            $scope.redimirPuntos = function ()
+            {
+                
+            };
+
+            $scope.validacion = false;
+
+          
+
+
+          
+
+
+
+
+
+
         }
     ]);
 }

@@ -11,21 +11,36 @@
            
            $scope.agregarAPedido = function(catalogoId)
             {   
-                
+                 $rootScope.precio = 0;
+                 
+                $http.get('data/catalogo.json').then(function (response2) {
+                    for(pastel in response2.data)
+                    {
+                        if(response2.data[pastel].id == catalogoId.catalogoId)
+                        {
+                            $rootScope.precio = response2.data[pastel].precio;
+                        }
+                    }
+                console.log($rootScope.precio);
                 $rootScope.misPedidos.push(
                         {
                             "idCliente": sessionStorage.id,
                             "idCatalogo": catalogoId,
-                            "seRecogeEnPasteleria":"si"
+                            "seRecogeEnPasteleria":"si",
+                            "precio":$rootScope.precio
                         });
                 $rootScope.todosLosPedidos.push(
                         {
                             "idCliente": sessionStorage.id,
                             "idCatalogo": catalogoId,
-                            "seRecogeEnPasteleria":"si"
+                            "seRecogeEnPasteleria":"si",
+                            "precio":$rootScope.precio
                         });
-                $state.go('pedidoList', {}, {reload: true});
+                console.log($rootScope.misPedidos);
 
+                $state.go('pedidoList', {}, {reload: true});
+            })
+            
             };
         }
     ]);
