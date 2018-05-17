@@ -16,8 +16,8 @@
             $scope.data = {};
            
             $scope.createcatalogo = function () {
-                $http.post(catalogoContext, $scope.data).then(function (response) {
-                $state.go('catalogo', {catalogoId: response.data.id}, {reload: true});
+                $http.post(catalogoContext, $scope.data).then(function (response) {  
+                $state.go('catalogoList', {catalogoId: response.data.id}, {reload: true});
                 });
             };
            

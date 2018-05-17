@@ -3,27 +3,21 @@
  <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-         
+            <h1>Crea una nueva decoración catálogo!</h1>
                
             <div class="panel-body">
                 <form ng-submit="ctrl.saveRecord(currentRecord.id)" name="catalogo">
                     
-                    
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="catalogoFoto" class="col-sm-2">Foto: </label>
-                            <textarea id="catalogoFoto" required ng-model="currentRecord.foto" class="col-sm-6"></textarea>
-                        </div>
-                    </div>          
+                              
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="catalogoCategoria" class="col-sm-2">Categoria: </label>
-                            <textarea id="catalogoCategoria" required ng-model="currentRecord.categoria" class="col-sm-6"></textarea>
+                            <textarea id="catalogoCategoria" required ng-model="data.categoria" class="col-sm-6"></textarea>
                         </div>
                     </div>   
 
                     <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!atributo.$valid">
+                        <div class="form-group col-sm-4" >
 
                             <div class="alert alert-warning" >
                                 <strong>Warning!</strong><p>All inputs are required*</p>
@@ -31,9 +25,10 @@
                         </div> 
                     </div> 
                     <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="cliente.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="clienteList">Cancel</a>
+                         <div class="form-group col-sm-12">
+                             <button class="btn btn-success"   ng-click="createcatalogo()"  value="Save">¡Crear!</button>
+    
+                            <a class="btn btn-info" ui-sref="catalogoList">Cancelar</a>
                         </div>
                     </div>
                 </form>
