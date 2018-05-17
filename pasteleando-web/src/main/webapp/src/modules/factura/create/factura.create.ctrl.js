@@ -38,14 +38,14 @@
             
             $scope.horas = [];
             
-            for (var i = 0; i < 24; i++) {
-               if(i < 10)
+            for (var j = 0; i < 24; i++) {
+               if(j < 10)
                {
-                    $scope.horas.push("0"+i);
+                    $scope.horas.push("0"+j);
                }
                else
                {
-                    $scope.horas.push(i);
+                    $scope.horas.push(j);
                }
             }
            
