@@ -143,6 +143,8 @@
                         
                         <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="pqrsList">Pqrs</a></li>
+                        <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="pedidoList">Todos los pedidos</a></li>
+                        <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="facturas">Todos las facturas</a></li>
                         <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="admin">Todos los clientes</a></li>
                         <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="personalizadaList">Pedidos de Pasteles Personalizados</a></li>
                     </ul>  
