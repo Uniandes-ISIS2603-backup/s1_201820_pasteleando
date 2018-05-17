@@ -4,19 +4,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<div class="row" style="margin-top: 10px; margin-left: 10px">
+    <a  ui-sref="pedidoCreate" style="color:white"><button class="btn btn-primary">Nuevo Pedido</button></a>
+</div>
 
-<div class="container-fluid">
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><label>Pedidos</label></div>
-            <div class="panel-body">
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="pedidoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nuevo Pedido</a>
-                    </div>
-                </div>
-                <table class="table table-striped">
-                    <thead>
+ <div class="col-sm-10" >
+<div class="responsive-table">
+    <table class="table table-bordered" style="background-color: white; margin-top: 10px">
+                    <thead style="background-color: #F5F5DC">
                         <tr>
                             <th>Pedido No.</th>
                         
@@ -24,7 +19,5 @@ and open the template in the editor.
                         </tr>
                     </thead>
                 </table>
-            </div>
-        </div>
-    </div>
 </div>
+ </div>

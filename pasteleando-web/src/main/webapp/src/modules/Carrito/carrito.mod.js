@@ -41,7 +41,7 @@
                           }
             }).state('carritoDetail', {
                 url: '/{carritoId: int}/detail',
-                parent:'Carrito',
+                parent:'',
                 param:{carritoId : null},
                 data: {
                     requireLogin: true,

@@ -40,7 +40,7 @@
                  */
                 $rootScope.isAuthenticated = function () {
                     if (sessionStorage.getItem("name") != null && sessionStorage.getItem("name") != "undefined") {
-                        console.log(sessionStorage);
+                       
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         $rootScope.idUser = sessionStorage.getItem("id");
                         return true;

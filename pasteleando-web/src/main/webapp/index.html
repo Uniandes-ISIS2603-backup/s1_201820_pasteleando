@@ -6,7 +6,16 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Pasteleando</title>
         
-        
+        <meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen">
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen"/>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
         
         
         <!-- Custom styles -->
@@ -108,45 +117,45 @@
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script> 
         
         
+      
+        
     </head>
     
     <body>
         
         <div>
             <!-- Navigation -->
-            <nav class="navbar-default navbar-static-top">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Pasteleando</a>
+         
                     
-                    <ul class="nav nav-tabs">
-                       
+                    
+                    
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+   
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse container header" id="bs-example-navbar-collapse-1">
+             <a ui-sref="home"><h2 style="font-family:Tahoma">Pasteleando</h2></a>
+            <ul class="nav navbar-nav pull-right">
+                        <li> </li>
+                        <li><a ui-sref="catalogoList">Nuestros Pasteles</a></li>
+                        <li><a ui-sref="promocionList">NuestrasPromociones</a></li>
+                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="pedidoList">Pedidos</a></li>
+                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="facturas">Facturas</a></li>
+                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="carritoList">Carrito</a></li>
                         
-                        
-                     
-                        
-                        <li><a ui-sref="pedidoList">Pedidos</a></li>
-                        <li><a ui-sref="facturas">Facturas</a></li>
-                        <li><a ui-sref="personalizadaList">Pasteles Personalizados</a></li>
-                        <li><a ui-sref="catalogoList">Catálogo</a></li>
-                        <li><a ui-sref="carritoList">Carrito</a></li>
-                        <li><a ui-sref="promocionList">Promociones</a></li>
-                        <li><a ui-sref="clienteList">Cliente</a></li>
                         <li><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li><a ui-sref="pqrsList">Pqrs</a></li>
+                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="clienteList">Cliente</a></li>
+                        <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="admin">Todos los clientes</a></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
 
                     <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="miInfo"><span class="glyphicon glyphicon-user"></span></a></li>
-                    <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a ui-sref="clienteCreate"> Sign Up Cliente</a></li>
-                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="logout"><span class="glyphicon glyphicon-apple"></span></a></li>
+                    <li ng-if="!hasPermissions() && !isAuthenticated()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li ng-if="!hasPermissions() && !isAuthenticated()"><a ui-sref="clienteCreate"> Sign Up Cliente</a></li>
+                    <li ng-if="isAuthenticated() || hasPermissions()"><a ui-sref="logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
 
-
-                </ul>
-                    
-                </div>
-            </nav>
-            
+ 
+                    </nav>
             
             
             <!-- Masthead -->
@@ -167,11 +176,11 @@
             <div ui-view="updateView"></div>
             <div ui-view="createPqrs"></div>
             <div ui-view="logout"></div>
+            <div ui-view="admin"></div>
             
             
             
             
             
-        </div>
     </body>
 </html>
