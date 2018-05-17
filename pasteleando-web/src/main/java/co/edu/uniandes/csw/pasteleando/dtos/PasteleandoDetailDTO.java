@@ -20,48 +20,46 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
 
 /**
- * Clase que extiende de {@link PasteleandoDTO} para manejar la transformacion entre
- * los objetos JSON y las Entidades de la base de datos. Para conocer el
- * contenido de la entidad de Pasteleando vaya a la documentacion de {@link PasteleandoDTO}
+ * Clase que extiende de {@link PasteleandoDTO} para manejar la transformacion
+ * entre los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido de la entidad de Pasteleando vaya a la documentacion de
+ * {@link PasteleandoDTO}
  *
  * @author ISIS2603
  */
-public class PasteleandoDetailDTO extends PasteleandoDTO
-{
+public class PasteleandoDetailDTO extends PasteleandoDTO {
 
-	/**
-	 * Constructor por defecto
-	 */
-	public PasteleandoDetailDTO( )
-	{
-	}
+    /**
+     * Constructor por defecto
+     */
+    public PasteleandoDetailDTO() {
+    }
 
-	/**
-	 * Constructor para transformar un Entity a un DTO
-	 *
-	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
-	 */
-	public PasteleandoDetailDTO( PasteleandoEntity entity )
-	{
-		super( entity );
-	}
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de Pasteleando a partir de la cual se construye
+     * el objeto
+     */
+    public PasteleandoDetailDTO(PasteleandoEntity entity) {
+        super(entity);
+    }
 
-	/**
-	 * Transformar un DTO a un Entity
-	 *
-	 * @return La entidad construida a partir del DTO.
-	 */
-	@Override
-	public PasteleandoEntity toEntity( )
-	{
-		PasteleandoEntity pasteleandoEntity = super.toEntity( );
-		return pasteleandoEntity;
-	}
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return La entidad construida a partir del DTO.
+     */
+    @Override
+    public PasteleandoEntity toEntity() {
+        PasteleandoEntity pasteleandoEntity = super.toEntity();
+        return pasteleandoEntity;
+    }
 
 }

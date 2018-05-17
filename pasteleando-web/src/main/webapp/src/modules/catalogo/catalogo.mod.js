@@ -78,9 +78,9 @@
                 ,
                 views: {
                     'mainView': {
-                        controller: 'catalogoCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'catalogo.create.html'
+                        templateUrl: basePath + 'create/catalogo.new.html',
+                        controller: 'catalogoCreateCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
 

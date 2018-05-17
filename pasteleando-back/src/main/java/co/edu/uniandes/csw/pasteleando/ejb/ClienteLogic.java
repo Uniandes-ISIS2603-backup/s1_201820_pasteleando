@@ -48,6 +48,10 @@ public class ClienteLogic
         // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 	@Inject
 	private ClientePersistence persistence; 
+        
+        @Inject
+        private PedidoLogic pedidoLogic;
+    
 
         /**
          * crea una entidad Cliente en la base de datos

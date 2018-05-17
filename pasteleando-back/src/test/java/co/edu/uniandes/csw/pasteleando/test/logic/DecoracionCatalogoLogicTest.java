@@ -190,9 +190,10 @@ public class DecoracionCatalogoLogicTest {
      * Prueba para eliminar una decoración del catálogo.
      *
      *
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
     @Test
-    public void deleteDecoracionCatalogoTest() {
+    public void deleteDecoracionCatalogoTest() throws BusinessLogicException {
         DecoracionCatalogoEntity entity = data.get(0);
         decoracionCatalogoLogic.deleteDecoracionCatalogo(entity.getId());
         DecoracionCatalogoEntity deleted = em.find(DecoracionCatalogoEntity.class, entity.getId());

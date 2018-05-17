@@ -137,11 +137,13 @@
             <ul class="nav navbar-nav pull-right">
                         <li> </li>
                         <li><a ui-sref="catalogoList">Nuestros Pasteles</a></li>
-                        <li><a ui-sref="promocionList">NuestrasPromociones</a></li>
+                        <li><a ui-sref="promocionList">Nuestras Promociones</a></li>
                         <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="pedidoList">Pedidos</a></li>
                         <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="facturas">Facturas</a></li>
                         <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="carritoList">Carrito</a></li>
                         
+                        <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="calificacionList">Calificaciones</a></li>
+                        <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="pqrsList">Pqrs</a></li>
                         <li><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li><a ui-sref="pqrsList">Pqrs</a></li>
                         

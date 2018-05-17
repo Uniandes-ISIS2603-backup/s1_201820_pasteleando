@@ -26,18 +26,18 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
 
 /**
- * PasteleandoDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * PasteleandoDTO Objeto de transferencia de datos de la entidad de Pasteleando.
+ * Los DTO contienen las represnetaciones de los JSON que se transfieren entre
+ * el cliente y el servidor. Al serializarse como JSON esta clase implementa el
+ * siguiente modelo: <br>
  * <pre>
  *   {
  *      "id": number,
  *      "name: string,
  *      "atributo": string
  *   }
- * </pre>
- * Por ejemplo una entidad de Pasteleando se representa asi:<br>
-
+ * </pre> Por ejemplo una entidad de Pasteleando se representa asi:<br>
+ *
  * <pre>
  *
  *   {
@@ -47,96 +47,88 @@ import co.edu.uniandes.csw.pasteleando.entities.PasteleandoEntity;
  *   }
  *
  * </pre>
+ *
  * @author ISIS2603
  */
-public class PasteleandoDTO
-{
-	private Long id;
+public class PasteleandoDTO {
 
-	private String name;
+    private Long id;
 
-	private String atributo;
+    private String name;
 
-	/**
-	 * Constructor por defecto
-	 */
-	public PasteleandoDTO( )
-	{
-	}
+    private String atributo;
 
-	/**
-	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-	 * la entidad que viene de argumento.
-	 *
-	 * @param pasteleandoEntity: Es la entidad que se va a convertir a DTO
-	 */
-	public PasteleandoDTO( PasteleandoEntity pasteleandoEntity )
-	{
-		this.id = pasteleandoEntity.getId( );
-		this.name = pasteleandoEntity.getName( );
-		this.atributo = pasteleandoEntity.getAtributo( );
+    /**
+     * Constructor por defecto
+     */
+    public PasteleandoDTO() {
+    }
 
-	}
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param pasteleandoEntity: Es la entidad que se va a convertir a DTO
+     */
+    public PasteleandoDTO(PasteleandoEntity pasteleandoEntity) {
+        this.id = pasteleandoEntity.getId();
+        this.name = pasteleandoEntity.getName();
+        this.atributo = pasteleandoEntity.getAtributo();
 
-	/**
-	 * @return El ID de la entidad Pasteleando
-	 */
-	public Long getId( )
-	{
-		return id;
-	}
+    }
 
-	/**
-	 * @param id El nuevo ID
-	 */
-	public void setId( Long id )
-	{
-		this.id = id;
-	}
+    /**
+     * @return El ID de la entidad Pasteleando
+     */
+    public Long getId() {
+        return id;
+    }
 
-	/**
-	 * @return El nombre de la entidad Pasteleando
-	 */
-	public String getName( )
-	{
-		return name;
-	}
+    /**
+     * @param id El nuevo ID
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param name El nuevo nombre
-	 */
-	public void setName( String name )
-	{
-		this.name = name;
-	}
+    /**
+     * @return El nombre de la entidad Pasteleando
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @return El atrinuto de la entidad Pasteleando
-	 */
-	public String getAtributo( )
-	{
-		return atributo;
-	}
+    /**
+     * @param name El nuevo nombre
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @param atributo El nuevo atributo de la entidad Pasteleando
-	 */
-	public void setAtributo( String atributo )
-	{
-		this.atributo = atributo;
-	}
+    /**
+     * @return El atrinuto de la entidad Pasteleando
+     */
+    public String getAtributo() {
+        return atributo;
+    }
 
-	/**
-	 * Convertir DTO a Entity
-	 *
-	 * @return Un Entity con los valores del DTO
-	 */
-	public PasteleandoEntity toEntity( )
-	{
-		PasteleandoEntity entity = new PasteleandoEntity( );
-		entity.setId( this.id );
-		entity.setName( this.name );
-		entity.setAtributo( this.atributo );
-		return entity;
-	}
+    /**
+     * @param atributo El nuevo atributo de la entidad Pasteleando
+     */
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
+    }
+
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public PasteleandoEntity toEntity() {
+        PasteleandoEntity entity = new PasteleandoEntity();
+        entity.setId(this.id);
+        entity.setName(this.name);
+        entity.setAtributo(this.atributo);
+        return entity;
+    }
 }

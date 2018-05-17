@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
  * clase que representa una promocion en la base de datos y permite su serializacion
@@ -21,6 +22,7 @@ public class PromocionEntity extends BaseEntity implements Serializable{
     /**
      * Atributo que modela el porcentaje de la promocionEntity
      */
+    @PodamIntValue(maxValue = 90)
     private Integer cantidad;
     
     /**

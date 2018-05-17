@@ -19,7 +19,7 @@
 
             $scope.createPqrs = function () 
             {
-                $state.data.fechaPedido = new Date();
+                $scope.data.fecha = new Date();
                 $http.post(pqrsContext, $scope.data).then(function (response) 
                 {
                     $state.go('pqrsList', {pqrsId: response.data.id}, {reload: true});

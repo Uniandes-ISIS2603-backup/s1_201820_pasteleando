@@ -1,5 +1,5 @@
 <div class="row" style="margin-top: 10px; margin-left: 10px">
- <a class="btn btn-primary" ui-sref="calificacionCreate"> Añadir una nueva calificacion</a>
+ <a ng-if="hasPermissions() && isAuthenticated()" class="btn btn-primary" ui-sref="calificacionCreate"> Añadir una nueva calificacion</a>
 </div>
 
 <table class="table table-striped" style="background-color: white; margin-top: 10px">

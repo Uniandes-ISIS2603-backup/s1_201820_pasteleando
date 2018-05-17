@@ -1,7 +1,7 @@
 
 
 <div class="row" style="margin-top: 10px; margin-left: 10px">
-<a ng-if="isAuthenticated() && !hasPermissions()" class="btn btn-primary" ui-sref="promocionCreate"> Añadir una nueva promocion</a>
+<a ng-if="!hasPermissions() && isAuthenticated()"class="btn btn-primary" ui-sref="promocionCreate"> Añadir una nueva promocion</a>
 </div>
 
 <table class="table table-striped" style="background-color: white; margin-top: 10px">

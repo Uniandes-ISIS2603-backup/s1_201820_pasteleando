@@ -53,7 +53,6 @@ public class DecoracionDTO implements Serializable {
      */
     private Integer esPersonalizada = 0;
 
-    
     private Long id;
 
     /**
@@ -118,7 +117,8 @@ public class DecoracionDTO implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-/**
+
+    /**
      * @return El id de la entidad Decoracion
      */
     public Long getId() {
