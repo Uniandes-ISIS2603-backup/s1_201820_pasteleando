@@ -33,7 +33,7 @@
  */
 (function (ng) {
     var mod = ng.module("promocionModule", ['ui.router']);
-    mod.constant("promocionContext", "api/promociones");
+    mod.constant("promocionContext", "api/catalogo/1000/promociones/100");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/promocion/';
             

@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("promocionModule");
-    mod.constant("promocionContext", "api/promocion");
+    mod.constant("promocionContext", "api/catalogo/1000/promociones/100");
     mod.controller('promocionCtrl', ['$scope', '$http', 'promocionContext', '$state',
         /**
          * @ngdoc controller
