@@ -109,7 +109,6 @@ public class PromocionLogicTest {
             PromocionEntity entity = factory.manufacturePojo(PromocionEntity.class);
             
             entity.setDecoracionCatalogo(dataCatalogo.get(1));
-            entity.setCantidad(21);
             
             em.persist(entity);
             data.add(entity);

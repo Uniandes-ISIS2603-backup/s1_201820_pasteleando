@@ -63,7 +63,7 @@ public class PromocionLogic {
         entity.setDecoracionCatalogo(decoracionCatalogo);
         if( entity.getCantidad() > 90)
         {
-            throw new BusinessLogicException("La promocion no puede ser mayor a 90 " + entity.getCantidad());
+            throw new BusinessLogicException("La promocion no puede ser mayor a 90 ");
         }
         return persistence.create(entity);
     }
