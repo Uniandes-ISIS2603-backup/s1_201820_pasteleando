@@ -55,7 +55,7 @@
              * @param {String} id El ID de la editorial a actualizar.
              * @param {Object} editorial Objeto con la información nueva de la editorial.
              */
-            $scope.createcliente = function () {
+            $scope.updateCliente = function (idcliente) {
                 $http.put(clienteContext + "/" + idcliente, $scope.data).then(function (response) {
                     $state.go('clienteList', {clienteId: response.data.id}, {reload: true});
                 });

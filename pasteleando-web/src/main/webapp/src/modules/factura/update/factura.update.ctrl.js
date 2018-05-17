@@ -44,14 +44,14 @@
             
             $scope.minutos = []
             
-            for (var i = 0; i < 60; i++) {
-                if(i<10)
+            for (var j = 0; j < 60; j++) {
+                if(j<10)
                 {
-                    $scope.minutos.push("0" + i);
+                    $scope.minutos.push("0" + j);
                 }
                 else
                 {
-                    $scope.minutos.push(i);
+                    $scope.minutos.push(j);
                 }
             }
         }

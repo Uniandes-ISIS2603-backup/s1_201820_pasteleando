@@ -64,6 +64,11 @@ public class CarritoLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+    /**
+     * Configuración inicial de la prueba.
+     *
+     *
+     */
     @Before
     public void configTest()
     {
@@ -84,11 +89,22 @@ public class CarritoLogicTest {
       
     }
     
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     *
+     *
+     */
     public void clearData()
     {
         em.createQuery("delete from CarritoEntity").executeUpdate();
     }
     
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     *
+     *
+     */
     public void insertData()
     {
         int i = 0;
@@ -102,6 +118,11 @@ public class CarritoLogicTest {
        
     }
     
+    /**
+     * Prueba para crear un carrito
+     *
+     *
+     */
     @Test
     public void createCarritoTest() throws BusinessLogicException 
     {
@@ -117,6 +138,11 @@ public class CarritoLogicTest {
         Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio(),0);
     }
     
+    /**
+     * Prueba para consultar la lista de Carritos.
+     *
+     *
+     */
     @Test
     public void getCarritosTest()
     {
@@ -133,6 +159,11 @@ public class CarritoLogicTest {
         }
     }
     
+    /**
+     * Prueba para consultar un carrito.
+     *
+     *
+     */
     @Test
     public void getCarritoTest() throws BusinessLogicException
     {
@@ -146,6 +177,11 @@ public class CarritoLogicTest {
         Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio(),0);
     }
     
+    /**
+     * Prueba para eliminar un carrito
+     *
+     *
+     */
     @Test
     public void deleteCarritoTest() throws BusinessLogicException
     {
@@ -155,6 +191,11 @@ public class CarritoLogicTest {
         Assert.assertNull(deleted);
     }
     
+    /**
+     * Prueba para actualizar un carrito.
+     *
+     *
+     */
     @Test
     public void updateCarritoTest() throws BusinessLogicException
     {

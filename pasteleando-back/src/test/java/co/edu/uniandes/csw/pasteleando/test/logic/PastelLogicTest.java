@@ -62,6 +62,11 @@ public class PastelLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+    /**
+     * Configuración inicial de la prueba.
+     *
+     *
+     */
     @Before
     public void configTest()
     {
@@ -82,11 +87,22 @@ public class PastelLogicTest {
       
     }
     
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     *
+     *
+     */
     public void clearData()
     {
         em.createQuery("delete from PastelEntity").executeUpdate();
     }
     
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     *
+     *
+     */
     public void insertData()
     {
       
@@ -101,6 +117,11 @@ public class PastelLogicTest {
        
     }
     
+    /**
+     * Prueba para crear un pastel
+     *
+     *
+     */
     @Test
     public void createPastelTest() throws BusinessLogicException 
     {
@@ -113,6 +134,11 @@ public class PastelLogicTest {
         Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio(),0);
     }
     
+    /**
+     * Prueba para consultar la lista de Pasteles.
+     *
+     *
+     */
     @Test
     public void getPastelesTest()
     {
@@ -129,6 +155,11 @@ public class PastelLogicTest {
         }
     }
     
+    /**
+     * Prueba para consultar una pastel.
+     *
+     *
+     */
     @Test
     public void getPastelTest() throws BusinessLogicException
     {
@@ -140,6 +171,11 @@ public class PastelLogicTest {
         Assert.assertEquals(entity.getPrecio(), resultEntity.getPrecio(),0);
     }
     
+    /**
+     * Prueba para eliminar un pastel.
+     *
+     *
+     */
     @Test
     public void deletePastelTest() throws BusinessLogicException
     {
@@ -149,6 +185,11 @@ public class PastelLogicTest {
         Assert.assertNull(deleted);
     }
     
+    /**
+     * Prueba para actualizar un pastel.
+     *
+     *
+     */
     @Test
     public void updatePastelTest() throws BusinessLogicException
     {

@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <a ng-if="isAuthenticated() && !hasPermissions()" class="btn btn-primary" ui-sref="catalogoCreate">Crear nueva decoración del catálogo</a>
+            
             <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-primary" ng-click="agregarAPedido({catalogoId: currentcatalogo.id})"> Comprar pastel</a>
         </div>
     </div>

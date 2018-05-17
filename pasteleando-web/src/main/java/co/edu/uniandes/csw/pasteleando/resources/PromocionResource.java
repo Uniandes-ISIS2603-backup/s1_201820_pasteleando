@@ -94,7 +94,7 @@ public class PromocionResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public PromocionDTO getPromocion(@PathParam("catalogoId") Long catalogoId, @PathParam("id") Long id) throws BusinessLogicException {
+    public PromocionDTO getPromocion(@PathParam("id") Long id, @PathParam("catalogoId") Long catalogoId) throws BusinessLogicException {
         PromocionEntity entity = promocionLogic.getPromocion(catalogoId, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /catalogo/" + catalogoId + "/promocion/" + id + " no existe.", 404);

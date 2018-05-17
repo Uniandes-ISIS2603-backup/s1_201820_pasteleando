@@ -41,6 +41,10 @@ public class PedidoEntity extends BaseEntity implements Serializable
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.PERSIST)
     private FacturaEntity factura;
     
+    @PodamExclude
+    @OneToOne
+    private ClienteEntity cliente;
+    
     /**
      * @return El valor del atributo seRecogePateleria
      */
@@ -147,6 +151,23 @@ public class PedidoEntity extends BaseEntity implements Serializable
         this.factura = pFactura;
     }
     
+    /**
+     * 
+     * @return cliente 
+     */
+    public ClienteEntity getCliente()
+    {
+        return this.cliente;
+    }
+    
+    /**
+     * 
+     * @param pCliente: cliente to set
+     */
+    public void setCliente(ClienteEntity pCliente)
+    {
+        this.cliente = pCliente;
+    }
     
     
 }

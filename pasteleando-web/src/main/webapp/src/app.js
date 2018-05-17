@@ -39,7 +39,7 @@
                  * @returns {Boolean} Verdadero si está dentro de su cuenta.
                  */
                 $rootScope.isAuthenticated = function () {
-                    if (sessionStorage.getItem("name") != null && sessionStorage.getItem("name") != "undefined") {
+                    if (sessionStorage.getItem("name") !== null && sessionStorage.getItem("name") !== "undefined") {
                        
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         $rootScope.idUser = sessionStorage.getItem("id");
@@ -58,7 +58,7 @@
                  * @returns {Boolean} Verdadero si el usuario tiene permisos.
                  */
                 $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (sessionStorage.getItem("rol") == "false")) {
+                    if (($rootScope.isAuthenticated) && (sessionStorage.getItem("rol") === "false")) {
                         return true;
                     } else {
                         return false;
@@ -69,8 +69,10 @@
                     $state.go('login', $state.params);
                 }
             });
+            
             $rootScope.misPedidos = [];
             $rootScope.todosLosPedidos =[];
+            $rootScope.personalizadas=[];
         }]);
 })(window.angular);
 

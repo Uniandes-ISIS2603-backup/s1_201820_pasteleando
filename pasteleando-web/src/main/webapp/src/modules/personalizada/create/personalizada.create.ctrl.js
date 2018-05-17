@@ -5,8 +5,13 @@
         function ($scope, $http, personalizadaContext, $state, $rootScope) {
             $rootScope.edit = false;
             
+            $scope.personalizadaRecords = $rootScope.personalizadas;
+            
+            console.log($scope.personalizadas);
+            
             $scope.colores = ["Blanco","Azul", "Amarillo","Verde", "Rosado", "Negro", "Morado"];
             
+           
             $scope.createDecoracionPersonalizada = function () {
                 $http.post('api/personalizada', {
                     color: $scope.data.colores,
@@ -19,6 +24,20 @@
                     
                      
                 });
+            };
+             $scope.agregarAPersonalizada = function()
+            {   
+                
+                $rootScope.personalizadas.push(
+                        {
+                            "id": response.data.id,
+                            "foto":$scope.foto,
+                            "color": $scope.data.colores,
+                            "peso":$scope.peso
+                            
+                        });
+                $state.go('personalizadaList', {}, {reload: true});
+
             };
         }
     ]);

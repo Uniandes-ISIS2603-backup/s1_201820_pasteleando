@@ -15,6 +15,7 @@
             <th >
                 Color
             </th>
+             <th ng-if="isAuthenticated() && !hasPermissions()">¿Aprobado?</th>
             
             </thead>
             <tbody>
@@ -28,6 +29,9 @@
                     </td>
                     <td>
                         {{personalizada.color}}
+                    </td>
+                    <td ng-if="isAuthenticated() && !hasPermissions()" >
+                        <input class="form-check-input" type="checkbox" ng-model="personalizada.estado" ng-false-value="'Reprobado'" ng-true-value="'Aprobado'" id="defaultCheck1">
                     </td>
                 
                 </tr>

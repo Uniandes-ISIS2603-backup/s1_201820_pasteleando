@@ -44,7 +44,7 @@
                 $rootScope.loginResponse.name = $scope.name;
                 $rootScope.loginResponse.clave = $scope.clave;
                 $scope.idUsuario = "";
-                 if($scope.tipoUsuario == "false")
+                 if($scope.tipoUsuario === "false")
                 {
                     $scope.tipoUsuario = false;
                 }
@@ -55,7 +55,7 @@
                 $rootScope.loginResponse.tipoUsuario = $scope.tipoUsuario;
                
                 for (var item in $scope.users) {
-                    if ($scope.users[item].name == $rootScope.loginResponse.name && $scope.users[item].clave == $rootScope.loginResponse.clave) {
+                    if ($scope.users[item].name === $rootScope.loginResponse.name && $scope.users[item].clave === $rootScope.loginResponse.clave) {
                         flag = true;
                         $scope.user = $scope.users[item];
                         $state.go('home', {}, {reload: true});
