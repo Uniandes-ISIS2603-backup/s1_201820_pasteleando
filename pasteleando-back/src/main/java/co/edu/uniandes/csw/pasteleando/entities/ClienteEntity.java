@@ -49,7 +49,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @OneToMany(mappedBy = "cliente")
     private List<FacturaEntity> facturas = new ArrayList<>();
     
-     @PodamExclude
+    @PodamExclude
     @OneToOne(mappedBy = "cliente")
     private PedidoEntity pedido;
 
