@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="row" style="margin-top: 10px; margin-left: 10px">
- <a class="btn btn-info" ui-sref="pqrsCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Pqrs</a>
+ <a ng-if="hasPermissions() && isAuthenticated()" class="btn btn-info" ui-sref="pqrsCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Pqrs</a>
 </div>
 
 <table class="table table-striped" style="background-color: white;margin-top: 10px">
@@ -17,7 +17,7 @@ and open the template in the editor.
                             
                             <th>Tipo</th>
                             
-                            <th>¿Resuelto?</th>
+                            <th ng-if="isAuthenticated() && !hasPermissions()">¿Resuelto?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,7 @@ and open the template in the editor.
                     <td>
                         <p>{{pqrs.estado}}</p>   
                     </td>
-                    <td>
+                    <td ng-if="isAuthenticated() && !hasPermissions()">
                         <input class="form-check-input" type="checkbox" ng-model="pqrs.estado" ng-false-value="'Pendiente'" ng-true-value="'Resuelto'" id="defaultCheck1">
                     </td>
                     
