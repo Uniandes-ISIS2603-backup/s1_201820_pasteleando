@@ -10,6 +10,9 @@
                 <div class="caption text-center">{{catalogo.name}}</div>
        
             </div>
+           
         </div>
+        
     </div>
+     <a ng-if="isAuthenticated() && !hasPermissions()" class="btn btn-primary" ui-sref="catalogoCreate">Crear nueva decoración del catálogo</a>
 </div>

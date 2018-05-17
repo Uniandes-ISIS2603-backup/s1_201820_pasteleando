@@ -69,8 +69,10 @@
                     $state.go('login', $state.params);
                 }
             });
+            
             $rootScope.misPedidos = [];
             $rootScope.todosLosPedidos =[];
+            $rootScope.personalizadas=[];
         }]);
 })(window.angular);
 
