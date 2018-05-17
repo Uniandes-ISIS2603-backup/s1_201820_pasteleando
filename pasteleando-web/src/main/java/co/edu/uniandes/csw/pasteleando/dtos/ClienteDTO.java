@@ -26,14 +26,14 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 import co.edu.uniandes.csw.pasteleando.entities.ClienteEntity;
 
-
 import javax.persistence.ElementCollection;
 import java.util.*;
 
 /**
- * ClienteDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- 
+ * ClienteDTO Objeto de transferencia de datos de la entidad de Pasteleando. Los
+ * DTO contienen las represnetaciones de los JSON que se transfieren entre el
+ * cliente y el servidor.
+ *
  * Al serializarse como JSON esta clase se implementa el siguiente modelo <br>
  * <pre>
  * {
@@ -42,23 +42,23 @@ import java.util.*;
  *  "formaPagoActual": String,
  *  "tiposPago": String[]
  * }
- * </pre>
- * Un cliente se podria representar asi:
+ * </pre> Un cliente se podria representar asi:
  * <pre>
  * {
  *  "id": 245678905,
  *  "idCarrito": 233456,
  *  "formaPagoActual": "Tarjeta Credito",
  *  "tiposPago": [ "Tarjeta Credito" , "Tarjeta Debito" , "Pago Efectivo" ]
- * 
+ *
  * }
  * </pre>
+ *
  * @author mp.bayonal
  */
-public class ClienteDTO
-{
-	private Long id;
-	private Integer idCarrito;
+public class ClienteDTO {
+
+    private Long id;
+    private Integer idCarrito;
 
     public String getCorreo() {
         return correo;
@@ -75,12 +75,12 @@ public class ClienteDTO
     public void setClave(String clave) {
         this.clave = clave;
     }
-	private Boolean tipoUsuario;
-	private String formaPagoActual;
-        private Integer numeroPuntos;
-        private String name;
-        private String correo;
-        private String clave;
+    private Boolean tipoUsuario;
+    private String formaPagoActual;
+    private Integer numeroPuntos;
+    private String name;
+    private String correo;
+    private String clave;
 
     public void setNumeroPuntos(Integer numeroPuntos) {
         this.numeroPuntos = numeroPuntos;
@@ -89,8 +89,8 @@ public class ClienteDTO
     public Integer getNumeroPuntos() {
         return numeroPuntos;
     }
-        
-            public String getName() {
+
+    public String getName() {
         return name;
     }
 
@@ -98,128 +98,117 @@ public class ClienteDTO
         this.name = name;
     }
 
-	private List<String> tiposPagos;
+    private List<String> tiposPagos;
 
+    /**
+     * Constructor por defecto
+     */
+    public ClienteDTO() {
+    }
 
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param clienteEntity: Es la entidad que se va a convertir a DTO
+     */
+    public ClienteDTO(ClienteEntity clienteEntity) {
+        this.id = clienteEntity.getId();
+        this.name = clienteEntity.getName();
+        this.tipoUsuario = clienteEntity.getTipoUsuario();
+        this.formaPagoActual = clienteEntity.getFormaPagoActual();
+        this.tiposPagos = clienteEntity.getTiposPagos();
+        this.numeroPuntos = clienteEntity.getNumeroPuntos();
+        this.clave = clienteEntity.getClave();
+        this.correo = clienteEntity.getCorreo();
 
-	/**
-	 * Constructor por defecto
-	 */
-	public ClienteDTO( )
-	{
-	}
+    }
 
-	/**
-	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-	 * la entidad que viene de argumento.
-	 *
-	 * @param clienteEntity: Es la entidad que se va a convertir a DTO
-	 */
-	public ClienteDTO( ClienteEntity clienteEntity )
-	{
-		this.id = clienteEntity.getId();
-                this.name =  clienteEntity.getName();
-		this.tipoUsuario = clienteEntity.getTipoUsuario();
-		this.formaPagoActual = clienteEntity.getFormaPagoActual();
-		this.tiposPagos = clienteEntity.getTiposPagos();
-                this.numeroPuntos = clienteEntity.getNumeroPuntos();
-                this.clave = clienteEntity.getClave();
-                this.correo = clienteEntity.getCorreo();
+    /**
+     * @return El ID de la entidad Cliente
+     */
+    public Long getId() {
+        return id;
+    }
 
+    /**
+     * @param id El nuevo ID
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	}
+    /**
+     * @return idCarrito
+     */
+    public Integer getIdCarrito() {
+        return idCarrito;
+    }
 
+    /**
+     * @param idCarrito the atribute to set
+     */
+    public void setIdCarrito(Integer idCarrito) {
+        this.idCarrito = idCarrito;
+    }
 
+    /**
+     * @return tipoUsuario
+     */
+    public Boolean getTipoUsuario() {
+        return tipoUsuario;
+    }
 
-	/**
-	 * @return El ID de la entidad Cliente
-	 */
-	public Long getId( )
-	{
-		return id;
-	}
+    /**
+     * @param tipoUsuario the atribute to set
+     */
+    public void setTipoUsuario(Boolean tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 
-	/**
-	 * @param id El nuevo ID
-	 */
-	public void setId( Long id )
-	{
-		this.id = id;
-	}
+    /**
+     * @return formaPagoActual
+     */
+    public String getFormaPagoActual() {
+        return formaPagoActual;
+    }
 
-	/**
-	 * @return idCarrito
-	 */
-	public Integer getIdCarrito() {
-		return idCarrito;
-	}
+    /**
+     * @param formaPagoActual the atribute to set
+     */
+    public void setFormaPagoActual(String formaPagoActual) {
+        this.formaPagoActual = formaPagoActual;
+    }
 
-	/**
-	 * @param idCarrito the atribute to set
-	 */
-	public void setIdCarrito(Integer idCarrito) {
-		this.idCarrito = idCarrito;
-	}
+    /**
+     * @return tiposPagos
+     */
+    public List<String> getTiposPagos() {
+        return tiposPagos;
+    }
 
-	/**
-	 * @return tipoUsuario
-	 */
-	public Boolean getTipoUsuario() {
-		return tipoUsuario;
-	}
+    /**
+     * @param tiposPagos the atribute to set
+     */
+    public void setTiposPagos(List<String> tiposPagos) {
+        this.tiposPagos = tiposPagos;
+    }
 
-	/**
-	 * @param tipoUsuario the atribute to set
-	 */
-	public void setTipoUsuario(Boolean tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public ClienteEntity toEntity() {
+        ClienteEntity entity = new ClienteEntity();
+        entity.setId(this.id);
+        entity.setName(this.name);
+        entity.setTipoUsuario(this.tipoUsuario);
+        entity.setTiposPagos(this.tiposPagos);
+        entity.setNumeroPuntos(this.numeroPuntos);
+        entity.setClave(this.clave);
+        entity.setCorreo(this.correo);
 
-	/**
-	 * @return formaPagoActual
-	 */
-	public String getFormaPagoActual() {
-		return formaPagoActual;
-	}
-
-	/**
-	 * @param formaPagoActual the atribute to set
-	 */
-	public void setFormaPagoActual(String formaPagoActual) {
-		this.formaPagoActual = formaPagoActual;
-	}
-
-	/**
-	 * @return tiposPagos
-	 */
-	public List<String> getTiposPagos() {
-		return tiposPagos;
-	}
-
-	/**
-	 * @param tiposPagos the atribute to set
-	 */
-	public void setTiposPagos(List<String> tiposPagos) {
-		this.tiposPagos = tiposPagos;
-	}
-
-
-	/**
-	 * Convertir DTO a Entity
-	 *
-	 * @return Un Entity con los valores del DTO
-	 */
-	public ClienteEntity toEntity( )
-	{
-		ClienteEntity entity = new ClienteEntity( );
-		entity.setId( this.id );
-                entity.setName(this.name);
-		entity.setTipoUsuario(this.tipoUsuario);
-		entity.setTiposPagos(this.tiposPagos);
-                entity.setNumeroPuntos(this.numeroPuntos);
-                entity.setClave(this.clave);
-                entity.setCorreo(this.correo);
-
-		return entity;
-	}
+        return entity;
+    }
 }

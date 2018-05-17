@@ -13,60 +13,57 @@ import java.util.List;
  * Clase que extiende de {@link PedidoDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido del pedido vaya a la documentacion de {@link PedidoDTO}
- * 
+ *
  * @author ni.ramirez10
  */
+public class PedidoDetailDTO extends PedidoDTO {
 
-public class PedidoDetailDTO extends PedidoDTO
-{         
-        private List<PedidoDTO> pedidos; 
-       
-        /**
-	 * Constructor por defecto
-	 */
-	public PedidoDetailDTO( )
-	{
-            super( ); 
-	}
-        
-        /**
-         * Obtiene la lista de pedidos
-         * @return Los pedidos
-         */
-         public List<PedidoDTO> getPedidos() 
-         {
-                return pedidos;
-         }
+    private List<PedidoDTO> pedidos;
 
-        /**
-         * Modifica la lista de pedidos
-         * @param pPedidos Los pedidos a establecer
-         */
-         public void setPedidos(List<PedidoDTO> pPedidos) 
-         {
-                this.pedidos = pPedidos;
-         }
+    /**
+     * Constructor por defecto
+     */
+    public PedidoDetailDTO() {
+        super();
+    }
 
-	/**
-	 * Constructor para transformar un Entity a un DTO
-	 *
-	 * @param entity La entidad de Pasteleando a partir de la cual se construye el objeto
-	 */
-	public PedidoDetailDTO( PedidoEntity entity )
-	{
-		super( entity );
-	}
+    /**
+     * Obtiene la lista de pedidos
+     *
+     * @return Los pedidos
+     */
+    public List<PedidoDTO> getPedidos() {
+        return pedidos;
+    }
 
-	/**
-	 * Transformar un DTO a un Entity
-	 *
-	 * @return La entidad construida a partir del DTO.
-	 */
-	@Override
-	public PedidoEntity toEntity( )
-	{
-            PedidoEntity entity = super.toEntity( );
-            return entity;
-	}
-       
+    /**
+     * Modifica la lista de pedidos
+     *
+     * @param pPedidos Los pedidos a establecer
+     */
+    public void setPedidos(List<PedidoDTO> pPedidos) {
+        this.pedidos = pPedidos;
+    }
+
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de Pasteleando a partir de la cual se construye
+     * el objeto
+     */
+    public PedidoDetailDTO(PedidoEntity entity) {
+        super(entity);
+    }
+
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return La entidad construida a partir del DTO.
+     */
+    @Override
+    public PedidoEntity toEntity() {
+        PedidoEntity entity = super.toEntity();
+        return entity;
+    }
+
 }

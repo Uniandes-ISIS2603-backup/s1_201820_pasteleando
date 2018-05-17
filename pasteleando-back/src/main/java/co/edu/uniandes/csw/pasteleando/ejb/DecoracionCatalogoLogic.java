@@ -2,7 +2,6 @@ package co.edu.uniandes.csw.pasteleando.ejb;
 
 import co.edu.uniandes.csw.pasteleando.entities.DecoracionCatalogoEntity;
 import co.edu.uniandes.csw.pasteleando.entities.PastelEntity;
-import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
 import co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.pasteleando.persistence.DecoracionCatalogoPersistence;
 import java.util.List;

@@ -12,42 +12,35 @@ import java.util.List;
  * Clase que extiende de {@link PqrsDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido del pqrs vaya a la documentacion de {@link PqrsDTO}
- * 
+ *
  * @author ni.ramirez10
  */
+public class PqrsDetailDTO extends PqrsDTO {
 
-public class PqrsDetailDTO extends PqrsDTO
-{
-    
-        private List<PqrsDTO> pqrs; 
-            
-        private transient ClienteDTO cliente;
-        
-        private PedidoDTO pedido;
-        
-        /**
-	 * Constructor por defecto
-	 */
-	public PqrsDetailDTO( )
-	{
-            super( ); 
-	}
-        
-        public PqrsDetailDTO(PqrsEntity entity)
-        {
-            super(entity);
-            
-            if(entity.getCliente() != null)
-            {
-                this.cliente = new ClienteDTO(entity.getCliente());
-            }
-            
-            if(entity.getPedido() != null)
-            {
-                this.pedido = new PedidoDTO(entity.getPedido());
-            }
+    private List<PqrsDTO> pqrs;
+
+    private transient ClienteDTO cliente;
+
+    private PedidoDTO pedido;
+
+    /**
+     * Constructor por defecto
+     */
+    public PqrsDetailDTO() {
+        super();
+    }
+
+    public PqrsDetailDTO(PqrsEntity entity) {
+        super(entity);
+
+        if (entity.getCliente() != null) {
+            this.cliente = new ClienteDTO(entity.getCliente());
         }
-           
+
+        if (entity.getPedido() != null) {
+            this.pedido = new PedidoDTO(entity.getPedido());
+        }
+    }
 
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
@@ -65,47 +58,39 @@ public class PqrsDetailDTO extends PqrsDTO
         return pedido;
     }
 
-        
-         /**
-         * Obtiene la lista de pqrs
-         * @return Los pqrs
-         */
-         public List<PqrsDTO> getPqrs() 
-         {
-                return pqrs;
-         }
+    /**
+     * Obtiene la lista de pqrs
+     *
+     * @return Los pqrs
+     */
+    public List<PqrsDTO> getPqrs() {
+        return pqrs;
+    }
 
-        /**
-         * Modifica la lista de pqrs
-         * @param pPqrs Los pqrs a establecer
-         */
-         public void setPqrs(List<PqrsDTO> pPqrs) 
-         {
-                this.pqrs = pPqrs;
-         }
+    /**
+     * Modifica la lista de pqrs
+     *
+     * @param pPqrs Los pqrs a establecer
+     */
+    public void setPqrs(List<PqrsDTO> pPqrs) {
+        this.pqrs = pPqrs;
+    }
 
-	
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return La entidad construida a partir del DTO.
+     */
+    @Override
+    public PqrsEntity toEntity() {
+        PqrsEntity entity = super.toEntity();
+        if (this.getCliente() != null) {
+            entity.setCliente(this.getCliente().toEntity());
+        }
+        if (this.getPedido() != null) {
+            entity.setPedido(this.getPedido().toEntity());
+        }
+        return entity;
+    }
 
-	/**
-	 * Transformar un DTO a un Entity
-	 *
-	 * @return La entidad construida a partir del DTO.
-	 */
-	@Override
-	public PqrsEntity toEntity( )
-	{
-		PqrsEntity entity = super.toEntity( );                
-		if(this.getCliente() != null)
-                {
-                    entity.setCliente(this.getCliente().toEntity());
-                }
-                if(this.getPedido() != null)
-                {
-                    entity.setPedido(this.getPedido().toEntity());
-                }
-                return entity;
-	}
-        
-       
-    
 }

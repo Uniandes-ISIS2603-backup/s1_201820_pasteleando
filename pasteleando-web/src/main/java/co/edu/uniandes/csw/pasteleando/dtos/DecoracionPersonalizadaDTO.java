@@ -36,7 +36,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
     private String estado;
 
     private Integer peso;
-    
+
     private Long id;
 
     /**
@@ -75,11 +75,11 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
      */
     public DecoracionPersonalizadaDTO(DecoracionPersonalizadaEntity decoracionPersonalizadaEntity) {
         super(decoracionPersonalizadaEntity);
-        this.id=decoracionPersonalizadaEntity.getId();
+        this.id = decoracionPersonalizadaEntity.getId();
         this.color = decoracionPersonalizadaEntity.getColor();
         this.estado = decoracionPersonalizadaEntity.getEstado();
         this.peso = decoracionPersonalizadaEntity.getPeso();
-    
+
     }
 
     /**
@@ -117,7 +117,7 @@ public class DecoracionPersonalizadaDTO extends DecoracionDTO implements Seriali
      * @return Un Entity con los valores del DTO
      */
     public DecoracionPersonalizadaEntity toEntity(DecoracionPersonalizadaEntity entity) {
-        
+
         super.toEntity(entity);
         entity.setId(this.id);
         entity.setColor(this.color);

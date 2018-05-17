@@ -2,36 +2,35 @@ package co.edu.uniandes.csw.pasteleando.dtos;
 
 import co.edu.uniandes.csw.pasteleando.entities.CalificacionEntity;
 
-
 /**
-  * CityDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
+ * CityDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
  * servidor.
- * 
- * Al serializarse como JSON esta clase se implementa con el siguiente modelo: <br>
- * <pre> 
+ *
+ * Al serializarse como JSON esta clase se implementa con el siguiente modelo:
+ * <br>
+ * <pre>
  * {
  *  "id": long,
  *  "puntaje": Integer,
- *  "comentario": String 
+ *  "comentario": String
  * }
- * </pre>
- * Una calificacion se representaria asi:
+ * </pre> Una calificacion se representaria asi:
  * <pre>
  * {
  * "id": 245333,
  * "puntaje": 5,
  * "comentario", "La atencion fue excelente"
  * }
- * 
+ *
  * </pre>
+ *
  * @author mp.bayonal
  */
-public class CalificacionDTO
-{
+public class CalificacionDTO {
 
     private Long id;
-    
+
     private String name;
 
     public String getName() {
@@ -49,9 +48,8 @@ public class CalificacionDTO
     /**
      * Constructor por defecto
      */
-    public CalificacionDTO( )
-    {
-        
+    public CalificacionDTO() {
+
     }
 
     /**
@@ -102,8 +100,7 @@ public class CalificacionDTO
      *
      * @param calificacionEntity: Es la entidad que se va a convertir a DTO
      */
-    public CalificacionDTO( CalificacionEntity calificacionEntity )
-    {
+    public CalificacionDTO(CalificacionEntity calificacionEntity) {
         this.id = calificacionEntity.getId();
         this.puntaje = calificacionEntity.getPuntaje();
         this.comentario = calificacionEntity.getComentario();
@@ -115,15 +112,13 @@ public class CalificacionDTO
      *
      * @return Un Entity con los valores del DTO
      */
-
-    public CalificacionEntity toEntity( )
-    {
-        CalificacionEntity entity = new CalificacionEntity( );
+    public CalificacionEntity toEntity() {
+        CalificacionEntity entity = new CalificacionEntity();
         entity.setComentario(this.comentario);
         entity.setPuntaje(this.puntaje);
         entity.setId(this.id);
         entity.setName(this.name);
-        
+
         return entity;
     }
 

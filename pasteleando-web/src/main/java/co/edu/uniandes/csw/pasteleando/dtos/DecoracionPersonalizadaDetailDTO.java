@@ -42,11 +42,10 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
      */
     public DecoracionPersonalizadaDetailDTO(DecoracionPersonalizadaEntity entity) {
         super(entity);
-        if(entity.getCliente()!=null)
-        {
+        if (entity.getCliente() != null) {
             this.cliente = new ClienteDTO(entity.getCliente());
         }
-         if (entity.getPasteles() != null) {
+        if (entity.getPasteles() != null) {
             pasteles = new ArrayList<>();
             entity.getPasteles().forEach((PastelEntity entityPastel) -> {
                 pasteles.add(new PastelDTO(entityPastel));
@@ -69,10 +68,9 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
             });
             entity.setPasteles(pastelesEntity);
         }
-         if(this.getCliente() != null)
-            {
-                entity.setCliente(this.getCliente().toEntity());
-            }
+        if (this.getCliente() != null) {
+            entity.setCliente(this.getCliente().toEntity());
+        }
         return entity;
     }
 
@@ -89,12 +87,13 @@ public class DecoracionPersonalizadaDetailDTO extends DecoracionPersonalizadaDTO
     public void setPasteles(List<PastelDTO> pasteles) {
         this.pasteles = pasteles;
     }
- public ClienteDTO getCliente() {
+
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
-    
+
 }

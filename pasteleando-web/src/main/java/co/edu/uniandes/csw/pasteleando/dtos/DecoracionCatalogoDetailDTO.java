@@ -95,7 +95,6 @@ public class DecoracionCatalogoDetailDTO extends DecoracionCatalogoDTO {
      *
      * @return La entidad construida a partir del DTO.
      */
-    
     public DecoracionCatalogoEntity toEntity() {
         DecoracionCatalogoEntity entity = super.toEntity();
         if (getPasteles() != null) {
