@@ -2,6 +2,7 @@
 package co.edu.uniandes.csw.pasteleando.resources;
 
 import co.edu.uniandes.csw.pasteleando.dtos.PromocionDTO;
+import co.edu.uniandes.csw.pasteleando.dtos.PromocionDetailDTO;
 import co.edu.uniandes.csw.pasteleando.ejb.DecoracionCatalogoLogic;
 import co.edu.uniandes.csw.pasteleando.ejb.PromocionLogic;
 import co.edu.uniandes.csw.pasteleando.entities.PromocionEntity;
@@ -119,9 +120,9 @@ public class PromocionResource
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la entidad de promoción.
      */
     @POST
-    public PromocionDTO createPromocion(@PathParam("catalogoId") Long catalogoId, PromocionDTO promocion) throws BusinessLogicException
+    public PromocionDetailDTO createPromocion(@PathParam("catalogoId") Long catalogoId, PromocionDetailDTO promocion) throws BusinessLogicException
     {
-        return new PromocionDTO(promocionLogic.createPromocion(catalogoId, promocion.toEntity()));
+        return new PromocionDetailDTO(promocionLogic.createPromocion(catalogoId, promocion.toEntity()));
     }
     
     /**

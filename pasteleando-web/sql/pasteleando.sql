@@ -12,10 +12,10 @@ insert into DecoracionCatalogoEntity (id, categoria) values (1000,'Cumpleaños' 
 insert into DecoracionCatalogoEntity (id, categoria) values (2000,'Boda' );
 insert into DecoracionCatalogoEntity (id, categoria) values (3000,'Quinces' );
 
-insert into PromocionEntity (id, cantidad) values (001, 15);
-insert into PromocionEntity (id, cantidad) values (002, 10);
-insert into PromocionEntity (id, cantidad) values (003, 50);
-insert into PromocionEntity (id, cantidad) values (004, 20);
+insert into PromocionEntity (id, cantidad, decoracioncatalogo_id) values (100, 15, 1000);
+insert into PromocionEntity (id, cantidad, decoracioncatalogo_id) values (200, 10, 2000);
+insert into PromocionEntity (id, cantidad, decoracioncatalogo_id) values (300, 50, 3000);
+insert into PromocionEntity (id, cantidad, decoracioncatalogo_id) values (400, 20, 1000);
 
 insert into DecoracionPersonalizadaEntity(id, color, estado, foto) values (1011,'Blanco', 'Entregado','https://thestayathomechef.com/wp-content/uploads/2017/05/White-Cake-3-e1497020677316.jpg');
 insert into DecoracionPersonalizadaEntity(id, color, estado, foto) values (1012,'Negro', 'Enviado','http://sweetapolita.com/wp-content/uploads/2016/04/glamrocktray581.jpg');

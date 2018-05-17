@@ -85,10 +85,18 @@ public class DecoracionCatalogoLogic {
     /**
      * Eliminar una decoración del catálogo por ID
      * @param id El ID de la decoración del catálogo a eliminar
+     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException
      */
-    public void deleteDecoracionCatalogo(Long id) {
+    public void deleteDecoracionCatalogo(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar decoración del catálogo con id={0}", id);
-        persistence.delete(id);
+        if(persistence.find(id) != null)
+        {
+            persistence.delete(id);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe una entidad con el id: " +id);
+        }
         LOGGER.log(Level.INFO, "Termina proceso de borrar decoración del catálogo con id={0}", id);
     }
     //TODO Validar la categoría es solo ver que no sea vacía?

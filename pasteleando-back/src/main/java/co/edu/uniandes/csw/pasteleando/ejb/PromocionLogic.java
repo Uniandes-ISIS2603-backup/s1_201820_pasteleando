@@ -25,7 +25,7 @@ public class PromocionLogic {
     private DecoracionCatalogoLogic decoracionCatalogoLogic;
     
     public boolean validateCantidad(Integer cantidad) {
-        if (cantidad > 90) 
+        if (cantidad > 90)
         {
             return false;
         }
@@ -37,18 +37,10 @@ public class PromocionLogic {
      *
      * @param decoracionCatalogoId id de la decoración del catálogo el cual es padre de las promociones.
      * @return Colección de objetos de PromocionEntity.
-     * @throws co.edu.uniandes.csw.pasteleando.exceptions.BusinessLogicException Error cuando la decoración del catálogo no tiene promociones.
      */
-    public List<PromocionEntity> getPromociones(Long decoracionCatalogoId) throws BusinessLogicException {
+    public List<PromocionEntity> getPromociones(Long decoracionCatalogoId){
         LOGGER.info("Inicia proceso de consultar todas las promociones");
-        DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
-        if (decoracionCatalogo.getPromociones() == null) {
-            throw new BusinessLogicException("La decoración del catálogo que consulta aún no tiene promociones");
-        }
-        if (decoracionCatalogo.getPromociones().isEmpty()) {
-            throw new BusinessLogicException("La decoración del catálogo que consulta aún no tiene promociones");
-        }
-        return decoracionCatalogo.getPromociones();
+        return persistence.findAll();
     }
     
     /**
@@ -74,15 +66,12 @@ public class PromocionLogic {
      */
     public PromocionEntity createPromocion(Long decoracionCatalogoId, PromocionEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de crear promocion");
-        if (decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId) == null) {
-            throw new BusinessLogicException("El catalogo asociado no existe");
-        }
-        else if( !validateCantidad(entity.getCantidad()))
-        {
-         throw new BusinessLogicException("La promocion no puede ser mayor a 90");
-        }
         DecoracionCatalogoEntity decoracionCatalogo = decoracionCatalogoLogic.getDecoracionCatalogo(decoracionCatalogoId);
         entity.setDecoracionCatalogo(decoracionCatalogo);
+        if( !validateCantidad(entity.getCantidad()))
+        {
+            throw new BusinessLogicException("La promocion no puede ser mayor a 90");
+        }
         return persistence.create(entity);
     }
     

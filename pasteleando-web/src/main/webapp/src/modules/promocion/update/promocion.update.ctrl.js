@@ -1,8 +1,8 @@
 (function (ng) {
-    var mod = ng.module("clienteModule");
-    mod.constant("clienteContext", "api/clientes");
+    var mod = ng.module("promocionModule");
+    mod.constant("promocionContext", "api/promociones");
     
-    mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clienteContext', '$state',  '$rootScope',
+    mod.controller('promocionUpdateCtrl', ['$scope', '$http', 'promocionContext', '$state',  '$rootScope',
         /**
          * @ngdoc controller
          * @name editorials.controller:editorialUpdateCtrl
@@ -20,13 +20,13 @@
          * @param {Object} booksContext Constante injectada que contiene la ruta
          * donde se encuentra el API de Libros en el Backend.
          */
-        function ($scope, $http, clienteContext, $state,  $rootScope) {
+        function ($scope, $http, promocionContext, $state,  $rootScope) {
             $rootScope.edit = true;
-
+            
             $scope.data = {};
-
-            var idcliente = $state.params.clienteId;
-
+            
+            var idpromocion = $state.params.promocionId;
+            
             /**
              * @ngdoc function
              * @name getEditorialID
@@ -37,11 +37,11 @@
              * @param {String} URL Dirección donde se encuentra el recurso
              * de la editorial o API donde se puede consultar.
              */
-            $http.get(clienteContext + '/' + idcliente).then(function (response) {
-                var cliente = response.data;
-                $scope.data.name = cliente.name;
+            $http.get(promocionContext + '/' + idpromocion).then(function (response) {
+                var promocion = response.data;
+                $scope.data.name = promocion.name;
             });
-
+            
             /**
              * @ngdoc function
              * @name createEditorial
@@ -52,11 +52,11 @@
              * @param {String} id El ID de la editorial a actualizar.
              * @param {Object} editorial Objeto con la información nueva de la editorial.
              */
-            $scope.createcliente = function () {
-                $http.put(clienteContext + "/" + idcliente, $scope.data).then(function (response) {
-                    $state.go('clienteList', {clienteId: response.data.id}, {reload: true});
+            $scope.createpromocion = function () {
+                $http.put(promocionContext + "/" + idpromocion, $scope.data).then(function (response) {
+                    $state.go('promocionList', {promocionId: response.data.id}, {reload: true});
                 });
             }
         }]);
 }
-)(window.angular);
+        )(window.angular);
