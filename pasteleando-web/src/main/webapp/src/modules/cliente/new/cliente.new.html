@@ -1,6 +1,9 @@
 <div class="container-fluid">
     <div class="panel-group"  >
         <div class="panel panel-primary">
+            <div ng-if="si" class="alert alert-danger">
+                        <strong>Danger!</strong> Ya existe un usuario con este nombre.
+            </div>
             <div class="panel-heading"><label ng-if="!edit" id="createcliente">Crear nueva cliente</label>
                 <label ng-if="edit" id="editcliente">Editar cliente</label></div>
             <div class="panel-body">

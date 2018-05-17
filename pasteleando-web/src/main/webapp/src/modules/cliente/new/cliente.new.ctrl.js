@@ -1,6 +1,7 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
     mod.constant("clienteContext", "api/clientes");
+    
     mod.controller('clienteNewCtrl', ['$scope', '$http', 'clienteContext', '$state', '$rootScope',
         /**
          * @ngdoc controller
@@ -19,11 +20,18 @@
          * @param {Object} $rootScope Referencia injectada al Scope definida para
          * toda la aplicación.
          */
+        
+        
         function ($scope, $http, clienteContext, $state, $rootScope) {
             $rootScope.edit = false;
 
             $scope.data = {};
 
+
+            $http.get('api/clientes').then(function (response) {
+                $scope.users = response.data;
+            });
+            
             /**
              * @ngdoc function
              * @name createEditorial
@@ -39,11 +47,32 @@
             
             $scope.createcliente = function () {
                 $scope.data.tipoUsuario = 'false';
-                $http.post(clienteContext, $scope.data).then(function (response) {
-                    $state.go('clienteList', {clienteId: response.data.id}, {reload: true});
-                });
-            };
+                var si=false;
+                  for (var item in $scope.users) 
+                      {
+                      if($scope.users[item].name === $scope.data.name)
+                      {
+                          
+                      si = true;
+                      
+                      }
+                      else{
+                          $http.post(clienteContext, $scope.data).then(function (response) {
+                    $state.go('clienteList', {clienteId: response.data.id}, {reload: true})
+                  });
+                    }
+                
+            }
         }
+        
+        }
+        
     ]);
-}
+    
+    
+    
+    
+    
+   }
+
 )(window.angular);
