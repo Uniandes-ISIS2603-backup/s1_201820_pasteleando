@@ -60,12 +60,6 @@ public class PedidoLogic
     public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException
     {  
         LOGGER.info( "Inicia proceso de creación de una entidad de Pedido" );
-        
-        //TODO: revisar esta regla de negocio
-        if( persistence.findAll() != null )
-        {
-            throw new BusinessLogicException( "Ya existe un pedido en curso" );
-        }
         persistence.create(entity);
         LOGGER.info( "Termina proceso de creación de entidad de Pedido" );
 	return entity;
