@@ -68,9 +68,9 @@
                     event.preventDefault();
                     $state.go('login', $state.params);
                 }
-
             });
-
+            $rootScope.misPedidos = [];
+            $rootScope.todosLosPedidos =[];
         }]);
 })(window.angular);
 

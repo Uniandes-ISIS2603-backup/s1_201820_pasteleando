@@ -13,11 +13,18 @@ and open the template in the editor.
     <table class="table table-bordered" style="background-color: white; margin-top: 10px">
                     <thead style="background-color: #F5F5DC">
                         <tr>
-                            <th>Pedido No.</th>
+                            <th>Id cliente</th>
                         
-                            <th>Opciones</th>  
+                            <th>Id pastel catalogo</th>
+                            
+                            <th>Se recoge en pastelería</th>
                         </tr>
                     </thead>
+                    <tr ng-repeat="pedido in pedidoRecords">
+                    <td>{{pedido.idCliente}}</td>
+                    <td>{{pedido.idCatalogo.catalogoId}}</td>
+                    <td>{{pedido.seRecogeEnPasteleria}}</td>
+                    </tr>
                 </table>
 </div>
  </div>

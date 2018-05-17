@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
     mod.constant("clienteContext", "api/clientes");
-    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext', '$state',
+    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext', '$state', '$rootScope',
         /**
          * @ngdoc controller
          * @name editorials.controller:editorialCtrl
@@ -20,7 +20,20 @@
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http, clienteContext, $state) {
+        function ($scope, $http, clienteContext, $state, $rootScope) {  
+            
+            $scope.isVisible = false;
+            
+            $scope.mostrarFormasDePago = function()
+            {
+                $scope.isVisible = true             
+            }
+            
+            $scope.tiposPagos = ["Tarjeta de credito" , "Tarjeta debito" , "PayPal"];
+            
+           
+       
+            
             /**
              * @ngdoc function
              * @name getEditorials
@@ -35,20 +48,34 @@
              * de las editoriales o API donde se puede consultar.
              */
             $http.get(clienteContext).then(function (response) {
-               console.log(sessionStorage);
-               console.log(sessionStorage.name);
                document.getElementById("nombreCliente").innerHTML = sessionStorage.name;
-                $scope.clienteRecords = response.data;
+                console.log(response.data);
                 $http.get(clienteContext+ "/" +sessionStorage.id).then(function(response2){
                    var puntos = response2.numeroPuntos;
+                   
                    if(puntos === undefined)
                    {
                        puntos=0;
                    }
                    document.getElementById("puntos").innerHTML=puntos;
+                   
+                   $scope.data.push({
+                      "puntos": puntos,
+                      "nombre": response2.name
+                   });
+                   
         });
              
             });
+            
+             $scope.agregarFormaDePago = function()
+            {
+                console.log($rootScope.data.tipoPago);
+                $http.put(clienteContext+ "/" +sessionStorage.id,$scope.data).then(function(response3){
+                    $scope.aIterar = response3.data;
+                    $state.reload();
+                });
+            }
         }
     ]);
 }

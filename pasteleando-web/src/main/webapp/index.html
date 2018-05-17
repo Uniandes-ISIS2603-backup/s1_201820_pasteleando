@@ -144,12 +144,12 @@
                         
                         <li><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li><a ui-sref="pqrsList">Pqrs</a></li>
-                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="clienteList">Cliente</a></li>
+                        
                         <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="admin">Todos los clientes</a></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
 
-                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="miInfo"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="clienteList"><span class="glyphicon glyphicon-user"></span></a></li>
                     <li ng-if="!hasPermissions() && !isAuthenticated()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li ng-if="!hasPermissions() && !isAuthenticated()"><a ui-sref="clienteCreate"> Sign Up Cliente</a></li>
                     <li ng-if="isAuthenticated() || hasPermissions()"><a ui-sref="logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
