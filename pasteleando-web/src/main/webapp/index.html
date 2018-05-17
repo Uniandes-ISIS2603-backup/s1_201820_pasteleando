@@ -144,9 +144,7 @@
                         
                         <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="calificacionList">Calificaciones</a></li>
                         <li ng-if=" hasPermissions() || isAuthenticated()"><a ui-sref="pqrsList">Pqrs</a></li>
-                        <li><a ui-sref="calificacionList">Calificaciones</a></li>
-                        <li><a ui-sref="pqrsList">Pqrs</a></li>
-                        
+                        <li ng-if="hasPermissions() && isAuthenticated()"><a ui-sref="clienteList">Cliente</a></li>
                         <li ng-if="isAuthenticated() && !hasPermissions()"><a ui-sref="admin">Todos los clientes</a></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
